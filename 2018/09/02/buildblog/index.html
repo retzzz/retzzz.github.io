@@ -61,7 +61,7 @@
 <link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png?v=6.4.0">
 
 
   <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png?v=6.4.0">
@@ -70,7 +70,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png?v=6.4.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+  <link rel="mask-icon" href="/images/sword.svg?v=6.4.0" color="#222">
 
 
 
@@ -112,23 +112,23 @@
 <meta name="keywords" content="hexo,NexT,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过hexo + NexT + github pages + 搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2018/09/02/buildblog/index.html">
+<meta property="og:url" content="https://retzzz.github.io/2018/09/02/buildblog/index.html">
 <meta property="og:site_name" content="Mingjian&#39;s Blog">
 <meta property="og:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/02/buildblog/tags_and_cats.jpg">
-<meta property="og:updated_time" content="2018-09-08T02:51:42.546Z">
+<meta property="og:image" content="https://retzzz.github.io/2018/09/02/buildblog/tags_and_cats.jpg">
+<meta property="og:updated_time" content="2018-10-23T07:13:05.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过hexo + NexT + github pages + 搭建个人博客">
 <meta name="twitter:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/02/buildblog/tags_and_cats.jpg">
+<meta name="twitter:image" content="https://retzzz.github.io/2018/09/02/buildblog/tags_and_cats.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/02/buildblog/"/>
+  <link rel="canonical" href="https://retzzz.github.io/2018/09/02/buildblog/"/>
 
 
 
@@ -334,10 +334,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/02/buildblog/">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/2018/09/02/buildblog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhou Mingjian">
+      <meta itemprop="name" content="Mingjian">
       <meta itemprop="description" content="computer technical, avionics, mathmatics">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -393,7 +393,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-08 10:51:42" itemprop="dateModified" datetime="2018-09-08T10:51:42+08:00">2018-09-08</time>
+                <time title="修改时间：2018-10-23 15:13:05" itemprop="dateModified" datetime="2018-10-23T15:13:05+08:00">2018-10-23</time>
               
             
           </span>
@@ -484,6 +484,7 @@
 <li>尽量少的网站管理工作.</li>
 </ol>
 <h2 id="方案">方案</h2>
+<a id="more"></a>
 <p>根据这个需求我开始在google一顿狂搜. 最后决定的方案就是如同标题. 下面分别解释一下这几个都是什么.</p>
 <ul>
 <li><a href="http://zh.wikipedia.com/wiki/Markdown" target="_blank" rel="noopener">Markdown</a>: 一种轻量级标签语言, 其目标是纯文本的源文件是人类可读的, 但是有一定程度的结构化, 可以很容易转换成机器可读的html或者LeTeX. 人类可读可以让非技术人员也可以轻松使用, 结构化可以让电脑可以很容易解析. 能结合这两点的方案基本只有这一个, 没有别可替换的方案. 当然也可以直接写LeTeX和html, 但都无法让源文件是人类可读的, 对于写博客来说太重了.</li>
@@ -529,12 +530,12 @@
 <p>同理, 在<code>source\tags\index.md</code>里添加<code>type: tags</code> 效果就是下面两个高亮的可以点击了. <img src="/2018/09/02/buildblog/tags_and_cats.jpg" alt="tags and cats"></p>
 <h3 id="安装next">安装NexT</h3>
 <p>可以按照<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">官方安装帮助</a> 来安装, 第二步有3个选项, 我直接用了git clone. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
-<p>这样方便以后直接用git pull更新. 注意Next有4种不同的页面搭配(scheme), 你可以去<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">官方readme</a>的Live Preview下看看几个demo. 我选择了<code>Pisces</code>. 去配置文件themes_config.yml里修改一下即可 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
+<p>这样方便以后直接用git pull更新. 注意Next有4种不同的页面搭配(scheme), 你可以去<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">官方readme</a>的Live Preview下看看几个demo. 我选择了<code>Pisces</code>. 去配置文件<code>themes\next\_config.yml</code>里修改一下即可 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
 <h4 id="支持数学公式">支持数学公式</h4>
 <p>NexT是内置了支持数学公式的, 但这里几个坑. hexo默认的markdown渲染器是<code>hexo-renderer-marked</code>, 但根据<code>NexT</code>的关于数学公式的<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md" target="_blank" rel="noopener">文档</a>. 里面提到如果在配置文件里激活对数学公式渲染的支持, 必需把这个默认的渲染器换掉. 如果你把公式渲染配置成<code>Mathjax</code>, 就必须用<code>hexo-renderer-pandoc</code>或者<code>hexo-renderer-kramed</code>来作为markdown渲染器. 如果你用<code>Katex</code>, 就必须用<code>hexo-renderer-markdown-it</code>或者<code>hexo-renderer-markdown-it-plus</code>.</p>
 <p>上面提到的四个渲染器, 我试了一下, 不知道原因, 在我这里只有pandoc这个渲染器工作. 所以最后的选择就是使用<code>Mathjax + hexo-renderer-pandoc</code>. 这里面还有个坑就是, 这个渲染器依赖pandoc这个软件, 必须先去<a href="https://github.com/jgm/pandoc/releases/tag/2.2.3.2" target="_blank" rel="noopener">pandoc官网</a>下载安装一个pandoc. 下面是我安装的版本. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc --version</span><br><span class="line">pandoc 2.2.3.2</span><br><span class="line">Compiled with pandoc-types 1.17.5.1, texmath 0.11.0.1, skylighting 0.7.2</span><br><span class="line">Default user data directory: C:\Users\e323819\AppData\Roaming\pandoc</span><br><span class="line">Copyright (C) 2006-2018 John MacFarlane</span><br><span class="line">Web:  http://pandoc.org</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.</span><br><span class="line">There is no warranty, not even <span class="keyword">for</span> merchantability or fitness</span><br><span class="line"><span class="keyword">for</span> a particular purpose.</span><br></pre></td></tr></table></figure></p>
 <p>之后就可以通过下面的命令替换掉渲染器. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
-<p>然后到themes\_config.yml里修改打开对数学公式的支持.</p>
+<p>然后到<code>themes\next\_config.yml</code>里修改打开对数学公式的支持.</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">mathjax</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
 <p><code>per_page</code>这个变量如果是false, 渲染时每篇都会把<code>mathjax</code>加载到页面里, 如果是true, 那么只有页面头部包括了元素<code>mathjax: true</code>才会加载.</p>
 <p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure></p>
@@ -543,14 +544,32 @@
 <p>如果使用网络里的图床, 只需要用相应的markdown语法链接一下就行了. 但如果想要使用本地图片, 有这么几个解决方案.</p>
 <ol type="1">
 <li>把图片放在<code>source/img</code>下, 然后在用<code>markdown</code>语法<code>![img](/source/img/xxx.png)</code>的形式. 缺点是所有博客的图片会混在一起, 不好管理.</li>
-<li>配置_config.yml中的变量<code>post_asset_folder: true</code>, 这时一代你通过<code>new</code>命令建立一个新博客文章, 就会自动生成一个同名文件夹用来放置资源文件. 然后使用hexo专用的语法<code></code>. 这么做的缺点是你的markdown文件将不能在别的地方被解析.</li>
+<li>配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>, 这时一代你通过<code>new</code>命令建立一个新博客文章, 就会自动生成一个同名文件夹用来放置资源文件. 然后使用hexo专用的语法<code></code>. 这么做的缺点是你的markdown文件将不能在别的地方被解析.</li>
 <li><p>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>. 然后用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
 <p>安装一个插件. 然后使用一般的markdown语法即可以显示. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname/img.jpg)</span><br></pre></td></tr></table></figure></p>
 <p>缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移, 所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</p></li>
 </ol>
-<p>TO BE CONTINUE…</p>
+<h3 id="部署到github-pages">部署到github pages</h3>
+<p>到现在为止, 我们可以在本地生成非常漂亮的静态页面. 可以使用markdown, 可以渲染数学公式, 可以使用图片. 我们需要在公网上找一个地方放置我们的这些静态页面. 这个选择非常多. 我选择了<a href="pages.github.com">github page</a>. 原因是使用简单, 几乎不需花时间维护, 国内公司都没有被墙掉, 可信程度高.</p>
+<p>这里我们假设你已经有<code>github</code>的账户了. 如果没有需要创建一个, 具体创建过程在这里省略. 假设账户名是<code>xyz</code>. 那么你只需要创建一个名字叫做<code>xyz.github.io</code>的新项目, 就完成了github上的操作.</p>
+<p>之后需要在<code>_config.yml</code>里的deploy下面加下面的配置, 注意type前面那个<code>-</code>最好加上, 因为如果deploy西面有多个deployer的话, 没有这个横岗会报错. repo的值如果报错可以尝试把用户名和密码加上, 就像这样<code>https://xyz:pword@github.com/xyz/xyz.github.io.git</code>. 我在一台机器上碰到这个问题这么解决了, 但在别的机器上就不加也可以提示直接输入.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">- type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/retzzz/retzzz.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>然后在你blog的主目录下安装一个git deployer插件.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>这之后只要使用下面任何一个命令, 都可以完成部署. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo d</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<h2 id="进阶">进阶</h2>
+<p>到这里一个初步的博客就搭建完成了, 我最开始提到的基础需求都得到满足. 但其实还有好多细节可以继续丰富, 我列出一些以后再有时间可以再写一篇进阶篇:</p>
+<ol type="1">
+<li>添加评论功能, 让用户可以对某一个文章进行评论.</li>
+<li>文章访问计数.</li>
+<li>各种社交网站的超链接.</li>
+<li>为页面添加固定页眉页脚.</li>
+<li>替换默认图标.</li>
+<li>直接所见即所得的对markdown文档进行编辑.</li>
+<li>博客内部文章的互相跳转.</li>
+</ol>
 <h2 id="参考网页">参考网页:</h2>
-<p><a href="https://wizardforcel.gitbooks.io/markdown-simple-world/hexo-tutor-1.html" target="_blank" rel="noopener">1</a> <br> <a href="https://www.techiediaries.com/jekyll-hugo-hexo" target="_blank" rel="noopener">2</a> <br> <a href="http://oakland.github.io/2016/05/02/hexo-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E4%B8%80%E7%AF%87%E6%96%B0%E7%9A%84post" target="_blank" rel="noopener">3</a> <br> <a href="https://linlif.github.io/2017/05/27/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE" target="_blank" rel="noopener">4</a> <a href="https://www.tuicool.com/articles/umEBVfI" target="_blank" rel="noopener">5</a></p>
+<p><a href="https://wizardforcel.gitbooks.io/markdown-simple-world/hexo-tutor-1.html" target="_blank" rel="noopener">1</a> <a href="https://www.techiediaries.com/jekyll-hugo-hexo" target="_blank" rel="noopener">2</a> <a href="http://oakland.github.io/2016/05/02/hexo-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E4%B8%80%E7%AF%87%E6%96%B0%E7%9A%84post" target="_blank" rel="noopener">3</a> <a href="https://linlif.github.io/2017/05/27/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE" target="_blank" rel="noopener">4</a> <a href="https://www.tuicool.com/articles/umEBVfI" target="_blank" rel="noopener">5</a> <a href="https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog" target="_blank" rel="noopener">6</a></p>
 
       
     </div>
@@ -565,6 +584,20 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mingjian</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://retzzz.github.io/2018/09/02/buildblog/" title="通过hexo + NexT + github pages + 搭建个人博客">https://retzzz.github.io/2018/09/02/buildblog/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -584,6 +617,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/09/EulerFormula/" rel="prev" title="无理数指数, 复数指数, 欧拉公式, 复对数">
+                无理数指数, 复数指数, 欧拉公式, 复对数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -646,7 +695,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Zhou Mingjian</p>
+              <p class="site-author-name" itemprop="name">Mingjian</p>
               <p class="site-description motion-element" itemprop="description">computer technical, avionics, mathmatics</p>
           </div>
 
@@ -657,7 +706,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -674,7 +723,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -693,7 +756,35 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -703,6 +794,15 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.cn/profile/2130160531" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -729,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实施"><span class="nav-number">3.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo"><span class="nav-number">3.1.</span> <span class="nav-text">hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提"><span class="nav-number">3.1.1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化博客网站"><span class="nav-number">3.1.3.</span> <span class="nav-text">初始化博客网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建博客文章"><span class="nav-number">3.1.4.</span> <span class="nav-text">新建博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#post"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#draft"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">draft</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#page"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装next"><span class="nav-number">3.2.</span> <span class="nav-text">安装NexT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持数学公式"><span class="nav-number">3.2.1.</span> <span class="nav-text">支持数学公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地贴图"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地贴图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考网页"><span class="nav-number">4.</span> <span class="nav-text">参考网页:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实施"><span class="nav-number">3.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo"><span class="nav-number">3.1.</span> <span class="nav-text">hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提"><span class="nav-number">3.1.1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化博客网站"><span class="nav-number">3.1.3.</span> <span class="nav-text">初始化博客网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建博客文章"><span class="nav-number">3.1.4.</span> <span class="nav-text">新建博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#post"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#draft"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">draft</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#page"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装next"><span class="nav-number">3.2.</span> <span class="nav-text">安装NexT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持数学公式"><span class="nav-number">3.2.1.</span> <span class="nav-text">支持数学公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地贴图"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地贴图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到github-pages"><span class="nav-number">3.3.</span> <span class="nav-text">部署到github pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶"><span class="nav-number">4.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考网页"><span class="nav-number">5.</span> <span class="nav-text">参考网页:</span></a></li></ol></div>
             
 
           </div>
@@ -753,7 +853,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Zhou Mingjian</span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
 
   
 
