@@ -449,6 +449,9 @@
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
 
         </div>
           
@@ -699,6 +702,25 @@ window.addEventListener('pjax:success', () => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '6a068ba17921ccef5727',
+      clientSecret: 'f6a9f87e75e82d68a9988a1803eaf0ba021c2864',
+      repo: 'gitment-comments',
+      owner: 'retzzz',
+      admin: ['retzzz'],
+      id: '74d157bbad89ab085caf77925ab3e295',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
     </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
