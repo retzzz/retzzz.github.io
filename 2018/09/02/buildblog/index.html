@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-CN">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png?v=7.4.1">
-  <link rel="mask-icon" href="/images/sword.svg?v=7.4.1" color="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/sword.svg?v=7.4.2" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,13 +21,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.4.1',
+    version: '7.4.2',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: true,
+    fancybox: false,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -60,17 +54,16 @@
 <meta name="keywords" content="hexo,NexT,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过hexo + NexT + github pages + 搭建个人博客">
-<meta property="og:url" content="https://retzzz.github.io/2018/09/02/buildblog/index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;2018&#x2F;09&#x2F;02&#x2F;buildblog&#x2F;index.html">
 <meta property="og:site_name" content="Mingjian&#39;s Blog">
 <meta property="og:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://retzzz.github.io/2018/09/02/buildblog/tags_and_cats.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;2018&#x2F;09&#x2F;02&#x2F;buildblog&#x2F;tags_and_cats.jpg">
 <meta property="og:updated_time" content="2018-10-23T07:13:05.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过hexo + NexT + github pages + 搭建个人博客">
-<meta name="twitter:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
-<meta name="twitter:image" content="https://retzzz.github.io/2018/09/02/buildblog/tags_and_cats.jpg">
-  <link rel="canonical" href="https://retzzz.github.io/2018/09/02/buildblog/">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;2018&#x2F;09&#x2F;02&#x2F;buildblog&#x2F;tags_and_cats.jpg">
+
+<link rel="canonical" href="https://retzzz.github.io/2018/09/02/buildblog/">
 
 
 <script id="page-configurations">
@@ -106,7 +99,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -124,7 +116,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
@@ -136,7 +128,6 @@
       </a>
     </div>
         <p class="site-subtitle">You are just a hardcore character of the life game. Keep upgrading and don't die.</p>
-      
   </div>
 
   <div class="site-nav-toggle">
@@ -152,56 +143,30 @@
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-tags">
-      
-    
 
     <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-categories">
-      
-    
 
     <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger">
-        
-          <i class="fa fa-search fa-fw"></i>搜索</a>
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
       </li>
-    
   </ul>
 
 </nav>
@@ -236,12 +201,12 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-            
+          
 
-          <div id="content" class="content">
+          <div class="content">
             
 
   <div class="posts-expand">
@@ -252,18 +217,17 @@
     <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/2018/09/02/buildblog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Mingjian">
       <meta itemprop="description" content="computer technical, avionics, mathmatics">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Mingjian's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">通过hexo + NexT + github pages + 搭建个人博客
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          通过hexo + NexT + github pages + 搭建个人博客
         </h1>
 
         <div class="post-meta">
@@ -273,16 +237,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
               <time title="创建时间：2018-09-02 23:12:00" itemprop="dateCreated datePublished" datetime="2018-09-02T23:12:00+08:00">2018-09-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
@@ -290,28 +246,23 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2018-10-23 15:13:05" itemprop="dateModified" datetime="2018-10-23T15:13:05+08:00">2018-10-23</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/杂项/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
             </span>
-          
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -321,7 +272,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-          
 
         </div>
       </header>
@@ -361,13 +311,11 @@
 <h4 id="前提">前提</h4>
 <p>安装hexo, 有两个前提一个是<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>, 一个是<a href="https://nodejs.org/en/" target="_blank" rel="noopener">note.js</a>. 这两个的安装基本就是下载安装文件, 双击打开, 不停点next就好了. 截止于写这篇文章的时候, 我机器上安装的版本分别是 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">v10.9.0</span><br><span class="line">$ npm -v</span><br><span class="line">6.2.0</span><br><span class="line">$ git --version</span><br><span class="line">git version 2.17.1.windows.2</span><br></pre></td></tr></table></figure></p>
 <h4 id="安装hexo">安装hexo</h4>
-<p>之后只要按照hexo<a href="https://hexo.io" target="_blank" rel="noopener">官网首页</a>上的提示运行下面命令就可以安装hexo <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
-<p>安装完可以通过下面的命令查询一下安装的版本 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Windows_NT 10.0.15063 win32 x64</span><br><span class="line">http_parser: 2.8.0</span><br><span class="line">node: 10.9.0</span><br><span class="line">v8: 6.8.275.24-node.14</span><br><span class="line">uv: 1.22.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.14.0</span><br><span class="line">modules: 64</span><br><span class="line">nghttp2: 1.32.0</span><br><span class="line">napi: 3</span><br><span class="line">openssl: 1.1.0i</span><br><span class="line">icu: 62.1</span><br><span class="line">unicode: 11.0</span><br><span class="line">cldr: 33.1</span><br><span class="line">tz: 2018e</span><br></pre></td></tr></table></figure></p>
+<p>之后只要按照hexo<a href="https://hexo.io" target="_blank" rel="noopener">官网首页</a>上的提示运行下面命令就可以安装hexo <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure> 安装完可以通过下面的命令查询一下安装的版本 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Windows_NT 10.0.15063 win32 x64</span><br><span class="line">http_parser: 2.8.0</span><br><span class="line">node: 10.9.0</span><br><span class="line">v8: 6.8.275.24-node.14</span><br><span class="line">uv: 1.22.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.14.0</span><br><span class="line">modules: 64</span><br><span class="line">nghttp2: 1.32.0</span><br><span class="line">napi: 3</span><br><span class="line">openssl: 1.1.0i</span><br><span class="line">icu: 62.1</span><br><span class="line">unicode: 11.0</span><br><span class="line">cldr: 33.1</span><br><span class="line">tz: 2018e</span><br></pre></td></tr></table></figure></p>
 <h4 id="初始化博客网站">初始化博客网站</h4>
 <p>继续按照官网文档执行下面这些命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
 <p>其中folder是你博客网站的根目录. 如果当前目录就是根目录, 可以省略. 注意最后一条命令不能省略.</p>
-<p>这时候系统默认有一片hello world的博客, 你可以通过 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>在本地启动一个端口为4000的web server, 直接访问http://localhost:4000查看这个hello world页面.</p>
+<p>这时候系统默认有一片hello world的博客, 你可以通过 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure> 在本地启动一个端口为4000的web server, 直接访问http://localhost:4000查看这个hello world页面.</p>
 <p>之后要做的就是修改配置, 然后就可以通过一些hexo命令创建新的博客了, 这里可以参考官方文档的<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">配置</a>和<a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">命令</a>两个章节.</p>
 <p>修改配置文件的时候, 注意设置语言和时区的时候注意大小写敏感, 我的设置如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br></pre></td></tr></table></figure></p>
 <h4 id="新建博客文章">新建博客文章</h4>
@@ -375,8 +323,7 @@
 <h5 id="post">post</h5>
 <p>一个<code>post</code>就是一篇普通的博客文章, 运行完这条命令你就可以在<code>source\_post</code>下找到这个后缀为md的文章, 使用<code>markdown</code>语法编辑你的文章就成为了源文件.</p>
 <p>注意这个源文件最开头有个由三横杠<code>---</code>分割出来的头部, 里面包含一些关于这篇文章的属性信息, 你可以在<a href="https://hexo.io/docs/front-matter" target="_blank" rel="noopener">官方文档</a>里找到所有可以设置的元素.</p>
-<p>这里有两个要特别说明一下, tags和categories. 这两个都可以理解对文章的关键属性打标签. 不同点是, tags是纯粹的标签, 跟文章是多对多的关系. categories是一个具有树状结构标签(所以也可以理解成分类), 每篇文章只能是这棵树的一个叶子节点. 例如我这篇文章的头部如下: <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">通过hexo</span> <span class="string">+</span> <span class="string">NexT</span> <span class="string">+</span> <span class="string">github</span> <span class="string">pages</span> <span class="string">+</span> <span class="string">搭建个人博客</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">NexT</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">github</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">技术</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">杂项</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Mingjian</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-09</span><span class="bullet">-02</span> <span class="number">23</span><span class="string">:12:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></p>
-<p>其中对文章的分类是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">技术</span><br><span class="line"> \_杂项</span><br><span class="line">    \_搭建个人博客</span><br></pre></td></tr></table></figure></p>
+<p>这里有两个要特别说明一下, tags和categories. 这两个都可以理解对文章的关键属性打标签. 不同点是, tags是纯粹的标签, 跟文章是多对多的关系. categories是一个具有树状结构标签(所以也可以理解成分类), 每篇文章只能是这棵树的一个叶子节点. 例如我这篇文章的头部如下: <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">通过hexo</span> <span class="string">+</span> <span class="string">NexT</span> <span class="string">+</span> <span class="string">github</span> <span class="string">pages</span> <span class="string">+</span> <span class="string">搭建个人博客</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">NexT</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">github</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">技术</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">杂项</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Mingjian</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-09</span><span class="bullet">-02</span> <span class="number">23</span><span class="string">:12:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure> 其中对文章的分类是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">技术</span><br><span class="line"> \_杂项</span><br><span class="line">    \_搭建个人博客</span><br></pre></td></tr></table></figure></p>
 <p>这个是我个人认为最好的一种组合, 既有灵活的tags, 又有结构化的categories, 可以更好的组织整理自己的知识.</p>
 <h5 id="draft">draft</h5>
 <p>顾名思义, 这是草稿, 你可以用<code>hexo new draft &lt;blogname&gt;</code>命令生成一个新的草稿. 之后就可以在<code>source/_draft</code>下找到这个<code>markdown</code>文件了. 既然是草稿, 就说明还没完成. 作为博客框架应该提供预览功能, 和一键发布的能力. hexo当然没有让我们失望.</p>
@@ -401,16 +348,13 @@
 <p>然后到<code>themes\next\_config.yml</code>里修改打开对数学公式的支持.</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">mathjax</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
 <p><code>per_page</code>这个变量如果是false, 渲染时每篇都会把<code>mathjax</code>加载到页面里, 如果是true, 那么只有页面头部包括了元素<code>mathjax: true</code>才会加载.</p>
-<p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure></p>
-<p>会生成 <span class="math display">\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\tag{displayed}\]</span></p>
+<p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure> 会生成 <span class="math display">\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\tag{displayed}\]</span></p>
 <h4 id="本地贴图">本地贴图</h4>
 <p>如果使用网络里的图床, 只需要用相应的markdown语法链接一下就行了. 但如果想要使用本地图片, 有这么几个解决方案.</p>
 <ol type="1">
-<li><p>把图片放在<code>source/img</code>下, 然后在用<code>markdown</code>语法<code>![img](/source/img/xxx.png)</code>的形式. 缺点是所有博客的图片会混在一起, 不好管理.</p></li>
-<li><p>配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>, 这时一代你通过<code>new</code>命令建立一个新博客文章, 就会自动生成一个同名文件夹用来放置资源文件. 然后使用hexo专用的语法<code></code>. 这么做的缺点是你的markdown文件将不能在别的地方被解析.</p></li>
-<li><p>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>. 然后用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
-<p>安装一个插件. 然后使用一般的markdown语法即可以显示. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname/img.jpg)</span><br></pre></td></tr></table></figure></p>
-<p>缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移, 所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</p></li>
+<li>把图片放在<code>source/img</code>下, 然后在用<code>markdown</code>语法<code>![img](/source/img/xxx.png)</code>的形式. 缺点是所有博客的图片会混在一起, 不好管理.</li>
+<li>配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>, 这时一代你通过<code>new</code>命令建立一个新博客文章, 就会自动生成一个同名文件夹用来放置资源文件. 然后使用hexo专用的语法<code></code>. 这么做的缺点是你的markdown文件将不能在别的地方被解析.</li>
+<li>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>. 然后用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure> 安装一个插件. 然后使用一般的markdown语法即可以显示. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname/img.jpg)</span><br></pre></td></tr></table></figure> 缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移, 所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</li>
 </ol>
 <h3 id="部署到github-pages">部署到github pages</h3>
 <p>到现在为止, 我们可以在本地生成非常漂亮的静态页面. 可以使用markdown, 可以渲染数学公式, 可以使用图片. 我们需要在公网上找一个地方放置我们的这些静态页面. 这个选择非常多. 我选择了<a href="pages.github.com">github page</a>. 原因是使用简单, 几乎不需花时间维护, 国内公司都没有被墙掉, 可信程度高.</p>
@@ -439,42 +383,28 @@
     
     
     
-        
-      
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
               <a href="/tags/hexo/" rel="tag"># hexo</a>
-            
               <a href="/tags/NexT/" rel="tag"># NexT</a>
-            
               <a href="/tags/github/" rel="tag"># github</a>
-            
           </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
                 <a href="/2018/09/09/EulerFormula/" rel="prev" title="无理数指数, 复数指数, 欧拉公式, 复对数">
                   无理数指数, 复数指数, 欧拉公式, 复对数 <i class="fa fa-chevron-right"></i>
                 </a>
-              
             </div>
           </div>
-        
       </footer>
     
   </article>
@@ -487,9 +417,7 @@
 
           </div>
           
-    
     <div class="comments" id="gitalk-container"></div>
-  
 
         </div>
           
@@ -502,11 +430,6 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -520,66 +443,43 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实施"><span class="nav-number">3.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo"><span class="nav-number">3.1.</span> <span class="nav-text">hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前提"><span class="nav-number">3.1.1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化博客网站"><span class="nav-number">3.1.3.</span> <span class="nav-text">初始化博客网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建博客文章"><span class="nav-number">3.1.4.</span> <span class="nav-text">新建博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#post"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#draft"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">draft</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#page"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装next"><span class="nav-number">3.2.</span> <span class="nav-text">安装NexT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持数学公式"><span class="nav-number">3.2.1.</span> <span class="nav-text">支持数学公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地贴图"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地贴图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到github-pages"><span class="nav-number">3.3.</span> <span class="nav-text">部署到github pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶"><span class="nav-number">4.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考网页"><span class="nav-number">5.</span> <span class="nav-text">参考网页:</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Mingjian"
+    src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">Mingjian</p>
   <div class="site-description" itemprop="description">computer technical, avionics, mathmatics</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
           <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
           
-        
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
-        <span class="site-state-item-count">18</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
         <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo &rarr; https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
-    
   </div>
 
 
@@ -594,21 +494,28 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Mingjian</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.2
+  </div>
 
         
 <div class="busuanzi-count">
-  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -617,9 +524,7 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-  
     <span class="post-meta-divider">|</span>
-  
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
@@ -628,7 +533,6 @@
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
-  
 </div>
 
 
@@ -649,64 +553,11 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
-<script src="/js/schemes/pisces.js?v=7.4.1"></script>
-<script src="/js/next-boot.js?v=7.4.1"></script>
-  <script>
-var pjax = new Pjax({
-  selectors: [
-    'head title',
-    '#page-configurations',
-    '.content-wrap',
-    '.post-toc-wrap',
-    '#pjax'
-  ],
-  switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
-  },
-  analytics: false,
-  cacheBust: false,
-  scrollTo : !CONFIG.bookmark.enable
-});
-
-window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
-    var id = element.id || '';
-    var src = element.src || '';
-    var code = element.text || element.textContent || element.innerHTML || '';
-    var parent = element.parentNode;
-    parent.removeChild(element);
-    var script = document.createElement('script');
-    if (id !=='') {
-      script.id = element.id;
-    }
-    if (src !== '') {
-      script.src = src;
-      // Force synchronous loading of peripheral JS.
-      script.async = false;
-    }
-    if (code !== '') {
-      script.appendChild(document.createTextNode(code));
-    }
-    parent.appendChild(script);
-  });
-  NexT.boot.refresh();
-  // Define Motion Sequence & Bootstrap Motion.
-  if (CONFIG.motion.enable) {
-    NexT.motion.integrator
-      .init()
-      .add(NexT.motion.middleWares.postList)
-      .bootstrap();
-  }
-  NexT.utils.updateSidebarPosition();
-});
-</script>
-
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
+<script src="/js/next-boot.js?v=7.4.2"></script>
 
 
 
@@ -717,10 +568,7 @@ window.addEventListener('pjax:success', () => {
 
 
 
-
-
-  <script src="/js/local-search.js?v=7.4.1"></script>
-
+  <script src="/js/local-search.js?v=7.4.2"></script>
 
 
 
@@ -733,7 +581,6 @@ window.addEventListener('pjax:success', () => {
 
 
 
-    <div id="pjax">
 
   
 
@@ -754,14 +601,12 @@ window.addEventListener('pjax:success', () => {
       owner: 'retzzz',
       admin: ['retzzz'],
       id: 'fdf5c33206d33180ebd6c356361d0678',
-        language: window.navigator.language || window.navigator.userLanguage,
-      
+        language: '',
       distractionFreeMode: 'true'
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
