@@ -241,7 +241,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-04 15:09:22" itemprop="dateModified" datetime="2019-11-04T15:09:22+08:00">2019-11-04</time>
+                <time title="修改时间：2019-11-04 15:13:27" itemprop="dateModified" datetime="2019-11-04T15:13:27+08:00">2019-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,114 +276,6 @@
 <p>这篇<a href="https://hexo.io/docs/tag-plugins.html" target="_blank" rel="noopener">Hexo官方文档</a>介绍了很多默认支持的Plugin Tags.</p>
 <p>这篇<a href="https://theme-next.org/docs/tag-plugins/" target="_blank" rel="noopener">NexT官方文档</a>又增加了很多Next Theme额外支持的.</p>
 <p>我把这两篇文章的所有Tags列在下列表里, 并增加一些例子留作记录以便之后使用:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Hexo Tags<br>(点击看实例)</th>
-<th>标签</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://hexo.io/docs/tag-plugins#Block-Quote" target="_blank" rel="noopener">Block Quote</a></td>
-<td> {% blockquote [author[, source]] [link] [source_link_title] %}<br>content<br> {% endblockquote %} </td>
-</tr>
-<tr class="even">
-<td><a href="https://hexo.io/docs/tag-plugins#Code-Block" target="_blank" rel="noopener">Pull Quote</a></td>
-<td> {% pullquote [class] %}<br>content<br> {% endpullquote %}  <br> 效果跟blockquote没有什么区别.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://hexo.io/docs/tag-plugins#Code-Block" target="_blank" rel="noopener">Code Block</a></td>
-<td> {% codeblock [title] [lang:language] [url] [link text] %} <br> or  ``` [language] [title] [url] [link text] code snippet ``` </td>
-</tr>
-<tr class="even">
-<td><a href="#jsFiddle">jsFiddle</a></td>
-<td> {% jsfiddle shorttag [tabs] [skin] [width] [height] %} </td>
-</tr>
-<tr class="odd">
-<td><a href="#Gist">Gist</a></td>
-<td> {% gist gist_id [filename] %} </td>
-</tr>
-<tr class="even">
-<td><a href="#iframe">iframe</a></td>
-<td> {% iframe url [width] [height] %} </td>
-</tr>
-<tr class="odd">
-<td><a href="#image">image</a></td>
-<td> {% img [class names] /path/to/image [width] [height] "title text 'alt text'" %} </td>
-</tr>
-<tr class="even">
-<td><a href="#link">link</a></td>
-<td> {% link text url [external] [title] %} </td>
-</tr>
-<tr class="odd">
-<td><a href="#include-code">Include Code</a></td>
-<td> {% include_code [title] [lang:language] [from:line] [to:line] path/to/file %} </td>
-</tr>
-<tr class="even">
-<td><a href="https://hexo.io/docs/tag-plugins#YouTube" target="_blank" rel="noopener">YouTube</a></td>
-<td> {% youtube video_id %} </td>
-</tr>
-<tr class="odd">
-<td><a href="https://hexo.io/docs/tag-plugins#Vimeo" target="_blank" rel="noopener">Vimeo</a></td>
-<td> {% vimeo video_id [width] [height] %} </td>
-</tr>
-<tr class="even">
-<td><a href="#include-posts">Include Posts</a></td>
-<td> {% post_path filename %}<br>{% post_link filename [optional text] [escape] %} </td>
-</tr>
-<tr class="odd">
-<td><a href="#inlcude-assets">Include Assets</a></td>
-<td> {% asset_path slug %}<br>{% asset_img slug [title] %}<br>{% asset_link slug [title] [escape] %}</td>
-</tr>
-<tr class="even">
-<td>Raw</td>
-<td> {% raw %} content {% endraw %} </td>
-</tr>
-<tr class="odd">
-<td>Post摘录</td>
-<td><code>&lt;!-- more --&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>NexT Tags<br>(点击看实例)</th>
-<th>标签</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://theme-next.org/docs/tag-plugins/#Centered-Quote" target="_blank" rel="noopener">Centered Quote</a></td>
-<td> {% centerquote %}Something{% endcenterquote %}<br> {% cq %}Something{% endcq %}</td>
-</tr>
-<tr class="even">
-<td><a href="https://theme-next.org/docs/tag-plugins/#Include-Raw" target="_blank" rel="noopener">Include Raw</a></td>
-<td> {% include_raw '_data/path/to/file.html' %} </td>
-</tr>
-<tr class="odd">
-<td><a href="https://theme-next.org/docs/tag-plugins/note" target="_blank" rel="noopener">Note</a></td>
-<td> {% note [class] [no-icon] %} <br> Any content (support inline tags too.io).<br> {% endnote %}<br> <br>[class]   : default | primary | success | info | warning | danger.<br> [no-icon] : Disable icon in note.</td>
-</tr>
-<tr class="even">
-<td><a href="https://theme-next.org/docs/tag-plugins/tabs" target="_blank" rel="noopener">Tabs</a></td>
-<td> {% tabs Unique name, [index] %}<br> < !-- tab [Tab caption] [@icon] --><br> Any content (support inline tags too).<br> < !-- endtab --><br> {% endtabs %}</td>
-</tr>
-<tr class="odd">
-<td><a href="#mermaid">Mermaid</a></td>
-<td> {% mermaid type %}<br>{% endmermaid %}<br><br> type : type of the mermaid chart, visit https://github.com/knsv/mermaid for more information.</td>
-</tr>
-<tr class="even">
-<td><a href="https://theme-next.org/docs/tag-plugins/video" target="_blank" rel="noopener">Video</a></td>
-<td> {% video url %} </td>
-</tr>
-<tr class="odd">
-<td><a href="https://theme-next.org/docs/tag-plugins/group-pictures" target="_blank" rel="noopener">图组</a></td>
-<td> {% grouppicture [group]-[layout] %}{% endgrouppicture %} <br>{% gp [group]-[layout] %}{% endgp %}<br><br> [group]  : Total number of pictures to add in the group. <br> [layout] : Default picture under the group to show.</td>
-</tr>
-</tbody>
-</table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/338d5118/#more" rel="contents">
