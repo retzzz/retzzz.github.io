@@ -233,7 +233,7 @@
               目前共计 16 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/Aviation/" style="font-size: 12px; color: #ccc">Aviation</a> <a href="/tags/Avionics/" style="font-size: 12px; color: #ccc">Avionics</a> <a href="/tags/Cygwin/" style="font-size: 12px; color: #ccc">Cygwin</a> <a href="/tags/Euler-Formula/" style="font-size: 12px; color: #ccc">Euler Formula</a> <a href="/tags/MinGW/" style="font-size: 12px; color: #ccc">MinGW</a> <a href="/tags/NexT/" style="font-size: 12px; color: #ccc">NexT</a> <a href="/tags/VC/" style="font-size: 12px; color: #ccc">VC</a> <a href="/tags/clang/" style="font-size: 12px; color: #ccc">clang</a> <a href="/tags/compiler/" style="font-size: 12px; color: #ccc">compiler</a> <a href="/tags/exponential-function/" style="font-size: 12px; color: #ccc">exponential function</a> <a href="/tags/gcc/" style="font-size: 12px; color: #ccc">gcc</a> <a href="/tags/github/" style="font-size: 12px; color: #ccc">github</a> <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/instrument/" style="font-size: 12px; color: #ccc">instrument</a> <a href="/tags/logarithm-function/" style="font-size: 12px; color: #ccc">logarithm function</a> <a href="/tags/power-function/" style="font-size: 12px; color: #ccc">power function</a>
+              <a href="/tags/Aviation/" style="font-size: 12px; color: #ccc">Aviation</a> <a href="/tags/Avionics/" style="font-size: 12px; color: #ccc">Avionics</a> <a href="/tags/Cygwin/" style="font-size: 12px; color: #ccc">Cygwin</a> <a href="/tags/Euler-Formula/" style="font-size: 12px; color: #ccc">Euler Formula</a> <a href="/tags/MinGW/" style="font-size: 12px; color: #ccc">MinGW</a> <a href="/tags/NexT/" style="font-size: 30px; color: #111">NexT</a> <a href="/tags/VC/" style="font-size: 12px; color: #ccc">VC</a> <a href="/tags/clang/" style="font-size: 12px; color: #ccc">clang</a> <a href="/tags/compiler/" style="font-size: 12px; color: #ccc">compiler</a> <a href="/tags/exponential-function/" style="font-size: 12px; color: #ccc">exponential function</a> <a href="/tags/gcc/" style="font-size: 12px; color: #ccc">gcc</a> <a href="/tags/github/" style="font-size: 12px; color: #ccc">github</a> <a href="/tags/hexo/" style="font-size: 30px; color: #111">hexo</a> <a href="/tags/instrument/" style="font-size: 12px; color: #ccc">instrument</a> <a href="/tags/logarithm-function/" style="font-size: 12px; color: #ccc">logarithm function</a> <a href="/tags/power-function/" style="font-size: 12px; color: #ccc">power function</a>
             </div>
           </div>
         
@@ -292,7 +292,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -312,7 +312,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo &rarr; https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo &amp;rarr; https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav=1&amp;wvr=6&amp;is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
   </div>
 
@@ -341,10 +341,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Mingjian</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.2
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.2
   </div>
 
         
@@ -411,8 +411,40 @@
 
 
 
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'neutral',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
 
