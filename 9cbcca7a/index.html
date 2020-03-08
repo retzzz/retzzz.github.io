@@ -4,64 +4,38 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png?v=7.4.2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png?v=7.4.2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png?v=7.4.2">
-  <link rel="mask-icon" href="/images/sword.svg?v=7.4.2" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.4.2',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"retzzz.github.io","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
-<meta name="keywords" content="hexo,NexT,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过hexo + NexT + github pages + 搭建个人博客(一)">
-<meta property="og:url" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;9cbcca7a&#x2F;index.html">
+<meta property="og:url" content="https://retzzz.github.io/9cbcca7a/index.html">
 <meta property="og:site_name" content="Mingjian&#39;s Blog">
 <meta property="og:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;9cbcca7a&#x2F;tags_and_cats.jpg">
-<meta property="og:updated_time" content="2019-11-01T14:43:35.448Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://retzzz.github.io/9cbcca7a/tags_and_cats.jpg">
+<meta property="article:published_time" content="2018-09-02T15:12:00.000Z">
+<meta property="article:modified_time" content="2019-11-01T14:43:35.448Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="NexT">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;retzzz.github.io&#x2F;9cbcca7a&#x2F;tags_and_cats.jpg">
+<meta name="twitter:image" content="https://retzzz.github.io/9cbcca7a/tags_and_cats.jpg">
 
 <link rel="canonical" href="https://retzzz.github.io/9cbcca7a/">
 
@@ -70,17 +44,13 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true
   };
 </script>
 
   <title>通过hexo + NexT + github pages + 搭建个人博客(一) | Mingjian's Blog</title>
   
-
-
 
 
 
@@ -118,6 +88,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -130,11 +108,9 @@
         <p class="site-subtitle">You are just a hardcore character of the life game. Keep upgrading and don't die.</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -171,24 +147,29 @@
 
 </nav>
   <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
-<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
 
   </div>
 </div>
@@ -252,15 +233,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
-                  </a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
                 </span>
             </span>
 
@@ -317,13 +294,13 @@
 <p>其中folder是你博客网站的根目录. 如果当前目录就是根目录, 可以省略. 注意最后一条命令不能省略.</p>
 <p>这时候系统默认有一片hello world的博客, 你可以通过 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure> 在本地启动一个端口为4000的web server, 直接访问http://localhost:4000查看这个hello world页面.</p>
 <p>之后要做的就是修改配置, 然后就可以通过一些hexo命令创建新的博客了, 这里可以参考官方文档的<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">配置</a>和<a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">命令</a>两个章节.</p>
-<p>修改配置文件的时候, 注意设置语言和时区的时候注意大小写敏感, 我的设置如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br></pre></td></tr></table></figure></p>
+<p>修改配置文件的时候, 注意设置语言和时区的时候注意大小写敏感, 我的设置如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia&#x2F;Shanghai</span><br></pre></td></tr></table></figure></p>
 <h4 id="newpost">新建博客文章</h4>
 <p>根据官网帮助, 使用<code>new</code>命令可以新建一个博客, 但官网关于命令中的<code>layout</code>说得不是很明白. <code>layout</code>默认可以有3种可能: <code>post, page and draft</code>. 命令里省略<code>layout</code>就使用默认值<code>post</code>. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
 <h5 id="post">post</h5>
 <p>一个<code>post</code>就是一篇普通的博客文章, 运行完这条命令你就可以在<code>source\_post</code>下找到这个后缀为md的文章, 使用<code>markdown</code>语法编辑你的文章就成为了源文件.</p>
 <p>注意这个源文件最开头有个由三横杠<code>---</code>分割出来的头部, 里面包含一些关于这篇文章的属性信息, 你可以在<a href="https://hexo.io/docs/front-matter" target="_blank" rel="noopener">官方文档</a>里找到所有可以设置的元素.</p>
-<p>这里有两个要特别说明一下, tags和categories. 这两个都可以理解对文章的关键属性打标签. 不同点是, tags是纯粹的标签, 跟文章是多对多的关系. categories是一个具有树状结构标签(所以也可以理解成分类), 每篇文章只能是这棵树的一个叶子节点. 例如我这篇文章的头部如下: <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">通过hexo</span> <span class="string">+</span> <span class="string">NexT</span> <span class="string">+</span> <span class="string">github</span> <span class="string">pages</span> <span class="string">+</span> <span class="string">搭建个人博客</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">NexT</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">github</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">技术</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">杂项</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Mingjian</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-09</span><span class="bullet">-02</span> <span class="number">23</span><span class="string">:12:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure> 其中对文章的分类是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">技术</span><br><span class="line"> \_杂项</span><br><span class="line">    \_搭建个人博客</span><br></pre></td></tr></table></figure></p>
+<p>这里有两个要特别说明一下, tags和categories. 这两个都可以理解对文章的关键属性打标签. 不同点是, tags是纯粹的标签, 跟文章是多对多的关系. categories是一个具有树状结构标签(所以也可以理解成分类), 每篇文章只能是这棵树的一个叶子节点. 例如我这篇文章的头部如下: <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">通过hexo</span> <span class="string">+</span> <span class="string">NexT</span> <span class="string">+</span> <span class="string">github</span> <span class="string">pages</span> <span class="string">+</span> <span class="string">搭建个人博客</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">NexT</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">github</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">技术</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">杂项</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Mingjian</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-02</span> <span class="number">23</span><span class="string">:12:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure> 其中对文章的分类是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">技术</span><br><span class="line"> \_杂项</span><br><span class="line">    \_搭建个人博客</span><br></pre></td></tr></table></figure></p>
 <p>这个是我个人认为最好的一种组合, 既有灵活的tags, 又有结构化的categories, 可以更好的组织整理自己的知识.</p>
 <h5 id="draft">draft</h5>
 <p>顾名思义, 这是草稿, 你可以用<code>hexo new draft &lt;blogname&gt;</code>命令生成一个新的草稿. 之后就可以在<code>source/_draft</code>下找到这个<code>markdown</code>文件了. 既然是草稿, 就说明还没完成. 作为博客框架应该提供预览功能, 和一键发布的能力. hexo当然没有让我们失望.</p>
@@ -336,31 +313,31 @@
 <p>如果使用<code>hexo new page &lt;pagename&gt;</code>可以生成单独的页面, 通过<code>http://localhost:4000/pagename</code>来访问. 这个官网没有说得很明白这个是用来干嘛的, 我的理解是, 可以用来生成一些帮助组织博客站点的单独页面. 比如下面两个页面是NexT必须要生成的.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
 <p>运行之后可以看到下面两个文件夹被生成, 并且添加一个只有头部的<code>index.md</code>文件. 然后在<code>source\categories\index.md</code>的头部里添加元素<code>type: categories</code>, 添加完之后文件变成这样.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-09</span><span class="bullet">-03</span> <span class="number">01</span><span class="string">:59:55</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-03</span> <span class="number">01</span><span class="string">:59:55</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <p>同理, 在<code>source\tags\index.md</code>里添加<code>type: tags</code> 效果就是下面两个高亮的可以点击了. <img src="/9cbcca7a/tags_and_cats.jpg" alt="tags and cats"></p>
 <h3 id="install-next">安装NexT</h3>
-<p>可以按照<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">官方安装帮助</a> 来安装, 第二步有3个选项, 我直接用了git clone. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>可以按照<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">官方安装帮助</a> 来安装, 第二步有3个选项, 我直接用了git clone. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure></p>
 <p>这样方便以后直接用git pull更新. 注意Next有4种不同的页面搭配(scheme), 你可以去<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">官方readme</a>的Live Preview下看看几个demo. 我选择了<code>Pisces</code>. 去配置文件<code>themes\next\_config.yml</code>里修改一下即可 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
 <h4 id="math">支持数学公式</h4>
 <p>NexT是内置了支持数学公式的, 但这里几个坑. hexo默认的markdown渲染器是<code>hexo-renderer-marked</code>, 但根据<code>NexT</code>的关于数学公式的<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md" target="_blank" rel="noopener">文档</a>. 里面提到如果在配置文件里激活对数学公式渲染的支持, 必需把这个默认的渲染器换掉. 如果你把公式渲染配置成<code>Mathjax</code>, 就必须用<code>hexo-renderer-pandoc</code>或者<code>hexo-renderer-kramed</code>来作为markdown渲染器. 如果你用<code>Katex</code>, 就必须用<code>hexo-renderer-markdown-it</code>或者<code>hexo-renderer-markdown-it-plus</code>.</p>
 <p>上面提到的四个渲染器, 我试了一下, 不知道原因, 在我这里只有pandoc这个渲染器工作. 所以最后的选择就是使用<code>Mathjax + hexo-renderer-pandoc</code>. 这里面还有个坑就是, 这个渲染器依赖pandoc这个软件, 必须先去<a href="https://github.com/jgm/pandoc/releases/tag/2.2.3.2" target="_blank" rel="noopener">pandoc官网</a>下载安装一个pandoc. 下面是我安装的版本. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc --version</span><br><span class="line">pandoc 2.2.3.2</span><br><span class="line">Compiled with pandoc-types 1.17.5.1, texmath 0.11.0.1, skylighting 0.7.2</span><br><span class="line">Default user data directory: C:\Users\e323819\AppData\Roaming\pandoc</span><br><span class="line">Copyright (C) 2006-2018 John MacFarlane</span><br><span class="line">Web:  http://pandoc.org</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.</span><br><span class="line">There is no warranty, not even <span class="keyword">for</span> merchantability or fitness</span><br><span class="line"><span class="keyword">for</span> a particular purpose.</span><br></pre></td></tr></table></figure></p>
 <p>之后就可以通过下面的命令替换掉渲染器. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
 <p>然后到<code>themes\next\_config.yml</code>里修改打开对数学公式的支持.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">mathjax</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
 <p><code>per_page</code>这个变量如果是false, 渲染时每篇都会把<code>mathjax</code>加载到页面里, 如果是true, 那么只有页面头部包括了元素<code>mathjax: true</code>才会加载.</p>
-<p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure> 会生成 <span class="math display">\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\tag{displayed}\]</span></p>
+<p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i&#x3D;0&#125;^n i^2 &#x3D; \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure> 会生成 <span class="math display">\[\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\tag{displayed}\]</span></p>
 <h4 id="image">本地贴图</h4>
 <p>如果使用网络里的图床, 只需要用相应的markdown语法链接一下就行了. 但如果想要使用本地图片, 有这么几个解决方案.</p>
 <ol type="1">
 <li>把图片放在<code>source/img</code>下, 然后在用<code>markdown</code>语法<code>![img](/source/img/xxx.png)</code>的形式. 缺点是所有博客的图片会混在一起, 不好管理.</li>
 <li>配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>, 这时一代你通过<code>new</code>命令建立一个新博客文章, 就会自动生成一个同名文件夹用来放置资源文件. 然后使用hexo专用的语法<code></code>. 这么做的缺点是你的markdown文件将不能在别的地方被解析.</li>
-<li>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>. 然后用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure> 安装一个插件. 然后使用一般的markdown语法即可以显示. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname/img.jpg)</span><br></pre></td></tr></table></figure> 缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移, 所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</li>
+<li>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>. 然后用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure> 安装一个插件. 然后使用一般的markdown语法即可以显示. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname&#x2F;img.jpg)</span><br></pre></td></tr></table></figure> 缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移, 所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</li>
 </ol>
 <h3 id="deploy">部署到github pages</h3>
 <p>到现在为止, 我们可以在本地生成非常漂亮的静态页面. 可以使用markdown, 可以渲染数学公式, 可以使用图片. 我们需要在公网上找一个地方放置我们的这些静态页面. 这个选择非常多. 我选择了<a href="pages.github.com">github page</a>. 原因是使用简单, 几乎不需花时间维护, 国内公司都没有被墙掉, 可信程度高.</p>
 <p>这里我们假设你已经有<code>github</code>的账户了. 如果没有需要创建一个, 具体创建过程在这里省略. 假设账户名是<code>xyz</code>. 那么你只需要创建一个名字叫做<code>xyz.github.io</code>的新项目, 就完成了github上的操作.</p>
 <p>之后需要在<code>_config.yml</code>里的deploy下面加下面的配置, 注意type前面那个<code>-</code>最好加上, 因为如果deploy西面有多个deployer的话, 没有这个横岗会报错. repo的值如果报错可以尝试把用户名和密码加上, 就像这样<code>https://xyz:pword@github.com/xyz/xyz.github.io.git</code>. 我在一台机器上碰到这个问题这么解决了, 但在别的机器上就不加也可以提示直接输入.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">- type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/retzzz/retzzz.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/retzzz/retzzz.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 <p>然后在你blog的主目录下安装一个git deployer插件.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>这之后只要使用下面任何一个命令, 都可以完成部署. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo d</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
@@ -394,18 +371,15 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/c9b396ad/" rel="prev" title="无理数指数, 复数指数, 欧拉公式, 复对数">
-                  无理数指数, 复数指数, 欧拉公式, 复对数 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/c9b396ad/" rel="next" title="无理数指数, 复数指数, 欧拉公式, 复对数">
+      无理数指数, 复数指数, 欧拉公式, 复对数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -419,6 +393,28 @@
           </div>
           
     <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -449,8 +445,6 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Mingjian"
-    src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">Mingjian</p>
   <div class="site-description" itemprop="description">computer technical, avionics, mathmatics</div>
 </div>
@@ -479,7 +473,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo &amp;rarr; https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav=1&amp;wvr=6&amp;is_all=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo → https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav&#x3D;1&amp;wvr&#x3D;6&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
   </div>
 
@@ -508,10 +502,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Mingjian</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.2
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
   </div>
 
         
@@ -543,22 +537,25 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
@@ -567,9 +564,9 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
 
-
-  <script src="/js/local-search.js?v=7.4.2"></script>
 
 
 
@@ -584,14 +581,14 @@ if (document.querySelectorAll('div.pdf').length) {
     document.querySelectorAll('div.pdf').forEach(element => {
       PDFObject.embed(element.getAttribute('target'), element, {
         pdfOpenParams: {
-          navpanes: 0,
-          toolbar: 0,
+          navpanes : 0,
+          toolbar  : 0,
           statusbar: 0,
-          pagemode: 'thumbs',
-          view: 'FitH'
+          pagemode : 'thumbs',
+          view     : 'FitH'
         },
         PDFJS_URL: '/lib/pdf/web/viewer.html',
-        height: element.getAttribute('height') || '500px'
+        height   : element.getAttribute('height') || '500px'
       });
     });
   }, window.PDFObject);
@@ -603,90 +600,94 @@ if (document.querySelectorAll('div.pdf').length) {
 if (document.querySelectorAll('pre.mermaid').length) {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
     mermaid.initialize({
-      theme: 'neutral',
-      logLevel: 3,
-      flowchart: { curve: 'linear' },
-      gantt: { axisFormat: '%m/%d/%Y' },
-      sequence: { actorMargin: 50 }
+      theme    : 'neutral',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
     });
   }, window.mermaid);
 }
 </script>
 
 
-
   
 
   
       
-<script type="text/x-mathjax-config">
 
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
 <script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
 </script>
 
     
 
   
 
-  
-
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
 <script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '6a068ba17921ccef5727',
+      clientID    : '6a068ba17921ccef5727',
       clientSecret: 'f6a9f87e75e82d68a9988a1803eaf0ba021c2864',
-      repo: 'gitment-comments',
-      owner: 'retzzz',
-      admin: ['retzzz'],
-      id: 'c2c342ab839e340de39b0b3f370a6c27',
+      repo        : 'gitment-comments',
+      owner       : 'retzzz',
+      admin       : ['retzzz'],
+      id          : 'c2c342ab839e340de39b0b3f370a6c27',
         language: '',
-      distractionFreeMode: 'true'
+      distractionFreeMode: true
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
+});
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
