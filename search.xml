@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>在启动时用subst映射目录到虚拟盘</title>
+    <url>//3c98bdf2/</url>
+    <content><![CDATA[<p>subst可以把一个目录虚拟成一个驱动盘, 比如 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subst I: &quot;C:\Users\Username\OneDrive - XXX&quot;</span><br></pre></td></tr></table></figure></p>
+<p>但有个问题, 重启电脑之后上一次的配置失效, 需要重新设置. 如何才能让电脑记住之前的设置呢?</p>
+<p><a href="https://superuser.com/questions/29072/how-to-make-subst-mapping-persistent-across-reboots" target="_blank" rel="noopener">StackExchange上的这篇</a>给出几个解决方案.</p>
+<a id="more"></a>
+<p>其中一个是通过chocolatey安装了psubst. 但这个在我的电脑上无法工作, 怀疑是公司的防火墙引起的.</p>
+<p>我用了下面这个解决方案, 亲测可行. 在注册表里添加下面的项. <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line">[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]</span><br><span class="line">&quot;F Drive&quot;&#x3D;&quot;subst F: D:\\mount\\db&quot;</span><br><span class="line">&quot;G Drive&quot;&#x3D;&quot;subst G: D:\\mount\\log&quot;</span><br></pre></td></tr></table></figure> 注意: 启动之后不会立即起作用, 可能要等几秒到几十秒.</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>choco</tag>
+        <tag>subst</tag>
+        <tag>psubst</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>choco-install</title>
+    <url>//38e06c9c/</url>
+    <content><![CDATA[<p><a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a>是windows上的包管理系统, 类似于Linux上的yum或者apt.</p>
+<a id="more"></a>
+<p>安装的时候有一个知识点由于官方文档没提, 过去一直不知道. 过去安装的时候一直按照这个<a href="https://chocolatey.org/docs/installation#non-administrative-install" target="_blank" rel="noopener">官方教程</a>来安装. 里面没有详细解释如何在非管理员条件下安装chocolatey, 以及通过chocolatey安装的各种包.</p>
+<p>解决方案非常简单, 设置一个环境变量<strong>ChocolateyInstall</strong>, 配置成想要安装的目录即可.</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>chocolatey</tag>
+        <tag>choco</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TeX Math Syntax</title>
     <url>//6146c48/</url>
     <content><![CDATA[<h3 id="a-brief-introduction-to-latex-math-symbols">A brief introduction to LaTeX math symbols</h3>
@@ -14,7 +51,6 @@
       <categories>
         <category>技术</category>
         <category>杂项</category>
-        <category>TeX数学符号系统</category>
       </categories>
       <tags>
         <tag>TeX</tag>
