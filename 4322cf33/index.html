@@ -28,7 +28,7 @@
 <meta property="og:description" content="这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者Herbert B. Enderton, University of California 由于中文版错误太多, 大部分章节读的是英文第二版, 所以笔记也是用英文写的. 加了一些关键词的中文翻译. The meaning of prefix of each sec">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-02T03:05:33.000Z">
-<meta property="article:modified_time" content="2020-05-07T15:26:20.253Z">
+<meta property="article:modified_time" content="2020-05-11T02:05:28.718Z">
 <meta property="article:author" content="Mingjian">
 <meta property="article:tag" content="Logic">
 <meta property="article:tag" content="Mathematical Logic">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 23:26:20" itemprop="dateModified" datetime="2020-05-07T23:26:20+08:00">2020-05-07</time>
+                <time title="修改时间：2020-05-11 10:05:28" itemprop="dateModified" datetime="2020-05-11T10:05:28+08:00">2020-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,6 +290,7 @@
 <li><span class="math inline">\(\frak N\)</span> : Not from this book</li>
 </ul>
 <a id="more"></a>
+<p><span class="math inline">\(\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}\)</span></p>
 <h2 id="Chapter0">Chapter Zero: Useful Facts about Sets</h2>
 <h3 id="Set"><span class="math inline">\(\frak DI\)</span> Set 集合</h3>
 <p>A <strong>set</strong> is a collection of things.</p>
@@ -430,8 +431,82 @@ Id(x)=x \qquad \text{for}\quad x \in A
 \]</span></p>
 <h2 id="chapter-one.-sentential-logic-命题逻辑">Chapter One. Sentential Logic 命题逻辑</h2>
 <h3 id="the-language-of-sentential-logic-命题逻辑的语言">1.1 The language of Sentential Logic 命题逻辑的语言</h3>
-<h4 id="Symbal"><span class="math inline">\(\frak D\)</span> Symbol</h4>
+<h4 id="Symbol"><span class="math inline">\(\frak D\)</span> Symbol</h4>
 <p>An pre-defined infinite sequence of distinct objects, and no one of these symbols is a <a href="#string">finite sequence</a> of other symbols.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Verbose name</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((\)</span></td>
+<td>left parenthesis</td>
+<td>punctuation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\()\)</span></td>
+<td>right parenthesis</td>
+<td>punctuation</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lnot\)</span></td>
+<td>negation symbol 非</td>
+<td>English: not</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\land\)</span></td>
+<td>conjunction symbol 合取</td>
+<td>English: and</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lor\)</span></td>
+<td>disjunction symbol 析取</td>
+<td>English: or</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\to\)</span></td>
+<td>conditional symbol 蕴涵</td>
+<td>English: if __, then __</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\leftrightarrow\)</span></td>
+<td>biconditoinal symbol 等价</td>
+<td>English: if and only if</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A_1\)</span></td>
+<td>first sentence symbol</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A_2\)</span></td>
+<td>second sentence symbol</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A_n\)</span></td>
+<td>nth sentence symbol</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span id="SententialConnectiveSymbols"><em>sentential connective symbols</em></span> : <span class="math inline">\(\lnot,\land,\lor,\to,\leftrightarrow\)</span>, 命题链接符号</p>
+<p><span id="LogicalSymbol"><em>logical symbols</em></span> : The sentential connective symbols, together with the parenthese. 逻辑符号</p>
+<p><span id="SentenceSymbol"><em>sentence symbols</em></span> : parameters (or nonlogical symbols), 命题符号, 参数, 或非逻辑符号.</p>
 <h4 id="Expression"><span class="math inline">\(\frak D\)</span> Expression</h4>
 <p>An <em>expression</em> is a <a href="#string">finite sequence</a> of <a href="#Symbol">symbols</a>.</p>
 <h4 id="wff"><span class="math inline">\(\frak D\)</span> Well-formed Formulas</h4>
@@ -456,14 +531,66 @@ T,\quad\text{called truth},
 <p>A <em>truth assignement</em> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> of sentence symbols is a function <span class="math display">\[
 v:S \rightarrow \{F, T\}
 \]</span> assigning either <a href="#TruthValue"><span class="math inline">\(T\)</span> or <span class="math inline">\(F\)</span></a> to each symbol in <span class="math inline">\(S\)</span>.</p>
+<h4 id="Theorem12A"><span class="math inline">\(\frak T\)</span> Theorem 12A</h4>
+<p>Let <span class="math inline">\(S\)</span> be a set of <a href="#SentenceSymbol">sentence symbols</a>, <span class="math inline">\(\overline{S}\)</span> be the set of wffs that can be built up from <span class="math inline">\(S\)</span> by the five formula-building operations.</p>
+<p>For any <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> there is a unique function <span class="math inline">\(\overline{v}:\overline{S}\to\{F,T\}\)</span> meeting the below conditions 0-5.</p>
+<ol start="0" type="1">
+<li>For any <span class="math inline">\(A\in S, \overline{v}(A)=v(A)\)</span>. (Thus <span class="math inline">\(\overline{v}\)</span> is an extension of <span class="math inline">\(v\)</span>.)</li>
+</ol>
+<p>For any <span class="math inline">\(\alpha,\beta\)</span> in <span class="math inline">\(\overline{S}\)</span>:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\lnot\alpha\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=F,\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
+<li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\land\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=T\quad\text{and}\quad\overline{v}(\beta)=T,\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
+<li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\lor\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=T\quad\text{or}\quad\overline{v}(\beta)=T\quad(\text{or both}),\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
+<li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\to\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=T\quad\text{and}\quad\overline{v}(\beta)=F,\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
+<li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\leftrightarrow\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=\overline{v}(\beta),\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
+</ol>
 <h4 id="Satisfy"><span class="math inline">\(\frak D\)</span> Satisfy</h4>
 <p>We say that a <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> <em>satisfies</em> <span class="math inline">\(\phi\)</span> iff <span class="math inline">\(\overline{v}(\phi)=T\)</span>.</p>
+<h4 id="TautologicallyImply"><span class="math inline">\(\frak D\)</span> Tautologically imply 重言蕴涵</h4>
+<p><span class="math inline">\(\Sigma\)</span> Tautologically implies <span class="math inline">\(\tau\)</span> (written <span class="math inline">\(\Sigma\vDash\tau)\)</span> iff every <a href="#TruthAssignment">truth assignment</a> for the <a href="Sentence">sentence</a> symbols in <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\tau\)</span> that <a href="#Satisfy">satisfies</a> every member of <span class="math inline">\(\Sigma\)</span> also satisfies <span class="math inline">\(\tau\)</span>.</p>
+<h4 id="Tautology"><span class="math inline">\(\frak D\)</span> Tautology 重言式</h4>
+<p>We say that <span class="math inline">\(\tau\)</span> is a <em>tautology</em> (written <span class="math inline">\(\vDash\tau\)</span>) iff every <a href="#TruthAssignment">truth assignment</a> (for the sentence symbols in <span class="math inline">\(\tau\)</span>) satisfies <span class="math inline">\(\tau\)</span> (<a href="#TautologicallyImply"><span class="math inline">\(\varnothing\vDash\tau\)</span></a>).</p>
+<h4 id="TautologicallyEquivalent"><span class="math inline">\(\frak D\)</span> Tautologically Equivalent 重言等价</h4>
+<p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Singleton">singleton</a> <span class="math inline">\(\{\sigma\}\)</span>, then we write &quot;<span class="math inline">\(\sigma\vDash\tau\)</span>&quot; in place of &quot;<a href="#TautologicallyImply"><span class="math inline">\(\{\sigma\}\vDash\tau\)</span></a>.&quot; If both <span class="math inline">\(\sigma\vDash\tau\)</span> and <span class="math inline">\(\tau\vDash\sigma\)</span>, then <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\tau\)</span> are said to be tautologically equivalent (written <span class="math inline">\(\sigma\tauequ\tau\)</span>)</p>
+<h4 id="frak-d-a-list-of-tautologies-常用重言式列表"><span class="math inline">\(\frak D\)</span> A List of Tautologies 常用重言式列表</h4>
+<ol type="1">
+<li><p>Associative and commutative laws for <span class="math inline">\(\land, \lor, \leftrightarrow\)</span> &quot;析取,合取,和等价&quot;的结合律和交换律</p></li>
+<li><p>Distributive laws 分配率: <span class="math display">\[
+\begin{array}{l}
+((A\land(B\lor C))\leftrightarrow((A\land B)\lor(A\land C))).\cr
+((A\lor(B\land C))\leftrightarrow((A\lor B)\land(A\lor C))).
+\end{array}
+\]</span></p></li>
+<li><p>Negation 否定: <span class="math display">\[
+\begin{array}{l}
+((\lnot(\lnot A))\leftrightarrow A).\cr
+((\lnot(A\to B))\leftrightarrow (A\land(\lnot B))).\cr
+((\lnot(A\leftrightarrow B))\leftrightarrow ((A\land(\lnot B))\lor((\lnot A)\land B))).
+\end{array}
+\]</span></p></li>
+</ol>
+<p>De Morgan's laws 摩尔定律: <span class="math display">\[
+\begin{array}{l}
+((\lnot(A\land B))\leftrightarrow ((\lnot A)\lor(\lnot B))).\cr
+((\lnot(A\lor B))\leftrightarrow ((\lnot A)\land(\lnot B))).
+\end{array}
+\]</span></p>
+<ol start="4" type="1">
+<li>Other</li>
+</ol>
+<ul>
+<li>Excluded middle 排中律: <span class="math inline">\((A\lor(\lnot A))\)</span></li>
+<li>Contradiction 矛盾律: <span class="math inline">\((\lnot(A\land(\lnot A)))\)</span></li>
+<li>Contraposition 逆否律: <span class="math inline">\(((A\to B)\leftrightarrow((\lnot B)\to(\lnot A)))\)</span></li>
+<li>Exportation 输出律: <span class="math inline">\((((A\land B)\to C)\leftrightarrow(A\to(B\to C)))\)</span></li>
+</ul>
 <h3 id="compactness-and-effectiveness-紧致性和能行性">1.7 Compactness and Effectiveness 紧致性和能行性</h3>
 <h4 id="comactness-紧致性">Comactness 紧致性</h4>
 <h5 id="frak-t-compactness-theorem-紧致性定理"><span class="math inline">\(\frak T\)</span> Compactness Theorem 紧致性定理</h5>
 <p>A set of <a href="#wff">wffs</a> is <a href="#Satisfy">satisfiable</a> iff every <a href="#FiniteSet">finite</a> <a href="#Subset">subset</a> is satisfiable.</p>
 <h5 id="Corollary17A"><span class="math inline">\(\frak T\)</span> Corollary 17A</h5>
-<p>If <span class="math inline">\(\Sigma\models\tau\)</span>, then there is a finite <span class="math inline">\(\Sigma_0\subseteq\Sigma\)</span> such that <span class="math inline">\(\Sigma_0\models\tau\)</span>.</p>
+<p>If <span class="math inline">\(\Sigma\vDash\tau\)</span>, then there is a finite <span class="math inline">\(\Sigma_0\subseteq\Sigma\)</span> such that <span class="math inline">\(\Sigma_0\vDash\tau\)</span>.</p>
 <h4 id="effectiveness-and-computability-能行性和可计算性">Effectiveness and Computability 能行性和可计算性</h4>
 <h5 id="Effective"><span class="math inline">\(\frak DI\)</span> effective procedure 能行的过程</h5>
 <ol type="1">
@@ -474,12 +601,18 @@ v:S \rightarrow \{F, T\}
 <h5 id="Theorem17B"><span class="math inline">\(\frak TI\)</span> Theorem 17B</h5>
 <p>There is an <a href="#Effective">effective</a> procedure that, give any <a href="#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, will decie whether or not it is a <a href="#wff">wff</a>.</p>
 <h5 id="Decidable"><span class="math inline">\(\frak DI\)</span> Decidable 可判定的</h5>
-<p>A set <span class="math inline">\(\Sigma\)</span> of <a href="#Expression">expression</a> is <em>decidable</em> iff there exists an <a href="#Effective">effective</a> procedure that, given an expression <span class="math inline">\(\alpha\)</span>, will decide whether or not whether or not <span class="math inline">\(\alpha \in \Sigma\)</span></p>
+<p>A set <span class="math inline">\(\Sigma\)</span> of <a href="#Expression">expression</a> is <em>decidable</em> iff there exists an <a href="#Effective">effective</a> procedure that, given an expression <span class="math inline">\(\alpha\)</span>, will decide whether or not <span class="math inline">\(\alpha \in \Sigma\)</span></p>
 <h5 id="Theorem17C"><span class="math inline">\(\frak TI\)</span> Theorem 17C</h5>
-<p>There is an effective procedure that, given a finite set <a href="#Adjoin"><span class="math inline">\(\Sigma;\tau\)</span></a> of <a href="#wff">wffs</a>, will decide whether or not <span class="math inline">\(\Sigma\models\tau\)</span></p>
-<p>============ temp stop on 2020-05-07 ============</p>
+<p>There is an effective procedure that, given a finite set <a href="#Adjoin"><span class="math inline">\(\Sigma;\tau\)</span></a> of <a href="#wff">wffs</a>, will decide whether or not <span class="math inline">\(\Sigma\vDash\tau\)</span></p>
 <h5 id="Corollary17D"><span class="math inline">\(\frak TI\)</span> Corollary 17D</h5>
 <p>For a finite set <span class="math inline">\(\Sigma\)</span>, the set of tautological consequences of <span class="math inline">\(\Sigma\)</span> is decidable. In particular, the set of tautologies is decidable.</p>
+<h5 id="EffectivelyEnumberable"><span class="math inline">\(\frak DI\)</span> Effectively Enumerable 能行可枚举</h5>
+<p>Say that a set <span class="math inline">\(A\)</span> of <a href="#Expression">expressions</a> is <em>effectively enumerable</em> iff there exists an <a href="#Effective">effective procedure</a> that lists, in some order, the members of <span class="math inline">\(A\)</span></p>
+<h5 id="Semidecidable"><span class="math inline">\(\frak DI\)</span> Semidecidable 半可判定的</h5>
+<p>A set A of expressions is <em>Semidecidable</em> iff there exists an <a href="#Effective">effective procedure</a> that, given any <a href="#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, procedures the answer yes iff <span class="math inline">\(\varepsilon\in A\)</span>.</p>
+<p>If <span class="math inline">\(\varepsilon\notin A\)</span>, procedure might produce the answer &quot;no&quot;; more likely it will go on forever without producing any answer, but it must not lie to use and produce the answer &quot;yes&quot;.</p>
+<h5 id="Theorem17E"><span class="math inline">\(\frak TI\)</span> Theorem 17E</h5>
+<p>A set is effectively enumerable iff it is <a href="#Semidecidable">semidecidable</a>.</p>
 
     </div>
 
@@ -567,7 +700,7 @@ v:S \rightarrow \{F, T\}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter0"><span class="nav-text">Chapter Zero: Useful Facts about Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-text">\(\frak DI\) Set 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SetEquality"><span class="nav-text">\(\frak D\) Set Equality, \(A&#x3D;B\), 集合相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjoin"><span class="nav-text">\(\frak D\) Adjoining one extra object to a set, \(A;t\) 添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EmptySet"><span class="nav-text">\(\frak D\) Empty \(\varnothing\) and Nonempty Set 空集和非空集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-text">\(\frak D\) Singleton Set 单元素集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subset"><span class="nav-text">\(\frak D\) Subset 子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerSet"><span class="nav-text">\(\frak D\) Power set 幂集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Union"><span class="nav-text">\(\frak D\) Union 并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection"><span class="nav-text">\(\frak D\) Inter-section 交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disjoint"><span class="nav-text">\(\frak D\) Disjoint 不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PairwiseDisjoint"><span class="nav-text">\(\frak D\) Pairwise Disjoint 两两不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pair"><span class="nav-text">\(\frak D\) Ordered Pair 有序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Triple"><span class="nav-text">\(\frak D\) Ordered Triple 有序三元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NTuples"><span class="nav-text">\(\frak D\) N-tuples 有序n元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-text">\(\frak D\) finite sequence (or string) 有限序列(或者串)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segment"><span class="nav-text">\(\frak D\) Segment 段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitialSegment"><span class="nav-text">\(\frak D\) initial segment 初始段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proper"><span class="nav-text">\(\frak D\) proper 真子段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEMMA0A"><span class="nav-text">\(\frak T\) LEMMA 0A 引理0A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianProduct"><span class="nav-text">\(\frak D\) Cartesian product 笛卡尔积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianExponent"><span class="nav-text">\(\frak D\) Cartesian exponent 笛卡尔幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relation"><span class="nav-text">\(\frak D\) Relation 关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain"><span class="nav-text">\(\frak D\) Domain 定义域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Range"><span class="nav-text">\(\frak D\) Range 值域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field"><span class="nav-text">\(\frak D\) Field 域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NaryRelation"><span class="nav-text">\(\frak D\) N-ary relation n元关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restriction"><span class="nav-text">\(\frak D\) Restriction of \(R\) to \(B\) 关系\(R\)对集合\(B\)的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-text">\(\frak D\) Function 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompositionOfFunctions"><span class="nav-text">\(\frak D\) Composition of functions 复合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapInto"><span class="nav-text">\(\frak D\) \(F\) Map \(A\) into \(B\) \(F\)把\(A\)映射到\(B\)中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapOnto"><span class="nav-text">\(\frak D\) \(F\) Map \(A\) onto \(B\) \(F\)把\(A\)映射到\(B\)上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToOne"><span class="nav-text">\(\frak D\) One-to-one 一对一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multivariate"><span class="nav-text">\(\frak D\) Multivariate Function 多变量函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation"><span class="nav-text">\(\frak D\) n-ary operation on \(A\) 集合\(A\)上的n元运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Closed"><span class="nav-text">\(\frak D\) \(A\) is Closed under \(f\) 集合\(A\)在函数\(f\)作用下是封闭的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestrictionOfOperation"><span class="nav-text">\(\frak D\) Restriction of operation 运算对集合的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IdentityFunction"><span class="nav-text">\(\frak D\) Identity function 恒等函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AttributesOfRelation"><span class="nav-text">\(\frak DN\) Attributes of Relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EquivalenceRelation"><span class="nav-text">\(\frak D\) Equivalence Relation 等价关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OrderingRelation"><span class="nav-text">\(\frak DN\) Ordering Relation 序关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FiniteSet"><span class="nav-text">\(\frak D\) Finite Set 有限集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CountableSet"><span class="nav-text">\(\frak D\) countable Set 可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theorem0B"><span class="nav-text">\(\frak T\) Theorem 0B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chain"><span class="nav-text">\(\frak D\) Chain 链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZornLemma"><span class="nav-text">\(\frak TN\) Zorn&#39;s Lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equinumerous"><span class="nav-text">\(\frak D\) Equinumerous 等势的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CardinalNumber"><span class="nav-text">Cardinal Number 基数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-one.-sentential-logic-命题逻辑"><span class="nav-text">Chapter One. Sentential Logic 命题逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-language-of-sentential-logic-命题逻辑的语言"><span class="nav-text">1.1 The language of Sentential Logic 命题逻辑的语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Symbal"><span class="nav-text">\(\frak D\) Symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expression"><span class="nav-text">\(\frak D\) Expression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wff"><span class="nav-text">\(\frak D\) Well-formed Formulas</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truth-assignments"><span class="nav-text">1.2 Truth Assignments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TruthValue"><span class="nav-text">\(\frak D\) Truth Values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TruthAssignment"><span class="nav-text">\(\frak D\) Truth Assignment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Satisfy"><span class="nav-text">\(\frak D\) Satisfy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compactness-and-effectiveness-紧致性和能行性"><span class="nav-text">1.7 Compactness and Effectiveness 紧致性和能行性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#comactness-紧致性"><span class="nav-text">Comactness 紧致性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#frak-t-compactness-theorem-紧致性定理"><span class="nav-text">\(\frak T\) Compactness Theorem 紧致性定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Corollary17A"><span class="nav-text">\(\frak T\) Corollary 17A</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#effectiveness-and-computability-能行性和可计算性"><span class="nav-text">Effectiveness and Computability 能行性和可计算性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Effective"><span class="nav-text">\(\frak DI\) effective procedure 能行的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem17B"><span class="nav-text">\(\frak TI\) Theorem 17B</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decidable"><span class="nav-text">\(\frak DI\) Decidable 可判定的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem17C"><span class="nav-text">\(\frak TI\) Theorem 17C</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Corollary17D"><span class="nav-text">\(\frak TI\) Corollary 17D</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter0"><span class="nav-text">Chapter Zero: Useful Facts about Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-text">\(\frak DI\) Set 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SetEquality"><span class="nav-text">\(\frak D\) Set Equality, \(A&#x3D;B\), 集合相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjoin"><span class="nav-text">\(\frak D\) Adjoining one extra object to a set, \(A;t\) 添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EmptySet"><span class="nav-text">\(\frak D\) Empty \(\varnothing\) and Nonempty Set 空集和非空集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-text">\(\frak D\) Singleton Set 单元素集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subset"><span class="nav-text">\(\frak D\) Subset 子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerSet"><span class="nav-text">\(\frak D\) Power set 幂集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Union"><span class="nav-text">\(\frak D\) Union 并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection"><span class="nav-text">\(\frak D\) Inter-section 交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disjoint"><span class="nav-text">\(\frak D\) Disjoint 不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PairwiseDisjoint"><span class="nav-text">\(\frak D\) Pairwise Disjoint 两两不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pair"><span class="nav-text">\(\frak D\) Ordered Pair 有序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Triple"><span class="nav-text">\(\frak D\) Ordered Triple 有序三元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NTuples"><span class="nav-text">\(\frak D\) N-tuples 有序n元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-text">\(\frak D\) finite sequence (or string) 有限序列(或者串)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segment"><span class="nav-text">\(\frak D\) Segment 段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitialSegment"><span class="nav-text">\(\frak D\) initial segment 初始段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proper"><span class="nav-text">\(\frak D\) proper 真子段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEMMA0A"><span class="nav-text">\(\frak T\) LEMMA 0A 引理0A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianProduct"><span class="nav-text">\(\frak D\) Cartesian product 笛卡尔积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianExponent"><span class="nav-text">\(\frak D\) Cartesian exponent 笛卡尔幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relation"><span class="nav-text">\(\frak D\) Relation 关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain"><span class="nav-text">\(\frak D\) Domain 定义域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Range"><span class="nav-text">\(\frak D\) Range 值域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field"><span class="nav-text">\(\frak D\) Field 域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NaryRelation"><span class="nav-text">\(\frak D\) N-ary relation n元关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restriction"><span class="nav-text">\(\frak D\) Restriction of \(R\) to \(B\) 关系\(R\)对集合\(B\)的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-text">\(\frak D\) Function 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompositionOfFunctions"><span class="nav-text">\(\frak D\) Composition of functions 复合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapInto"><span class="nav-text">\(\frak D\) \(F\) Map \(A\) into \(B\) \(F\)把\(A\)映射到\(B\)中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapOnto"><span class="nav-text">\(\frak D\) \(F\) Map \(A\) onto \(B\) \(F\)把\(A\)映射到\(B\)上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToOne"><span class="nav-text">\(\frak D\) One-to-one 一对一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multivariate"><span class="nav-text">\(\frak D\) Multivariate Function 多变量函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation"><span class="nav-text">\(\frak D\) n-ary operation on \(A\) 集合\(A\)上的n元运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Closed"><span class="nav-text">\(\frak D\) \(A\) is Closed under \(f\) 集合\(A\)在函数\(f\)作用下是封闭的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestrictionOfOperation"><span class="nav-text">\(\frak D\) Restriction of operation 运算对集合的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IdentityFunction"><span class="nav-text">\(\frak D\) Identity function 恒等函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AttributesOfRelation"><span class="nav-text">\(\frak DN\) Attributes of Relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EquivalenceRelation"><span class="nav-text">\(\frak D\) Equivalence Relation 等价关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OrderingRelation"><span class="nav-text">\(\frak DN\) Ordering Relation 序关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FiniteSet"><span class="nav-text">\(\frak D\) Finite Set 有限集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CountableSet"><span class="nav-text">\(\frak D\) countable Set 可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theorem0B"><span class="nav-text">\(\frak T\) Theorem 0B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chain"><span class="nav-text">\(\frak D\) Chain 链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZornLemma"><span class="nav-text">\(\frak TN\) Zorn&#39;s Lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equinumerous"><span class="nav-text">\(\frak D\) Equinumerous 等势的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CardinalNumber"><span class="nav-text">Cardinal Number 基数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-one.-sentential-logic-命题逻辑"><span class="nav-text">Chapter One. Sentential Logic 命题逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-language-of-sentential-logic-命题逻辑的语言"><span class="nav-text">1.1 The language of Sentential Logic 命题逻辑的语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Symbol"><span class="nav-text">\(\frak D\) Symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expression"><span class="nav-text">\(\frak D\) Expression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wff"><span class="nav-text">\(\frak D\) Well-formed Formulas</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truth-assignments"><span class="nav-text">1.2 Truth Assignments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TruthValue"><span class="nav-text">\(\frak D\) Truth Values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TruthAssignment"><span class="nav-text">\(\frak D\) Truth Assignment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Theorem12A"><span class="nav-text">\(\frak T\) Theorem 12A</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Satisfy"><span class="nav-text">\(\frak D\) Satisfy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TautologicallyImply"><span class="nav-text">\(\frak D\) Tautologically imply 重言蕴涵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tautology"><span class="nav-text">\(\frak D\) Tautology 重言式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TautologicallyEquivalent"><span class="nav-text">\(\frak D\) Tautologically Equivalent 重言等价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#frak-d-a-list-of-tautologies-常用重言式列表"><span class="nav-text">\(\frak D\) A List of Tautologies 常用重言式列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compactness-and-effectiveness-紧致性和能行性"><span class="nav-text">1.7 Compactness and Effectiveness 紧致性和能行性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#comactness-紧致性"><span class="nav-text">Comactness 紧致性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#frak-t-compactness-theorem-紧致性定理"><span class="nav-text">\(\frak T\) Compactness Theorem 紧致性定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Corollary17A"><span class="nav-text">\(\frak T\) Corollary 17A</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#effectiveness-and-computability-能行性和可计算性"><span class="nav-text">Effectiveness and Computability 能行性和可计算性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Effective"><span class="nav-text">\(\frak DI\) effective procedure 能行的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem17B"><span class="nav-text">\(\frak TI\) Theorem 17B</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decidable"><span class="nav-text">\(\frak DI\) Decidable 可判定的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem17C"><span class="nav-text">\(\frak TI\) Theorem 17C</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Corollary17D"><span class="nav-text">\(\frak TI\) Corollary 17D</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EffectivelyEnumberable"><span class="nav-text">\(\frak DI\) Effectively Enumerable 能行可枚举</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Semidecidable"><span class="nav-text">\(\frak DI\) Semidecidable 半可判定的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theorem17E"><span class="nav-text">\(\frak TI\) Theorem 17E</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
