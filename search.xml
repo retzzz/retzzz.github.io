@@ -47,6 +47,15 @@
 <h3 id="alphabetical-list-of-tex-commands-available-in-mathjax">Alphabetical List of TeX Commands available in MathJax</h3>
 <iframe src="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm" width="800" height="500" frameborder="0" loading="lazy" allowfullscreen></iframe>
 <p><a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm" target="_blank" rel="noopener">原网站</a></p>
+<h3 id="xy-pic-users-guide">XY-pic User’s Guide</h3>
+<div class="pdf" target="https://www.math.uci.edu/~xiangwen/pdf/LaTeX-Math-Symbols.pdf" height></div>
+<p><a href="https://www.math.uci.edu/~xiangwen/pdf/LaTeX-Math-Symbols.pdf" target="_blank" rel="noopener">原网站</a></p>
+<h3 id="mathml">MathML</h3>
+<div class="pdf" target="http://www.pragma-ade.nl/general/manuals/mmlprime.pdf" height></div>
+<p><a href="http://www.pragma-ade.nl/general/manuals/mmlprime.pdf" target="_blank" rel="noopener">原网站</a></p>
+<h3 id="unicode-mathematics-in-latex-advantages-and-challenges">Unicode mathematics in LATEX: Advantages and challenges</h3>
+<div class="pdf" target="https://www.tug.org/TUGboat/tb31-2/tb98robertson.pdf" height></div>
+<p><a href="https://www.tug.org/TUGboat/tb31-2/tb98robertson.pdf" target="_blank" rel="noopener">原网站</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -370,6 +379,8 @@ v:S \rightarrow \{F, T\}
 <h4 id="comactness-紧致性">Comactness 紧致性</h4>
 <h5 id="frak-t-compactness-theorem-紧致性定理"><span class="math inline">\(\frak T\)</span> Compactness Theorem 紧致性定理</h5>
 <p>A set of <a href="#wff">wffs</a> is <a href="#Satisfy">satisfiable</a> iff every <a href="#FiniteSet">finite</a> <a href="#Subset">subset</a> is satisfiable.</p>
+<h5 id="FinitelySatisfiable"><span class="math inline">\(\frak D\)</span> Finitely Satisfiable 有限可满足</h5>
+<p>We say that <span class="math inline">\(\Sigma\)</span> is <em>finitely satisfiable</em> iff every <a href="#FiniteSet">finite</a> <a href="#Subset">subset</a> of <span class="math inline">\(\sigma\)</span> is satisfiable.</p>
 <h5 id="Corollary17A"><span class="math inline">\(\frak T\)</span> Corollary 17A</h5>
 <p>If <span class="math inline">\(\Sigma\vDash\tau\)</span>, then there is a finite <span class="math inline">\(\Sigma_0\subseteq\Sigma\)</span> such that <span class="math inline">\(\Sigma_0\vDash\tau\)</span>.</p>
 <h4 id="effectiveness-and-computability-能行性和可计算性">Effectiveness and Computability 能行性和可计算性</h4>
@@ -386,14 +397,27 @@ v:S \rightarrow \{F, T\}
 <h5 id="Theorem17C"><span class="math inline">\(\frak TI\)</span> Theorem 17C</h5>
 <p>There is an effective procedure that, given a finite set <a href="#Adjoin"><span class="math inline">\(\Sigma;\tau\)</span></a> of <a href="#wff">wffs</a>, will decide whether or not <span class="math inline">\(\Sigma\vDash\tau\)</span></p>
 <h5 id="Corollary17D"><span class="math inline">\(\frak TI\)</span> Corollary 17D</h5>
-<p>For a finite set <span class="math inline">\(\Sigma\)</span>, the set of tautological consequences of <span class="math inline">\(\Sigma\)</span> is decidable. In particular, the set of tautologies is decidable.</p>
-<h5 id="EffectivelyEnumberable"><span class="math inline">\(\frak DI\)</span> Effectively Enumerable 能行可枚举</h5>
+<p>For a finite set <span class="math inline">\(\Sigma\)</span>, the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a>. In particular, the set of tautologies is decidable.</p>
+<h5 id="EffectivelyEnumerable"><span class="math inline">\(\frak DI\)</span> Effectively Enumerable 能行可枚举</h5>
 <p>Say that a set <span class="math inline">\(A\)</span> of <a href="#Expression">expressions</a> is <em>effectively enumerable</em> iff there exists an <a href="#Effective">effective procedure</a> that lists, in some order, the members of <span class="math inline">\(A\)</span></p>
 <h5 id="Semidecidable"><span class="math inline">\(\frak DI\)</span> Semidecidable 半可判定的</h5>
 <p>A set A of expressions is <em>Semidecidable</em> iff there exists an <a href="#Effective">effective procedure</a> that, given any <a href="#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, procedures the answer yes iff <span class="math inline">\(\varepsilon\in A\)</span>.</p>
 <p>If <span class="math inline">\(\varepsilon\notin A\)</span>, procedure might produce the answer &quot;no&quot;; more likely it will go on forever without producing any answer, but it must not lie to use and produce the answer &quot;yes&quot;.</p>
 <h5 id="Theorem17E"><span class="math inline">\(\frak TI\)</span> Theorem 17E</h5>
 <p>A set is effectively enumerable iff it is <a href="#Semidecidable">semidecidable</a>.</p>
+<h5 id="Theorem17F"><span class="math inline">\(\frak TI\)</span> Theorem 17F</h5>
+<p>A set of expressions is <a href="#Decidable">decidable</a> iff both it and its complement (relative to the set of all expressions) are <a href="EffectivelyEnumerable">effectively enumerable</a>. This sometimes called &quot;Kleene's theorem.&quot;</p>
+<h5 id="Theorem17G"><span class="math inline">\(\frak TI\)</span> Theorem 17G</h5>
+<p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a> set of wffs, then the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#EffectivelyEnumerable">effectively enumerable</a>.</p>
+<h5 id="Computable"><span class="math inline">\(\frak DI\)</span> Effectively Computable 可计算的</h5>
+<p>We will say that a <a href="#Function">function</a> <span class="math inline">\(f\)</span> is <em>effectively computable</em> (or simply <em>computable</em>) iff there exists an <a href="#Effective">effective procedure</a> that given an input <span class="math inline">\(x\)</span>, will eventually produce the correct output <span class="math inline">\(f(x)\)</span>.</p>
+<h4 id="exercises">Exercises</h4>
+<ol type="1">
+<li>Assume that every finite subset of <span class="math inline">\(\Sigma\)</span> is satisfiable. Show that the same is true of at least one of the sets <span class="math inline">\(\Sigma;\alpha\)</span> and <span class="math inline">\(\Sigma;\lnot\alpha\)</span>. (This is part of the proof of the compactness theorem.)</li>
+</ol>
+<p>Proof:</p>
+<h2 id="FirstOrderLogic">Chapter Two. First-Order Logic 一阶逻辑</h2>
+<h3 id="PreliminaryRemarks">Section 2.0 Preliminary Remarks</h3>
 ]]></content>
       <categories>
         <category>数学</category>
