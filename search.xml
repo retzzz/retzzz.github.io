@@ -71,7 +71,7 @@
     <title>A Mathematical Introduction to Logic</title>
     <url>//4322cf33/</url>
     <content><![CDATA[<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
-<p>由于中文版错误太多, 大部分章节读的是英文第二版, 所以笔记也是用英文写的. 加了一些关键词的中文翻译.</p>
+<p>由于中文版错误太多, 大部分章节读的是英文第二版, 所以笔记也是用英文写的. 加了一些关键词的中文翻译. 有些中文证明和计算是我自己做的练习.</p>
 <p>The meaning of prefix of each section</p>
 <ul>
 <li><span class="math inline">\(\frak D\)</span> : Definition of a Concept</li>
@@ -80,7 +80,8 @@
 <li><span class="math inline">\(\frak N\)</span> : Not from this book</li>
 </ul>
 <a id="more"></a>
-<p><span class="math inline">\(\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}\)</span></p>
+<!--$\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}$-->
+<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span></p>
 <h2 id="Chapter0">Chapter Zero: Useful Facts about Sets</h2>
 <h3 id="Set"><span class="math inline">\(\frak DI\)</span> Set 集合</h3>
 <p>A <strong>set</strong> is a collection of things.</p>
@@ -297,9 +298,9 @@ Id(x)=x \qquad \text{for}\quad x \in A
 <p><span id="SententialConnectiveSymbols"><em>sentential connective symbols</em></span> : <span class="math inline">\(\lnot,\land,\lor,\to,\leftrightarrow\)</span>, 命题链接符号</p>
 <p><span id="LogicalSymbol"><em>logical symbols</em></span> : The sentential connective symbols, together with the parenthese. 逻辑符号</p>
 <p><span id="SentenceSymbol"><em>sentence symbols</em></span> : parameters (or nonlogical symbols), 命题符号, 参数, 或非逻辑符号.</p>
-<h4 id="Expression"><span class="math inline">\(\frak D\)</span> Expression</h4>
+<h4 id="Expression"><span class="math inline">\(\frak D\)</span> Expression 表达式</h4>
 <p>An <em>expression</em> is a <a href="#string">finite sequence</a> of <a href="#Symbol">symbols</a>.</p>
-<h4 id="wff"><span class="math inline">\(\frak D\)</span> Well-formed Formulas</h4>
+<h4 id="wff"><span class="math inline">\(\frak D\)</span> Well-formed Formulas 合式公式</h4>
 <p>A <em>well-formed formula</em> (or simply <em>formula</em> or <em>wff</em>) is an expression that can be built up from the sentence symbols by applying some finite number of times the formula-building operations (on expression) defined by the equations <span class="math display">\[
 \matrix{
     \varepsilon_\lnot(\alpha) = (\lnot\alpha)\cr
@@ -310,20 +311,20 @@ Id(x)=x \qquad \text{for}\quad x \in A
 }
 \]</span></p>
 <h3 id="truth-assignments">1.2 Truth Assignments</h3>
-<h4 id="TruthValue"><span class="math inline">\(\frak D\)</span> Truth Values</h4>
+<h4 id="TruthValue"><span class="math inline">\(\frak D\)</span> Truth Values 真值</h4>
 <p>A set of <em>truth values</em> consisting of two distinct points: <span class="math display">\[
 \begin{array}{l}
 F,\quad\text{called falsity}, \cr
 T,\quad\text{called truth},
 \end{array}
 \]</span></p>
-<h4 id="TruthAssignment"><span class="math inline">\(\frak D\)</span> Truth Assignment</h4>
+<h4 id="TruthAssignment"><span class="math inline">\(\frak D\)</span> Truth Assignment 真值分配</h4>
 <p>A <em>truth assignement</em> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> of sentence symbols is a function <span class="math display">\[
 v:S \rightarrow \{F, T\}
 \]</span> assigning either <a href="#TruthValue"><span class="math inline">\(T\)</span> or <span class="math inline">\(F\)</span></a> to each symbol in <span class="math inline">\(S\)</span>.</p>
 <h4 id="Theorem12A"><span class="math inline">\(\frak T\)</span> Theorem 12A</h4>
 <p>Let <span class="math inline">\(S\)</span> be a set of <a href="#SentenceSymbol">sentence symbols</a>, <span class="math inline">\(\overline{S}\)</span> be the set of wffs that can be built up from <span class="math inline">\(S\)</span> by the five formula-building operations.</p>
-<p>For any <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> there is a unique function <span class="math inline">\(\overline{v}:\overline{S}\to\{F,T\}\)</span> meeting the below conditions 0-5.</p>
+<p>For any <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> there is a unique function <span class="math inline">\(\cssId{overlinev}{\overline{v}}:\overline{S}\to\{F,T\}\)</span> meeting the below conditions 0-5.</p>
 <ol start="0" type="1">
 <li>For any <span class="math inline">\(A\in S, \overline{v}(A)=v(A)\)</span>. (Thus <span class="math inline">\(\overline{v}\)</span> is an extension of <span class="math inline">\(v\)</span>.)</li>
 </ol>
@@ -335,7 +336,7 @@ v:S \rightarrow \{F, T\}
 <li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\to\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=T\quad\text{and}\quad\overline{v}(\beta)=F,\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
 <li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\leftrightarrow\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=\overline{v}(\beta),\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
 </ol>
-<h4 id="Satisfy"><span class="math inline">\(\frak D\)</span> Satisfy</h4>
+<h4 id="Satisfy"><span class="math inline">\(\frak D\)</span> Satisfy 满足</h4>
 <p>We say that a <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> <em>satisfies</em> <span class="math inline">\(\phi\)</span> iff <span class="math inline">\(\overline{v}(\phi)=T\)</span>.</p>
 <h4 id="TautologicallyImply"><span class="math inline">\(\frak D\)</span> Tautologically imply 重言蕴涵</h4>
 <p><span class="math inline">\(\Sigma\)</span> Tautologically implies <span class="math inline">\(\tau\)</span> (written <span class="math inline">\(\Sigma\vDash\tau)\)</span> iff every <a href="#TruthAssignment">truth assignment</a> for the <a href="Sentence">sentence</a> symbols in <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\tau\)</span> that <a href="#Satisfy">satisfies</a> every member of <span class="math inline">\(\Sigma\)</span> also satisfies <span class="math inline">\(\tau\)</span>.</p>
@@ -411,11 +412,69 @@ v:S \rightarrow \{F, T\}
 <p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a> set of wffs, then the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#EffectivelyEnumerable">effectively enumerable</a>.</p>
 <h5 id="Computable"><span class="math inline">\(\frak DI\)</span> Effectively Computable 可计算的</h5>
 <p>We will say that a <a href="#Function">function</a> <span class="math inline">\(f\)</span> is <em>effectively computable</em> (or simply <em>computable</em>) iff there exists an <a href="#Effective">effective procedure</a> that given an input <span class="math inline">\(x\)</span>, will eventually produce the correct output <span class="math inline">\(f(x)\)</span>.</p>
-<h4 id="exercises">Exercises</h4>
+<h4 id="Exercises1.7">Exercises</h4>
+<h5 id="Problem1.7-1">Problem 1</h5>
 <ol type="1">
 <li>Assume that every finite subset of <span class="math inline">\(\Sigma\)</span> is satisfiable. Show that the same is true of at least one of the sets <span class="math inline">\(\Sigma;\alpha\)</span> and <span class="math inline">\(\Sigma;\lnot\alpha\)</span>. (This is part of the proof of the compactness theorem.)</li>
 </ol>
-<p>Proof:</p>
+<p>证明:</p>
+<p>假设有两个有限子集<span class="math inline">\(\Sigma_1\subseteq\Sigma\)</span>和<span class="math inline">\(\Sigma_2\subseteq\Sigma\)</span>, 再假设<span class="math inline">\(\Sigma_1;\alpha\)</span>和<span class="math inline">\(\Sigma_2;\lnot\alpha\)</span>都是不可满足的.</p>
+<p>那么考虑<span class="math inline">\(\Sigma&#39;=\Sigma_1\cup\Sigma_2\subseteq\Sigma\)</span>, <span class="math inline">\(\Sigma&#39;\)</span>也是<span class="math inline">\(\Sigma\)</span>的有限子集. 则必然存在一个真值分配<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma&#39;\)</span>, 那么</p>
+<p>或者<span class="math inline">\(\overline{v}(\alpha)=T\)</span>, 从而<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma;\alpha\)</span></p>
+<p>或者<span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>, 从而<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma;\lnot\alpha\)</span></p>
+<p>这就产生了矛盾. 所以 <span class="math inline">\(\blacksquare\)</span></p>
+<h5 id="Problem1.7-2">Problem 2</h5>
+<ol start="2" type="1">
+<li>Let <span class="math inline">\(\Delta\)</span> be a sets of wffs such that (i) every finite subset of <span class="math inline">\(\Delta\)</span> is satisfiable, and (ii) for every wff <span class="math inline">\(\alpha\)</span>, either <span class="math inline">\(\alpha\in\Delta\)</span> or <span class="math inline">\((\lnot\alpha)\in\Delta\)</span>. Define the truth assignment <span class="math inline">\(v\)</span>: <span class="math display">\[
+v(A)=\left\{
+\begin{array}{l}
+T\qquad\text{iff}\quad A\in\Delta\\
+F\qquad\text{iff}\quad A\notin\Delta
+\end{array}
+\right.
+\]</span> for each sentence symbol <span class="math inline">\(A\)</span>. Show that for every wff <span class="math inline">\(\phi\)</span>, <span class="math inline">\(\overline{v}(\phi)=T\)</span> iff <span class="math inline">\(\phi\in\Delta\)</span>.</li>
+</ol>
+<p>证明:</p>
+<p>若一个合式公式<span class="math inline">\(\phi\)</span>, 满足<span class="math inline">\(\overline{v}(\phi)=T\)</span>当且仅当<span class="math inline">\(\phi\in\Delta\)</span>, 我们称这个合式公式是成立的.</p>
+<p>应用数学归纳法.</p>
+<p>对于任取的<a href="#SentenceSymbol">命题符号(sentence symbols)</a><span class="math inline">\(\forall A\)</span>, 根据<a href="#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>,<span class="math inline">\(\overline{v}(A)=v(A)\)</span>, 显然满足<span class="math inline">\(\overline{v}(A)=T\)</span> 当且仅当 <span class="math inline">\(A\in\Delta\)</span>, 所以所有的命题符号都是成立的.</p>
+<p>只需要证明若对于两个成立的合式公式 <span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>, 那么下面5个由这两个合式公式构造的合式公式: <span class="math display">\[
+\matrix{
+    \varepsilon_\lnot(\alpha) = (\lnot\alpha)\cr
+    \varepsilon_\land(\alpha,\beta) = (\alpha\land\beta)\cr
+    \varepsilon_\lor(\alpha,\beta) = (\alpha\lor\beta)\cr
+    \varepsilon_\rightarrow(\alpha,\beta) = (\alpha\rightarrow\beta)\cr
+    \varepsilon_\leftrightarrow(\alpha,\beta) = (\alpha\leftrightarrow\beta)
+}
+\]</span> 也同样是成立的, 根据归纳原理, 所有的合式公式都是成立的.</p>
+<p>首先考察<span class="math inline">\(\lnot\alpha\)</span>.</p>
+<ol type="1">
+<li>根据<a href="#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>, <span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>当且仅当<span class="math inline">\(\overline{v}(\alpha)=F\)</span>.</li>
+<li>因为<span class="math inline">\(\alpha\)</span>是成立的, 所以<span class="math inline">\(\overline{v}(\alpha)=F\)</span>当且仅当<span class="math inline">\(\alpha\notin\Delta\)</span>.</li>
+<li>根据条件{ii}, <span class="math inline">\(\alpha\notin\Delta\)</span>当且仅当<span class="math inline">\((\lnot\alpha)\in\Delta\)</span></li>
+</ol>
+<p>所以<span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>当且仅当<span class="math inline">\((\lnot\alpha)\in\Delta\)</span>, 因为<span class="math inline">\(\lnot\alpha\)</span>也是成立的.</p>
+<p>现在考察双元构造的合式公式<span class="math inline">\(\alpha\boxdot\beta\)</span>, 其中<span class="math inline">\(\boxdot\in\{\land,\lor,\rightarrow,\leftrightarrow\}\)</span> 由于条件(ii)我们可以定义<span class="math inline">\(\lnot?\alpha\)</span>是<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\lnot\alpha\)</span>中在<span class="math inline">\(\Delta\)</span>中的那个, 同样可以定义<span class="math inline">\(\lnot?\beta\)</span>和<span class="math inline">\(\lnot?(\alpha\boxdot\beta)\)</span>.</p>
+<p>根据这个定义, 集合<span class="math inline">\(\{\lnot?\alpha, \lnot?\beta, \lnot?(\alpha\boxdot\beta)\}\subseteq\Delta\)</span>. 根据条件(i), 这个集合是可满足的.</p>
+<p>根据<a href="#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>, 对于任意的真值分配<span class="math inline">\(u\)</span>, <span class="math inline">\(\overline{u}(\lnot?(\alpha\boxdot\beta))\)</span>的真值由<span class="math inline">\(\overline{u}(\alpha)\)</span>和<span class="math inline">\(\overline{u}(\beta)\)</span>决定的. 而<span class="math inline">\(\overline{u}(\alpha)\)</span>和<span class="math inline">\(\overline{u}(\beta)\)</span>又是由<span class="math inline">\(\overline{u}(\lnot?\alpha)\)</span>和<span class="math inline">\(\overline{u}(\lnot?\beta)\)</span>决定的. 所以我们得到一个结论:</p>
+<p><span class="math display">\[
+\begin{align}
+\overline{u}(\lnot?\alpha)和\overline{u}(\lnot?\beta)的真值, 可以唯一决定\overline{u}(\lnot?(\alpha\boxdot\beta))的真值.\tag{$\dagger$}
+\end{align}
+\]</span></p>
+<p>由于前面说的集合是可满足的, 所以</p>
+<p><span class="math display">\[
+\begin{align}
+\exists一个真值分配能够在满足\{\lnot?\alpha, \lnot?\beta\}的同时, 也满足\lnot?(\alpha\boxdot\beta) \tag{$\ddagger$}
+\end{align}
+\]</span></p>
+<p>那么综合<span class="math inline">\((\dagger)\)</span>和<span class="math inline">\((\ddagger)\)</span>, <span class="math inline">\(\forall\)</span>真值分配, 只要其满足<span class="math inline">\(\{\lnot?\alpha, \lnot?\beta\}\)</span>, 就一定满足<span class="math inline">\(\overline{u}(\lnot?(\alpha\boxdot\beta))\)</span>.</p>
+<p>本题中的真值分配<span class="math inline">\(v\)</span>, 根据前面对<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>的假设, 已知<span class="math inline">\(\overline{v}(\lnot?\alpha)=T\)</span>和<span class="math inline">\(\overline{v}(\lnot?\beta)=T\)</span>, 所以一定有<span class="math inline">\(\overline{v}(\lnot?(\alpha\boxdot\beta))=T\)</span>. 因而有:</p>
+<ul>
+<li>或者当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 有<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span></li>
+<li>或者当<span class="math inline">\(\lnot(\alpha\boxdot\beta)\in\Delta\)</span>, 有<span class="math inline">\(\overline{v}(\lnot(\alpha\boxdot\beta))=T\)</span>. 根据<span class="math inline">\(\overline{v}(\lnot\alpha)\)</span>的定义, <span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=F\)</span>.</li>
+</ul>
+<p>换句话说<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span>当且仅当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 即<span class="math inline">\(\alpha\boxdot\beta\)</span>是成立的. 正毕 <span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="FirstOrderLogic">Chapter Two. First-Order Logic 一阶逻辑</h2>
 <h3 id="PreliminaryRemarks">Section 2.0 Preliminary Remarks</h3>
 ]]></content>
