@@ -73,114 +73,113 @@
     <content><![CDATA[<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
 <p>由于中文版错误太多, 大部分章节读的是英文第二版, 所以笔记也是用英文写的. 加了一些关键词的中文翻译. 有些中文证明和计算是我自己做的练习.</p>
 <p>The meaning of prefix of each section</p>
+<!--$\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}$-->
+<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span></p>
 <ul>
-<li><span class="math inline">\(\frak D\)</span> : Definition of a Concept</li>
-<li><span class="math inline">\(\frak T\)</span> : Theorem, Lemma, Corollary, Axiom</li>
-<li><span class="math inline">\(\frak I\)</span> : Informal intutive concept</li>
-<li><span class="math inline">\(\frak N\)</span> : Not from this book</li>
+<li><span class="math inline">\(\DEF\)</span> : Definition of a Concept</li>
+<li><span class="math inline">\(^*\)</span> : Informal intutive concept</li>
+<li><span class="math inline">\(_*\)</span> : Not from this book</li>
 </ul>
 <a id="more"></a>
-<!--$\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}$-->
-<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span></p>
 <h2 id="Chapter0">Chapter Zero: Useful Facts about Sets</h2>
-<h3 id="Set"><span class="math inline">\(\frak DI\)</span> Set 集合</h3>
+<h3 id="Set"><span class="math inline">\(\DEFi\)</span> Set 集合</h3>
 <p>A <strong>set</strong> is a collection of things.</p>
-<h3 id="SetEquality"><span class="math inline">\(\frak D\)</span> Set Equality, <span class="math inline">\(A=B\)</span>, 集合相等</h3>
+<h3 id="SetEquality"><span class="math inline">\(\DEF\)</span> Set Equality, <span class="math inline">\(A=B\)</span>, 集合相等</h3>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are sets such that for every object t,</p>
 <p><span class="math display">\[
 t \in A \quad \text{iff} \quad t \in B
 \]</span></p>
 <p>then <span class="math inline">\(A=B\)</span></p>
-<h3 id="Adjoin"><span class="math inline">\(\frak D\)</span> Adjoining one extra object to a set, <span class="math inline">\(A;t\)</span> 添加元素</h3>
+<h3 id="Adjoin"><span class="math inline">\(\DEF\)</span> Adjoining one extra object to a set, <span class="math inline">\(A;t\)</span> 添加元素</h3>
 <p>Let <span class="math inline">\(A;t\)</span> be the set whose members are (i) the members of A, plus (ii) the (possibly new) member t. We have <span class="math display">\[A;t = A \cup {t}\]</span> using notation defined later. and <span class="math display">\[
 t \in A \quad\text{iff}\quad A;t=A
 \]</span></p>
-<h3 id="EmptySet"><span class="math inline">\(\frak D\)</span> Empty <span class="math inline">\(\varnothing\)</span> and Nonempty Set 空集和非空集</h3>
+<h3 id="EmptySet"><span class="math inline">\(\DEF\)</span> Empty <span class="math inline">\(\varnothing\)</span> and Nonempty Set 空集和非空集</h3>
 <p><em>Empty set</em> <span class="math inline">\(\varnothing\)</span> is the set which has no members at all. Any other set is said to be <em>nonempty</em>.</p>
-<h3 id="Singleton"><span class="math inline">\(\frak D\)</span> Singleton Set 单元素集</h3>
+<h3 id="Singleton"><span class="math inline">\(\DEF\)</span> Singleton Set 单元素集</h3>
 <p>For any object <span class="math inline">\(x\)</span>, there is the <em>Singleton Set</em> <span class="math inline">\({x}\)</span> whose only member is <span class="math inline">\(x\)</span>.</p>
-<h3 id="Subset"><span class="math inline">\(\frak D\)</span> Subset 子集</h3>
+<h3 id="Subset"><span class="math inline">\(\DEF\)</span> Subset 子集</h3>
 <p>If <span class="math inline">\(A\)</span> is a set all of whose members are also members of B, then A is a subset of B, abbreviated <span class="math inline">\(A \subseteq B\)</span>.</p>
-<h3 id="PowerSet"><span class="math inline">\(\frak D\)</span> Power set 幂集</h3>
+<h3 id="PowerSet"><span class="math inline">\(\DEF\)</span> Power set 幂集</h3>
 <p>The <em>power set</em> <span class="math inline">\({\cal P} A\)</span> of <span class="math inline">\(A\)</span> is a set whose members are the <a href="#Subset">subsets</a> of A. Thus</p>
 <p><span class="math display">\[ {\cal P} A = \{x|x \subseteq A\}\]</span></p>
-<h3 id="Union"><span class="math inline">\(\frak D\)</span> Union 并集</h3>
+<h3 id="Union"><span class="math inline">\(\DEF\)</span> Union 并集</h3>
 <p>The union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cup B\)</span>, is the set of all things that are members of A or B (or both).</p>
 <p>If <span class="math inline">\(A\)</span> is a set whose members are themselves sets. <span class="math display">\[
 \bigcup A=\{x|\text{x belongs to some member of} A\}
 \]</span></p>
-<h3 id="Intersection"><span class="math inline">\(\frak D\)</span> Inter-section 交集</h3>
+<h3 id="Intersection"><span class="math inline">\(\DEF\)</span> Inter-section 交集</h3>
 <p>Intersection of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cap B\)</span>, is the set of all things that are members of both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <p>If <span class="math inline">\(A\)</span> is a set whose members are themselves sets. <span class="math display">\[
 \bigcap A=\{x|\text{x belongs to all members of} A\}
 \]</span></p>
-<h3 id="Disjoint"><span class="math inline">\(\frak D\)</span> Disjoint 不相交</h3>
+<h3 id="Disjoint"><span class="math inline">\(\DEF\)</span> Disjoint 不相交</h3>
 <p>Sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint iff their <a href="#Intersection">intersection</a> is empty.</p>
-<h3 id="PairwiseDisjoint"><span class="math inline">\(\frak D\)</span> Pairwise Disjoint 两两不相交</h3>
+<h3 id="PairwiseDisjoint"><span class="math inline">\(\DEF\)</span> Pairwise Disjoint 两两不相交</h3>
 <p>A collection of sets is pairwise disjoint iff any two members of the collection are <a href="#disjoint">disjoint</a>.</p>
-<h3 id="Pair"><span class="math inline">\(\frak D\)</span> Ordered Pair 有序对</h3>
+<h3 id="Pair"><span class="math inline">\(\DEF\)</span> Ordered Pair 有序对</h3>
 <p>The ordered pair <span class="math inline">\(\langle x,y \rangle\)</span> of objects <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is a <a href="#Set">set</a>: <span class="math display">\[
 \langle x,y \rangle = \{\{x\},\{x,y\}\}.
 \]</span></p>
-<h3 id="Triple"><span class="math inline">\(\frak D\)</span> Ordered Triple 有序三元组</h3>
+<h3 id="Triple"><span class="math inline">\(\DEF\)</span> Ordered Triple 有序三元组</h3>
 <p>The ordered triples is a <a href="#Pair">pair</a>: <span class="math display">\[
 \langle x,y,z \rangle = \langle\langle x,y\rangle,z \rangle.
 \]</span></p>
-<h3 id="NTuples"><span class="math inline">\(\frak D\)</span> N-tuples 有序n元组</h3>
+<h3 id="NTuples"><span class="math inline">\(\DEF\)</span> N-tuples 有序n元组</h3>
 <p>The n-tuples is defined recursively as a <a href="#Pair">pair</a>: <span class="math display">\[
 \langle x_1,\ldots,x_{n+1} \rangle = \langle\langle x_1,\ldots,x_n\rangle,x_{n+1} \rangle.
 \]</span></p>
-<h3 id="String"><span class="math inline">\(\frak D\)</span> finite sequence (or string) 有限序列(或者串)</h3>
+<h3 id="String"><span class="math inline">\(\DEF\)</span> finite sequence (or string) 有限序列(或者串)</h3>
 <p><span class="math inline">\(S\)</span> is a <em>finite sequence</em> (or <em>string</em>) of members of A iff some positive integer n, we have <a href="#NTuples">n-tuples</a> <span class="math inline">\(S=\langle x_1,\ldots,x_{n+1} \rangle\)</span>, where each <span class="math inline">\(x_i \in A\)</span>.</p>
-<h3 id="Segment"><span class="math inline">\(\frak D\)</span> Segment 段</h3>
+<h3 id="Segment"><span class="math inline">\(\DEF\)</span> Segment 段</h3>
 <p>A <em>segment</em> of the finite sequence <span class="math inline">\(S=\langle x_1,\ldots,x_{n+1} \rangle\)</span> is a <a href="#String">finite sequence</a> <span class="math display">\[
 S=\langle x_k, x_{k+1},\ldots,x_{m-1}, x_m \rangle,\qquad\text{where}\quad 1 \le k \le m \le n.
 \]</span></p>
-<h3 id="InitialSegment"><span class="math inline">\(\frak D\)</span> initial segment 初始段</h3>
+<h3 id="InitialSegment"><span class="math inline">\(\DEF\)</span> initial segment 初始段</h3>
 <p>A segment is an <em>initial segment</em> iff <span class="math inline">\(k=1\)</span>.</p>
-<h3 id="Proper"><span class="math inline">\(\frak D\)</span> proper 真子段</h3>
+<h3 id="Proper"><span class="math inline">\(\DEF\)</span> proper 真子段</h3>
 <p>A segment is proper iff it is different from <a href="#Segment"><span class="math inline">\(S\)</span></a></p>
-<h3 id="LEMMA0A"><span class="math inline">\(\frak T\)</span> LEMMA 0A 引理0A</h3>
+<h3 id="LEMMA0A">LEMMA 0A 引理0A</h3>
 <p>Assume that <span class="math inline">\(S=\langle x_1,\ldots,x_m \rangle = \langle y_1,\ldots,y_m,\ldots,y_{m+k} \rangle\)</span>. Then <span class="math inline">\(x_1 = \langle y_1,\ldots,y_{k+1} \rangle\)</span>.</p>
-<h3 id="CartesianProduct"><span class="math inline">\(\frak D\)</span> Cartesian product 笛卡尔积</h3>
+<h3 id="CartesianProduct"><span class="math inline">\(\DEF\)</span> Cartesian product 笛卡尔积</h3>
 <p>The <em>Cartesian product</em> of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \times B\)</span>, is the set of all <a href="#Pair">pairs</a> <span class="math inline">\(\langle x,y \rangle\)</span> for which <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(y \in B\)</span>.</p>
-<h3 id="CartesianExponent"><span class="math inline">\(\frak D\)</span> Cartesian exponent 笛卡尔幂</h3>
+<h3 id="CartesianExponent"><span class="math inline">\(\DEF\)</span> Cartesian exponent 笛卡尔幂</h3>
 <p><span class="math inline">\(A^n\)</span> is the set of all <a href="#NTuples">n-tuples</a> of members of A. For example. <span class="math inline">\(A^3 = (A \times A) \times A\)</span>.</p>
-<h3 id="Relation"><span class="math inline">\(\frak D\)</span> Relation 关系</h3>
+<h3 id="Relation"><span class="math inline">\(\DEF\)</span> Relation 关系</h3>
 <p>A <em>relation</em> <span class="math inline">\(R\)</span> is a set of ordered pairs.</p>
-<h3 id="Domain"><span class="math inline">\(\frak D\)</span> Domain 定义域</h3>
+<h3 id="Domain"><span class="math inline">\(\DEF\)</span> Domain 定义域</h3>
 <p>The <em>domain</em> of <a href="#Relation">relation</a> <span class="math inline">\(R\)</span> (written dom <span class="math inline">\(R\)</span>) is the set of all objects <span class="math inline">\(x\)</span> such that <span class="math inline">\(\langle x,y \rangle \in R\)</span> for some <span class="math inline">\(y\)</span>.</p>
-<h3 id="Range"><span class="math inline">\(\frak D\)</span> Range 值域</h3>
+<h3 id="Range"><span class="math inline">\(\DEF\)</span> Range 值域</h3>
 <p>The <em>range</em> of <a href="#Relation">relation</a> <span class="math inline">\(R\)</span> (written ran <span class="math inline">\(R\)</span>) is the set of all objects <span class="math inline">\(y\)</span> such that <span class="math inline">\(\langle x,y \rangle \in R\)</span> for some <span class="math inline">\(x\)</span>.</p>
-<h3 id="Field"><span class="math inline">\(\frak D\)</span> Field 域</h3>
+<h3 id="Field"><span class="math inline">\(\DEF\)</span> Field 域</h3>
 <p>The union of <a href="#Domain">dom <span class="math inline">\(R\)</span></a> and <a href="#Range">ran <span class="math inline">\(R\)</span></a> is the field of <span class="math inline">\(R\)</span> <em>field</em> of <span class="math inline">\(R\)</span>, fld <span class="math inline">\(R\)</span>.</p>
-<h3 id="NaryRelation"><span class="math inline">\(\frak D\)</span> N-ary relation n元关系</h3>
+<h3 id="NaryRelation"><span class="math inline">\(\DEF\)</span> N-ary relation n元关系</h3>
 <p>An <em>n-ary relation</em> on <span class="math inline">\(A\)</span> is a <a href="#Subset">subset</a> of <a href="#CartesianExponent"><span class="math inline">\(A^n\)</span></a>. A <em>1-ary (unary)</em> relation on A is simply a subset of A.</p>
-<h3 id="Restriction"><span class="math inline">\(\frak D\)</span> Restriction of <span class="math inline">\(R\)</span> to <span class="math inline">\(B\)</span> 关系<span class="math inline">\(R\)</span>对集合<span class="math inline">\(B\)</span>的限制</h3>
+<h3 id="Restriction"><span class="math inline">\(\DEF\)</span> Restriction of <span class="math inline">\(R\)</span> to <span class="math inline">\(B\)</span> 关系<span class="math inline">\(R\)</span>对集合<span class="math inline">\(B\)</span>的限制</h3>
 <p>For an n-ary relation <span class="math inline">\(R\)</span> on <span class="math inline">\(A\)</span> and subset <span class="math inline">\(B\)</span> of <span class="math inline">\(A\)</span>, the restriction of <span class="math inline">\(R\)</span> to <span class="math inline">\(B\)</span> is the <a href="#Intersection">intersection</a> <span class="math inline">\(R \cap B^n\)</span>.</p>
-<h3 id="Function"><span class="math inline">\(\frak D\)</span> Function 函数</h3>
+<h3 id="Function"><span class="math inline">\(\DEF\)</span> Function 函数</h3>
 <p>A <em>function</em> is a <a href="#Relation">relation</a> <span class="math inline">\(F\)</span>, with the property of being single-valued: For each <span class="math inline">\(x\)</span> in dom <span class="math inline">\(F\)</span> there is only one <span class="math inline">\(y\)</span> such that <span class="math inline">\(\langle x,y \rangle\)</span> F$. This unique <span class="math inline">\(y\)</span> is said to be value <span class="math inline">\(F(x)\)</span> that <span class="math inline">\(F\)</span> assumes at <span class="math inline">\(x\)</span>.</p>
-<h3 id="CompositionOfFunctions"><span class="math inline">\(\frak D\)</span> Composition of functions 复合函数</h3>
+<h3 id="CompositionOfFunctions"><span class="math inline">\(\DEF\)</span> Composition of functions 复合函数</h3>
 <p><span class="math inline">\(f \circ g\)</span> is the <a href="#Function">function</a> whose value at <span class="math inline">\(x\)</span> is <span class="math inline">\(f(g(x))\)</span>.</p>
-<h3 id="MapInto"><span class="math inline">\(\frak D\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>中</h3>
+<h3 id="MapInto"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>中</h3>
 <p>We say that <em><span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span></em> and write <span class="math display">\[F:A\rightarrow B\]</span> to mean that <span class="math inline">\(F\)</span> is a <a href="#Function">function</a>, <a href="#Domain">dom</a> <span class="math inline">\(F=A\)</span>, and <a href="#Range">ran</a> <a href="#Subset"><span class="math inline">\(F \subseteq B\)</span></a>.</p>
-<h3 id="MapOnto"><span class="math inline">\(\frak D\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> onto <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>上</h3>
+<h3 id="MapOnto"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> onto <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>上</h3>
 <p>If <a href="#MapInto"><span class="math inline">\(F\)</span> maps <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span></a>, and ran <span class="math inline">\(F=B\)</span>, then we say <em><span class="math inline">\(F\)</span> map <span class="math inline">\(A\)</span> onto <span class="math inline">\(B\)</span></em>.</p>
-<h3 id="OneToOne"><span class="math inline">\(\frak D\)</span> One-to-one 一对一</h3>
+<h3 id="OneToOne"><span class="math inline">\(\DEF\)</span> One-to-one 一对一</h3>
 <p>A <a href="#Function">function</a> <span class="math inline">\(F\)</span> is <em>one-to-one</em> iff for each <span class="math inline">\(y\)</span> in ran <span class="math inline">\(F\)</span> there is only one <span class="math inline">\(x\)</span> such that <span class="math inline">\(\langle x,y \rangle \in F\)</span>.</p>
-<h3 id="Multivariate"><span class="math inline">\(\frak D\)</span> Multivariate Function 多变量函数</h3>
+<h3 id="Multivariate"><span class="math inline">\(\DEF\)</span> Multivariate Function 多变量函数</h3>
 <p>If the <a href="#Pair">pair</a> <span class="math inline">\(\langle x,y \rangle\)</span> is in dom <span class="math inline">\(F\)</span>, then we let <span class="math inline">\(F(x,y) = F(\langle x,y \rangle)\)</span>. This notation is extended to <a href="#NTuples">n-tuples</a>; <span class="math inline">\(F(x_1,\ldots,x_n)=F(\langle x_1,\ldots,x_n \rangle)\)</span>.</p>
-<h3 id="Operation"><span class="math inline">\(\frak D\)</span> n-ary operation on <span class="math inline">\(A\)</span> 集合<span class="math inline">\(A\)</span>上的n元运算</h3>
+<h3 id="Operation"><span class="math inline">\(\DEF\)</span> n-ary operation on <span class="math inline">\(A\)</span> 集合<span class="math inline">\(A\)</span>上的n元运算</h3>
 <p>An <em>n-ary operation on <span class="math inline">\(A\)</span></em> is a <a href="#Function">function</a> mapping <a href="#CartesianExponent"><span class="math inline">\(A^n\)</span></a> <a href="#MapInto">into</a> <span class="math inline">\(A\)</span>.</p>
-<h3 id="Closed"><span class="math inline">\(\frak D\)</span> <span class="math inline">\(A\)</span> is Closed under <span class="math inline">\(f\)</span> 集合<span class="math inline">\(A\)</span>在函数<span class="math inline">\(f\)</span>作用下是封闭的</h3>
+<h3 id="Closed"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(A\)</span> is Closed under <span class="math inline">\(f\)</span> 集合<span class="math inline">\(A\)</span>在函数<span class="math inline">\(f\)</span>作用下是封闭的</h3>
 <p>We say set A is <em>closed</em> under an function f, if <span class="math inline">\(f(a_1,\ldots,a_n) \in A\)</span> whenever each <span class="math inline">\(a_i\)</span> is in <span class="math inline">\(A\)</span>.</p>
-<h3 id="RestrictionOfOperation"><span class="math inline">\(\frak D\)</span> Restriction of operation 运算对集合的限制</h3>
+<h3 id="RestrictionOfOperation"><span class="math inline">\(\DEF\)</span> Restriction of operation 运算对集合的限制</h3>
 <p>If <span class="math inline">\(f\)</span> is an <a href="#Operation">n-ary operationi on <span class="math inline">\(A\)</span></a>, then the <em>restriction</em> of <span class="math inline">\(f\)</span> to a subset <span class="math inline">\(B\)</span> of <span class="math inline">\(A\)</span> is the function <span class="math inline">\(g\)</span> with domain <span class="math inline">\(B^n\)</span> which agrees with <span class="math inline">\(f\)</span> at each point of <span class="math inline">\(B^n\)</span>. Thus, <span class="math display">\[g=f \cap (B^n \times A).\]</span> This g will be an a-ary operation on <span class="math inline">\(B\)</span> iff <span class="math inline">\(B\)</span> is <a href="#Closed">closed</a> under <span class="math inline">\(f\)</span>. In this case, <span class="math inline">\(g=f\cap B^{n+1}\)</span>, in agreement with our definition of the <a href="#Restriction">restriction</a> of a relation.</p>
-<h3 id="IdentityFunction"><span class="math inline">\(\frak D\)</span> Identity function 恒等函数</h3>
+<h3 id="IdentityFunction"><span class="math inline">\(\DEF\)</span> Identity function 恒等函数</h3>
 <p>The <em>identity function</em> <span class="math inline">\(Id\)</span> on <span class="math inline">\(A\)</span>, is a unary operation on <span class="math inline">\(A\)</span>, given by the equation <span class="math display">\[
 Id(x)=x \qquad \text{for}\quad x \in A
 \]</span> Thus <span class="math inline">\(Id = \{\langle x,x \rangle|x \in A\}\)</span></p>
-<h3 id="AttributesOfRelation"><span class="math inline">\(\frak DN\)</span> Attributes of Relation</h3>
+<h3 id="AttributesOfRelation"><span class="math inline">\(\DEFn\)</span> Attributes of Relation</h3>
 <p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>, we define the following</p>
 <ul>
 <li><span class="math inline">\(R\)</span> is <span id="Reflexive"><em>reflexive</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(\langle x,x \rangle \in R\)</span> for every <span class="math inline">\(x\)</span> in <span class="math inline">\(A\)</span>.</li>
@@ -192,9 +191,9 @@ Id(x)=x \qquad \text{for}\quad x \in A
 <li><span class="math inline">\(R\)</span> is <span id="Anti-reflexive"><em>anti-reflexive</em></span> on <span class="math inline">\(A\)</span>, iff <span class="math inline">\(\langle x,y \rangle \in R\)</span> for every x in A.</li>
 <li><span class="math inline">\(R\)</span> is <span id="Asymmetric"><em>asymmetric</em></span> iff when whenever <span class="math inline">\(\langle x,y \rangle \in R\)</span> then <span class="math inline">\(\langle y,x \rangle \notin R\)</span></li>
 </ul>
-<h3 id="EquivalenceRelation"><span class="math inline">\(\frak D\)</span> Equivalence Relation 等价关系</h3>
+<h3 id="EquivalenceRelation"><span class="math inline">\(\DEF\)</span> Equivalence Relation 等价关系</h3>
 <p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>, <span class="math inline">\(R\)</span> is an <em>equivalence relation</em> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is a binary relation on A that is <a href="#Reflexive">reflexive</a>, <a href="#Symmetric">symmetric</a> and <a href="#Transitive">transitive</a> on A</p>
-<h3 id="OrderingRelation"><span class="math inline">\(\frak DN\)</span> Ordering Relation 序关系</h3>
+<h3 id="OrderingRelation"><span class="math inline">\(\DEFn\)</span> Ordering Relation 序关系</h3>
 <p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>,</p>
 <ul>
 <li><span class="math inline">\(R\)</span> is a <span id="TotalOrdering"><em>non-strict total order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Reflexive">reflexive</a>, <a href="#Anti-symmetric">anti-symmetric</a>, <a href="#Transitive">transitive</a>, and <a href="#Connex">connex</a> on <span class="math inline">\(A\)</span>.</li>
@@ -202,27 +201,27 @@ Id(x)=x \qquad \text{for}\quad x \in A
 <li><span class="math inline">\(R\)</span> is a <span id="PartialOrdering"><em>non-strict partial order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Reflexive">reflexive</a>, <a href="#Anti-symmetric">anti-symmetric</a>, <a href="#Transitive">transitive</a> on <span class="math inline">\(A\)</span>.</li>
 <li><span class="math inline">\(R\)</span> is a <span id="StrictPartialOrdering"><em>strict partial order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Anti-reflexive">anti-reflexive</a>, <a href="#Asymmetric">asymmetric</a>, <a href="#Transitive">transitive</a> on <span class="math inline">\(A\)</span></li>
 </ul>
-<h3 id="FiniteSet"><span class="math inline">\(\frak D\)</span> Finite Set 有限集</h3>
+<h3 id="FiniteSet"><span class="math inline">\(\DEF\)</span> Finite Set 有限集</h3>
 <p>A set <span class="math inline">\(A\)</span> is <em>finite</em> iff there is some <a href="#OneToOne">one-to-one</a> function <span class="math inline">\(f\)</span> mapping the set <span class="math inline">\(A\)</span> <a href="#MapOnto">onto</a> <span class="math inline">\(\{0,1,\ldots,n-1\}\)</span> for some natural number <span class="math inline">\(n\)</span>.</p>
-<h3 id="CountableSet"><span class="math inline">\(\frak D\)</span> countable Set 可数集</h3>
+<h3 id="CountableSet"><span class="math inline">\(\DEF\)</span> countable Set 可数集</h3>
 <p>A set <span class="math inline">\(A\)</span> is <em>countable</em> iff there is some function mapping <span class="math inline">\(A\)</span> <a href="#OneToOne">one-to-one</a> into <span class="math inline">\(\Bbb N\)</span>.</p>
-<h3 id="Theorem0B"><span class="math inline">\(\frak T\)</span> Theorem 0B</h3>
+<h3 id="Theorem0B">Theorem 0B</h3>
 <p>Let <span class="math inline">\(A\)</span> be a coutable set. Then the set of all finite sequences of members of <span class="math inline">\(A\)</span> is also coutable.</p>
-<h3 id="Chain"><span class="math inline">\(\frak D\)</span> Chain 链</h3>
+<h3 id="Chain"><span class="math inline">\(\DEF\)</span> Chain 链</h3>
 <p>Say that a collection <span class="math inline">\(C\)</span> of sets is a <em>chain</em> iff for any elements <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> of <span class="math inline">\(C\)</span>, either <span class="math inline">\(x \subseteq y\)</span> or <span class="math inline">\(y \subseteq x\)</span>.</p>
 <p>(From wikipedia) In general, a chain is a <a href="#TotalOrdering">totally ordered</a> subset of a <a href="#PartialOrdering">partially ordered</a> set.</p>
-<h3 id="ZornLemma"><span class="math inline">\(\frak TN\)</span> Zorn's Lemma</h3>
+<h3 id="ZornLemma">Zorn's Lemma<span class="math inline">\(_*\)</span></h3>
 <p>Let A be a set such that for any <a href="#Chain">chain</a> <span class="math inline">\(C \subseteq A\)</span>, the set <span class="math inline">\(\bigcap C\)</span> is in <span class="math inline">\(A\)</span>. Then there is some element <span class="math inline">\(m \in A\)</span> which is maximal in the sense that it is not a subset of any other element of <span class="math inline">\(A\)</span>.</p>
 <p>(From wikipedia) A partially ordered set containing upper bounds for every <a href="#Chain">chain</a> (that is, every totally ordered subset) necessarily contains at least one maximal element.</p>
-<h3 id="Equinumerous"><span class="math inline">\(\frak D\)</span> Equinumerous 等势的</h3>
+<h3 id="Equinumerous"><span class="math inline">\(\DEF\)</span> Equinumerous 等势的</h3>
 <p>Say that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>equinumerous</em> (written <span class="math inline">\(A \sim B\)</span>) iff there is a <a href="#OneToOne">one-to-one</a> function mapping <span class="math inline">\(A\)</span> <a href="#MapOnto">onto</a> <span class="math inline">\(B\)</span>.</p>
 <h3 id="CardinalNumber">Cardinal Number 基数</h3>
 <p>To each set A we can assign a certain object, the <em>cardinal number</em> (or <em>cardinality</em>) of <span class="math inline">\(A\)</span> (written card <span class="math inline">\(A\)</span>), in such a way that two sets are asigned the same cardinality iff they are <a href="#Equinumerous">equinumerous</a>: <span class="math display">\[
-\text{card} A = \text{card} B \text{iff} A \sim B
+\text{card}\; A = \text{card}\; B\quad\text{iff}\quad A \sim B
 \]</span></p>
 <h2 id="chapter-one.-sentential-logic-命题逻辑">Chapter One. Sentential Logic 命题逻辑</h2>
 <h3 id="the-language-of-sentential-logic-命题逻辑的语言">1.1 The language of Sentential Logic 命题逻辑的语言</h3>
-<h4 id="Symbol"><span class="math inline">\(\frak D\)</span> Symbol</h4>
+<h4 id="Symbol"><span class="math inline">\(\DEF\)</span> Symbol</h4>
 <p>An pre-defined infinite sequence of distinct objects, and no one of these symbols is a <a href="#string">finite sequence</a> of other symbols.</p>
 <table>
 <thead>
@@ -298,9 +297,9 @@ Id(x)=x \qquad \text{for}\quad x \in A
 <p><span id="SententialConnectiveSymbols"><em>sentential connective symbols</em></span> : <span class="math inline">\(\lnot,\land,\lor,\to,\leftrightarrow\)</span>, 命题链接符号</p>
 <p><span id="LogicalSymbol"><em>logical symbols</em></span> : The sentential connective symbols, together with the parenthese. 逻辑符号</p>
 <p><span id="SentenceSymbol"><em>sentence symbols</em></span> : parameters (or nonlogical symbols), 命题符号, 参数, 或非逻辑符号.</p>
-<h4 id="Expression"><span class="math inline">\(\frak D\)</span> Expression 表达式</h4>
+<h4 id="Expression"><span class="math inline">\(\DEF\)</span> Expression 表达式</h4>
 <p>An <em>expression</em> is a <a href="#string">finite sequence</a> of <a href="#Symbol">symbols</a>.</p>
-<h4 id="wff"><span class="math inline">\(\frak D\)</span> Well-formed Formulas 合式公式</h4>
+<h4 id="wff"><span class="math inline">\(\DEF\)</span> Well-formed Formulas 合式公式</h4>
 <p>A <em>well-formed formula</em> (or simply <em>formula</em> or <em>wff</em>) is an expression that can be built up from the sentence symbols by applying some finite number of times the formula-building operations (on expression) defined by the equations <span class="math display">\[
 \matrix{
     \varepsilon_\lnot(\alpha) = (\lnot\alpha)\cr
@@ -311,18 +310,18 @@ Id(x)=x \qquad \text{for}\quad x \in A
 }
 \]</span></p>
 <h3 id="truth-assignments">1.2 Truth Assignments</h3>
-<h4 id="TruthValue"><span class="math inline">\(\frak D\)</span> Truth Values 真值</h4>
+<h4 id="TruthValue"><span class="math inline">\(\DEF\)</span> Truth Values 真值</h4>
 <p>A set of <em>truth values</em> consisting of two distinct points: <span class="math display">\[
 \begin{array}{l}
 F,\quad\text{called falsity}, \cr
 T,\quad\text{called truth},
 \end{array}
 \]</span></p>
-<h4 id="TruthAssignment"><span class="math inline">\(\frak D\)</span> Truth Assignment 真值分配</h4>
+<h4 id="TruthAssignment"><span class="math inline">\(\DEF\)</span> Truth Assignment 真值分配</h4>
 <p>A <em>truth assignement</em> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> of sentence symbols is a function <span class="math display">\[
 v:S \rightarrow \{F, T\}
 \]</span> assigning either <a href="#TruthValue"><span class="math inline">\(T\)</span> or <span class="math inline">\(F\)</span></a> to each symbol in <span class="math inline">\(S\)</span>.</p>
-<h4 id="Theorem12A"><span class="math inline">\(\frak T\)</span> Theorem 12A</h4>
+<h4 id="Theorem12A">Theorem 12A</h4>
 <p>Let <span class="math inline">\(S\)</span> be a set of <a href="#SentenceSymbol">sentence symbols</a>, <span class="math inline">\(\overline{S}\)</span> be the set of wffs that can be built up from <span class="math inline">\(S\)</span> by the five formula-building operations.</p>
 <p>For any <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> for a set <span class="math inline">\(S\)</span> there is a unique function <span class="math inline">\(\cssId{overlinev}{\overline{v}}:\overline{S}\to\{F,T\}\)</span> meeting the below conditions 0-5.</p>
 <ol start="0" type="1">
@@ -336,15 +335,15 @@ v:S \rightarrow \{F, T\}
 <li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\to\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=T\quad\text{and}\quad\overline{v}(\beta)=F,\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
 <li><p><span class="math inline">\(\overline{v}\left(\boldsymbol(\alpha\leftrightarrow\beta\boldsymbol)\right)=\left\{ \begin{array}{l} T\quad\text{if}\quad\overline{v}(\alpha)=\overline{v}(\beta),\cr F\quad\text{otherwise}. \end{array} \right.\)</span></p></li>
 </ol>
-<h4 id="Satisfy"><span class="math inline">\(\frak D\)</span> Satisfy 满足</h4>
+<h4 id="Satisfy"><span class="math inline">\(\DEF\)</span> Satisfy 满足</h4>
 <p>We say that a <a href="#TruthAssignment">truth assignment</a> <span class="math inline">\(v\)</span> <em>satisfies</em> <span class="math inline">\(\phi\)</span> iff <span class="math inline">\(\overline{v}(\phi)=T\)</span>.</p>
-<h4 id="TautologicallyImply"><span class="math inline">\(\frak D\)</span> Tautologically imply 重言蕴涵</h4>
+<h4 id="TautologicallyImply"><span class="math inline">\(\DEF\)</span> Tautologically imply 重言蕴涵</h4>
 <p><span class="math inline">\(\Sigma\)</span> Tautologically implies <span class="math inline">\(\tau\)</span> (written <span class="math inline">\(\Sigma\vDash\tau)\)</span> iff every <a href="#TruthAssignment">truth assignment</a> for the <a href="Sentence">sentence</a> symbols in <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\tau\)</span> that <a href="#Satisfy">satisfies</a> every member of <span class="math inline">\(\Sigma\)</span> also satisfies <span class="math inline">\(\tau\)</span>.</p>
-<h4 id="Tautology"><span class="math inline">\(\frak D\)</span> Tautology 重言式</h4>
+<h4 id="Tautology"><span class="math inline">\(\DEF\)</span> Tautology 重言式</h4>
 <p>We say that <span class="math inline">\(\tau\)</span> is a <em>tautology</em> (written <span class="math inline">\(\vDash\tau\)</span>) iff every <a href="#TruthAssignment">truth assignment</a> (for the sentence symbols in <span class="math inline">\(\tau\)</span>) satisfies <span class="math inline">\(\tau\)</span> (<a href="#TautologicallyImply"><span class="math inline">\(\varnothing\vDash\tau\)</span></a>).</p>
-<h4 id="TautologicallyEquivalent"><span class="math inline">\(\frak D\)</span> Tautologically Equivalent 重言等价</h4>
+<h4 id="TautologicallyEquivalent"><span class="math inline">\(\DEF\)</span> Tautologically Equivalent 重言等价</h4>
 <p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Singleton">singleton</a> <span class="math inline">\(\{\sigma\}\)</span>, then we write &quot;<span class="math inline">\(\sigma\vDash\tau\)</span>&quot; in place of &quot;<a href="#TautologicallyImply"><span class="math inline">\(\{\sigma\}\vDash\tau\)</span></a>.&quot; If both <span class="math inline">\(\sigma\vDash\tau\)</span> and <span class="math inline">\(\tau\vDash\sigma\)</span>, then <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\tau\)</span> are said to be tautologically equivalent (written <span class="math inline">\(\sigma\tauequ\tau\)</span>)</p>
-<h4 id="frak-d-a-list-of-tautologies-常用重言式列表"><span class="math inline">\(\frak D\)</span> A List of Tautologies 常用重言式列表</h4>
+<h4 id="def-a-list-of-tautologies-常用重言式列表"><span class="math inline">\(\DEF\)</span> A List of Tautologies 常用重言式列表</h4>
 <ol type="1">
 <li><p>Associative and commutative laws for <span class="math inline">\(\land, \lor, \leftrightarrow\)</span> &quot;析取,合取,和等价&quot;的结合律和交换律</p></li>
 <li><p>Distributive laws 分配率: <span class="math display">\[
@@ -378,39 +377,39 @@ v:S \rightarrow \{F, T\}
 </ul>
 <h3 id="compactness-and-effectiveness-紧致性和能行性">1.7 Compactness and Effectiveness 紧致性和能行性</h3>
 <h4 id="comactness-紧致性">Comactness 紧致性</h4>
-<h5 id="frak-t-compactness-theorem-紧致性定理"><span class="math inline">\(\frak T\)</span> Compactness Theorem 紧致性定理</h5>
+<h5 id="compactness-theorem-紧致性定理">Compactness Theorem 紧致性定理</h5>
 <p>A set of <a href="#wff">wffs</a> is <a href="#Satisfy">satisfiable</a> iff every <a href="#FiniteSet">finite</a> <a href="#Subset">subset</a> is satisfiable.</p>
-<h5 id="FinitelySatisfiable"><span class="math inline">\(\frak D\)</span> Finitely Satisfiable 有限可满足</h5>
+<h5 id="FinitelySatisfiable"><span class="math inline">\(\DEF\)</span> Finitely Satisfiable 有限可满足</h5>
 <p>We say that <span class="math inline">\(\Sigma\)</span> is <em>finitely satisfiable</em> iff every <a href="#FiniteSet">finite</a> <a href="#Subset">subset</a> of <span class="math inline">\(\sigma\)</span> is satisfiable.</p>
-<h5 id="Corollary17A"><span class="math inline">\(\frak T\)</span> Corollary 17A</h5>
+<h5 id="Corollary17A">Corollary 17A</h5>
 <p>If <span class="math inline">\(\Sigma\vDash\tau\)</span>, then there is a finite <span class="math inline">\(\Sigma_0\subseteq\Sigma\)</span> such that <span class="math inline">\(\Sigma_0\vDash\tau\)</span>.</p>
 <h4 id="effectiveness-and-computability-能行性和可计算性">Effectiveness and Computability 能行性和可计算性</h4>
-<h5 id="Effective"><span class="math inline">\(\frak DI\)</span> effective procedure 能行的过程</h5>
+<h5 id="Effective"><span class="math inline">\(\DEFi\)</span> effective procedure 能行的过程</h5>
 <ol type="1">
 <li>finite instructions.</li>
 <li>the instructions must be mechanically implemented.</li>
 <li>produce a &quot;yes&quot; or &quot;no&quot;.</li>
 </ol>
-<h5 id="Theorem17B"><span class="math inline">\(\frak TI\)</span> Theorem 17B</h5>
+<h5 id="Theorem17B">Theorem 17B<span class="math inline">\(^*\)</span></h5>
 <p>There is an <a href="#Effective">effective</a> procedure that, give any <a href="#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, will decie whether or not it is a <a href="#wff">wff</a>.</p>
-<h5 id="Decidable"><span class="math inline">\(\frak DI\)</span> Decidable 可判定的</h5>
+<h5 id="Decidable"><span class="math inline">\(\DEFi\)</span> Decidable 可判定的</h5>
 <p>A set <span class="math inline">\(\Sigma\)</span> of <a href="#Expression">expression</a> is <em>decidable</em> iff there exists an <a href="#Effective">effective</a> procedure that, given an expression <span class="math inline">\(\alpha\)</span>, will decide whether or not <span class="math inline">\(\alpha \in \Sigma\)</span></p>
-<h5 id="Theorem17C"><span class="math inline">\(\frak TI\)</span> Theorem 17C</h5>
+<h5 id="Theorem17C">Theorem 17C<span class="math inline">\(^*\)</span></h5>
 <p>There is an effective procedure that, given a finite set <a href="#Adjoin"><span class="math inline">\(\Sigma;\tau\)</span></a> of <a href="#wff">wffs</a>, will decide whether or not <span class="math inline">\(\Sigma\vDash\tau\)</span></p>
-<h5 id="Corollary17D"><span class="math inline">\(\frak TI\)</span> Corollary 17D</h5>
+<h5 id="Corollary17D">Corollary 17D<span class="math inline">\(^*\)</span></h5>
 <p>For a finite set <span class="math inline">\(\Sigma\)</span>, the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a>. In particular, the set of tautologies is decidable.</p>
-<h5 id="EffectivelyEnumerable"><span class="math inline">\(\frak DI\)</span> Effectively Enumerable 能行可枚举</h5>
+<h5 id="EffectivelyEnumerable"><span class="math inline">\(\DEFi\)</span> Effectively Enumerable 能行可枚举</h5>
 <p>Say that a set <span class="math inline">\(A\)</span> of <a href="#Expression">expressions</a> is <em>effectively enumerable</em> iff there exists an <a href="#Effective">effective procedure</a> that lists, in some order, the members of <span class="math inline">\(A\)</span></p>
-<h5 id="Semidecidable"><span class="math inline">\(\frak DI\)</span> Semidecidable 半可判定的</h5>
+<h5 id="Semidecidable"><span class="math inline">\(\DEFi\)</span> Semidecidable 半可判定的</h5>
 <p>A set A of expressions is <em>Semidecidable</em> iff there exists an <a href="#Effective">effective procedure</a> that, given any <a href="#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, procedures the answer yes iff <span class="math inline">\(\varepsilon\in A\)</span>.</p>
 <p>If <span class="math inline">\(\varepsilon\notin A\)</span>, procedure might produce the answer &quot;no&quot;; more likely it will go on forever without producing any answer, but it must not lie to use and produce the answer &quot;yes&quot;.</p>
-<h5 id="Theorem17E"><span class="math inline">\(\frak TI\)</span> Theorem 17E</h5>
+<h5 id="Theorem17E">Theorem 17E<span class="math inline">\(^*\)</span></h5>
 <p>A set is effectively enumerable iff it is <a href="#Semidecidable">semidecidable</a>.</p>
-<h5 id="Theorem17F"><span class="math inline">\(\frak TI\)</span> Theorem 17F</h5>
+<h5 id="Theorem17F">Theorem 17F<span class="math inline">\(^*\)</span></h5>
 <p>A set of expressions is <a href="#Decidable">decidable</a> iff both it and its complement (relative to the set of all expressions) are <a href="EffectivelyEnumerable">effectively enumerable</a>. This sometimes called &quot;Kleene's theorem.&quot;</p>
-<h5 id="Theorem17G"><span class="math inline">\(\frak TI\)</span> Theorem 17G</h5>
+<h5 id="Theorem17G">Theorem 17G<span class="math inline">\(^*\)</span></h5>
 <p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a> set of wffs, then the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#EffectivelyEnumerable">effectively enumerable</a>.</p>
-<h5 id="Computable"><span class="math inline">\(\frak DI\)</span> Effectively Computable 可计算的</h5>
+<h5 id="Computable"><span class="math inline">\(\DEFi\)</span> Effectively Computable 可计算的</h5>
 <p>We will say that a <a href="#Function">function</a> <span class="math inline">\(f\)</span> is <em>effectively computable</em> (or simply <em>computable</em>) iff there exists an <a href="#Effective">effective procedure</a> that given an input <span class="math inline">\(x\)</span>, will eventually produce the correct output <span class="math inline">\(f(x)\)</span>.</p>
 <h4 id="Exercises1.7">Exercises</h4>
 <h5 id="Problem1.7-1">Problem 1</h5>
@@ -476,7 +475,27 @@ F\qquad\text{iff}\quad A\notin\Delta
 </ul>
 <p>换句话说<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span>当且仅当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 即<span class="math inline">\(\alpha\boxdot\beta\)</span>是成立的. 正毕 <span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="FirstOrderLogic">Chapter Two. First-Order Logic 一阶逻辑</h2>
-<h3 id="PreliminaryRemarks">Section 2.0 Preliminary Remarks</h3>
+<h3 id="Section2.1">Section 2.1 First-Order Language 一阶语言</h3>
+<h4 id="FirstOrderSymbol"><span class="math inline">\(\DEF\)</span> Symbol 符号</h4>
+<p>A. Logical symbols 逻辑符号</p>
+<ol start="0" type="1">
+<li>Parentheses 括号: <span class="math inline">\((\)</span>,<span class="math inline">\()\)</span>.</li>
+<li>Sentential connective symbols 命题链接符号: <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
+<li>Variables 变量(one for each positive integer <span class="math inline">\(n\)</span>); <span class="math display">\[v_1, v_2, \ldots.\]</span></li>
+<li>Equality symbol 等于符号(optional): <span class="math inline">\(=\)</span>.</li>
+</ol>
+<p>B. Parameters 参数</p>
+<ol start="0" type="1">
+<li>Quantifier symbol 量词符号: <span class="math inline">\(\forall\)</span>.</li>
+<li>Predicate symbols 谓词符号: For each positive integer <span class="math inline">\(n\)</span>, some set(posibly empty) of symbols, called <span class="math inline">\(n\)</span>-place predicate symbols.</li>
+<li>Constant symbols 常量符号: some set(possibly empty) of symbols, called <span class="math inline">\(n\)</span>-place function symbols.</li>
+<li>Function symbols 函数符号: For each positive integer <span class="math inline">\(n\)</span>, some set(possibly empty) of symbols, called n-place function symbols.</li>
+</ol>
+<p>等于符号是特殊的二元谓词符号. 常量符号也可以叫0元函数符号. <span class="math inline">\(n\)</span>元谓词符号可以理解为<span class="math inline">\(n\)</span>元<a href="#Relation">关系</a></p>
+<h4 id="FirstOrderExpression"><span class="math inline">\(\DEF\)</span> Expression 表达式</h4>
+<p>An <em>expression</em> is any finite sequence of <a href="#FirstOrderSymbol">symbols</a>.</p>
+<h4 id="Term"><span class="math inline">\(\DEF\)</span> Term 项</h4>
+<p>If we define for each <span class="math inline">\(n\)</span>-place function symbol <span class="math inline">\(f\)</span>, an <span class="math inline">\(n\)</span>-place term-building operation <span class="math inline">\(\cal{F}_f\)</span> on expressions: <span class="math display">\[\cal{F}_f(\varepsilon_1,\ldots,\varepsilon_n)=f\varepsilon_1\cdots\varepsilon_n\]</span> The set of <em>terms</em> is the set of expressions that can be built up from the constant symbols and variables by applying(zero or more times) the <span class="math inline">\(\cal{F}_f\)</span> operations.</p>
 ]]></content>
       <categories>
         <category>数学</category>
