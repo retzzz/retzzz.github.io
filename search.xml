@@ -1,6 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>A Mathematical Introduction to Logic Chapter 2</title>
+    <url>//4ea3d2b5/</url>
+    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span></p>
+<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
+<p>本文是Chapter 2, 前面Chapter 0 和Chapter 1在<a href="/4322cf33">这里</a></p>
+<a id="more"></a>
+<p>The meaning of prefix of each section</p>
+<ul>
+<li><span class="math inline">\(\DEF\)</span> : Definition of a Concept</li>
+<li><span class="math inline">\(^*\)</span> : Informal intutive concept</li>
+<li><span class="math inline">\(_*\)</span> : Not from this book</li>
+</ul>
+<h2 id="modification-history">Modification History</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2020-05-28</td>
+<td>Update Section 2.1, term, atomic, wff, occur free</td>
+</tr>
+<tr class="even">
+<td>2020-05-29</td>
+<td>Update Section 2.1, On Notation, Exercises 2.1 Problem 1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="FirstOrderLogic">Chapter Two. First-Order Logic 一阶逻辑</h2>
+<h3 id="Section2.1">Section 2.1 First-Order Language 一阶语言</h3>
+<h4 id="FirstOrderSymbol"><span class="math inline">\(\DEF\)</span> Symbol 符号</h4>
+<p>A. <span id="FirstOrderLogicalSymbol">Logical symbols 逻辑符号</span></p>
+<ol start="0" type="1">
+<li>Parentheses 括号: <span class="math inline">\((\)</span>,<span class="math inline">\()\)</span>.</li>
+<li>Sentential connective symbols 命题链接符号: <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
+<li>Variables 变量(one for each positive integer <span class="math inline">\(n\)</span>); <span class="math display">\[v_1, v_2, \ldots.\]</span></li>
+<li>Equality symbol 等于符号(optional): <span class="math inline">\(=\)</span>.</li>
+</ol>
+<p>B. <span id="FirstOrderParameter">Parameters 参数</span></p>
+<ol start="0" type="1">
+<li>Quantifier symbol 量词符号: <span class="math inline">\(\forall\)</span>.</li>
+<li><span id="PredicateSymbol">Predicate symbols 谓词符号</span>: For each positive integer <span class="math inline">\(n\)</span>, some set(posibly empty) of symbols, called <span class="math inline">\(n\)</span>-place predicate symbols.</li>
+<li>Constant symbols 常量符号: some set(possibly empty) of symbols, called <span class="math inline">\(n\)</span>-place function symbols.</li>
+<li>Function symbols 函数符号: For each positive integer <span class="math inline">\(n\)</span>, some set(possibly empty) of symbols, called n-place function symbols.</li>
+</ol>
+<p><strong>等于符号</strong>是特殊的二元谓词符号, 分类到逻辑符号里而不是参数里是因为这会影响到它在自然语言中的翻译的方式.</p>
+<p><strong>常量符号</strong>也可以叫0元函数符号.</p>
+<p><strong><span class="math inline">\(n\)</span>元谓词符号</strong> 可以翻译成自然语言的一个谓词, 可以映射为<span class="math inline">\(n\)</span>元<a href="/4322cf33#Relation">关系</a></p>
+<p>具体到一种一阶语言, 一定要指明两点:</p>
+<ol type="1">
+<li>等于符号是否出现.</li>
+<li><a href="#FirstOrderParameter">参数</a>有哪些.</li>
+</ol>
+<p>一阶语言的例子:</p>
+<ol type="1">
+<li>纯谓词(pure predicate)语言:</li>
+</ol>
+<ul>
+<li>Equality: No.</li>
+<li><span class="math inline">\(n\)</span>-place predicate symbols: <span class="math inline">\(A^n_1, A^n_2,\ldots.\)</span></li>
+<li>Constant symbols: <span class="math inline">\(a_1, a_2, \ldots.\)</span></li>
+<li><span class="math inline">\(n\)</span>-place function symbols: None.</li>
+</ul>
+<ol start="2" type="1">
+<li>集合论(set theory)语言:</li>
+</ol>
+<ul>
+<li>Equality: Yes(usually).</li>
+<li>Predicate parameterts: One 2-place predicate symbol <span class="math inline">\(\in\)</span></li>
+<li>function symbols: None(or occasionally a constant symbol <span class="math inline">\(\varnothing\)</span>).</li>
+</ul>
+<ol start="3" type="1">
+<li>初等数论(elementary number theory)语言:</li>
+</ol>
+<ul>
+<li>Equality: Yes.</li>
+<li>Predicate parameterts: One 2-place predicate symbol <span class="math inline">\(&lt;\)</span></li>
+<li>function symbols: The symbol <span class="math inline">\(0\)</span>.</li>
+<li>1-place function symbols: <span class="math inline">\(S\)</span> (for successor).</li>
+<li>2-place function symbols: <span class="math inline">\(+\)</span> (for addition), <span class="math inline">\(\cdot\)</span>(for multiplication), and <span class="math inline">\(E\)</span> (for exponentiation)</li>
+</ul>
+<p><cr></cr></p>
+<p>一个被广泛认同的观点是数学可以嵌入到集合论中, 也就是说:</p>
+<ol type="1">
+<li>数学中的陈述可以被集合论语言表述.</li>
+<li>数学的定理, 可以从集合论的公理按照逻辑推导出来.</li>
+</ol>
+<p>Two patterns:</p>
+<ol type="1">
+<li>An English sentence which asserts that everything in a certain category has some property is translated: <span class="math display">\[\forall v(\_\rightarrow\_)\]</span></li>
+<li>A sentence which asserts that there is some object or objects in the category and having the property is translated <span class="math display">\[\exists v(\_\land\_)\]</span></li>
+</ol>
+<h4 id="FirstOrderExpression"><span class="math inline">\(\DEF\)</span> Expression 表达式</h4>
+<p>An <em>expression</em> is any finite sequence of <a href="#FirstOrderSymbol">symbols</a>.</p>
+<h4 id="Term"><span class="math inline">\(\DEF\)</span> Term 项</h4>
+<p>If we define for each <span class="math inline">\(n\)</span>-place function symbol <span class="math inline">\(f\)</span>, an <span class="math inline">\(n\)</span>-place term-building operation <span class="math inline">\(\cal{F}_f\)</span> on expressions: <span class="math display">\[\cal{F}_f(\varepsilon_1,\ldots,\varepsilon_n)=f\varepsilon_1\cdots\varepsilon_n\]</span> The set of <em>terms</em> is the set of expressions that can be built up from the constant symbols and variables by applying(zero or more times) the <span class="math inline">\(\cal{F}_f\)</span> operations.</p>
+<p>The terms are the expressionsssions that are transformlated as names of objects(noun phrases), in contrast to the wffs which are translated as assertions about the objects. (项翻译成名词性短语来描述某个对象, 合式公式翻译成关于该对象的断言)</p>
+<p>变量符号, 常量符号本身就是项.</p>
+<h4 id="AtomicFormula"><span class="math inline">\(\DEF\)</span> Atomic Formulas 原子公式</h4>
+<p>An <em>atomic formula</em> is an expression of the form <span class="math display">\[Pt_1\ldots t_n,\]</span> where <span class="math inline">\(P\)</span> is an <span class="math inline">\(n\)</span>-place <a href="#PredicateSymbol">predicate symbol</a> and <span class="math inline">\(t_1,\ldots,t_n\)</span> are <a href="#Term">terms</a>.</p>
+<p>原子公式在一阶逻辑语言里的作用相当于命题逻辑中的<a href="/4322cf33#SentenceSymbol">命题符号</a></p>
+<h4 id="FirstOrderWff"><span class="math inline">\(\DEF\)</span> Well-Formed Formulas, (wffs, or just formulas) 合式公式</h4>
+<p>The set of <em>well-formed formulas</em> (wffs, or just formulas) is the set of expressions that can be built up from the <a href="#AtomicFormula">atomic formulas</a> by applying (zero or more times) the operations <span class="math inline">\(\cal{E}_\lnot\)</span>, <span class="math inline">\(\cal{E}_\rightarrow\)</span> and <span class="math inline">\(\cal{Q}_i(i=1,2,\ldots).\)</span> where <span class="math display">\[
+\matrix{
+    \cal{E}_\lnot(\gamma) = (\lnot\gamma),\cr
+    \cal{E}_\rightarrow(\gamma,\delta) = (\gamma\rightarrow\delta),\cr
+    \cal{Q}_i(\gamma) = \forall v_i\gamma\cr
+}
+\]</span></p>
+<h4 id="OccurFree"><span class="math inline">\(\DEF\)</span> occur free in the wff 自由出现</h4>
+<p>Consider any variable <span class="math inline">\(x\)</span>. We define, for each wff <span class="math inline">\(\alpha\)</span>, what it means for x to <em>occur free</em> in <span class="math inline">\(\alpha\)</span> by recursion:</p>
+<ol type="1">
+<li>For <a href="#AtomicFormula">atomic</a> <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\alpha\)</span> iff <span class="math inline">\(x\)</span> voccurs in (i.e., is a symbol of) <span class="math inline">\(\alpha\)</span>.</li>
+<li><span class="math inline">\(x\)</span> occurs free in (<span class="math inline">\(\lnot\alpha\)</span>) iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\alpha\)</span>.</li>
+<li><span class="math inline">\(x\)</span> occurs free in (<span class="math inline">\(\alpha\rightarrow\beta\)</span>) iff x occurs free in <span class="math inline">\(\alpha\)</span> or in <span class="math inline">\(\beta\)</span>.</li>
+<li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\forall v_i\alpha\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(x\neq v_i\)</span>.</li>
+</ol>
+<p><span class="math inline">\(x\)</span> is a <em>free variable</em> of <span class="math inline">\(\alpha\)</span>.</p>
+<h4 id="Notation">On Notation</h4>
+<p>We naturally want methos of specifying wffs in more indirect but more readable ways.</p>
+<ul>
+<li><span class="math inline">\((\alpha\lor\beta)\)</span> abbreviates <span class="math inline">\(((\lnot\alpha)\rightarrow\beta)\)</span></li>
+<li><span class="math inline">\((\alpha\land\beta)\)</span> abbreviates <span class="math inline">\(((\lnot(\alpha\rightarrow(\lnot\beta)))\)</span></li>
+<li><span class="math inline">\((\alpha\leftrightarrow\beta)\)</span> abbreviates <span class="math inline">\(((\alpha\rightarrow\beta)\land(\beta\rightarrow\alpha))\)</span></li>
+<li><span class="math inline">\(\exists x\alpha\)</span> abbreviates <span class="math inline">\((\lnot\forall x(\lnot\alpha))\)</span></li>
+<li><span class="math inline">\(u=t\)</span> abbreviates <span class="math inline">\(=ut\)</span>. A similar abbreviation applies to some other 2-predicate and function symbols.</li>
+<li><span class="math inline">\(u\neq t\)</span> abbreviates <span class="math inline">\((\lnot=ut)\)</span></li>
+</ul>
+<p>For parentheses, we omit mention of just as many as we possibly can.</p>
+<ol type="1">
+<li>outermost parentheses may be dropped.</li>
+<li><span class="math inline">\(\lnot\)</span>, <span class="math inline">\(\forall\)</span>, and <span class="math inline">\(\exists\)</span> apply to as little as possible.</li>
+<li><span class="math inline">\(\land\)</span>, <span class="math inline">\(\lor\)</span> apply to as little as possible, subject to item 2(2比3优先级高). For example, <span class="math display">\[
+\lnot\alpha\land\beta\rightarrow\gamma\quad\text{is}\quad((\lnot\alpha)\land\beta)\rightarrow\gamma
+\]</span></li>
+<li>When one connective is used repeatedly, the expression is grouped to the right. For example, <span class="math display">\[\alpha\rightarrow\beta\rightarrow\gamma\quad\text{is}\quad\alpha\rightarrow(\beta\rightarrow\gamma)\]</span></li>
+</ol>
+<h4 id="Exercises2.1">Exercises 2.1</h4>
+<h5 id="problem-1">Problem 1</h5>
+<p>Assume that we have a language with the following parameters: <span class="math inline">\(\forall\)</span>, intended to mean &quot;for all things&quot;; <span class="math inline">\(N\)</span>, intended to mean &quot;is a number&quot;; <span class="math inline">\(I\)</span> , intended to mean &quot;is interesting&quot;;&lt;, intended to mean &quot;is less than&quot;; and <span class="math inline">\(0\)</span>, a constant symbol intended to denote zero. Translate into this language the English sentences listed below. If the English sentence is ambiguous, you will need more than one translation.</p>
+<ol type="a">
+<li>Zero is less than any number.</li>
+<li>If any number is interesting, then zero is interesting.</li>
+<li>No number is less than zero.</li>
+<li>Any uninteresting number with the property that all smaller numbers are interesting certainly is interesting.</li>
+<li>There is no number such that all numbers are less than it.</li>
+<li>There is no number such that no number is less than it.</li>
+</ol>
+<p>解:</p>
+<ol type="a">
+<li><span class="math inline">\(\forall v(Nv\rightarrow (0&lt;v))\)</span></li>
+<li>any number如果意思是有的数是有趣的: <span class="math inline">\(\exists v(Nv\land Iv)\rightarrow I0\)</span>. 如果意思是任意的数都是有趣的: <span class="math inline">\(\forall v(Nv\rightarrow Iv)\rightarrow I0\)</span></li>
+<li><span class="math inline">\(\forall v(Nv\rightarrow\lnot(v&lt;0))\)</span></li>
+<li><span class="math inline">\(\forall v(Nv\land\lnot Iv\land\forall u(Nu\land u&lt;v\rightarrow Iu)\rightarrow Iv)\)</span></li>
+<li><span class="math inline">\(\lnot\exists v(Nv\land \forall u(Nu\rightarrow u&lt;v))\)</span></li>
+<li><span class="math inline">\(\lnot\exists v(Nv\land \lnot\exists u(Nu\land u&lt;v))\)</span> <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>数学</category>
+        <category>数理逻辑</category>
+      </categories>
+      <tags>
+        <tag>Logic</tag>
+        <tag>Mathematical Logic</tag>
+        <tag>Enderton</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在启动时用subst映射目录到虚拟盘</title>
     <url>//3c98bdf2/</url>
     <content><![CDATA[<p>subst可以把一个目录虚拟成一个驱动盘, 比如 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subst I: &quot;C:\Users\Username\OneDrive - XXX&quot;</span><br></pre></td></tr></table></figure></p>
@@ -70,17 +242,17 @@
   <entry>
     <title>A Mathematical Introduction to Logic</title>
     <url>//4322cf33/</url>
-    <content><![CDATA[<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
+    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span></p>
+<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
+<p>本文是Chapter 0和部分的Chapter 1, Chapter 2在<a href="/4ea3d2b5">这里</a></p>
+<a id="more"></a>
 <p>由于中文版错误太多, 大部分章节读的是英文第二版, 所以笔记也是用英文写的. 加了一些关键词的中文翻译. 有些中文证明和计算是我自己做的练习.</p>
 <p>The meaning of prefix of each section</p>
-<!--$\def\tauequ{\unicode{x22A8}\unicode{x2AE4}}$-->
-<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span></p>
 <ul>
 <li><span class="math inline">\(\DEF\)</span> : Definition of a Concept</li>
 <li><span class="math inline">\(^*\)</span> : Informal intutive concept</li>
 <li><span class="math inline">\(_*\)</span> : Not from this book</li>
 </ul>
-<a id="more"></a>
 <h2 id="Chapter0">Chapter Zero: Useful Facts about Sets</h2>
 <h3 id="Set"><span class="math inline">\(\DEFi\)</span> Set 集合</h3>
 <p>A <strong>set</strong> is a collection of things.</p>
@@ -411,7 +583,7 @@ v:S \rightarrow \{F, T\}
 <p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a> set of wffs, then the set of <a href="#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#EffectivelyEnumerable">effectively enumerable</a>.</p>
 <h5 id="Computable"><span class="math inline">\(\DEFi\)</span> Effectively Computable 可计算的</h5>
 <p>We will say that a <a href="#Function">function</a> <span class="math inline">\(f\)</span> is <em>effectively computable</em> (or simply <em>computable</em>) iff there exists an <a href="#Effective">effective procedure</a> that given an input <span class="math inline">\(x\)</span>, will eventually produce the correct output <span class="math inline">\(f(x)\)</span>.</p>
-<h4 id="Exercises1.7">Exercises</h4>
+<h4 id="Exercises1.7">Exercises 1.7</h4>
 <h5 id="Problem1.7-1">Problem 1</h5>
 <ol type="1">
 <li>Assume that every finite subset of <span class="math inline">\(\Sigma\)</span> is satisfiable. Show that the same is true of at least one of the sets <span class="math inline">\(\Sigma;\alpha\)</span> and <span class="math inline">\(\Sigma;\lnot\alpha\)</span>. (This is part of the proof of the compactness theorem.)</li>
@@ -474,28 +646,7 @@ F\qquad\text{iff}\quad A\notin\Delta
 <li>或者当<span class="math inline">\(\lnot(\alpha\boxdot\beta)\in\Delta\)</span>, 有<span class="math inline">\(\overline{v}(\lnot(\alpha\boxdot\beta))=T\)</span>. 根据<span class="math inline">\(\overline{v}(\lnot\alpha)\)</span>的定义, <span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=F\)</span>.</li>
 </ul>
 <p>换句话说<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span>当且仅当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 即<span class="math inline">\(\alpha\boxdot\beta\)</span>是成立的. 正毕 <span class="math inline">\(\blacksquare\)</span></p>
-<h2 id="FirstOrderLogic">Chapter Two. First-Order Logic 一阶逻辑</h2>
-<h3 id="Section2.1">Section 2.1 First-Order Language 一阶语言</h3>
-<h4 id="FirstOrderSymbol"><span class="math inline">\(\DEF\)</span> Symbol 符号</h4>
-<p>A. Logical symbols 逻辑符号</p>
-<ol start="0" type="1">
-<li>Parentheses 括号: <span class="math inline">\((\)</span>,<span class="math inline">\()\)</span>.</li>
-<li>Sentential connective symbols 命题链接符号: <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
-<li>Variables 变量(one for each positive integer <span class="math inline">\(n\)</span>); <span class="math display">\[v_1, v_2, \ldots.\]</span></li>
-<li>Equality symbol 等于符号(optional): <span class="math inline">\(=\)</span>.</li>
-</ol>
-<p>B. Parameters 参数</p>
-<ol start="0" type="1">
-<li>Quantifier symbol 量词符号: <span class="math inline">\(\forall\)</span>.</li>
-<li>Predicate symbols 谓词符号: For each positive integer <span class="math inline">\(n\)</span>, some set(posibly empty) of symbols, called <span class="math inline">\(n\)</span>-place predicate symbols.</li>
-<li>Constant symbols 常量符号: some set(possibly empty) of symbols, called <span class="math inline">\(n\)</span>-place function symbols.</li>
-<li>Function symbols 函数符号: For each positive integer <span class="math inline">\(n\)</span>, some set(possibly empty) of symbols, called n-place function symbols.</li>
-</ol>
-<p>等于符号是特殊的二元谓词符号. 常量符号也可以叫0元函数符号. <span class="math inline">\(n\)</span>元谓词符号可以理解为<span class="math inline">\(n\)</span>元<a href="#Relation">关系</a></p>
-<h4 id="FirstOrderExpression"><span class="math inline">\(\DEF\)</span> Expression 表达式</h4>
-<p>An <em>expression</em> is any finite sequence of <a href="#FirstOrderSymbol">symbols</a>.</p>
-<h4 id="Term"><span class="math inline">\(\DEF\)</span> Term 项</h4>
-<p>If we define for each <span class="math inline">\(n\)</span>-place function symbol <span class="math inline">\(f\)</span>, an <span class="math inline">\(n\)</span>-place term-building operation <span class="math inline">\(\cal{F}_f\)</span> on expressions: <span class="math display">\[\cal{F}_f(\varepsilon_1,\ldots,\varepsilon_n)=f\varepsilon_1\cdots\varepsilon_n\]</span> The set of <em>terms</em> is the set of expressions that can be built up from the constant symbols and variables by applying(zero or more times) the <span class="math inline">\(\cal{F}_f\)</span> operations.</p>
+<p>=&gt; <a href="/4ea3d2b5">Chapter Two</a></p>
 ]]></content>
       <categories>
         <category>数学</category>
