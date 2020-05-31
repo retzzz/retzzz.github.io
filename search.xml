@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>给孩子准备的离家礼物(一)</title>
+    <url>//397f5023/</url>
+    <content><![CDATA[<p>这里记录一些听到或看到的我认同的别人的观点. 好记性不如烂笔头, 自己说不明白就记录一些别人说的金句. 将来孩子长大了, 要离家了, 如果我的观点还没变, 拿给孩子看看. 虽然不一定有用<span class="math inline">\(\unicode{x1F602}\)</span>, 毕竟年轻人很少听老人言.</p>
+<a id="more"></a>
+<h2 id="关于高考-职业">关于高考, 职业</h2>
+<p>以下观点主要来自微博&quot;组织二号头目&quot;, 某些点有我自己的修正.</p>
+<ol type="1">
+<li><p>除了专业性极强的几个专业(比如医生, 律师), 绝大多数人在毕业5年内就开始折腾跟大学专业无关的事情.</p></li>
+<li><p>普通人能去大城市就去大城市. 小地方的本质是前现代社会, 人情社会.</p></li>
+<li><p>一般来讲, 高考先选学校再选专业. 毕业两年后基本没人关心你是哪个专业的了. 毕业5年后的简历是由毕业学校和之前的工作经历共同组成的.</p></li>
+<li><p>大学教给你的知识有限, 最重要的是能帮助人保持自学能力, 大学里是培养自我学习能力的关键阶段.</p></li>
+<li><p>头部效应很大的行业: 金融, 直播, 明星. 金字塔形的行业: 码农.</p></li>
+<li><p>智力密集型, 门槛比较高的工作, 长期看不会贬值.</p></li>
+<li><p>我国是政府通过压迫医生行业来给老百姓发福利. 有一定可能性将来会变好.</p></li>
+<li>技术类工作者的优势:
+<ul>
+<li>技术有相通性, 学了一个也就不惧怕学其他的.</li>
+<li>有效治疗&quot;怀才不遇&quot;的错觉. 能够了解建设的难度. 不太容易成为只知道批评社会的神经病.</li>
+<li>容易找工作, 骑驴找马.</li>
+</ul></li>
+</ol>
+<h2 id="关于技能成长">关于技能成长</h2>
+<ol type="1">
+<li>关于奖励:
+<ul>
+<li>绝大多数人不响应长期激励.</li>
+<li>奖励要及时并且可度量的.</li>
+<li>最有效的激励叫做随机奖励. 自我奖励</li>
+</ul></li>
+<li>关于练习:
+<ul>
+<li>在挑战区的练习效果最好.</li>
+<li>太简单的驴拉磨效率低.</li>
+<li>最求太复杂太难的会伤害积极性.</li>
+<li>好的思路是越来越难.</li>
+<li>准确识别出怎样的路径是持续挑战是关键. 把基础打牢靠</li>
+</ul></li>
+<li>关于复杂工具:
+<ul>
+<li>尝试不断使用复杂工具</li>
+<li>尝试用工具的思维来解决问题</li>
+<li>人工智能也是工具</li>
+</ul></li>
+<li>关于时间:
+<ul>
+<li>最重要的是不断投入时间.</li>
+<li>你花时间达成的目标别人也要花相同时间才能达成的事情有价值投入更多时间.</li>
+</ul></li>
+<li>关于坚持:
+<ul>
+<li>定低日常目标</li>
+<li>最重要的是开始做, 只要开始了往往会大大超出目标.</li>
+</ul></li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>reading notes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>A Mathematical Introduction to Logic Chapter 2</title>
     <url>//4ea3d2b5/</url>
-    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span></p>
+    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span> <span class="math inline">\(\def\llbracket{\unicode{x27E6}}\)</span> <span class="math inline">\(\def\rrbracket{\unicode{x27E7}}\)</span></p>
 <p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
 <p>本文是Chapter 2, 前面Chapter 0 和Chapter 1在<a href="/4322cf33">这里</a></p>
 <a id="more"></a>
@@ -17,7 +80,7 @@
 <table>
 <thead>
 <tr class="header">
-<th>Time</th>
+<th>Date</th>
 <th>Content</th>
 </tr>
 </thead>
@@ -28,7 +91,15 @@
 </tr>
 <tr class="even">
 <td>2020-05-29</td>
-<td>Update Section 2.1, On Notation, Exercises 2.1 Problem 1</td>
+<td>Update Section 2.1, On Notation, Exercises 2.1 Problem 1,2,3</td>
+</tr>
+<tr class="odd">
+<td>2020-05-30</td>
+<td>Update Section 2.2, structure, satisfy</td>
+</tr>
+<tr class="even">
+<td>2020-05-31</td>
+<td>Update Section 2.2, Theorem 22A</td>
 </tr>
 </tbody>
 </table>
@@ -38,16 +109,16 @@
 <p>A. <span id="FirstOrderLogicalSymbol">Logical symbols 逻辑符号</span></p>
 <ol start="0" type="1">
 <li>Parentheses 括号: <span class="math inline">\((\)</span>,<span class="math inline">\()\)</span>.</li>
-<li>Sentential connective symbols 命题链接符号: <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
-<li>Variables 变量(one for each positive integer <span class="math inline">\(n\)</span>); <span class="math display">\[v_1, v_2, \ldots.\]</span></li>
+<li><span id="FirstOrderConnectiveSymbols">Sentential connective symbols 命题链接符号</span>: <span class="math inline">\(\rightarrow\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
+<li><span id="FirstOrderVariable">Variables 变量</span>(one for each positive integer <span class="math inline">\(n\)</span>); <span class="math display">\[v_1, v_2, \ldots.\]</span></li>
 <li>Equality symbol 等于符号(optional): <span class="math inline">\(=\)</span>.</li>
 </ol>
 <p>B. <span id="FirstOrderParameter">Parameters 参数</span></p>
 <ol start="0" type="1">
-<li>Quantifier symbol 量词符号: <span class="math inline">\(\forall\)</span>.</li>
+<li><span id="Quantifier">Quantifier symbol 量词符号</span>: <span class="math inline">\(\forall\)</span>.</li>
 <li><span id="PredicateSymbol">Predicate symbols 谓词符号</span>: For each positive integer <span class="math inline">\(n\)</span>, some set(posibly empty) of symbols, called <span class="math inline">\(n\)</span>-place predicate symbols.</li>
-<li>Constant symbols 常量符号: some set(possibly empty) of symbols, called <span class="math inline">\(n\)</span>-place function symbols.</li>
-<li>Function symbols 函数符号: For each positive integer <span class="math inline">\(n\)</span>, some set(possibly empty) of symbols, called n-place function symbols.</li>
+<li><span id="FirstOrderConstantSymbol">Constant symbols 常量符号</span>: some set(possibly empty) of symbols.</li>
+<li><span id="FirstOrderFunctionSymbol">Function symbols 函数符号</span>: For each positive integer <span class="math inline">\(n\)</span>, some set(possibly empty) of symbols, called n-place function symbols.</li>
 </ol>
 <p><strong>等于符号</strong>是特殊的二元谓词符号, 分类到逻辑符号里而不是参数里是因为这会影响到它在自然语言中的翻译的方式.</p>
 <p><strong>常量符号</strong>也可以叫0元函数符号.</p>
@@ -122,6 +193,8 @@
 <li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\forall v_i\alpha\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(x\neq v_i\)</span>.</li>
 </ol>
 <p><span class="math inline">\(x\)</span> is a <em>free variable</em> of <span class="math inline">\(\alpha\)</span>.</p>
+<h4 id="FirstOrderSentenc"><span class="math inline">\(\DEF\)</span> Sentence 命题</h4>
+<p>If no variable occurs free in the <a href="#FirstOrderWff">wff</a> <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\alpha\)</span> is a sentence.</p>
 <h4 id="Notation">On Notation</h4>
 <p>We naturally want methos of specifying wffs in more indirect but more readable ways.</p>
 <ul>
@@ -159,8 +232,85 @@
 <li><span class="math inline">\(\forall v(Nv\rightarrow\lnot(v&lt;0))\)</span></li>
 <li><span class="math inline">\(\forall v(Nv\land\lnot Iv\land\forall u(Nu\land u&lt;v\rightarrow Iu)\rightarrow Iv)\)</span></li>
 <li><span class="math inline">\(\lnot\exists v(Nv\land \forall u(Nu\rightarrow u&lt;v))\)</span></li>
-<li><span class="math inline">\(\lnot\exists v(Nv\land \lnot\exists u(Nu\land u&lt;v))\)</span> <span class="math inline">\(\blacksquare\)</span></li>
+<li><span class="math inline">\(\lnot\exists v(Nv\land \lnot\exists u(Nu\land u&lt;v))\)</span></li>
 </ol>
+<h5 id="problem-2">Problem 2</h5>
+<p>With the same language as in the preceding exercise, translate back into good English the wff <span class="math display">\[
+\forall x(Nx\rightarrow Ix\rightarrow\lnot\forall y(Ny\rightarrow Iy\rightarrow \lnot x&lt;y)).
+\]</span></p>
+<p>解: 对任意的有趣的数, 都能找到比它大的有趣的数. 即不存在最大的有趣的数.</p>
+<p>这里有个推到有必要记住 <span class="math inline">\(\forall x(Nx\rightarrow Ix\rightarrow\alpha) = \forall x(Nx \land Ix\rightarrow\alpha)\)</span></p>
+<h5 id="problem-3">Problem 3</h5>
+<p>Neither <span class="math inline">\(a\)</span> nor <span class="math inline">\(b\)</span> is a member of every set. (<span class="math inline">\(\forall\)</span>, for all sets; <span class="math inline">\(\in\)</span>, is a member of; <span class="math inline">\(a\)</span>, <span class="math inline">\(a\)</span>; <span class="math inline">\(b\)</span>, <span class="math inline">\(b\)</span>.)</p>
+<p>解: <span class="math display">\[
+\lnot\forall xa\in x \land \lnot\forall x b\in x
+\]</span></p>
+<h3 id="Section2.2">Section 2.2 Truth and Models 真值与模型</h3>
+<h4 id="Structure"><span class="math inline">\(\DEF\)</span> Structure 结构</h4>
+<p>A <em>structure</em> <span class="math inline">\(\frak A\)</span> for our given first-order language is a function whose domain is the set of <a href="#FirstOrderParameter">parameters</a> and such that</p>
+<ol type="1">
+<li><span class="math inline">\(\frak A\)</span> assigns to the quantifier symbol <span class="math inline">\(\forall\)</span> a nonempty set <span class="math inline">\(|\frak A|\)</span> called the <span id="Universe"><em>universe</em></span> (or domain, 论域) of <span class="math inline">\(\frak A\)</span>.</li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="#PredicateSymbol"><span class="math inline">\(n\)</span>-place predicate symbol</a> <span class="math inline">\(P\)</span> an <a href="/4322cf33#NaryRelation"><span class="math inline">\(n\)</span>-ary relation</a> <span id="StructPA"><span class="math inline">\(P^{\frak A}\subseteq|\frak A|^n\)</span></span>; i.e., <span class="math inline">\(P^{\frak A}\)</span> is a set of <a href="/4322cf33#NTuples"><span class="math inline">\(n\)</span>-tuples</a> of members of the universe.</li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span> a member <span id="StructCA"><span class="math inline">\(c^{\frak A}\)</span></span> of the universe <span class="math inline">\(\frak A\)</span>.</li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="#FirstOrderFunctionSymbol"><span class="math inline">\(n\)</span>-place function symbol</a> <span class="math inline">\(f\)</span> an <a href="/4322cf33#Operation"><span class="math inline">\(n\)</span>-ary operation</a> <span id="StructFA"><span class="math inline">\(f^{\frak A}\)</span></span> on <span class="math inline">\(|\frak A|\)</span>; i.e., <span class="math inline">\(f^{\frak A}:|\frak A|^n\rightarrow|\frak A|\)</span>.</li>
+</ol>
+<p>Note that we require the universe <span class="math inline">\(|\frak A|\)</span> to be nonempty. Notice also that <span class="math inline">\(f^{\frak A}\)</span> must have all of <span class="math inline">\(|\frak A|^n\)</span> in for its domain.</p>
+<h4 id="FirstOrderSatisfy"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(\frak A\)</span> satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span> 结构<span class="math inline">\(\frak A\)</span>以 变量的取值函数<span class="math inline">\(s\)</span>满足合式公式<span class="math inline">\(\varphi\)</span></h4>
+<p>Let</p>
+<ul>
+<li><span class="math inline">\(\varphi\)</span> be a wff of our language,</li>
+<li><span class="math inline">\(\frak A\)</span> a struture for the language,</li>
+<li><span class="math inline">\(s:V\rightarrow |\frak A|\)</span> a function from the set <span class="math inline">\(V\)</span> of all variables into the universe <span class="math inline">\(|\frak A|\)</span> of <span class="math inline">\(\frak A\)</span>.</li>
+</ul>
+<p>Then we will define what it means for <span class="math inline">\(\frak A\)</span> to satisfy <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span> (对于结构<span class="math inline">\(\frak A\)</span>, 变量的取值<span class="math inline">\(s\)</span>可以使合式公式<span class="math inline">\(\varphi\)</span>满足), <span class="math display">\[
+\vDash_{\frak A}\varphi[s]
+\]</span></p>
+<p>The definition of satisfaction proceeds as follows:</p>
+<p>I. <em>Terms</em>. We define the extension: <span class="math display">\[
+\overline{s}:T\rightarrow|\frak A|,
+\]</span> a function from the set <span class="math inline">\(T\)</span> of all <a href="#Term">terms</a> into the <a href="#Universe">universe</a> of <span class="math inline">\(\frak A\)</span>. <span class="math inline">\(\overline{s}\)</span> is defined by recursion as follows:</p>
+<ol type="1">
+<li>For each <a href="#FirstOrderVariable">variable</a> <span class="math inline">\(x\)</span>, <span class="math inline">\(\overline{s}(x)=s(x)\)</span></li>
+<li>For each <a href="#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span>, (c)=<span class="math inline">\(\href{ #StructCA}{c^{\frak A}}\)</span></li>
+<li>If <span class="math inline">\(t_1,\ldots,t_n\)</span> are <a href="#Term">terms</a> and <span class="math inline">\(f\)</span> is an <a href="#FirstOrderFunctionSymbol"><span class="math inline">\(n\)</span>-place function symbol</a>, then <span class="math display">\[
+\overline{s}(ft_1\cdots t_n)=\href{ #StructFA}{f^{\frak A}}(\overline{s}(t_1),\ldots,\overline{s}(t_n)).
+\]</span></li>
+</ol>
+<p>第一步, 通过对<span class="math inline">\(s\)</span>的扩展<span class="math inline">\(\overline{s}(t)\)</span>把所有的项映射成论域里的一个元素.</p>
+<ol start="2" type="I">
+<li><em>Atomic formulas</em>. The definition of satisfaction of <a href="#AtomicFormula">atomic formulas</a> is explicit and not recursive.</li>
+</ol>
+<ol type="1">
+<li><span class="math inline">\(\vDash_{\frak A}=t_1 t_2[s]\)</span> iff <span class="math inline">\(\overline{s}(t_1)=\overline{s}(t_2)\)</span>. (Thus <span class="math inline">\(=\)</span> means <span class="math inline">\(=\)</span>. Note that <span class="math inline">\(=\)</span> is a <a href="#FirstOrderLogicalSymbol">logical symbol</a>, not a <a href="#FirstOrderParameter">parameter</a> open to interpretation. 这就是把等号区别于其他谓词符号分类成逻辑符号的原因, 等号不需要解释)</li>
+<li>For an <a href="#PredicateSymbol"><span class="math inline">\(n\)</span>-place predicate parameter</a> <span class="math inline">\(P\)</span>, <span class="math display">\[
+\vDash_{\frak A}Pt_1\cdots t_n[s]\quad\text{iff}\quad\langle\overline{s}(t_1),\ldots,\overline{s}(t_n)\rangle\in \href{ #StructPA}{P^{\frak A}}.
+\]</span> 对于原子公式, 只要存在于结构的关系中就是满足.</li>
+</ol>
+<ol start="3" type="I">
+<li><em>Other wffs</em>. The wffs we defined inductively, and consequently here satisfaction is defined recursively.</li>
+</ol>
+<ol type="1">
+<li>For atomic formulas, the definition is above.</li>
+<li><span class="math inline">\(\vDash_{\frak A}\lnot\varphi[s]\)</span> iff <span class="math inline">\(\nvDash_{\frak A}\varphi[s].\)</span></li>
+<li><span class="math inline">\(\vDash_{\frak A}(\varphi\rightarrow\psi)[s]\)</span> iff either <span class="math inline">\(\nvDash_{\frak A}\varphi[s]\)</span> or <span class="math inline">\(\vDash_{\frak A}\psi[s]\)</span> or both.</li>
+<li><span class="math inline">\(\vDash_{\frak A}\forall x\varphi[s]\)</span> iff for every <span class="math inline">\(d\in|\frak A|\)</span>, we have <span class="math inline">\(\vDash_{\frak A}\varphi[s(x|d)]\)</span>.</li>
+</ol>
+<p>Here <span class="math inline">\(s(x|d)\)</span> is the function which is exactly like <span class="math inline">\(s\)</span> except for one thing: At the variable x it assumes the value d. This can be expressed by the equation <span class="math display">\[
+s(x|d)(y)=\left\{
+\begin{array}{lll}
+s(y) &amp; \text{if} &amp; y\neq x, \\
+d &amp; \text{if} &amp; y=x. \\
+\end{array}
+\right.
+\]</span></p>
+<p><span class="math inline">\(x\)</span>可以取任意值, 其他变量还是取函数<span class="math inline">\(s\)</span>中分配的值.</p>
+<h4 id="Theroem22A">Theorem 22A</h4>
+<p>Assume tha <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are functions from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak A|\)</span> which agree at all variables (if any) that occur free in the wff <span class="math inline">\(\varphi\)</span>. Then <span class="math display">\[
+\vDash_{\frak A}\varphi[s_1]\quad\text{iff}\quad\vDash_{\frak A}\varphi[s_2].
+\]</span></p>
+<p>This theorem justifies the following notation: Suppose that <span class="math inline">\(\varphi\)</span> is a formula such that all variables occurring free in <span class="math inline">\(\varphi\)</span> are included among <span class="math inline">\(v_1,\ldots,v_k\)</span>. Then for elements <span class="math inline">\(a_1,\ldots,a_k\)</span> of <span class="math inline">\(|\frak A|\)</span>, <span class="math display">\[
+\vDash_{\frak A}\varphi\llbracket a_1,\ldots,a_k\rrbracket
+\]</span></p>
 ]]></content>
       <categories>
         <category>数学</category>
