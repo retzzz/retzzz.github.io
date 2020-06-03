@@ -28,7 +28,7 @@
 <meta property="og:description" content="\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\DEF{\sf{D\sc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-29T14:08:33.000Z">
-<meta property="article:modified_time" content="2020-05-31T13:37:29.491Z">
+<meta property="article:modified_time" content="2020-06-03T13:54:38.178Z">
 <meta property="article:author" content="Mingjian">
 <meta property="article:tag" content="Logic">
 <meta property="article:tag" content="Mathematical Logic">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-31 21:37:29" itemprop="dateModified" datetime="2020-05-31T21:37:29+08:00">2020-05-31</time>
+                <time title="修改时间：2020-06-03 21:54:38" itemprop="dateModified" datetime="2020-06-03T21:54:38+08:00">2020-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,6 +292,10 @@
 </ul>
 <h2 id="modification-history">Modification History</h2>
 <table>
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Date</th>
@@ -314,6 +318,10 @@
 <tr class="even">
 <td>2020-05-31</td>
 <td>Update Section 2.2, Theorem 22A</td>
+</tr>
+<tr class="odd">
+<td>2020-06-03</td>
+<td>Update Section 2.2, Logically imply, Logically equivalent, Valid</td>
 </tr>
 </tbody>
 </table>
@@ -407,7 +415,7 @@
 <li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\forall v_i\alpha\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(x\neq v_i\)</span>.</li>
 </ol>
 <p><span class="math inline">\(x\)</span> is a <em>free variable</em> of <span class="math inline">\(\alpha\)</span>.</p>
-<h4 id="FirstOrderSentenc"><span class="math inline">\(\DEF\)</span> Sentence 命题</h4>
+<h4 id="FirstOrderSentence"><span class="math inline">\(\DEF\)</span> Sentence 命题</h4>
 <p>If no variable occurs free in the <a href="#FirstOrderWff">wff</a> <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\alpha\)</span> is a sentence.</p>
 <h4 id="Notation">On Notation</h4>
 <p>We naturally want methos of specifying wffs in more indirect but more readable ways.</p>
@@ -474,7 +482,7 @@
 <ul>
 <li><span class="math inline">\(\varphi\)</span> be a wff of our language,</li>
 <li><span class="math inline">\(\frak A\)</span> a struture for the language,</li>
-<li><span class="math inline">\(s:V\rightarrow |\frak A|\)</span> a function from the set <span class="math inline">\(V\)</span> of all variables into the universe <span class="math inline">\(|\frak A|\)</span> of <span class="math inline">\(\frak A\)</span>.</li>
+<li><span id="Function_s_V2A"><span class="math inline">\(s:V\rightarrow |\frak A|\)</span></span> a function from the set <span class="math inline">\(V\)</span> of all variables into the universe <span class="math inline">\(|\frak A|\)</span> of <span class="math inline">\(\frak A\)</span>.</li>
 </ul>
 <p>Then we will define what it means for <span class="math inline">\(\frak A\)</span> to satisfy <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span> (对于结构<span class="math inline">\(\frak A\)</span>, 变量的取值<span class="math inline">\(s\)</span>可以使合式公式<span class="math inline">\(\varphi\)</span>满足), <span class="math display">\[
 \vDash_{\frak A}\varphi[s]
@@ -509,7 +517,7 @@
 <li><span class="math inline">\(\vDash_{\frak A}(\varphi\rightarrow\psi)[s]\)</span> iff either <span class="math inline">\(\nvDash_{\frak A}\varphi[s]\)</span> or <span class="math inline">\(\vDash_{\frak A}\psi[s]\)</span> or both.</li>
 <li><span class="math inline">\(\vDash_{\frak A}\forall x\varphi[s]\)</span> iff for every <span class="math inline">\(d\in|\frak A|\)</span>, we have <span class="math inline">\(\vDash_{\frak A}\varphi[s(x|d)]\)</span>.</li>
 </ol>
-<p>Here <span class="math inline">\(s(x|d)\)</span> is the function which is exactly like <span class="math inline">\(s\)</span> except for one thing: At the variable x it assumes the value d. This can be expressed by the equation <span class="math display">\[
+<p>Here <span class="math inline">\(s(x|d)\)</span> is the function which is exactly like <a href="#Function_s_V2A"><span class="math inline">\(s\)</span></a> except for one thing: At the variable x it assumes the value d. This can be expressed by the equation <span class="math display">\[
 s(x|d)(y)=\left\{
 \begin{array}{lll}
 s(y) &amp; \text{if} &amp; y\neq x, \\
@@ -519,12 +527,31 @@ d &amp; \text{if} &amp; y=x. \\
 \]</span></p>
 <p><span class="math inline">\(x\)</span>可以取任意值, 其他变量还是取函数<span class="math inline">\(s\)</span>中分配的值.</p>
 <h4 id="Theroem22A">Theorem 22A</h4>
-<p>Assume tha <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are functions from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak A|\)</span> which agree at all variables (if any) that occur free in the wff <span class="math inline">\(\varphi\)</span>. Then <span class="math display">\[
+<p>Assume that <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are <a href="#Function_s_V2A">functions from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak A|\)</span></a> which agree at all variables (if any) that <a href="#OccurFree">occur free</a> in the wff <span class="math inline">\(\varphi\)</span>. Then <span class="math display">\[
 \vDash_{\frak A}\varphi[s_1]\quad\text{iff}\quad\vDash_{\frak A}\varphi[s_2].
 \]</span></p>
-<p>This theorem justifies the following notation: Suppose that <span class="math inline">\(\varphi\)</span> is a formula such that all variables occurring free in <span class="math inline">\(\varphi\)</span> are included among <span class="math inline">\(v_1,\ldots,v_k\)</span>. Then for elements <span class="math inline">\(a_1,\ldots,a_k\)</span> of <span class="math inline">\(|\frak A|\)</span>, <span class="math display">\[
+<p>This theorem justifies the following notation: Suppose that <span class="math inline">\(\varphi\)</span> is a formula such that all variables <a href="#OccurFree">occurring free</a> in <span class="math inline">\(\varphi\)</span> are included among <span class="math inline">\(v_1,\ldots,v_k\)</span>. Then for elements <span class="math inline">\(a_1,\ldots,a_k\)</span> of <span class="math inline">\(|\frak A|\)</span>, <span class="math display">\[
 \vDash_{\frak A}\varphi\llbracket a_1,\ldots,a_k\rrbracket
-\]</span></p>
+\]</span> means that <a href="#FirstOrderSatisfy"><span class="math inline">\(\frak A\)</span> satisfies <span class="math inline">\(\varphi\)</span></a> with some (and hence with any) function <span class="math inline">\(s:V\rightarrow|\frak A|\)</span> for which <span class="math inline">\(s(v_i)=a_i,1\le i\le k\)</span>.</p>
+<h4 id="Corollary22B">Corollary 22B</h4>
+<p>For a <a href="#FirstOrderSentence">sentence</a> <span class="math inline">\(\sigma\)</span>, either</p>
+<ol type="a">
+<li><span class="math inline">\(\frak A\)</span> <a href="#FirstOrderSatisfy">satisfies</a> <span class="math inline">\(\sigma\)</span> with every function <span class="math inline">\(s\)</span> from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak A|\)</span>, or</li>
+<li><span class="math inline">\(\frak A\)</span> does not satisfy <span class="math inline">\(\sigma\)</span> with any such function.</li>
+</ol>
+<h4 id="Model"><span class="math inline">\(\DEF\)</span> Truth and Models 模型</h4>
+<p>If alternative (a) of <a href="#Corollary22B">Corollary 22B</a> holds, then we say that <span class="math inline">\(\sigma\)</span> is <em>true</em> in <span class="math inline">\(\frak A\)</span> (written <span class="math inline">\(\vDash_{\frak A}\sigma\)</span>) or that <span class="math inline">\(\frak A\)</span> is a <em>model</em> of <span class="math inline">\(\sigma\)</span>.</p>
+<p>If alternative (b) holds, then <span class="math inline">\(\sigma\)</span> is <em>false</em> in <span class="math inline">\(\frak A\)</span>.</p>
+<p><span class="math inline">\(\frak A\)</span> is a <em>model</em> of a set <span class="math inline">\(\Sigma\)</span> of <a href="#FirstOrderSentence">sentences</a> iff it is a model of every member of <span class="math inline">\(\Sigma\)</span>.</p>
+<h4 id="LogicallyImply"><span class="math inline">\(\DEF\)</span> Logically Imply 逻辑蕴涵</h4>
+<p>Let <span class="math inline">\(\Gamma\)</span> be a set of <a href="#FirstOrderWff">wffs</a>, <span class="math inline">\(\varphi\)</span> a wff. Then <span class="math inline">\(\Gamma\)</span> <em>logically implies</em> <span class="math inline">\(\varphi\)</span>, written <span class="math inline">\(\Gamma\vDash\varphi\)</span>, iff for every <a href="#Structure">structure</a> <span class="math inline">\(\frak A\)</span> for the language and every function <span class="math inline">\(s:V\rightarrow|\frak A|\)</span> such that <span class="math inline">\(\frak A\)</span> <a href="#FirstOrderSatisfy">satisfies</a> every member of <span class="math inline">\(\Gamma\)</span> with <span class="math inline">\(s\)</span>, <span class="math inline">\(\frak A\)</span> also satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span>.</p>
+<p>As before we will write &quot;<span class="math inline">\(\gamma\vDash\varphi\)</span>&quot; in place of &quot;<span class="math inline">\(\{\gamma\}\vDash\varphi\)</span>&quot;.</p>
+<h4 id="LogicallyEquivalent"><span class="math inline">\(\DEF\)</span> Logically Equivalent 逻辑等价</h4>
+<p>Say that <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are <em>logically equivalent</em> () iff <span class="math inline">\(\varphi\vDash\psi\)</span> and <span class="math inline">\(\psi\vDash\varphi\)</span>.</p>
+<h4 id="ValidWff"><span class="math inline">\(\DEF\)</span> Valid wff 恒真公式</h4>
+<p>A wff <span class="math inline">\(\varphi\)</span> is <em>valid</em> iff <span class="math inline">\(\varnothing\vDash\varphi\)</span> (written simply &quot;<span class="math inline">\(\vDash\varphi\)</span>&quot;).</p>
+<h4 id="Corollary22C">Corollary 22C</h4>
+<p>For a set <span class="math inline">\(\Sigma;\tau\)</span> of <a href="#FirstOrderSentence">sentences</a>, <span class="math inline">\(\Sigma\vDash\tau\)</span> iff every <a href="#Model">model</a> of <span class="math inline">\(\Sigma\)</span> is also a model of <span class="math inline">\(\tau\)</span>, A sentence <span class="math inline">\(\tau\)</span> is <a href="#ValidWff">valid</a> iff it is <a href="#Model">true</a> in every structure.</p>
 
     </div>
 
@@ -612,7 +639,7 @@ d &amp; \text{if} &amp; y=x. \\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#modification-history"><span class="nav-text">Modification History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FirstOrderLogic"><span class="nav-text">Chapter Two. First-Order Logic 一阶逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Section2.1"><span class="nav-text">Section 2.1 First-Order Language 一阶语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSymbol"><span class="nav-text">\(\DEF\) Symbol 符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderExpression"><span class="nav-text">\(\DEF\) Expression 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Term"><span class="nav-text">\(\DEF\) Term 项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AtomicFormula"><span class="nav-text">\(\DEF\) Atomic Formulas 原子公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderWff"><span class="nav-text">\(\DEF\) Well-Formed Formulas, (wffs, or just formulas) 合式公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OccurFree"><span class="nav-text">\(\DEF\) occur free in the wff 自由出现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSentenc"><span class="nav-text">\(\DEF\) Sentence 命题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Notation"><span class="nav-text">On Notation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exercises2.1"><span class="nav-text">Exercises 2.1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-1"><span class="nav-text">Problem 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-2"><span class="nav-text">Problem 2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-3"><span class="nav-text">Problem 3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Section2.2"><span class="nav-text">Section 2.2 Truth and Models 真值与模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Structure"><span class="nav-text">\(\DEF\) Structure 结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSatisfy"><span class="nav-text">\(\DEF\) \(\frak A\) satisfies \(\varphi\) with \(s\) 结构\(\frak A\)以 变量的取值函数\(s\)满足合式公式\(\varphi\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Theroem22A"><span class="nav-text">Theorem 22A</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#modification-history"><span class="nav-text">Modification History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FirstOrderLogic"><span class="nav-text">Chapter Two. First-Order Logic 一阶逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Section2.1"><span class="nav-text">Section 2.1 First-Order Language 一阶语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSymbol"><span class="nav-text">\(\DEF\) Symbol 符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderExpression"><span class="nav-text">\(\DEF\) Expression 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Term"><span class="nav-text">\(\DEF\) Term 项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AtomicFormula"><span class="nav-text">\(\DEF\) Atomic Formulas 原子公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderWff"><span class="nav-text">\(\DEF\) Well-Formed Formulas, (wffs, or just formulas) 合式公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OccurFree"><span class="nav-text">\(\DEF\) occur free in the wff 自由出现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSentence"><span class="nav-text">\(\DEF\) Sentence 命题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Notation"><span class="nav-text">On Notation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exercises2.1"><span class="nav-text">Exercises 2.1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-1"><span class="nav-text">Problem 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-2"><span class="nav-text">Problem 2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-3"><span class="nav-text">Problem 3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Section2.2"><span class="nav-text">Section 2.2 Truth and Models 真值与模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Structure"><span class="nav-text">\(\DEF\) Structure 结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FirstOrderSatisfy"><span class="nav-text">\(\DEF\) \(\frak A\) satisfies \(\varphi\) with \(s\) 结构\(\frak A\)以 变量的取值函数\(s\)满足合式公式\(\varphi\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Theroem22A"><span class="nav-text">Theorem 22A</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Corollary22B"><span class="nav-text">Corollary 22B</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model"><span class="nav-text">\(\DEF\) Truth and Models 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LogicallyImply"><span class="nav-text">\(\DEF\) Logically Imply 逻辑蕴涵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LogicallyEquivalent"><span class="nav-text">\(\DEF\) Logically Equivalent 逻辑等价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ValidWff"><span class="nav-text">\(\DEF\) Valid wff 恒真公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Corollary22C"><span class="nav-text">Corollary 22C</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
