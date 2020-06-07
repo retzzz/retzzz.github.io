@@ -486,7 +486,7 @@ h(f^{\frak A}(a_1,\ldots,a_n))=f^{\frak B}(h(a_1),\ldots,h(a_n)).
 <h5 id="HomomorphismTheorem">Homomorphism Theorem 同态定理</h5>
 <p>Let <span class="math inline">\(h\)</span> be a <a href="#Homomorphism">homomorphism</a> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span>, and let <span class="math inline">\(s\)</span> map the set of variables into <span class="math inline">\(|{\frak A}|\)</span>.</p>
 <ol type="a">
-<li><p>For any <a href="#Term">term</a> <span class="math inline">\(t\)</span>, we have <span class="math inline">\(h(\overline{s}(t))=\overline{h\circ s}(t)\)</span>, where <a href="#Function_s_V2A"><span class="math inline">\(\overline{s}(t)\)</span></a> is computed in <span class="math inline">\({\frak A}\)</span> and <span class="math inline">\(\overline{h\circ s}(t)\)</span> is computed in <span class="math inline">\({\frak B}\)</span>.</p></li>
+<li><p>For any <a href="#Term">term</a> <span class="math inline">\(t\)</span>, we have <span class="math inline">\(\href{ #Homomorphism}{h}(\overline{s}(t))=\overline{h\circ s}(t)\)</span>, where <a href="#Function_s_V2A"><span class="math inline">\(\overline{s}(t)\)</span></a> is computed in <span class="math inline">\({\frak A}\)</span> and <span class="math inline">\(\overline{h\circ s}(t)\)</span> is computed in <span class="math inline">\({\frak B}\)</span>.</p></li>
 <li>For any quantifier-free formula α not containing the equality symbol, <span class="math display">\[
 \vDash_{\frak A}\alpha[s]\quad\text{iff}\quad\vDash_{\frak B}\alpha[h\circ s].
 \]</span></li>
@@ -506,6 +506,10 @@ h(f^{\frak A}(a_1,\ldots,a_n))=f^{\frak B}(h(a_1),\ldots,h(a_n)).
 <p>Let h be an <a href="#Automorphism">automorphism</a> of the structure <span class="math inline">\({\frak A}\)</span>, and let <span class="math inline">\(R\)</span> be an <span class="math inline">\(n\)</span>-ary relation on <span class="math inline">\(|{\frak A}|\)</span> <a href="#Define">definable</a> in <span class="math inline">\({\frak A}\)</span>. Then for any <span class="math inline">\(a_1,\ldots,a_n\)</span> in <span class="math inline">\(|{\frak A}|\)</span>, <span class="math display">\[
 \langle a_1,\ldots,a_n\rangle\in R\Leftrightarrow\langle h(a_1),\ldots,h(a_n)\rangle\in R
 \]</span></p>
+<p>这个推论可以用于证明给定的关系在某个结构下不可定义. 当我们能够找到一个在结构<span class="math inline">\({\frak A}\)</span>里构成自同构的函数<span class="math inline">\(h\)</span>时, 如果某个给定的关系不满足于上面的条件 <span class="math inline">\(\langle a_1,\ldots,a_n\rangle\in R\Leftrightarrow\langle h(a_1),\ldots,h(a_n)\rangle\in R\)</span>, 就可以说明这个关系在结构<span class="math inline">\({\frak A}\)</span>下是不可定义的.</p>
+<h4 id="exercises">Exercises</h4>
+<h5 id="problem-1-1">Problem 1</h5>
+<p>Show that (a) <span class="math inline">\(\Gamma;\alpha\vDash\varphi\)</span> iff <span class="math inline">\(\Gamma\vDash(\alpha\rightarrow\varphi)\)</span>; and (b) <span class="math inline">\(\varphi\tauequ\psi\)</span> iff <span class="math inline">\(\vDash(\varphi\leftrightarrow\psi)\)</span>.</p>
 ]]></content>
       <categories>
         <category>数学</category>
