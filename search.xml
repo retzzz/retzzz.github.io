@@ -126,7 +126,7 @@
   <entry>
     <title>A Mathematical Introduction to Logic Chapter 2</title>
     <url>//4ea3d2b5/</url>
-    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span> <span class="math inline">\(\def\llbracket{\unicode{x27E6}}\)</span> <span class="math inline">\(\def\rrbracket{\unicode{x27E7}}\)</span></p>
+    <content><![CDATA[<p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span> <span class="math inline">\(\def\DEFi{\sf{D\scriptsize EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span> <span class="math inline">\(\def\DEFin{\sf{D\scriptsize EF}^*_*.\quad}\)</span> <span class="math inline">\(\def\llbracket{\unicode{x27E6}}\)</span> <span class="math inline">\(\def\rrbracket{\unicode{x27E7}}\)</span> <span class="math inline">\(\def\PROOF{\sf{P\scriptsize ROOF}.\quad}\)</span></p>
 <p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical Introduction to Logic, 作者<a href="https://en.wikipedia.org/wiki/Herbert_Enderton" target="_blank" rel="noopener">Herbert B. Enderton</a>, University of California</p>
 <p>本文是Chapter 2, 前面Chapter 0 和Chapter 1在<a href="/4322cf33">这里</a></p>
 <a id="more"></a>
@@ -172,6 +172,10 @@
 <tr class="even">
 <td>2020-06-06</td>
 <td>Update Section 2.2, Definability, a Class of Structures, Homomorphisms</td>
+</tr>
+<tr class="odd">
+<td>2020-06-09</td>
+<td>Update Section 2.2, exercise-problem 1</td>
 </tr>
 </tbody>
 </table>
@@ -370,9 +374,9 @@
 </ol>
 <ol type="1">
 <li>For atomic formulas, the definition is above.</li>
-<li><span class="math inline">\(\vDash_{\frak A}\lnot\varphi[s]\)</span> iff <span class="math inline">\(\nvDash_{\frak A}\varphi[s].\)</span></li>
-<li><span class="math inline">\(\vDash_{\frak A}(\varphi\rightarrow\psi)[s]\)</span> iff either <span class="math inline">\(\nvDash_{\frak A}\varphi[s]\)</span> or <span class="math inline">\(\vDash_{\frak A}\psi[s]\)</span> or both.</li>
-<li><span class="math inline">\(\vDash_{\frak A}\forall x\varphi[s]\)</span> iff for every <span class="math inline">\(d\in|\frak A|\)</span>, we have <span class="math inline">\(\vDash_{\frak A}\varphi[s(x|d)]\)</span>.</li>
+<li><span id="SatisfyNegationSymbol"><span class="math inline">\(\vDash_{\frak A}\lnot\varphi[s]\)</span></span> iff <span class="math inline">\(\nvDash_{\frak A}\varphi[s].\)</span></li>
+<li><span id="SatisfyConditionalSymbol"><span class="math inline">\(\vDash_{\frak A}(\varphi\rightarrow\psi)[s]\)</span></span> iff either <span class="math inline">\(\nvDash_{\frak A}\varphi[s]\)</span> or <span class="math inline">\(\vDash_{\frak A}\psi[s]\)</span> or both.</li>
+<li><span id="SatisfyQuantifierSymbol"><span class="math inline">\(\vDash_{\frak A}\forall x\varphi[s]\)</span></span> iff for every <span class="math inline">\(d\in|\frak A|\)</span>, we have <span class="math inline">\(\vDash_{\frak A}\varphi[s(x|d)]\)</span>.</li>
 </ol>
 <p>Here <span class="math inline">\(s(x|d)\)</span> is the <a href="/4322cf33#Function">function</a> which is exactly like <a href="#Function_s_V2A"><span class="math inline">\(s\)</span></a> except for one thing: At the variable x it assumes the value d. This can be expressed by the equation <span class="math display">\[
 s(x|d)(y)=\left\{
@@ -510,6 +514,38 @@ h(f^{\frak A}(a_1,\ldots,a_n))=f^{\frak B}(h(a_1),\ldots,h(a_n)).
 <h4 id="exercises">Exercises</h4>
 <h5 id="problem-1-1">Problem 1</h5>
 <p>Show that (a) <span class="math inline">\(\Gamma;\alpha\vDash\varphi\)</span> iff <span class="math inline">\(\Gamma\vDash(\alpha\rightarrow\varphi)\)</span>; and (b) <span class="math inline">\(\varphi\tauequ\psi\)</span> iff <span class="math inline">\(\vDash(\varphi\leftrightarrow\psi)\)</span>.</p>
+<p><span class="math inline">\(\PROOF\)</span><cr></cr></p>
+<ol type="a">
+<li><span class="math display">\[
+\begin{array}{lcll}
+\Gamma;\alpha\vDash\varphi &amp; \Leftrightarrow &amp; \forall\psi\forall{\frak A}\forall{s}(\psi\in\Gamma;\alpha\land\vDash_{\frak A}\psi[s]\rightarrow\vDash_{\frak A}\varphi[s]) &amp; (\text{   definition of }\href{ #LogicallyImply}{\text{logical imply}}) \\
+&amp; \Leftrightarrow &amp; \left\{\begin{array}{l}
+                 \forall\psi\forall{\frak A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak A}\psi[s]\land\nvDash_{\frak A}\alpha[s]\rightarrow\vDash_{\frak A}\varphi[s]) \\
+                 \forall{\frak A}\forall{s}(\vDash_{\frak A}\alpha[s]\rightarrow\vDash_{\frak A}\varphi[s])
+                 \end{array}
+                 \right. \\
+&amp; \Leftrightarrow &amp; \forall\psi\forall{\frak A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak A}\psi[s]\rightarrow(\nvDash_{\frak A}\alpha[s]\lor\vDash_{\frak A}\varphi[s]\lor(\vDash_{\frak A}\alpha[s]\land\vDash_{\frak A}\varphi[s]))) \\
+&amp; \Leftrightarrow &amp; \forall\psi\forall{\frak A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak A}\psi[s]\rightarrow\vDash_{\frak A}(\alpha\rightarrow\varphi)[s]) &amp;  (\text{   definition of } \href{ #SatisfyConditionalSymbol}{\vDash_{\frak A}(\alpha\rightarrow\varphi)[s]}) \\
+&amp; \Leftrightarrow &amp; \Gamma\vDash(\alpha\rightarrow\varphi) &amp; (\text{   definition of logical imply})
+\end{array}
+\]</span></li>
+<li><span class="math display">\[
+\begin{array}{lcll}
+\varphi\tauequ\psi &amp; \Leftrightarrow &amp; \varphi\vDash\psi\land\psi\vDash\varphi \\
+&amp; \Leftrightarrow &amp; \vDash(\varphi\rightarrow\psi)\land\vDash(\psi\rightarrow\varphi) &amp; (\text{according to (a)}) \\
+&amp; \Leftrightarrow &amp; \forall{\frak A}\forall{s}(\vDash_{\frak A}(\varphi\rightarrow\psi)[s]\land\vDash_{\frak A}(\psi\rightarrow\varphi)[s]) \\
+&amp; \Leftrightarrow &amp; \forall{\frak A}\forall{s}(\vDash_{\frak A}(\varphi\rightarrow\psi\land\psi\rightarrow\varphi)[s]) \\
+&amp; \Leftrightarrow &amp; \vDash(\varphi\leftrightarrow\psi)
+\end{array}
+\]</span></li>
+</ol>
+<h5 id="problem-2-1">Problem 2</h5>
+<p>Show that no one of the following sentences is logically implied by the other two. (This is done by giving a structure in which the sentence in question is false, while the other two are true.)</p>
+<ol type="a">
+<li><span class="math inline">\(\forall{x}\forall{y}\forall{z}(Pxy\rightarrow Pyz\rightarrow Pxz).\)</span> Recall that by our convention <span class="math inline">\(\alpha\rightarrow\beta\rightarrow\gamma\)</span> is <span class="math inline">\(\alpha\rightarrow(\beta\rightarrow\gamma).\)</span></li>
+<li><span class="math inline">\(\forall{x}\forall{y}(Pxy\rightarrow Pyz\rightarrow x=y).\)</span></li>
+<li><span class="math inline">\(\forall{x}\exists{y}Pxy\rightarrow\exists{y}\forall{x}Pxy.\)</span></li>
+</ol>
 ]]></content>
       <categories>
         <category>数学</category>
