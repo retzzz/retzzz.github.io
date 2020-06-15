@@ -211,6 +211,508 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/3c98bdf2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/3c98bdf2/" class="post-title-link" itemprop="url">在启动时用subst映射目录到虚拟盘</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-08 22:28:11 / 修改时间：22:57:34" itemprop="dateCreated datePublished" datetime="2020-05-08T22:28:11+08:00">2020-05-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>subst可以把一个目录虚拟成一个驱动盘, 比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subst I: &quot;C:\Users\Username\OneDrive - XXX&quot;</span><br></pre></td></tr></table></figure></p>
+<p>但有个问题, 重启电脑之后上一次的配置失效, 需要重新设置. 如何才能让电脑记住之前的设置呢?</p>
+<p><a href="https://superuser.com/questions/29072/how-to-make-subst-mapping-persistent-across-reboots" target="_blank" rel="noopener">StackExchange上的这篇</a>给出几个解决方案.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/3c98bdf2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/38e06c9c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/38e06c9c/" class="post-title-link" itemprop="url">choco-install</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-08 22:27:33 / 修改时间：22:58:17" itemprop="dateCreated datePublished" datetime="2020-05-08T22:27:33+08:00">2020-05-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a>是windows上的包管理系统, 类似于Linux上的yum或者apt.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/38e06c9c/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/6146c48/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/6146c48/" class="post-title-link" itemprop="url">TeX Math Syntax</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-02 11:57:56" itemprop="dateCreated datePublished" datetime="2020-05-02T11:57:56+08:00">2020-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-11 10:16:56" itemprop="dateModified" datetime="2020-05-11T10:16:56+08:00">2020-05-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="a-brief-introduction-to-latex-math-symbols">A brief introduction to LaTeX math symbols</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/6146c48/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/8c589a05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/8c589a05/" class="post-title-link" itemprop="url">汇率基本概念的学习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-02 09:22:17 / 修改时间：09:26:47" itemprop="dateCreated datePublished" datetime="2020-05-02T09:22:17+08:00">2020-05-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">经济学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E6%B1%87%E7%8E%87/" itemprop="url" rel="index"><span itemprop="name">汇率</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以下是我在薛兆丰的经济学课上学习汇率之后, 对汇率的理解.</p>
+<h2 id="决定汇率的三个因素">决定汇率的三个因素</h2>
+<ol type="1">
+<li>国际资源供求关系.</li>
+</ol>
+<p>汇率是由甲国人民对乙国资源的需求，以及乙国人民对甲国资源的需求共同决定的。如果一国人民对另一国资源完全没有需求，那么两国就不存在汇率；如果甲国人民对乙国资源的需求增加，在其他条件不变的情况下，甲国的货币就会相对乙国货币贬值。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/8c589a05/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/dc9af5aa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/dc9af5aa/" class="post-title-link" itemprop="url">vim plugin介绍之LeaderF</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 23:21:10" itemprop="dateCreated datePublished" datetime="2020-03-19T23:21:10+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-22 19:00:00" itemprop="dateModified" datetime="2020-03-22T19:00:00+08:00">2020-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>LeaderF现在基本是Vim最好的模糊查找插件. 其基本功能和演示可以参考作者Yggdroot的几篇文章介绍:</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/29137923" target="_blank" rel="noopener">让人相见恨晚的vim插件：模糊查找神器LeaderF</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/53680291" target="_blank" rel="noopener">vim 的模糊查找插件 LeaderF 新功能介绍</a></li>
+<li><a href="https://github.com/Yggdroot/LeaderF" target="_blank" rel="noopener">LeaderF官网</a></li>
+</ul>
+<p>本文是用来记录个人对工具的理解和学习过程. 记录各种应用场景里如何使用LeaderF, 如何配置.</p>
+<h2 id="什么是模糊查找">什么是模糊查找</h2>
+<p>模糊查找的应用场景特别常见. 就是在海量信息中查找你想要的信息.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/dc9af5aa/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/d0cb08b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/d0cb08b6/" class="post-title-link" itemprop="url">vim 监控文件是否在vim外部被修改的机制</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-09 23:20:54 / 修改时间：23:43:03" itemprop="dateCreated datePublished" datetime="2020-03-09T23:20:54+08:00">2020-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用vim或者neovim编辑文件时, 如果文件被外部应用修改, vim的监控机制是怎样的?</p>
+<p>过去用gvim, 每次焦点返回vim时, gvim都会提示我文件修改了是否要重载. 但是换到neovim上就不会提醒了.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/d0cb08b6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/88014cac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,295 +1058,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/c90ca996/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mingjian">
-      <meta itemprop="description" content="computer technical, avionics, mathmatics">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingjian's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/c90ca996/" class="post-title-link" itemprop="url">c++ compilers on Windows -- msvc vs gcc vs clang</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-23 18:12:00" itemprop="dateCreated datePublished" datetime="2018-09-23T18:12:00+08:00">2018-09-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-01 18:33:29" itemprop="dateModified" datetime="2019-11-01T18:33:29+08:00">2019-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">编译</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>平时的工作大部分是在<a href="https://www.ddci.com/products_deos_do_178c_arinc_653" target="_blank" rel="noopener">DEOS</a>上进行嵌入式软件的开发和测试. 对于在通用操作系统上的软件开发得时不时自己磨练一下. 这篇列出几个常见的在Windows可用的C++编译器的介绍, 以及如何安装使用.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/c90ca996/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/c9b396ad/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mingjian">
-      <meta itemprop="description" content="computer technical, avionics, mathmatics">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingjian's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/c9b396ad/" class="post-title-link" itemprop="url">无理数指数, 复数指数, 欧拉公式, 复对数</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-09 09:00:00" itemprop="dateCreated datePublished" datetime="2018-09-09T09:00:00+08:00">2018-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-01 18:33:29" itemprop="dateModified" datetime="2019-11-01T18:33:29+08:00">2019-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">分析</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90/%E5%A4%8D%E5%8F%98/" itemprop="url" rel="index"><span itemprop="name">复变</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="起因">起因</h2>
-<p>起因是最近在努力想把傅立叶级数和傅立叶变换重学一遍, 完全搞懂. 傅立叶变换用欧拉公式转换成复系数的形式看起来是非常优雅的. 但是遗憾我已经不记得欧拉公式是怎么来的了. 上网查了些资料, 终于搞清楚了.</p>
-<p>先把欧拉公式写在这里:</p>
-<p><span class="math display">\[
-\forall x \in \mathbb{R}, \quad
-\begin{equation*}
-e^{ix} = \cos x + i \sin x
-\end{equation*}
-\]</span></p>
-<p>这里<span class="math inline">\(\mathrm{e}\)</span>是自然对数的底, 也叫欧拉数. <span class="math inline">\(\mathrm{e} \approx 2.718\)</span>. <span class="math inline">\(i\)</span>是虚数单位.</p>
-<p>这个公式右边是一个关于<span class="math inline">\(x\)</span>的三角函数, 函数值落在复数数域里, 也就是一个<span class="math inline">\(\mathbb{R} \mapsto \mathbb{C}\)</span>的映射.</p>
-<p>而左边是一个指数为复数的指数函数. 可是, 指数为复数的幂运算是怎么定义的? 所以为了搞清楚所有这些概念. 需要把复数域幂运算, 复数域对数运算一起串起来. 写了这篇总结相信再不会忘记了.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/c9b396ad/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/9cbcca7a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mingjian">
-      <meta itemprop="description" content="computer technical, avionics, mathmatics">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingjian's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/9cbcca7a/" class="post-title-link" itemprop="url">通过hexo + NexT + github pages + 搭建个人博客(一)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-02 23:12:00" itemprop="dateCreated datePublished" datetime="2018-09-02T23:12:00+08:00">2018-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-01 22:43:35" itemprop="dateModified" datetime="2019-11-01T22:43:35+08:00">2019-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快.</p>
-<p>但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别人读, 将来也可以留给我儿子看:). 争取把前因后果和自己的思考过程交代清楚, 而不是只有技术要点的bullet. 因为我发现网上能帮助到我的别人的博客, 往往都是这种写的很罗嗦的文章.</p>
-<p>这篇作为第一篇, 就讲讲这个博客是怎么搭建起来的.</p>
-<h2 id="需求">需求</h2>
-<p>我自己给要搭建的博客定了如下一些需求:</p>
-<ol type="1">
-<li>能够使用markdown语法编辑博客内容.</li>
-<li>能够快速发布到网站.</li>
-<li>支持文章中的代码片段语法高亮.</li>
-<li>支持数学公式.</li>
-<li>支持分级标签.</li>
-<li>支持搜索.</li>
-<li>尽量少的网站管理工作.</li>
-</ol>
-<h2 id="方案">方案</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/9cbcca7a/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -910,7 +1128,7 @@ e^{ix} = \cos x + i \sin x
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -923,7 +1141,7 @@ e^{ix} = \cos x + i \sin x
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
