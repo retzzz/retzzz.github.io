@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
@@ -13,11 +13,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"retzzz.github.io","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"retzzz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
@@ -38,12 +38,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
   <title>tags | Mingjian's Blog
-  </title>
+</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
     <script>
@@ -115,14 +116,12 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Mingjian's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">You are just a hardcore character of the life game. Keep upgrading and don't die.</p>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Mingjian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">You are just a hardcore character of the life game. Keep upgrading and don't die.</p>
   </div>
 
   <div class="site-nav-right">
@@ -133,27 +132,28 @@
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -161,17 +161,18 @@
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="search-pop-overlay">
-  <div class="popup search-popup">
-      <div class="search-header">
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
@@ -185,10 +186,9 @@
   </div>
 </div>
 
+    </div>
   </div>
-</div>
 
-  </div>
 </div>
     </header>
 
@@ -206,10 +206,9 @@
   
   
 
-          <div class="content">
+          <div class="content page posts-expand">
             
 
-  <div class="posts-expand">
     
     
     
@@ -232,10 +231,10 @@
       <div class="post-body">
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-              目前共计 39 个标签
+              目前共计 40 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/Aviation/" style="font-size: 12px; color: #ccc">Aviation</a> <a href="/tags/Avionics/" style="font-size: 12px; color: #ccc">Avionics</a> <a href="/tags/Cross-Reference/" style="font-size: 12px; color: #ccc">Cross Reference</a> <a href="/tags/Cygwin/" style="font-size: 12px; color: #ccc">Cygwin</a> <a href="/tags/Enderton/" style="font-size: 30px; color: #111">Enderton</a> <a href="/tags/Euler-Formula/" style="font-size: 12px; color: #ccc">Euler Formula</a> <a href="/tags/LaTeX/" style="font-size: 12px; color: #ccc">LaTeX</a> <a href="/tags/LaTex/" style="font-size: 12px; color: #ccc">LaTex</a> <a href="/tags/LeaderF/" style="font-size: 12px; color: #ccc">LeaderF</a> <a href="/tags/Logic/" style="font-size: 30px; color: #111">Logic</a> <a href="/tags/Markdown/" style="font-size: 12px; color: #ccc">Markdown</a> <a href="/tags/MathJax/" style="font-size: 18px; color: #8e8e8e">MathJax</a> <a href="/tags/Mathematical-Logic/" style="font-size: 30px; color: #111">Mathematical Logic</a> <a href="/tags/MinGW/" style="font-size: 12px; color: #ccc">MinGW</a> <a href="/tags/NexT/" style="font-size: 18px; color: #8e8e8e">NexT</a> <a href="/tags/TeX/" style="font-size: 12px; color: #ccc">TeX</a> <a href="/tags/Tex/" style="font-size: 12px; color: #ccc">Tex</a> <a href="/tags/VC/" style="font-size: 12px; color: #ccc">VC</a> <a href="/tags/Weight-Loss/" style="font-size: 12px; color: #ccc">Weight Loss</a> <a href="/tags/ast/" style="font-size: 12px; color: #ccc">ast</a> <a href="/tags/choco/" style="font-size: 18px; color: #8e8e8e">choco</a> <a href="/tags/chocolatey/" style="font-size: 12px; color: #ccc">chocolatey</a> <a href="/tags/clang/" style="font-size: 12px; color: #ccc">clang</a> <a href="/tags/compiler/" style="font-size: 12px; color: #ccc">compiler</a> <a href="/tags/exchange-rate/" style="font-size: 12px; color: #ccc">exchange-rate</a> <a href="/tags/exponential-function/" style="font-size: 12px; color: #ccc">exponential function</a> <a href="/tags/gcc/" style="font-size: 12px; color: #ccc">gcc</a> <a href="/tags/github/" style="font-size: 12px; color: #ccc">github</a> <a href="/tags/hexo/" style="font-size: 18px; color: #8e8e8e">hexo</a> <a href="/tags/instrument/" style="font-size: 12px; color: #ccc">instrument</a> <a href="/tags/logarithm-function/" style="font-size: 12px; color: #ccc">logarithm function</a> <a href="/tags/neovim/" style="font-size: 24px; color: #4f4f4f">neovim</a> <a href="/tags/power-function/" style="font-size: 12px; color: #ccc">power function</a> <a href="/tags/psubst/" style="font-size: 12px; color: #ccc">psubst</a> <a href="/tags/python/" style="font-size: 12px; color: #ccc">python</a> <a href="/tags/reading-notes/" style="font-size: 12px; color: #ccc">reading notes</a> <a href="/tags/subst/" style="font-size: 12px; color: #ccc">subst</a> <a href="/tags/tag/" style="font-size: 12px; color: #ccc">tag</a> <a href="/tags/vim/" style="font-size: 24px; color: #4f4f4f">vim</a>
+              <a href="/tags/Aviation/" style="font-size: 12px; color: #ccc">Aviation</a> <a href="/tags/Avionics/" style="font-size: 12px; color: #ccc">Avionics</a> <a href="/tags/Cross-Reference/" style="font-size: 12px; color: #ccc">Cross Reference</a> <a href="/tags/Cygwin/" style="font-size: 12px; color: #ccc">Cygwin</a> <a href="/tags/Enderton/" style="font-size: 30px; color: #111">Enderton</a> <a href="/tags/Euler-Formula/" style="font-size: 12px; color: #ccc">Euler Formula</a> <a href="/tags/LaTeX/" style="font-size: 12px; color: #ccc">LaTeX</a> <a href="/tags/LaTex/" style="font-size: 12px; color: #ccc">LaTex</a> <a href="/tags/LeaderF/" style="font-size: 12px; color: #ccc">LeaderF</a> <a href="/tags/Logic/" style="font-size: 30px; color: #111">Logic</a> <a href="/tags/Markdown/" style="font-size: 12px; color: #ccc">Markdown</a> <a href="/tags/MathJax/" style="font-size: 18px; color: #8e8e8e">MathJax</a> <a href="/tags/Mathematical-Logic/" style="font-size: 30px; color: #111">Mathematical Logic</a> <a href="/tags/MinGW/" style="font-size: 12px; color: #ccc">MinGW</a> <a href="/tags/NexT/" style="font-size: 18px; color: #8e8e8e">NexT</a> <a href="/tags/TeX/" style="font-size: 12px; color: #ccc">TeX</a> <a href="/tags/Tex/" style="font-size: 12px; color: #ccc">Tex</a> <a href="/tags/VC/" style="font-size: 12px; color: #ccc">VC</a> <a href="/tags/Weight-Loss/" style="font-size: 12px; color: #ccc">Weight Loss</a> <a href="/tags/ast/" style="font-size: 12px; color: #ccc">ast</a> <a href="/tags/choco/" style="font-size: 18px; color: #8e8e8e">choco</a> <a href="/tags/chocolatey/" style="font-size: 12px; color: #ccc">chocolatey</a> <a href="/tags/clang/" style="font-size: 12px; color: #ccc">clang</a> <a href="/tags/compiler/" style="font-size: 12px; color: #ccc">compiler</a> <a href="/tags/exchange-rate/" style="font-size: 12px; color: #ccc">exchange-rate</a> <a href="/tags/exponential-function/" style="font-size: 12px; color: #ccc">exponential function</a> <a href="/tags/gcc/" style="font-size: 12px; color: #ccc">gcc</a> <a href="/tags/github/" style="font-size: 12px; color: #ccc">github</a> <a href="/tags/hexo/" style="font-size: 18px; color: #8e8e8e">hexo</a> <a href="/tags/instrument/" style="font-size: 12px; color: #ccc">instrument</a> <a href="/tags/logarithm-function/" style="font-size: 12px; color: #ccc">logarithm function</a> <a href="/tags/name-resolution/" style="font-size: 12px; color: #ccc">name-resolution</a> <a href="/tags/neovim/" style="font-size: 24px; color: #4f4f4f">neovim</a> <a href="/tags/power-function/" style="font-size: 12px; color: #ccc">power function</a> <a href="/tags/psubst/" style="font-size: 12px; color: #ccc">psubst</a> <a href="/tags/python/" style="font-size: 18px; color: #8e8e8e">python</a> <a href="/tags/reading-notes/" style="font-size: 12px; color: #ccc">reading notes</a> <a href="/tags/subst/" style="font-size: 12px; color: #ccc">subst</a> <a href="/tags/tag/" style="font-size: 12px; color: #ccc">tag</a> <a href="/tags/vim/" style="font-size: 24px; color: #4f4f4f">vim</a>
             </div>
           </div>
         
@@ -249,7 +248,6 @@
     
     
     
-  </div>
 
 
           </div>
@@ -314,7 +312,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -327,14 +325,14 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo → https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav&#x3D;1&amp;wvr&#x3D;6&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo → https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav&#x3D;1&amp;wvr&#x3D;6&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
@@ -354,19 +352,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2018 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Mingjian</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -437,23 +434,24 @@
 
 
 <script>
-if (document.querySelectorAll('div.pdf').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
-    document.querySelectorAll('div.pdf').forEach(element => {
-      PDFObject.embed(element.getAttribute('target'), element, {
-        pdfOpenParams: {
-          navpanes : 0,
-          toolbar  : 0,
-          statusbar: 0,
-          pagemode : 'thumbs',
-          view     : 'FitH'
-        },
-        PDFJS_URL: '/lib/pdf/web/viewer.html',
-        height   : element.getAttribute('height') || '500px'
-      });
-    });
-  }, window.PDFObject);
-}
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
 </script>
 
 
