@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"retzzz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这三个概念是Python为了解决容器对象遍历问题抽象出来的概念. 三者之间的关系是:\(\text{generator}\subset\text{iterator}\subset\text{iterable}\).">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python iterable vs iterator vs generator">
+<meta property="og:url" content="https://retzzz.github.io/b55edfb5/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="这三个概念是Python为了解决容器对象遍历问题抽象出来的概念. 三者之间的关系是:\(\text{generator}\subset\text{iterator}\subset\text{iterable}\).">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-03T11:08:10.000Z">
+<meta property="article:modified_time" content="2020-12-03T15:11:07.626Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="ast">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://retzzz.github.io/b55edfb5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python iterable vs iterator vs generator | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-160618774-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script>
+    !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");
+    gio('init', 'abf47f3a6db226d1', {});
+    gio('send');
+  </script>
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Mingjian's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">You are just a hardcore character of the life game. Keep upgrading and don't die.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/b55edfb5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+      <meta itemprop="description" content="computer technical, avionics, mathmatics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python iterable vs iterator vs generator
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-03 19:08:10 / 修改时间：23:11:07" itemprop="dateCreated datePublished" datetime="2020-12-03T19:08:10+08:00">2020-12-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这三个概念是Python为了解决容器对象遍历问题抽象出来的概念. 三者之间的关系是:<span class="math inline">\(\text{generator}\subset\text{iterator}\subset\text{iterable}\)</span>.</p>
+<a id="more"></a>
+<h2 id="可迭代对象-iterable">可迭代对象 iterable</h2>
+<p>Python<a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-iterable">官方文档</a>的定义如下:</p>
+<blockquote>An object capable of returning its members one at a time.</blockquote>
+<p>定义非常抽象, 中文翻译的也算精准, 凡是能够一次返回一个成员的容器对象都是可迭代对象. 理解上可以把<strong>可迭代对象</strong>对应数学上的<strong>可数集</strong>.(容器对象对应数学上的集合)</p>
+<p>可数集分为有限可数集和无限可数集, iterable也分两类: sequence和iterator. 其中序列(sequence)对应数学里的有限可数集, 迭代器(iterator)可以类比于无限可数集(其实也是有限的, 只不过长度未知).</p>
+<p>后面再分别细说这两种对象, 先说一下可迭代对象的用处. 最常用的是用在<code>for</code>语句里(所以有些文章会把iterable定义为可以用在<code>for</code>语句<code>in</code>后面的对象). 当然还有很多其他语句里可以使用iterable. 比如built-in函数<code>zip()</code>,<code>map()</code>等, 或者推导式(comprehension). 但本质上还是<code>for</code>语句的变体. 这里解释一下for语句在python里的本质.</p>
+<p>下面的<code>for</code>语句: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> member <span class="keyword">in</span> iterable_obj:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># statement_block</span></span><br></pre></td></tr></table></figure></p>
+<p>实际上python是按照如下进行实现的: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先获得Iterator对象:</span></span><br><span class="line">iterator_obj = <span class="built_in">iter</span>(iterable_obj)</span><br><span class="line"><span class="comment"># 循环:</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 获得下一个值:</span></span><br><span class="line">        member = <span class="built_in">next</span>(iterator_obj)</span><br><span class="line">        <span class="comment"># statement_block</span></span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        <span class="comment"># 遇到StopIteration就退出循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></p>
+<p>这里built-in函数<code>iter()</code>和<code>next()</code>后面再详细解释.</p>
+<p>判断一个对象是否是iterable, 一般来说可以通过下面的方法. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="built_in">isinstance</span>(obj,Iterable)</span><br></pre></td></tr></table></figure> 这个方法的实现其实就是通过它是否具有<code>__iter__()</code>方法来判断的. 也就是说所有的iterable都必须具有<code>__iter__()</code>方法, 该方法返回一个后面会介绍的迭代器iterator. 这个方法也叫做迭代协议, 也就是说满足这个协议的对象可以迭代.</p>
+<p>但是, 事实上不是所有能够用到for语句中的对象都能通过上面的检验. 比如说一些用户定义的sequence就可以没有<code>__iter__()</code>方法, 但依然可以通过<code>for</code>语句来遍历. 想要确定一个对象是否可以遍历(即数学上可数的), 可以用如下函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def isIterable(x):</span><br><span class="line">    try:</span><br><span class="line">        iter(x)</span><br><span class="line">        return True</span><br><span class="line">    except:</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<p>这里提到的概念<code>sequence</code>, built-in函数<code>iter()</code>, 特殊方法<code>__iter__()</code>将在后面介绍.</p>
+<h2 id="序列-sequence">序列 sequence</h2>
+<p>Python<a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-sequence">官方文档</a>的定义如下:</p>
+<blockquote>An iterable which supports efficient element access using integer indices via the __getitem__() special method and defines a __len__() method that returns the length of the sequence.</blockquote>
+<p>即能够做下面两种行为的iterable被叫做序列:</p>
+<ol type="1">
+<li>能够通过<strong>整数</strong>索引来做成员访问. 即具有方法<code>__getitem__()</code>并其参数可以是整数.</li>
+<li>能够获得长度, 即具有方法<code>__len__()</code>. 这也是为什么前面说sequence可以类比于有限可数集. 因为其具有长度.</li>
+</ol>
+<p>这两个特殊方法合起来叫做序列协议(sequence protocol).</p>
+<p>python built-in sequence类型<code>list</code>, <code>str</code>, <code>tuple</code>, and <code>bytes</code>. 注意<code>dict</code>虽然也有方法<code>__getitem__()</code>和<code>__len__()</code>, 但被认为是mapping而不是sequence, 因为不满足上面说的通过<strong>整数</strong>索引.</p>
+<p>这里也印证了前面一节说的sequence可以没有<code>__iter__()</code>方法, 因为定义里没提. 当然最好同时实现这个方法, 使其成为一个标准的iterable.</p>
+<h2 id="迭代器-iterator">迭代器 iterator</h2>
+<p>Python<a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-iterator">官方文档</a>的定义如下:</p>
+<blockquote>An object representing a stream of data. Repeated calls to the iterator’s __next__() method (or passing it to the built-in function next()) return successive items in the stream. When no more data are available a StopIteration exception is raised instead. At this point, the iterator object is exhausted and any further calls to its __next__() method just raise StopIteration again. Iterators are required to have an __iter__() method that returns the iterator object itself so every iterator is also iterable and may be used in most places where other iterables are accepted.</blockquote>
+<p>迭代器是一种数据流的抽象. 迭代器的具体实现也是有两个行为:</p>
+<ol type="1">
+<li>实现<code>__next__()</code>方法, 这个方法返回的是数据流中的下一个成员. 当所有成员都遍历过了, 再次调用方法<code>__next__()</code>, 必须抛出<code>StopIteration</code>异常代表迭代器耗尽. python built-in函数<code>next(obj)</code>等效于调用<code>obj.__next__()</code>.</li>
+<li>实现<code>__iter__()</code>方法返回迭代器对象自身. 这个方法必须要有, 使对象成为iterable对象.</li>
+</ol>
+<p>这两个方法合起来叫做迭代器协议(iterator protocol), 也就是说只要实现了这个协议的对象都成为迭代器. 可见满足迭代器协议的对象一定也满足迭代协议.</p>
+<p>讲到这里就可以回到文章刚开始提起<code>for</code>循环的本质 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先获得Iterator对象:</span></span><br><span class="line">iterator_obj = <span class="built_in">iter</span>(iterable_obj)</span><br><span class="line"><span class="comment"># 循环:</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 获得下一个值:</span></span><br><span class="line">        member = <span class="built_in">next</span>(iterator_obj)</span><br><span class="line">        <span class="comment"># statement_block</span></span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        <span class="comment"># 遇到StopIteration就退出循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></p>
+<p>里面的built-in函数<code>next()</code>已经知道是什么意思了. 现在说一下<code>iter()</code>.</p>
+<p>Python<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#iter">官方文档</a>对这个内置函数描述如下:</p>
+<blockquote>iter(object[, sentinel])
+    Return an iterator object. The first argument is interpreted very differently depending on the presence of the second argument. Without a second argument, object must be a collection object which supports the iteration protocol (the __iter__() method), or it must support the sequence protocol (the __getitem__() method with integer arguments starting at 0). If it does not support either of those protocols, TypeError is raised. If the second argument, sentinel, is given, then object must be a callable object. The iterator created in this case will call object with no arguments for each call to its __next__() method; if the value returned is equal to sentinel, StopIteration will be raised, otherwise the value will be returned.</blockquote>
+<p>即这个函数会返回一个iterator对象.</p>
+<p><strong>如果没有第二个参数</strong>, 第一个参数</p>
+<ol type="1">
+<li>如果对象满足迭代协议, <code>obj.__iter__()</code>将被调用, 其返回值作为<code>iter(obj)</code>的返回值.</li>
+<li>如果对象满足序列协议, Python会自动通过<code>__getitem__</code>和<code>__len__</code>方法自动产生一个迭代器, 大致上<code>iter(obj)</code>等价于:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter</span>(<span class="params">obj</span>):</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">sequence_iter</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, obj</span>):</span></span><br><span class="line">            self.i = <span class="number">0</span></span><br><span class="line">            self.obj = obj</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">            self.i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.i &lt;= <span class="built_in">len</span>(self.obj):</span><br><span class="line">                <span class="keyword">return</span> self.obj[self.i - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">raise</span> StopIteration</span><br><span class="line">    <span class="keyword">return</span> sequence_iter(obj)</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>如果上面两条协议都不满足, 那么将抛出异常TypeError.</li>
+</ol>
+<p><strong>如果给了第二个参数sentinel</strong>, 第一个参数必须是一个可调用对象(callable object). Iter(obj, sentinel)大致上等价于:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter</span>(<span class="params">obj, sentinel</span>):</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">sentinel_iter</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, obj</span>):</span></span><br><span class="line">            self.obj = obj</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">            v = self.obj()</span><br><span class="line">            <span class="keyword">if</span> v == sentinel:</span><br><span class="line">                <span class="keyword">raise</span> StopIteration</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> v</span><br><span class="line">    <span class="keyword">return</span> sentinel_iter(obj)</span><br></pre></td></tr></table></figure>
+<h2 id="生成器-generator">生成器 generator</h2>
+<p>Python<a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-generator">官方文档</a>的定义如下:</p>
+<blockquote>A function which returns a generator iterator. It looks like a normal function except that it contains yield expressions for producing a series of values usable in a for-loop or that can be retrieved one at a time with the next() function.
+
+Usually refers to a generator function, but may refer to a generator iterator in some contexts. In cases where the intended meaning isn’t clear, using the full terms avoids ambiguity.</blockquote>
+<p>这里generator在使用上是有歧义的, 既可能指生成器函数(generator function), 也可能指生成器迭代器(generator iterator). 本文里用generator指后者, 前者直接用生成器函数.</p>
+<p>所以生成器是一种特殊迭代器, 由生成器函数产生的迭代器. 因而<span class="math inline">\(\text{generator}\subset\text{iterator}\)</span>. 生成器函数跟普通函数只有一点不一样, 生成器函数含有<code>yield</code>表达式. 反复调用生成器函数可以产生一系列的值. 调用生成器函数, 函数体不会执行, 而是返回一个生成器. 然后当我满按照迭代器的使用, 遍历其成员的时候, 生成器的<code>__next__()</code>方法通过执行生成器函数的函数体来产生一系列值.</p>
+<p>下面的代码是一个generator, 可见其符合迭代器协议.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def generator_fun():</span><br><span class="line">    i &#x3D; 0</span><br><span class="line">    while True:</span><br><span class="line">        yield i</span><br><span class="line">        if i &gt;&#x3D; 5:</span><br><span class="line">            return</span><br><span class="line">        i +&#x3D; 1</span><br><span class="line"></span><br><span class="line">generator &#x3D; generator_fun()</span><br><span class="line">print(hasattr(generator, &#39;__iter__&#39;)) #True</span><br><span class="line">print(hasattr(generator, &#39;__next__&#39;)) #True</span><br><span class="line">for i in generator:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<h2 id="转化">转化</h2>
+<p>iterator转化为sequence可以通过类似于<code>list(obj)</code>或者comprehension来实现. sequence转为为iterator可以通过<code>iter(obj)</code>来实现.</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>iterable是可以放在for语句里的对象.</li>
+<li>iterable可以通过iter(obj)转化为iterator</li>
+<li>iterable包含两类iterator和sequence</li>
+<li>sequence要符合sequence protocol, 即含有__getitem__()和__len__()方法</li>
+<li>iterator要符合iterator protocol, 即含有__next__()和__iter__()方法</li>
+<li>generator是一种特殊的iterator</li>
+</ul>
+<h2 id="专有名词翻译">专有名词翻译</h2>
+<table>
+<thead>
+<tr class="header">
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>generator</td>
+<td>生成器</td>
+</tr>
+<tr class="even">
+<td>generator function</td>
+<td>生成器函数</td>
+</tr>
+<tr class="odd">
+<td>generator iterator</td>
+<td>生成器迭代器</td>
+</tr>
+<tr class="even">
+<td>iterable</td>
+<td>可迭代对象(可遍历对象)</td>
+</tr>
+<tr class="odd">
+<td>iterator</td>
+<td>迭代器</td>
+</tr>
+<tr class="even">
+<td>sequence</td>
+<td>序列(队列)</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/ast/" rel="tag"># ast</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/b3fc01a3/" rel="prev" title="python name binding and resolution">
+      <i class="fa fa-chevron-left"></i> python name binding and resolution
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1-iterable"><span class="nav-number">1.</span> <span class="nav-text">可迭代对象 iterable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97-sequence"><span class="nav-number">2.</span> <span class="nav-text">序列 sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8-iterator"><span class="nav-number">3.</span> <span class="nav-text">迭代器 iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8-generator"><span class="nav-number">4.</span> <span class="nav-text">生成器 generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">转化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%BF%BB%E8%AF%91"><span class="nav-number">7.</span> <span class="nav-text">专有名词翻译</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">computer technical, avionics, mathmatics</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.weibo.com/2130160531/profile?topnav=1&wvr=6&is_all=1" title="Weibo → https:&#x2F;&#x2F;www.weibo.com&#x2F;2130160531&#x2F;profile?topnav&#x3D;1&amp;wvr&#x3D;6&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'neutral',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '6a068ba17921ccef5727',
+      clientSecret: 'f6a9f87e75e82d68a9988a1803eaf0ba021c2864',
+      repo        : 'gitment-comments',
+      owner       : 'retzzz',
+      admin       : ['retzzz'],
+      id          : '12cbaeda189fdbd77419eb4e8c51cd2c',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
