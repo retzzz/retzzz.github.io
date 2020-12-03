@@ -3346,7 +3346,10 @@ Usually refers to a generator function, but may refer to a generator iterator in
       </categories>
       <tags>
         <tag>python</tag>
-        <tag>ast</tag>
+        <tag>iterable</tag>
+        <tag>iterator</tag>
+        <tag>generator</tag>
+        <tag>sequence</tag>
       </tags>
   </entry>
 </search>
