@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是Chapter 2, Section 2.2, 介绍一阶逻辑的真值和模型.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Mathematical Introduction to Logic -- Section 2.2">
+<meta property="og:url" content="https://retzzz.github.io/a55d499/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="本文是Chapter 2, Section 2.2, 介绍一阶逻辑的真值和模型.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-13T16:38:18.000Z">
+<meta property="article:modified_time" content="2021-11-28T14:57:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Logic">
+<meta property="article:tag" content="Mathematical Logic">
+<meta property="article:tag" content="Enderton">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/a55d499/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/a55d499/","path":"/a55d499/","title":"A Mathematical Introduction to Logic -- Section 2.2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Mathematical Introduction to Logic -- Section 2.2 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-two.-first-order-logic-%E4%B8%80%E9%98%B6%E9%80%BB%E8%BE%91"><span class="nav-text">Chapter Two.
+First-Order Logic 一阶逻辑 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-2.2-truth-and-models-%E7%9C%9F%E5%80%BC%E4%B8%8E%E6%A8%A1%E5%9E%8B"><span class="nav-text">Section 2.2 Truth and
+Models 真值与模型 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#def-structure-%E7%BB%93%E6%9E%84"><span class="nav-text">\(\DEF\)
+Structure 结构 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#def-frak-a-satisfies-varphi-with-s-%E7%BB%93%E6%9E%84frak-a%E4%BB%A5-%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%96%E5%80%BC%E5%87%BD%E6%95%B0s%E6%BB%A1%E8%B6%B3%E5%90%88%E5%BC%8F%E5%85%AC%E5%BC%8Fvarphi"><span class="nav-text">\(\DEF\) \(\frak
+A\) satisfies \(\varphi\) with
+\(s\) 结构\(\frak A\)以 变量的取值函数\(s\)满足合式公式\(\varphi\)
+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#theorem-22a"><span class="nav-text">Theorem 22A </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#corollary-22b"><span class="nav-text">Corollary 22B </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#def-truth-and-models-%E6%A8%A1%E5%9E%8B"><span class="nav-text">\(\DEF\) Truth and Models 模型
+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logical-implication"><span class="nav-text">2.2.1 Logical Implication</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#def-logically-imply-%E9%80%BB%E8%BE%91%E8%95%B4%E6%B6%B5"><span class="nav-text">\(\DEF\) Logically Imply 逻辑蕴涵
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-logically-equivalent-%E9%80%BB%E8%BE%91%E7%AD%89%E4%BB%B7"><span class="nav-text">\(\DEF\) Logically Equivalent 逻辑等价
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-valid-wff-%E6%81%92%E7%9C%9F%E5%85%AC%E5%BC%8F"><span class="nav-text">\(\DEF\) Valid wff 恒真公式
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#corollary-22c"><span class="nav-text">Corollary 22C </span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#definability-in-a-structure"><span class="nav-text">2.2.2 Definability in a
+Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#def-definedefinable-%E5%AE%9A%E4%B9%89%E5%8F%AF%E5%AE%9A%E4%B9%89%E7%9A%84"><span class="nav-text">\(\DEF\) Define&#x2F;Definable 定义&#x2F;可定义的
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#examples"><span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BA%8F%E5%85%B3%E7%B3%BB"><span class="nav-text">序关系</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%87%AA%E7%84%B6%E6%95%B0"><span class="nav-text">自然数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0"><span class="nav-text">素数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B9%82%E8%BF%90%E7%AE%97"><span class="nav-text">幂运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#definability-of-a-class-of-structures"><span class="nav-text">2.2.3 Definability of a
+Class of Structures</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#def-modhspace0.5exsigma"><span class="nav-text">\(\DEF\) \(Mod\hspace0.5ex\Sigma\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-elementary-class-%E5%88%9D%E7%AD%89%E7%B1%BB"><span class="nav-text">\(\DEF\) Elementary Class 初等类
+</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#homomorphisms-%E5%90%8C%E6%80%81"><span class="nav-text">2.2.4 Homomorphisms 同态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#def-homomorphism-%E5%90%8C%E6%80%81"><span class="nav-text">\(\DEF\)
+Homomorphism 同态 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-isomorphism-%E5%90%8C%E6%9E%84"><span class="nav-text">\(\DEF\)
+Isomorphism 同构 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-substructure-%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-text">\(\DEF\) Substructure 子结构
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#homomorphism-theorem-%E5%90%8C%E6%80%81%E5%AE%9A%E7%90%86"><span class="nav-text">Homomorphism Theorem 同态定理
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-elementarily-equivalent-%E5%88%9D%E7%AD%89%E7%AD%89%E4%BB%B7"><span class="nav-text">\(\DEF\) Elementarily Equivalent 初等等价
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#corollary-22d"><span class="nav-text">Corollary 22D </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-automorphism-%E8%87%AA%E5%90%8C%E6%9E%84"><span class="nav-text">\(\DEF\) Automorphism 自同构
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#corollary-22e"><span class="nav-text">Corollary 22E </span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises-2.2"><span class="nav-text">Exercises 2.2 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-1"><span class="nav-text">Problem 1 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-2"><span class="nav-text">Problem 2 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-3"><span class="nav-text">Problem 3 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-4"><span class="nav-text">Problem 4 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-5"><span class="nav-text">Problem 5 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-6"><span class="nav-text">Problem 6 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-7"><span class="nav-text">Problem 7 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-8"><span class="nav-text">Problem 8 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-9"><span class="nav-text">Problem 9 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-10"><span class="nav-text">Problem 10 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-11"><span class="nav-text">Problem 11 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-12"><span class="nav-text">Problem 12 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-13"><span class="nav-text">Problem 13 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-14"><span class="nav-text">Problem 14 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-15"><span class="nav-text">Problem 15 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-16"><span class="nav-text">Problem 16 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-17"><span class="nav-text">Problem 17 </span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/a55d499/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Mathematical Introduction to Logic -- Section 2.2 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Mathematical Introduction to Logic -- Section 2.2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-14 00:38:18" itemprop="dateCreated datePublished" datetime="2020-06-14T00:38:18+08:00">2020-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-28 22:57:00" itemprop="dateModified" datetime="2021-11-28T22:57:00+08:00">2021-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- md AMIL_heading1.md -->
+<p>本文是Chapter 2, Section 2.2, 介绍一阶逻辑的真值和模型.</p>
+<span id="more"></span>
+<!-- md AMIL_heading2.md -->
+<h2 id="chapter-two.-first-order-logic-一阶逻辑">Chapter Two.
+First-Order Logic 一阶逻辑 <span id="Chapter2"></span></h2>
+<h3 id="section-2.2-truth-and-models-真值与模型">Section 2.2 Truth and
+Models 真值与模型 <span id="Section2.2"></span></h3>
+<h4 id="def-structure-结构"><span class="math inline">\(\DEF\)</span>
+Structure 结构 <span id="Structure"></span></h4>
+<p>A <em>structure</em> <span class="math inline">\(\frak A\)</span> for
+our given first-order language is a <a href="/48e9c4af#Function">function</a> whose domain is the set of <a href="/1eec0e97#FirstOrderParameter">parameters</a> and such that</p>
+<ol type="1">
+<li><span class="math inline">\(\frak A\)</span> assigns to the
+quantifier symbol <span class="math inline">\(\forall\)</span> a
+nonempty set <span class="math inline">\(|\frak A|\)</span> called the
+<em>universe</em><span id="Universe"> (or domain, 论域) of <span class="math inline">\(\frak A\)</span>.</span></li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="/1eec0e97#PredicateSymbol"><span class="math inline">\(n\)</span>-place predicate symbol</a> <span class="math inline">\(P\)</span> an <a href="/48e9c4af#NaryRelation"><span class="math inline">\(n\)</span>-ary
+relation</a> <span class="math inline">\(P^{\frak A}\subseteq|\frak
+A|^n\)</span><span id="StructPA">; i.e., <span class="math inline">\(P^{\frak A}\)</span> is a set of <a href="/48e9c4af#NTuples"><span class="math inline">\(n\)</span>-tuples</a> of members of the
+universe.</span></li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="/1eec0e97#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span> a member <span class="math inline">\(c^{\frak A}\)</span><span id="StructCA"> of the
+universe <span class="math inline">\(\frak A\)</span>.</span></li>
+<li><span class="math inline">\(\frak A\)</span> assigns to each <a href="/1eec0e97#FirstOrderFunctionSymbol"><span class="math inline">\(n\)</span>-place function symbol</a> <span class="math inline">\(f\)</span> an <a href="/48e9c4af#Operation"><span class="math inline">\(n\)</span>-ary operation</a> <span class="math inline">\(f^{\frak A}\)</span><span id="StructFA"> on <span class="math inline">\(|\frak A|\)</span>; i.e., <span class="math inline">\(f^{\frak A}:|\frak A|^n\rightarrow|\frak
+A|\)</span>.</span></li>
+</ol>
+<p>Note that we require the universe <span class="math inline">\(|\frak
+A|\)</span> to be nonempty. Notice also that <span class="math inline">\(f^{\frak A}\)</span> must have all of <span class="math inline">\(|\frak A|^n\)</span> in for its domain.</p>
+<p>表示法, 通常用这种方式表示一个结构: <span class="math inline">\({\frak A} = (|{\frak A}|; c^{\frak A}, P^{\frak
+A}, f^{\frak A})\)</span>, 例如如下结构:</p>
+<ul>
+<li><span class="math inline">\(|{\frak N}|={\Bbb N}\)</span>, the set
+of natural numbers.</li>
+<li><span class="math inline">\(0^{\frak N}\)</span>, the number 0.</li>
+<li><span class="math inline">\(S^{\frak N}\)</span>, <span class="math inline">\(+^{\frak N}\)</span>, and <span class="math inline">\(\cdot^{\frak N}\)</span> are <span class="math inline">\(S\)</span>, <span class="math inline">\(+\)</span>, <span class="math inline">\(\cdot\)</span>, the functions of successor,
+addition, and multiplication.</li>
+</ul>
+<p>表示为:<span class="math display">\[{\frak N} = ({\Bbb
+N};0,S,+,\cdot).\]</span></p>
+<h4 id="def-frak-a-satisfies-varphi-with-s-结构frak-a以-变量的取值函数s满足合式公式varphi"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(\frak
+A\)</span> satisfies <span class="math inline">\(\varphi\)</span> with
+<span class="math inline">\(s\)</span> 结构<span class="math inline">\(\frak A\)</span>以 变量的取值函数<span class="math inline">\(s\)</span>满足合式公式<span class="math inline">\(\varphi\)</span>
+<span id="FirstOrderSatisfy"></span></h4>
+<p>Let</p>
+<ul>
+<li><span class="math inline">\(\varphi\)</span> be a wff of our
+language,</li>
+<li><span class="math inline">\(\frak A\)</span> a struture for the
+language,</li>
+<li><span class="math inline">\(s:V\rightarrow |\frak
+A|\)</span><span id="Function_s_V2A"> a <a href="/48e9c4af#Function">function</a> from the set <span class="math inline">\(V\)</span> of all variables into the universe
+<span class="math inline">\(|\frak A|\)</span> of <span class="math inline">\(\frak A\)</span>.</span></li>
+</ul>
+<p>Then we will define what it means for <span class="math inline">\(\frak A\)</span> to satisfy <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span> (对于结构<span class="math inline">\(\frak A\)</span>, 变量的取值<span class="math inline">\(s\)</span>可以使合式公式<span class="math inline">\(\varphi\)</span>满足), <span class="math display">\[
+\vDash_{\frak A}\varphi[s]
+\]</span></p>
+<p>The definition of satisfaction proceeds as follows:</p>
+<p>I. <em>Terms</em>. We define the extension: <span class="math display">\[
+\cssId{Overlines}{\overline{s}}:T\rightarrow|\frak A|,
+\]</span> a <a href="/48e9c4af#Function">function</a> from the set <span class="math inline">\(T\)</span> of all <a href="/1eec0e97#Term">terms</a> into the <a href="/1eec0e97#Universe">universe</a> of <span class="math inline">\(\frak A\)</span>. <span class="math inline">\(\overline{s}\)</span> is defined by recursion as
+follows:</p>
+<ol type="1">
+<li>For each <a href="/1eec0e97#FirstOrderVariable">variable</a> <span class="math inline">\(x\)</span>, <span class="math inline">\(\overline{s}(x)=s(x)\)</span></li>
+<li>For each <a href="/1eec0e97#FirstOrderConstantSymbol">constant
+symbol</a> <span class="math inline">\(c\)</span>, <span class="math inline">\(\overline{s}(c)=\href{ #StructCA}{c^{\frak
+A}}\)</span></li>
+<li>If <span class="math inline">\(t_1,\ldots,t_n\)</span> are <a href="/1eec0e97#Term">terms</a> and <span class="math inline">\(f\)</span> is an <a href="/1eec0e97#FirstOrderFunctionSymbol"><span class="math inline">\(n\)</span>-place function symbol</a>, then <span class="math display">\[
+\overline{s}(ft_1\cdots t_n)=\href{ #StructFA}{f^{\frak
+A}}(\overline{s}(t_1),\ldots,\overline{s}(t_n)).
+\]</span></li>
+</ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+第一步, 通过对<span class="math inline">\(s\)</span>的扩展<span class="math inline">\(\overline{s}(t)\)</span>把所有的项映射成论域里的一个元素.
+</font></p>
+</div>
+<ol start="2" type="I">
+<li><em>Atomic formulas</em>. The definition of satisfaction of <a href="/1eec0e97#AtomicFormula">atomic formulas</a> is explicit and not
+recursive.</li>
+</ol>
+<ol type="1">
+<li><span class="math inline">\(\vDash_{\frak A}=t_1
+t_2[s]\)</span><span id="SatisfyEqualitySymbol"> iff <span class="math inline">\(\overline{s}(t_1)=\overline{s}(t_2)\)</span>.
+(Thus <span class="math inline">\(=\)</span> means <span class="math inline">\(=\)</span>. Note that <span class="math inline">\(=\)</span> is a <a href="/1eec0e97#FirstOrderLogicalSymbol">logical symbol</a>, not a <a href="/1eec0e97#FirstOrderParameter">parameter</a> open to
+interpretation. 这就是把等号区别于其他谓词符号分类成逻辑符号的原因,
+等号不需要解释)</span></li>
+<li>For an <a href="/1eec0e97#PredicateSymbol"><span class="math inline">\(n\)</span>-place predicate parameter</a> <span class="math inline">\(P\)</span>, <span class="math display">\[
+\vDash_{\frak A}Pt_1\cdots
+t_n[s]\quad\text{iff}\quad\langle\overline{s}(t_1),\ldots,\overline{s}(t_n)\rangle\in
+\href{ #StructPA}{P^{\frak A}}.
+\]</span></li>
+</ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+对于原子公式, 只要存在于结构的关系中就是满足.
+或者说定义结构的时候对关系的定义决定了哪些公式能够被该结构满足.
+</font></p>
+</div>
+<ol start="3" type="I">
+<li><em>Other wffs</em>. The wffs we defined inductively, and
+consequently here satisfaction is defined recursively.</li>
+</ol>
+<ol type="1">
+<li>For atomic formulas, the definition is above.</li>
+<li><span class="math inline">\(\vDash_{\frak
+A}\lnot\varphi[s]\)</span><span id="SatisfyNegationSymbol"> iff <span class="math inline">\(\nvDash_{\frak A}\varphi[s].\)</span></span></li>
+<li><span class="math inline">\(\vDash_{\frak
+A}(\varphi\rightarrow\psi)[s]\)</span><span id="SatisfyConditionalSymbol">
+iff either <span class="math inline">\(\nvDash_{\frak
+A}\varphi[s]\)</span> or <span class="math inline">\(\vDash_{\frak
+A}\psi[s]\)</span> or both.</span></li>
+<li><span class="math inline">\(\vDash_{\frak A}\forall
+x\varphi[s]\)</span><span id="SatisfyQuantifierSymbol"> iff for every
+<span class="math inline">\(d\in|\frak A|\)</span>, we have <span class="math inline">\(\vDash_{\frak A}\varphi[s(x|d)]\)</span>.</span></li>
+</ol>
+<p>Here <span class="math inline">\(s(x|d)\)</span> is the <a href="/48e9c4af#Function">function</a> which is exactly like <a href="#Function_s_V2A"><span class="math inline">\(s\)</span></a> except
+for one thing: At the variable x it assumes the value d. This can be
+expressed by the equation <span class="math display">\[
+s(x|d)(y)=\left\{
+\begin{array}{lll}
+s(y) &amp; \text{if} &amp; y\neq x, \\
+d &amp; \text{if} &amp; y=x. \\
+\end{array}
+\right.
+\]</span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体"> <span class="math inline">\(x\)</span>可以取任意值, 其他变量还是取函数<span class="math inline">\(s\)</span>中分配的值. </font></p>
+</div>
+<h4 id="theorem-22a">Theorem 22A <span id="Theorem22A"></span></h4>
+<p>Assume that <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are <a href="#Function_s_V2A">functions from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak
+A|\)</span></a> which agree at all variables (if any) that <a href="/1eec0e97#OccurFree">occur free</a> in the wff <span class="math inline">\(\varphi\)</span>. Then <span class="math display">\[
+\vDash_{\frak A}\varphi[s_1]\quad\text{iff}\quad\vDash_{\frak
+A}\varphi[s_2].
+\]</span></p>
+<p>This theorem justifies the following notation: Suppose that <span class="math inline">\(\varphi\)</span> is a formula such that all
+variables <a href="/1eec0e97#OccurFree">occurring free</a> in <span class="math inline">\(\varphi\)</span> are included among <span class="math inline">\(v_1,\ldots,v_k\)</span>. Then for elements <span class="math inline">\(a_1,\ldots,a_k\)</span> of <span class="math inline">\(|\frak A|\)</span>, <span class="math display">\[
+\vDash_{\frak A}\varphi\llbracket a_1,\ldots,a_k\rrbracket
+\]</span> means that <a href="#FirstOrderSatisfy"><span class="math inline">\(\frak A\)</span> satisfies <span class="math inline">\(\varphi\)</span></a> with some (and hence with
+any) <a href="/48e9c4af#Function">function</a> <span class="math inline">\(s:V\rightarrow|\frak A|\)</span> for which <span class="math inline">\(s(v_i)=a_i,1\le i\le k\)</span>.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+函数<span class="math inline">\(s\)</span>中只有自由变量的部分有用.
+</font></p>
+</div>
+<h4 id="corollary-22b">Corollary 22B <span id="Corollary22B"></span></h4>
+<p>For a <a href="/1eec0e97#FirstOrderSentence">sentence</a> <span class="math inline">\(\sigma\)</span>, either</p>
+<ol type="a">
+<li><span class="math inline">\(\frak A\)</span> <a href="#FirstOrderSatisfy">satisfies</a> <span class="math inline">\(\sigma\)</span> with every <a href="/48e9c4af#Function">function</a> <span class="math inline">\(s\)</span> from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\frak
+A|\)</span>, or</li>
+<li><span class="math inline">\(\frak A\)</span> does not satisfy <span class="math inline">\(\sigma\)</span> with any such <a href="/48e9c4af#Function">function</a>.</li>
+</ol>
+<h4 id="def-truth-and-models-模型"><span class="math inline">\(\DEF\)</span> Truth and Models 模型
+<span id="Model"></span></h4>
+<p>If alternative (a) of <a href="#Corollary22B">Corollary 22B</a>
+holds, then we say that <span class="math inline">\(\sigma\)</span> is
+<em>true</em> in <span class="math inline">\(\frak A\)</span> (written
+<span class="math inline">\(\vDash_{\frak A}\sigma\)</span>) or that
+<span class="math inline">\(\frak A\)</span> is a <em>model</em> of
+<span class="math inline">\(\sigma\)</span>.</p>
+<p>结构<span class="math inline">\(\frak A\)</span>是合式公式<span class="math inline">\(\sigma\)</span>的模型, 即合式公式<span class="math inline">\(\sigma\)</span>在模型<span class="math inline">\(\frak A\)</span>中为真</p>
+<p>If alternative (b) holds, then <span class="math inline">\(\sigma\)</span> is <em>false</em> in <span class="math inline">\(\frak A\)</span>.</p>
+<p><span class="math inline">\(\frak A\)</span> is a <em>model</em> of a
+set <span class="math inline">\(\Sigma\)</span> of <a href="/1eec0e97#FirstOrderSentence">sentences</a> iff it is a model of
+every member of <span class="math inline">\(\Sigma\)</span>.</p>
+<h4 id="logical-implication">2.2.1 Logical Implication</h4>
+<h5 id="def-logically-imply-逻辑蕴涵"><span class="math inline">\(\DEF\)</span> Logically Imply 逻辑蕴涵
+<span id="LogicallyImply"></span></h5>
+<p>Let <span class="math inline">\(\Gamma\)</span> be a set of <a href="/1eec0e97#FirstOrderWff">wffs</a>, <span class="math inline">\(\varphi\)</span> a wff. Then <span class="math inline">\(\Gamma\)</span> <em>logically implies</em> <span class="math inline">\(\varphi\)</span>, written <span class="math inline">\(\Gamma\vDash\varphi\)</span>, iff for every <a href="#Structure">structure</a> <span class="math inline">\(\frak
+A\)</span> for the language and every <a href="/48e9c4af#Function">function</a> <span class="math inline">\(s:V\rightarrow|\frak A|\)</span> such that <span class="math inline">\(\frak A\)</span> <a href="#FirstOrderSatisfy">satisfies</a> every member of <span class="math inline">\(\Gamma\)</span> with <span class="math inline">\(s\)</span>, <span class="math inline">\(\frak
+A\)</span> also satisfies <span class="math inline">\(\varphi\)</span>
+with <span class="math inline">\(s\)</span>.</p>
+<p>As before we will write "<span class="math inline">\(\gamma\vDash\varphi\)</span>" in place of "<span class="math inline">\(\{\gamma\}\vDash\varphi\)</span>".</p>
+<h5 id="def-logically-equivalent-逻辑等价"><span class="math inline">\(\DEF\)</span> Logically Equivalent 逻辑等价
+<span id="LogicallyEquivalent"></span></h5>
+<p>Say that <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are <em>logically equivalent</em>
+(<span class="math inline">\(\varphi\tauequ\psi\)</span>) iff <span class="math inline">\(\varphi\vDash\psi\)</span> and <span class="math inline">\(\psi\vDash\varphi\)</span>.</p>
+<h5 id="def-valid-wff-恒真公式"><span class="math inline">\(\DEF\)</span> Valid wff 恒真公式
+<span id="ValidWff"></span></h5>
+<p>A wff <span class="math inline">\(\varphi\)</span> is <em>valid</em>
+iff <span class="math inline">\(\varnothing\vDash\varphi\)</span>
+(written simply "<span class="math inline">\(\vDash\varphi\)</span>").</p>
+<h5 id="corollary-22c">Corollary 22C <span id="Corollary22C"></span></h5>
+<p>For a set <span class="math inline">\(\Sigma;\tau\)</span> of <a href="/1eec0e97#FirstOrderSentence">sentences</a>, <a href="#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a> iff every <a href="#Model">model</a> of <span class="math inline">\(\Sigma\)</span>
+is also a model of <span class="math inline">\(\tau\)</span>, A sentence
+<span class="math inline">\(\tau\)</span> is <a href="#ValidWff">valid</a> iff it is <a href="#Model">true</a> in every
+structure.</p>
+<h4 id="definability-in-a-structure">2.2.2 Definability in a
+Structure</h4>
+<h5 id="def-definedefinable-定义可定义的"><span class="math inline">\(\DEF\)</span> Define/Definable 定义/可定义的
+<span id="Define"></span></h5>
+<p>Consider a <a href="#Structure">structure</a> <span class="math inline">\({\frak A}\)</span> and a <a href="/1eec0e97#FirstOrderWff">formula</a> <span class="math inline">\(\varphi\)</span> whose <a href="#OccurFree">free
+variables</a> are among <span class="math inline">\(v_1,\ldots,v_k\)</span>. Then we can construct the
+<a href="/48e9c4af#NaryRelation"><span class="math inline">\(k\)</span>-ary relation</a> on <span class="math inline">\(|{\frak A}|\)</span> <span class="math display">\[
+\{\langle a_1,\ldots,a_k\rangle\href{ #FirstOrderSatisfy}{\vDash_{\frak
+A}}\varphi\href{ #Theorem22A}{\llbracket a_1,\ldots,a_k\rrbracket}\}
+\]</span> Call this the <a href="/48e9c4af#NaryRelation"><span class="math inline">\(k\)</span>-ary relation</a> <span class="math inline">\(\varphi\)</span> <em>defines</em> in <span class="math inline">\({\frak A}\)</span>. In general, a <a href="/48e9c4af#NaryRelation"><span class="math inline">\(k\)</span>-ary
+relation</a> on <span class="math inline">\(|{\frak A}|\)</span> is said
+to be <em>definable</em> in <span class="math inline">\({\frak
+A}\)</span> iff there is a <a href="/1eec0e97#FirstOrderWff">formula</a>
+(whose <a href="#OccurFree">free variables</a> are among <span class="math inline">\(v_1,\ldots,v_k\)</span>) that defines it
+there.</p>
+<p>有些关系是可定义的, 有些关系是不可定义的. 证明不可定义性比较难.
+如果一个元素在结构中可以用</p>
+<h5 id="examples">Examples</h5>
+<p>以如下数论语言的结构为例:</p>
+<ul>
+<li><span class="math inline">\(|{\frak N}|={\Bbb N}\)</span>, the set
+of natural numbers.</li>
+<li><span class="math inline">\(0^{\frak N}\)</span>, the number 0.</li>
+<li><span class="math inline">\(S^{\frak N}\)</span>, <span class="math inline">\(+^{\frak N}\)</span>, and <span class="math inline">\(\cdot^{\frak N}\)</span> are <span class="math inline">\(S\)</span>, <span class="math inline">\(+\)</span>, <span class="math inline">\(\cdot\)</span>, the functions of successor,
+addition, and multiplication.</li>
+</ul>
+<p><span class="math display">\[
+{\frak N} = ({\Bbb N}; 0, S, +, \cdot).
+\]</span></p>
+<h6 id="序关系">序关系</h6>
+<ol type="1">
+<li>严格序关系<span class="math inline">\({\langle
+m,n\rangle|m&lt;n}\)</span> 在<span class="math inline">\({\frak
+N}\)</span>中由如下公式定义: <span class="math display">\[
+\exists v_3 v_1+Sv_3 = v_2.
+\]</span></li>
+</ol>
+<h6 id="自然数">自然数</h6>
+<ol start="2" type="1">
+<li>任意自然数<span class="math inline">\(n\)</span>, <span class="math inline">\(\{n\}\)</span>是可定义的. 例如,
+{2}可以由如下公式定义: <span class="math display">\[
+v_1=SS0
+\]</span></li>
+</ol>
+<p>Because of this, we say that <span class="math inline">\(n\)</span>
+is a <em>definable element</em><span id="DefinableElement"> in <span class="math inline">\({\frak N}\)</span>.</span></p>
+<h6 id="素数">素数</h6>
+<ol start="3" type="1">
+<li>素数在<span class="math inline">\({\frak
+N}\)</span>是由如下公式可定义: <span class="math display">\[
+1&lt;v_1\land\forall v_2\forall v_3(v_1=v_2\cdot v_3\rightarrow
+v_2=1\lor v_3=1)
+\]</span> 注意其中用到了前面已经定义的序和可定义元素<span class="math inline">\(n\)</span>. 如果简单的用已有的定义替换可以得到:
+<span class="math display">\[
+\exists v_3 S0+Sv_3=v_1\land\forall v_2\forall v_3(v_1=v_2\cdot
+v_3\rightarrow v_2=S0\lor v_3=S0)
+\]</span></li>
+</ol>
+<h6 id="幂运算">幂运算</h6>
+<ol start="4" type="1">
+<li>幂运算, <span class="math inline">\(\{\langle
+m,n,p\rangle|p=m^n\}\)</span>在<span class="math inline">\({\frak
+N}\)</span>中也是可定义的. 我们将会用中国剩余定理给出证明.</li>
+</ol>
+<h4 id="definability-of-a-class-of-structures">2.2.3 Definability of a
+Class of Structures</h4>
+<h5 id="def-modhspace0.5exsigma"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(Mod\hspace0.5ex\Sigma\)</span>
+<span id="Mod"></span></h5>
+<p>For a set <span class="math inline">\(\Sigma\)</span> of <a href="/1eec0e97#FirstOrderSentence">sentences</a>, let <span class="math inline">\(Mod\hspace0.5ex\Sigma\)</span> be the class of all
+<a href="#Model">models</a> of <span class="math inline">\(\Sigma\)</span>, i.e., the <em>class of all
+structures</em> for the language in which every member of <span class="math inline">\(\Sigma\)</span> is <a href="#Model">true</a>.</p>
+<p>For a simgle sentence <span class="math inline">\(\tau\)</span> we
+write simply "<span class="math inline">\(Mod\hspace0.5ex\tau\)</span>"
+instead of "<span class="math inline">\(Mod\hspace0.5ex\{\tau\}\)</span>."</p>
+<p><span class="math inline">\(_*\)</span>In set theory, a
+<em>class</em> is a collection of sets (or sometimes other mathematical
+objects) that can be unambiguousely defined by a property that all its
+members share. The precise definition of "class" depends on foundational
+context.</p>
+<p><span class="math inline">\(_*\)</span>A class that is not a set is
+called a <em>proper class</em>, and a class that is a set is sometimes
+called a <em>small class</em>. For instance, the class of all ordinal
+numbers, and the class of all sets, are proper classes in many formal
+systems.</p>
+<h5 id="def-elementary-class-初等类"><span class="math inline">\(\DEF\)</span> Elementary Class 初等类
+<span id="ElementaryClass"></span></h5>
+<p>A class <span class="math inline">\({\cal K}\)</span> is an
+<em>elementary class</em> (<span class="math inline">\(EC\)</span>) iff
+<span class="math inline">\({\cal K}=\href{
+#Mod}{\text{Mod}\hspace0.5ex\tau}\)</span> for some <a href="/1eec0e97#FirstOrderSentence">sentence</a> <span class="math inline">\(\tau\)</span>.</p>
+<p><span class="math inline">\({\cal K}\)</span> is an <em>elementary
+class in the wider sense</em> (<span class="math inline">\(EC_\Delta\)</span>) iff <span class="math inline">\({\cal K}=\href{
+#Mod}{\text{Mod}\hspace0.5ex\Sigma}\)</span> for some set <span class="math inline">\(\Sigma\)</span> of <a href="/1eec0e97#FirstOrderSentence">sentences</a>. (广义初等类)</p>
+<p>(The adjective elementary is employed as a synonym for
+"first-order.")</p>
+<h4 id="homomorphisms-同态">2.2.4 Homomorphisms 同态</h4>
+<h5 id="def-homomorphism-同态"><span class="math inline">\(\DEF\)</span>
+Homomorphism 同态 <span id="Homomorphism"></span></h5>
+<p>Let <span class="math inline">\({\frak A}, {\frak B}\)</span> be <a href="#Structure">structures</a> for the language. A
+<em>homomorphism</em> <span class="math inline">\(h\)</span> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span> (从<span class="math inline">\({\frak A}\)</span>到<span class="math inline">\({\frak B}\)</span>中的同态) is a <a href="/48e9c4af#Function">function</a> <span class="math inline">\(h:|{\frak A}|\rightarrow|{\frak B}|\)</span> with
+the properties:</p>
+<ol type="a">
+<li><p>For each <a href="/1eec0e97#PredicateSymbol"><span class="math inline">\(n\)</span>-place predicate parameter</a> <span class="math inline">\(P\)</span> and each <a href="/48e9c4af#Tuple"><span class="math inline">\(n\)</span>-tuple</a>
+<span class="math inline">\(\langle a_1,\ldots,a_n\)</span> of elements
+of <span class="math inline">\(|{\frak A}|\)</span>, <span class="math display">\[
+\langle a_1,\ldots,a_n\rangle\in P^{\frak A}\quad\text{iff}\quad\langle
+h(a_1),\ldots,h(a_n)\rangle\in P^{\frak B}.
+\]</span></p></li>
+<li><p>For each <a href="/1eec0e97#FirstOrderFunctionSymbol"><span class="math inline">\(n\)</span>-place function symbol</a> <span class="math inline">\(f\)</span> and each such <a href="/48e9c4af#Tuple"><span class="math inline">\(n\)</span>-tuple</a>,
+<span class="math display">\[
+h(f^{\frak A}(a_1,\ldots,a_n))=f^{\frak B}(h(a_1),\ldots,h(a_n)).
+\]</span></p></li>
+<li><p>In the case of a constant symbol <span class="math inline">\(c\)</span> this becomes <span class="math display">\[h(c^{\frak A})=c^{\frak B}.\]</span></p></li>
+</ol>
+<h5 id="def-isomorphism-同构"><span class="math inline">\(\DEF\)</span>
+Isomorphism 同构 <span id="Isomorphism"></span></h5>
+<p>If <span class="math inline">\(h\)</span> is <a href="#Homomorphism">homomorphism</a> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span>, and is one-to-one, it is
+called an <em>isomorphism</em> (or <em>isomorphic embedding</em>) of
+<span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span> (从<span class="math inline">\({\frak A}\)</span>到<span class="math inline">\({\frak B}\)</span>中的同构, 或同构嵌入).</p>
+<p>If there is an <em>isomorphism</em> of <span class="math inline">\({\frak A}\)</span> onto <span class="math inline">\({\frak B}\)</span> (i.e., an isomorphism <span class="math inline">\(h\)</span> for which ran <span class="math inline">\(h=|{\frak B}|\)</span>), then <span class="math inline">\({\frak A}\)</span> and <span class="math inline">\({\frak B}\)</span> are said <em>isomorphic</em>
+(written <span class="math inline">\({\frak A}\cong{\frak B}\)</span>)
+(从<span class="math inline">\({\frak A}\)</span>到<span class="math inline">\({\frak B}\)</span>上的同构, 或<span class="math inline">\({\frak A}\)</span>和<span class="math inline">\({\frak B}\)</span>是同构的).</p>
+<h5 id="def-substructure-子结构"><span class="math inline">\(\DEF\)</span> Substructure 子结构
+<span id="Substructure"></span></h5>
+<p>Consider two structures <span class="math inline">\({\frak
+A}\)</span> and <span class="math inline">\({\frak B}\)</span> for the
+language such that <span class="math inline">\(|{\frak
+A}|\subseteq|{\frak B}|\)</span>. It is clear from the definition of
+homomorphism that the <a href="\48e9c4af#IdentityFunction">identity
+map</a> from <span class="math inline">\(|{\frak A}|\)</span> into <span class="math inline">\(|{\frak B}|\)</span> is an <a href="#Isomorphism">isomorphism</a> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span> iff</p>
+<ol type="a">
+<li><p><span class="math inline">\(P^{\frak A}\)</span> is the <a href="\48e9c4af#Restriction">restriction</a> of <span class="math inline">\(P^{\frak B}\)</span> to <span class="math inline">\(|{\frak A}|\)</span>, for each <a href="/1eec0e97#PredicateSymbol">predicate parameter</a> <span class="math inline">\(P\)</span>;</p></li>
+<li><p><span class="math inline">\(f^{\frak A}\)</span> is the <a href="\48e9c4af#Restriction">restriction</a> of <span class="math inline">\(f^{\frak B}\)</span> to <span class="math inline">\(|{\frak A}|\)</span>, for each <a href="/1eec0e97#FirstOrderFunctionSymbol">function symbol</a> <span class="math inline">\(f\)</span>, and <span class="math inline">\(c^{\frak A}=c^{\frak B}\)</span> for each <a href="/1eec0e97#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span>.</p></li>
+</ol>
+<p>If these conditions are met, then <span class="math inline">\({\frak
+A}\)</span> is said to be s <em>substructure of <span class="math inline">\({\frak B}\)</span>, and <span class="math inline">\({\frak B}\)</span> is an </em>extension* of <span class="math inline">\({\frak A}\)</span>.</p>
+<h5 id="homomorphism-theorem-同态定理">Homomorphism Theorem 同态定理
+<span id="HomomorphismTheorem"></span></h5>
+<p>Let <span class="math inline">\(h\)</span> be a <a href="#Homomorphism">homomorphism</a> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span>, and let <span class="math inline">\(s\)</span> map the set of variables into <span class="math inline">\(|{\frak A}|\)</span>.</p>
+<ol type="a">
+<li><p>For any <a href="/1eec0e97#Term">term</a> <span class="math inline">\(t\)</span>, we have <span class="math inline">\(\href{
+#Homomorphism}{h}(\overline{s}(t))=\overline{h\circ s}(t)\)</span>,
+where <a href="#Function_s_V2A"><span class="math inline">\(\overline{s}(t)\)</span></a> is computed in <span class="math inline">\({\frak A}\)</span> and <span class="math inline">\(\overline{h\circ s}(t)\)</span> is computed in
+<span class="math inline">\({\frak B}\)</span>.</p></li>
+<li><p>For any quantifier-free formula α not containing the equality
+symbol, <span class="math display">\[
+\vDash_{\frak A}\alpha[s]\quad\text{iff}\quad\vDash_{\frak
+B}\alpha[h\circ s].
+\]</span></p></li>
+<li><p>If <span class="math inline">\(h\)</span> is one-to-one (i.e., is
+an <a href="#Isomorphism">isomorphism</a> of <span class="math inline">\({\frak A}\)</span> into <span class="math inline">\({\frak B}\)</span>), then in part (b) we may
+delete the restriction "not containing the equality symbol."</p></li>
+<li><p>If <span class="math inline">\(h\)</span> is a homomorphism of
+<span class="math inline">\({\frak A}\)</span> onto <span class="math inline">\({\frak B}\)</span>, then in (b) we may delete the
+restriction "quantifier-free."</p></li>
+</ol>
+<h5 id="def-elementarily-equivalent-初等等价"><span class="math inline">\(\DEF\)</span> Elementarily Equivalent 初等等价
+<span id="ElementarilyEquivalent"></span></h5>
+<p>Two structures <span class="math inline">\({\frak A}\)</span> and
+<span class="math inline">\({\frak B}\)</span>, for the language are
+said to be <em>elementarily equivalent</em> (written <span class="math inline">\({\frak A}\equiv{\frak B}\)</span>) iff for any
+sentence <span class="math inline">\(\sigma\)</span>, <span class="math display">\[
+\vDash_{\frak A}\sigma\Leftrightarrow\vDash_{\frak B}\sigma.
+\]</span></p>
+<h5 id="corollary-22d">Corollary 22D <span id="Corollary22D"></span></h5>
+<p><a href="#Isomorphism">Isomorphic structures</a> are <a href="#ElementarilyEquivalent">elementarily equivalent</a>:<span class="math display">\[{\frak A}\cong{\frak B}\Rightarrow{\frak
+A}\equiv{\frak B}\]</span></p>
+<h5 id="def-automorphism-自同构"><span class="math inline">\(\DEF\)</span> Automorphism 自同构
+<span id="Automorphism"></span></h5>
+<p>An <em>Automorphism</em> of the structure <span class="math inline">\({\frak A}\)</span> is an <a href="#Isomorphism">isomorphism</a> of <span class="math inline">\({\frak A}\)</span> onto <span class="math inline">\({\frak A}\)</span>.</p>
+<p>The <a href="\48e9c4af#IdentityFunction">identity</a> function on
+<span class="math inline">\(|{\frak A}|\)</span> is trivially an
+automorphism of A. A may or may not have <em>nontrivial
+automorphisms</em>. (We say that A is <em>rigid</em><span id="Rigid">
+(固化的) if the identity function is its only automorphism.)</span></p>
+<h5 id="corollary-22e">Corollary 22E <span id="Corollary22E"></span></h5>
+<p>Let h be an <a href="#Automorphism">automorphism</a> of the structure
+<span class="math inline">\({\frak A}\)</span>, and let <span class="math inline">\(R\)</span> be an <span class="math inline">\(n\)</span>-ary relation on <span class="math inline">\(|{\frak A}|\)</span> <a href="#Define">definable</a> in <span class="math inline">\({\frak
+A}\)</span>. Then for any <span class="math inline">\(a_1,\ldots,a_n\)</span> in <span class="math inline">\(|{\frak A}|\)</span>, <span class="math display">\[
+\langle a_1,\ldots,a_n\rangle\in R\Leftrightarrow\langle
+h(a_1),\ldots,h(a_n)\rangle\in R
+\]</span></p>
+<p>这个推论可以用于证明给定的关系在某个结构下不可定义.
+当我们能够找到一个在结构<span class="math inline">\({\frak
+A}\)</span>里构成自同构的函数<span class="math inline">\(h\)</span>时,
+如果某个给定的关系不满足于上面的条件 <span class="math inline">\(\langle
+a_1,\ldots,a_n\rangle\in R\Leftrightarrow\langle
+h(a_1),\ldots,h(a_n)\rangle\in R\)</span>, 就可以说明这个关系在结构<span class="math inline">\({\frak A}\)</span>下是不可定义的.</p>
+<p>点击<a href="/edd6b774">这里进入AMIL目录</a></p>
+<h4 id="exercises-2.2">Exercises 2.2 <span id="Exercises2.2"></span></h4>
+<h5 id="problem-1">Problem 1 <span id="Problem2.2-1"></span></h5>
+<p>Show that (a) <span class="math inline">\(\Gamma;\alpha\vDash\varphi\)</span> iff <span class="math inline">\(\Gamma\vDash(\alpha\rightarrow\varphi)\)</span>;
+and (b) <span class="math inline">\(\varphi\tauequ\psi\)</span> iff
+<span class="math inline">\(\vDash(\varphi\leftrightarrow\psi)\)</span>.</p>
+<p><span class="math inline">\(\PROOF\)</span><cr></cr></p>
+<p>(a)<cr> <span class="math display">\[
+\begin{array}{lcll}
+\Gamma;\alpha\vDash\varphi &amp; \Leftrightarrow &amp;
+\forall\psi\forall{\frak
+A}\forall{s}(\psi\in\Gamma;\alpha\land\vDash_{\frak
+A}\psi[s]\rightarrow\vDash_{\frak A}\varphi[s]) &amp;
+(\text{   definition of }\href{ #LogicallyImply}{\text{logical imply}})
+\\
+&amp; \Leftrightarrow &amp; \left\{\begin{array}{l}
+                    \forall\psi\forall{\frak
+A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak
+A}\psi[s]\land\nvDash_{\frak A}\alpha[s]\rightarrow\vDash_{\frak
+A}\varphi[s]) \\
+                    \forall{\frak A}\forall{s}(\vDash_{\frak
+A}\alpha[s]\rightarrow\vDash_{\frak A}\varphi[s])
+                    \end{array}
+                    \right. \\
+&amp; \Leftrightarrow &amp; \forall\psi\forall{\frak
+A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak
+A}\psi[s]\rightarrow(\nvDash_{\frak A}\alpha[s]\lor\vDash_{\frak
+A}\varphi[s]\lor(\vDash_{\frak A}\alpha[s]\land\vDash_{\frak
+A}\varphi[s]))) \\
+&amp; \Leftrightarrow &amp; \forall\psi\forall{\frak
+A}\forall{s}(\psi\in\Gamma\land\vDash_{\frak
+A}\psi[s]\rightarrow\vDash_{\frak A}(\alpha\rightarrow\varphi)[s])
+&amp;  (\text{   definition of } \href{
+#SatisfyConditionalSymbol}{\vDash_{\frak
+A}(\alpha\rightarrow\varphi)[s]}) \\
+&amp; \Leftrightarrow &amp; \Gamma\vDash(\alpha\rightarrow\varphi) &amp;
+(\text{   definition of logical imply})
+\end{array}
+\]</span></cr></p>
+<p>(b)<cr> <span class="math display">\[
+\begin{array}{lcll}
+\varphi\tauequ\psi &amp; \Leftrightarrow &amp;
+\varphi\vDash\psi\land\psi\vDash\varphi \\
+&amp; \Leftrightarrow &amp;
+\vDash(\varphi\rightarrow\psi)\land\vDash(\psi\rightarrow\varphi) &amp;
+(\text{according to (a)}) \\
+&amp; \Leftrightarrow &amp; \forall{\frak A}\forall{s}(\vDash_{\frak
+A}(\varphi\rightarrow\psi)[s]\land\vDash_{\frak
+A}(\psi\rightarrow\varphi)[s]) \\
+&amp; \Leftrightarrow &amp; \forall{\frak A}\forall{s}(\vDash_{\frak
+A}(\varphi\rightarrow\psi\land\psi\rightarrow\varphi)[s]) \\
+&amp; \Leftrightarrow &amp; \vDash(\varphi\leftrightarrow\psi)
+\end{array}
+\]</span></cr></p>
+<h5 id="problem-2">Problem 2 <span id="Problem2.2-2"></span></h5>
+<p>Show that no one of the following sentences is logically implied by
+the other two. (This is done by giving a structure in which the sentence
+in question is false, while the other two are true.)</p>
+<ol type="a">
+<li><span class="math inline">\(\forall{x}\forall{y}\forall{z}(Pxy\rightarrow
+Pyz\rightarrow Pxz).\)</span> Recall that by our convention <span class="math inline">\(\alpha\rightarrow\beta\rightarrow\gamma\)</span>
+is <span class="math inline">\(\alpha\rightarrow(\beta\rightarrow\gamma).\)</span></li>
+<li><span class="math inline">\(\forall{x}\forall{y}(Pxy\rightarrow
+Pyx\rightarrow x=y).\)</span></li>
+<li><span class="math inline">\(\forall{x}\exists{y}Pxy\rightarrow\exists{y}\forall{x}Pxy.\)</span></li>
+</ol>
+<p><span class="math inline">\(\PROOF\)</span></p>
+<p>Let above wff in a,b and c be <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span>.</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> is a <a href="\48e9c4af#Transitive">transitive relation</a></li>
+<li><span class="math inline">\(\beta\)</span> is a <a href="\48e9c4af#Anti-symmetric">anti-symmetric relation</a></li>
+<li><span class="math inline">\(\gamma\)</span> describe a relation in
+which if for every element, there is a greater one then there is a
+maximal element.</li>
+</ul>
+<p>Three different structures will be constructed below in which one
+sentence in question is false, while the other two are true.</p>
+<ol type="1">
+<li><p><span class="math inline">\({\frak A} = ({\Bbb
+N};\forall,=,\le)\)</span>, in which</p>
+<ul>
+<li><span class="math inline">\(|{\frak A}| = {\Bbb N}\)</span></li>
+<li><span class="math inline">\(P_{\frak A} = \le\)</span></li>
+</ul></li>
+</ol>
+<p>Then obviously <span class="math inline">\(\vDash_{\frak
+A}\alpha\)</span>, <span class="math inline">\(\vDash_{\frak
+A}\beta\)</span>, but <span class="math inline">\(\nvDash_{\frak
+A}\gamma\)</span>. So <span class="math inline">\(\{\alpha,\beta\}\nvDash\gamma\)</span></p>
+<ol start="2" type="1">
+<li><p>Say that <span class="math inline">\({\frak B}\)</span> is
+defined as below:</p>
+<ul>
+<li><span class="math inline">\(|{\frak B}| = \{a,b\}\)</span></li>
+<li><span class="math inline">\(P_{\frak B} = \{\langle
+a,a\rangle,\langle a,b\rangle,\langle b,a\rangle,\langle
+b,b\rangle\}\)</span></li>
+</ul></li>
+</ol>
+<p>Then obviously <span class="math inline">\(\vDash_{\frak
+B}\alpha\)</span>, <span class="math inline">\(\vDash_{\frak
+B}\gamma\)</span>. But <span class="math inline">\(\nvDash_{\frak
+B}\beta\)</span> because <span class="math inline">\(Pab\)</span>, <span class="math inline">\(Pba\)</span> exists, but <span class="math inline">\(a\neq b\)</span>. So <span class="math inline">\(\{\alpha,\gamma\}\nvDash\beta\)</span>.</p>
+<ol start="3" type="1">
+<li><p>Say that <span class="math inline">\({\frak C}\)</span> is
+defined as below:</p>
+<ul>
+<li><span class="math inline">\(|{\frak C}| = \{a,b,c\}\)</span></li>
+<li><span class="math inline">\(P_{\frak C} = \{\langle
+a,b\rangle,\langle b,c\rangle\}\)</span></li>
+</ul></li>
+</ol>
+<p>Then <span class="math inline">\(\vDash_{\frak C}\beta\)</span>,
+because there is no <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> such that <span class="math inline">\(Pxy\)</span> and <span class="math inline">\(Pyx\)</span>. <span class="math inline">\(\vDash_{\frak B}\gamma\)</span> because not for
+every <span class="math inline">\(x\)</span> there is <span class="math inline">\(y\)</span> such that <span class="math inline">\(Pxy\)</span>. But <span class="math inline">\(\nvDash_{\frak B}\alpha\)</span> because there is
+no <span class="math inline">\(Pac\)</span>. <span class="math inline">\(\{\beta,\gamma\}\nvDash\alpha\)</span></p>
+<p>In summary, no one of the three sentences in question is logically
+implied by the other two.<span class="math inline">\(\dashv\)</span></p>
+<h5 id="problem-3">Problem 3 <span id="Problem2.2-3"></span></h5>
+<p>Show that <span class="math display">\[\{\forall{x}(\alpha\rightarrow\beta),\forall{x}\alpha\}\vDash\forall{x}\beta\]</span></p>
+<p><span class="math inline">\(\PROOF\)</span></p>
+<p>For <span class="math inline">\(\forall{\frak A}\)</span>, <span class="math inline">\(\forall{s},\hspace1ex s:V\rightarrow|{\frak
+A}|\)</span> such that <span class="math inline">\(\vDash_{\frak
+A}\forall{x}(\alpha\rightarrow\beta)[s]\)</span> and <span class="math inline">\(\vDash_{\frak A}\forall{x}\alpha[s]\)</span></p>
+<p>According to the definition of <a href="/1eec0e97#SatisfyQuantifierSymbol">Satisfy of Quantifier
+Symbol</a>, we have</p>
+<p><span class="math display">\[
+\eqalignno{
+\forall d\in|{\frak A}|, &amp;\vDash_{\frak
+A}\alpha\rightarrow\beta[s(x|d)] &amp; (\dagger) \\
+\forall d\in|{\frak A}|, &amp;\vDash_{\frak A}\alpha[s(x|d)] &amp;
+(\ddagger)
+}
+\]</span></p>
+<p>For wff <span class="math inline">\(\dagger\)</span>, according to
+the definition of <a href="/1eec0e97#SatisfyConditionalSymbol">Satisfy
+of Conditional Symbol</a>, either <span class="math inline">\(\nvDash_{\frak A}\alpha[s(x|d)]\)</span> or <span class="math inline">\(\vDash_{\frak A}\beta[s(x|d)]\)</span> or both.
+From <span class="math inline">\(\ddagger\)</span>, <span class="math inline">\(\forall{d}\in|{\frak A}|, \vDash_{\frak
+A}\beta[s(x|d)]\)</span>. So <span class="math inline">\(\vDash_{\frak
+A}\forall{x}\beta\)</span></p>
+<p>According to definition of <a href="#LogicallyImply">Logically
+Imply</a>, we have the wff in question. <span class="math inline">\(\dashv\)</span></p>
+<h5 id="problem-4">Problem 4 <span id="Problem2.2-4"></span></h5>
+<p>Show that if <span class="math inline">\(x\)</span> does not occur
+free in <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\alpha\vDash\forall{x}\alpha\)</span>.</p>
+<p><span class="math inline">\(\PROOF\)</span></p>
+<p>For any <span class="math inline">\({\frak A}\)</span>, and any <span class="math inline">\(s\)</span>, <span class="math inline">\(s:V\rightarrow|{\frak A}|\)</span> such that <span class="math inline">\(\vDash_{\frak A}\forall{x}\alpha[s]\)</span>.</p>
+<p>According to <a href="#Theorem22A">Theorem 22A</a> and the condition
+<span class="math inline">\(x\)</span> isn't <a href="#OccurFree">free
+variable</a>.</p>
+<p>For any function <span class="math inline">\(s(x|d)\)</span>, <span class="math inline">\(\vDash_{\frak A}\alpha[s(x|d)]\)</span>. Because
+<span class="math inline">\(s(x|d)\)</span> agree at all variables that
+occur free for <span class="math inline">\(\forall{d}\in |{\frak
+A}|\)</span>.</p>
+<p>Based on the definition of <a href="/1eec0e97#SatisfyQuantifierSymbol">satisfy quantifier symbol</a>,
+<span class="math inline">\(\vDash_{\frak
+A}\forall{x}\alpha[s]\)</span></p>
+<p>Based on the definition of <a href="#LogicallyImply">logical
+implication</a>, <span class="math inline">\(\alpha\vDash\forall\alpha\)</span>.</p>
+<h5 id="problem-5">Problem 5 <span id="Problem2.2-5"></span></h5>
+<p>Show that the formula <span class="math inline">\(x=y\rightarrow
+Pzfx\rightarrow Pzfy\)</span> (where <span class="math inline">\(f\)</span> is a one-place function symbol and
+<span class="math inline">\(P\)</span> is a two-place predicate symbol)
+is valid.</p>
+<p><span class="math inline">\(\PROOF\)</span></p>
+<p><span class="math display">\[
+\begin{array}{lll}
+&amp;x=y\rightarrow Pzfx\rightarrow Pzfy\text{ is valid.} \\
+\Leftrightarrow&amp;\forall{\frak A}\text{ and }\forall{s},
+\vDash_{\frak A}x=y\rightarrow Pzfx\rightarrow Pzfy[s] &amp; ( \href{
+#ValidWff}{\text{Definition of valid wff}} ) \\
+\Leftrightarrow&amp;\text{either }\nvDash_{\frak A}x=y[s]\text{ or
+}\vDash_{\frak A}Pzfx\rightarrow Pzfy[s] &amp; ( \href{
+#SatisfyConditionalSymbol}{\text{Definition of Satisfy}} )\\
+\Leftrightarrow&amp;\nvDash_{\frak A}x=y[s]\text{ or }\nvDash_{\frak
+A}Pzfx[s]\text{ or }\vDash_{\frak A}Pzfy[s] \\
+\end{array}
+\]</span></p>
+<p>So as long as we can proof one of wffs <span class="math inline">\(\nvDash_{\frak A}x=y[s]\)</span>, <span class="math inline">\(\nvDash_{\frak A}Pzfx[s]\)</span> and <span class="math inline">\(\vDash_{\frak A}Pzfy[s]\)</span> holds, the wff in
+question is valid.</p>
+<p>If <span class="math inline">\(s(x)\neq s(y)\)</span>, according to
+definition of <a href="/1eec0e97#SatisfyEqualitySymbol">satisfy</a> the
+first wff holds.</p>
+<p>If <span class="math inline">\(s(x)=s(y)\)</span>, and according to
+definition of <a href="/1eec0e97#Overlines">extension of <span class="math inline">\(s\)</span></a>, we have <span class="math display">\[\overline{s}(fx)=f(s(x))=f(s(y))=\overline{s}(fx).\]</span></p>
+<p>Then relations <span class="math inline">\(\langle
+z,fx\rangle\)</span> and <span class="math inline">\(\langle
+z,fy\rangle\)</span> either both belong to <span class="math inline">\(P^{\frak A}\)</span> or neither of them belong to
+<span class="math inline">\(P^{\frak A}\)</span>.</p>
+<p>So that means one of wffs <span class="math inline">\(\nvDash_{\frak
+A}Pzfx[s]\)</span> and <span class="math inline">\(\vDash_{\frak
+A}Pzfy[s]\)</span> holds. <span class="math inline">\(\dashv\)</span></p>
+<h5 id="problem-6">Problem 6 <span id="Problem2.2-6"></span></h5>
+<p>Show that a formula <span class="math inline">\(\theta\)</span> is
+valid iff <span class="math inline">\(\forall x\theta\)</span> is
+valid.</p>
+<h5 id="problem-7">Problem 7 <span id="Problem2.2-7"></span></h5>
+<p>Restate the definition of "<span class="math inline">\({\frak
+A}\)</span> Satisfies with s" in the way described on page 84. That is,
+define by recursion a function <span class="math inline">\(\overline{h}\)</span> such that <span class="math inline">\({\frak A}\)</span> satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span> iff <span class="math inline">\(s\in\overline{h}(\varphi)\)</span>.</p>
+<h5 id="problem-8">Problem 8 <span id="Problem2.2-8"></span></h5>
+<p>Assumeme that <span class="math inline">\(\Sigma\)</span> is a set of
+sentences such that for any sentencese <span class="math inline">\(\tau\)</span>, either <span class="math inline">\(\Sigma\vDash\tau\)</span> or <span class="math inline">\(\Sigma\vDash\lnot\tau\)</span>. Assume that <span class="math inline">\({\frak A}\)</span> is a model of <span class="math inline">\(\Sigma\)</span>. Show that for any sentence <span class="math inline">\(\tau\)</span>, we have <span class="math inline">\({\frak A}\tau\)</span> iff <span class="math inline">\(\Sigma\vDash\tau\)</span>.</p>
+<h5 id="problem-9">Problem 9 <span id="Problem2.2-9"></span></h5>
+<p>Assume that the language has equality and a two-place predicate
+symbol <span class="math inline">\(P\)</span>. For each of the following
+conditions, find a sentence <span class="math inline">\(\sigma\)</span>
+such that the structure <span class="math inline">\({\frak A}\)</span>
+is a model of <span class="math inline">\(\sigma\)</span> iff the
+condition is met.</p>
+<ol type="a">
+<li><span class="math inline">\(|{\frak A}|\)</span> has exactly two
+members.</li>
+<li><span class="math inline">\(P^{\frak A}\)</span> is a function from
+<span class="math inline">\(|{\frak A}|\)</span> into <span class="math inline">\(|{\frak A}|\)</span>. (A function is a
+single-valued relation, as in Chapter 0. For <span class="math inline">\(f\)</span> to be a function from <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span>, the domain of <span class="math inline">\(f\)</span> must be all of <span class="math inline">\(A\)</span>; the range of <span class="math inline">\(f\)</span> is a subset, not necessarily proper, of
+<span class="math inline">\(B\)</span>.)</li>
+<li><span class="math inline">\(P^{\frak A}\)</span> is a permutation of
+<span class="math inline">\(|{\frak A}|\)</span>; i.e., <span class="math inline">\(P^{\frak A}\)</span> is a one-to-one function with
+domain and range equal to <span class="math inline">\(|{\frak
+A}|\)</span>.</li>
+</ol>
+<h5 id="problem-10">Problem 10 <span id="Problem2.2-10"></span></h5>
+<p>Show that <span class="math display">\[
+\vDash_{\frak A}\forall v_2 Qv_1 v_2\llbracket c^{\frak
+A}\rrbracket\quad\text{iff}\quad\vDash_{\frak A}\forall v_2 Qcv_2.
+\]</span></p>
+<h5 id="problem-11">Problem 11 <span id="Problem2.2-11"></span></h5>
+<p>For each of the following relations, give a formula which defines it
+in (<span class="math inline">\(\Bbb{N}\)</span>;+,<span class="math inline">\(\cdot\)</span>). (The language is assumed to have
+equality and the parameters <span class="math inline">\(\forall\)</span>, <span class="math inline">\(+\)</span>, and <span class="math inline">\(\cdot\)</span>).</p>
+<ol type="a">
+<li><span class="math inline">\(\{0\}\)</span>.</li>
+<li><span class="math inline">\(\{1\}\)</span>.</li>
+<li><span class="math inline">\(\{\langle m, n\rangle | n \text{ is the
+successor of } m \text{ in }\Bbb{N}\}\)</span>.</li>
+<li><span class="math inline">\(\{\langle m, n\rangle | m &lt; n \text{
+in } \Bbb{N}\}\)</span>.</li>
+</ol>
+<p><em>Digression</em>: This is merely the tip of the iceberg. A
+relation on <span class="math inline">\(\Bbb{N}\)</span> is said to be
+<em>arithmetical</em> if it is definable in this structure. All
+decidable relations are arithmetical, as are many others. The
+arithmetical relations can be arranged in a hierarchy; see Section
+3.5.</p>
+<h5 id="problem-12">Problem 12 <span id="Problem2.2-12"></span></h5>
+<p>Let <span class="math inline">\({\frak R}\)</span> be the structure
+<span class="math inline">\((\Bbb{R};+,\cdot)\)</span>. (The language is
+assumed to have equality and the parameters <span class="math inline">\(\forall\)</span>, <span class="math inline">\(+\)</span>, and <span class="math inline">\(\cdot\)</span>. <span class="math inline">\({\frak
+R}\)</span> is the structure whose universe is the set <span class="math inline">\(\Bbb{R}\)</span> of real numbers and such that
+<span class="math inline">\(+^{\frak R}\)</span> and <span class="math inline">\(\cdot^{\frak R}\)</span> are the usual addition
+and multiplication operations.)</p>
+<ol type="a">
+<li>Give a formula that defines in <span class="math inline">\({\frak
+R}\)</span> the interval <span class="math inline">\([0,\infty)\)</span>.</li>
+<li>Give a formula that defines in <span class="math inline">\({\frak
+R}\)</span> the set <span class="math inline">\({2}\)</span>.</li>
+<li><span class="math inline">\(^*\)</span>Show that any finite union of
+intervals, the endpoints of which are algebraic, is definable in <span class="math inline">\({\frak R}\)</span>. (The converse is also true;
+these are the only definable sets in the structure. But we will not
+prove this fact.)</li>
+</ol>
+<h5 id="problem-13">Problem 13 <span id="Problem2.2-13"></span></h5>
+<p>Prove part (a) of the homomorphism theorem.</p>
+<h5 id="problem-14">Problem 14 <span id="Problem2.2-14"></span></h5>
+<p>What subsets of the real line <span class="math inline">\(\Bbb{R}\)</span> are definable in <span class="math inline">\((\Bbb{R};&lt;)\)</span>? What subsets of the plane
+<span class="math inline">\(\Bbb{R}\times\Bbb{R}\)</span> are definable
+in <span class="math inline">\((\Bbb{R};&lt;)\)</span>?</p>
+<p><em>Remarks</em> : The nice thing about <span class="math inline">\((\Bbb{R};&lt;)\)</span> is that its automorphisms
+are exactly the order-preserving maps from R onto itself. But stop after
+the binary relations. There are <span class="math inline">\(2^{13}\)</span> definable ternary relations, so
+you do not want to catalog all of them.</p>
+<h5 id="problem-15">Problem 15 <span id="Problem2.2-15"></span></h5>
+<p>Show that the addition relation, <span class="math inline">\(\{\langle m, n, p\rangle | p = m + n\}\)</span>,
+is not definable in <span class="math inline">\((\Bbb{N};\cdot)\)</span>. <em>Suggestion</em> :
+Consider an automorphism of <span class="math inline">\((\Bbb{N};\cdot)\)</span> that switches two
+primes.</p>
+<p><em>Digression</em> : Algebraically, the structure of the natural
+numbers with multiplication is nothing but the free Abelian semigroup
+with <span class="math inline">\(\aleph_0\)</span> generators (viz. the
+primes), together with a zero element. There is no way you could define
+addition here. If you could define addition, then you could define
+ordering (by Exercise 11 and the natural transitivity statement). But
+one generator looks just like another. That is, there are <span class="math inline">\(2^{\aleph_0}\)</span> automorphisms--simply
+permute the primes. None of them is order-preserving except the
+identity.</p>
+<h5 id="problem-16">Problem 16 <span id="Problem2.2-16"></span></h5>
+<p>Give a sentence having models of size <span class="math inline">\(2n\)</span> for every positive integer <span class="math inline">\(n\)</span>, but no finite models of odd size.
+(Here the language should include equality and will have whatever
+parameters you choose.)</p>
+<p><em>Suggestion</em> : One method is to make a sentence that says,
+“Everything is either red or blue, and f is a color-reversing
+permutation.”</p>
+<p><em>Remark</em> : Given a sentence <span class="math inline">\(\sigma\)</span>, it might have some finite models
+(i.e., models with finite universes). Define the <em>spectrum</em> of
+<span class="math inline">\(\sigma\)</span> to be the set of positive
+integers <span class="math inline">\(n\)</span> such that <span class="math inline">\(\sigma\)</span> has a model of size <span class="math inline">\(n\)</span>. This exercise shows that the set of
+even numbers is a spectrum.</p>
+<p>For example if <span class="math inline">\(\sigma\)</span> is the
+conjunction of the field axioms (there are only finitely many, so we can
+take their conjunction), then its spectrum is the set of powers of
+primes. This fact is proved in any course on finite fields. The spectrum
+of <span class="math inline">\(\lnot\sigma\)</span>, by contrast, is the
+set of all positive integers (non-fields come in all sizes).</p>
+<p>Günter Asser in 1955 raised the question: Is the complement of every
+spectrum a spectrum? Once you realize that simply taking a negation does
+not work (cf. the preceding paragraph), you see that this is a
+nontrivial question. In fact the problem, known as the spectrum problem,
+is still open. But modern work has tied it to another open problem,
+whether or not co-NP=NP.</p>
+<h5 id="problem-17">Problem 17 <span id="Problem2.2-17"></span></h5>
+<ol type="a">
+<li>Consider a language with equality whose only parameter (aside from
+<span class="math inline">\(\forall\)</span>) is a two-place predicate
+symbol <span class="math inline">\(P\)</span>. Show that if <span class="math inline">\({\frak A}\)</span> is finite and <span class="math inline">\(A\equiv B\)</span>, then <span class="math inline">\({\frak A}\)</span> is isomorphic to <span class="math inline">\({\frak B}\)</span>. <em>Suggestion</em> : Suppose
+the universe of <span class="math inline">\({\frak A}\)</span> has size
+<span class="math inline">\(n\)</span>. Make a single sentence <span class="math inline">\(\sigma\)</span> of the form <span class="math inline">\(\exists v_1\cdots\exists v_n\theta\)</span> that
+describes A “completely.” That is, on the one hand, <span class="math inline">\(\sigma\)</span> must be true in <span class="math inline">\({\frak A}\)</span>. And on the other hand, any
+model of <span class="math inline">\(\sigma\)</span> must be exactly
+like (i.e., isomorphic to) <span class="math inline">\({\frak
+A}\)</span>.</li>
+<li><span class="math inline">\(^*\)</span>Show that the result of part
+(a) holds regardless of what parameters the language contains.</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Logic/" rel="tag"># Logic</a>
+              <a href="/tags/Mathematical-Logic/" rel="tag"># Mathematical Logic</a>
+              <a href="/tags/Enderton/" rel="tag"># Enderton</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/1eec0e97/" rel="prev" title="A Mathematical Introduction to Logic -- Section 2.1">
+                  <i class="fa fa-chevron-left"></i> A Mathematical Introduction to Logic -- Section 2.1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/e34593ca/" rel="next" title="减肥课听后感">
+                  减肥课听后感 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1c46a6c29778a73d8bb72ba0b08a09b4"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

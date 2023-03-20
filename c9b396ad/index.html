@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="起因 起因是最近在努力想把傅立叶级数和傅立叶变换重学一遍, 完全搞懂. 傅立叶变换用欧拉公式转换成复系数的形式看起来是非常优雅的. 但是遗憾我已经不记得欧拉公式是怎么来的了. 上网查了些资料, 终于搞清楚了. 先把欧拉公式写在这里: \[ \forall x \in \mathbb{R}, \quad \begin{equation*} e^{ix} &#x3D; \cos x + i \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无理数指数, 复数指数, 欧拉公式, 复对数">
+<meta property="og:url" content="https://retzzz.github.io/c9b396ad/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="起因 起因是最近在努力想把傅立叶级数和傅立叶变换重学一遍, 完全搞懂. 傅立叶变换用欧拉公式转换成复系数的形式看起来是非常优雅的. 但是遗憾我已经不记得欧拉公式是怎么来的了. 上网查了些资料, 终于搞清楚了. 先把欧拉公式写在这里: \[ \forall x \in \mathbb{R}, \quad \begin{equation*} e^{ix} &#x3D; \cos x + i \">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-09T01:00:00.000Z">
+<meta property="article:modified_time" content="2018-09-09T01:00:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Euler Formula">
+<meta property="article:tag" content="power function">
+<meta property="article:tag" content="exponential function">
+<meta property="article:tag" content="logarithm function">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/c9b396ad/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/c9b396ad/","path":"/c9b396ad/","title":"无理数指数, 复数指数, 欧拉公式, 复对数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>无理数指数, 复数指数, 欧拉公式, 复对数 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%82%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">幂运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%8C%87%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">整数指数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9E%E6%95%B0%E5%BA%95%E7%9A%84%E5%AE%9E%E6%95%B0%E6%8C%87%E6%95%B0%E6%AC%A1%E5%B9%82"><span class="nav-number">2.2.</span> <span class="nav-text">正实数底的实数指数次幂</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E7%90%86%E6%95%B0%E6%8C%87%E6%95%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">无理数指数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mathrme%E7%9A%84%E5%AE%9E%E6%95%B0%E6%AC%A1%E5%B9%82"><span class="nav-number">2.2.2.</span> <span class="nav-text">\(\mathrm{e}\)的实数次幂</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9E%E6%95%B0%E5%BA%95%E7%9A%84%E5%A4%8D%E6%95%B0%E6%AC%A1%E5%B9%82"><span class="nav-number">2.3.</span> <span class="nav-text">正实数底的复数次幂</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">欧拉公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E9%9B%B6%E5%A4%8D%E6%95%B0%E7%9A%84%E5%A4%8D%E6%95%B0%E6%AC%A1%E5%B9%82"><span class="nav-number">2.4.</span> <span class="nav-text">非零复数的复数次幂</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E5%AF%B9%E6%95%B0%E8%BF%90%E7%AE%97"><span class="nav-number">2.4.1.</span> <span class="nav-text">复平面上的对数运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">2.4.3.</span> <span class="nav-text">运算性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E7%BD%91%E9%A1%B5"><span class="nav-number">4.</span> <span class="nav-text">参考网页</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/c9b396ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="无理数指数, 复数指数, 欧拉公式, 复对数 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          无理数指数, 复数指数, 欧拉公式, 复对数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-09-09 09:00:00" itemprop="dateCreated datePublished" datetime="2018-09-09T09:00:00+08:00">2018-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">分析</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%88%86%E6%9E%90/%E5%A4%8D%E5%8F%98/" itemprop="url" rel="index"><span itemprop="name">复变</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="起因">起因</h2>
+<p>起因是最近在努力想把傅立叶级数和傅立叶变换重学一遍, 完全搞懂.
+傅立叶变换用欧拉公式转换成复系数的形式看起来是非常优雅的.
+但是遗憾我已经不记得欧拉公式是怎么来的了. 上网查了些资料,
+终于搞清楚了.</p>
+<p>先把欧拉公式写在这里:</p>
+<p><span class="math display">\[
+\forall x \in \mathbb{R}, \quad
+\begin{equation*}
+e^{ix} = \cos x + i \sin x
+\end{equation*}
+\]</span></p>
+<p>这里<span class="math inline">\(\mathrm{e}\)</span>是自然对数的底,
+也叫欧拉数. <span class="math inline">\(\mathrm{e} \approx
+2.718\)</span>. <span class="math inline">\(i\)</span>是虚数单位.</p>
+<p>这个公式右边是一个关于<span class="math inline">\(x\)</span>的三角函数, 函数值落在复数数域里,
+也就是一个<span class="math inline">\(\mathbb{R} \mapsto
+\mathbb{C}\)</span>的映射.</p>
+<p>而左边是一个指数为复数的指数函数. 可是,
+指数为复数的幂运算是怎么定义的? 所以为了搞清楚所有这些概念.
+需要把复数域幂运算, 复数域对数运算一起串起来.
+写了这篇总结相信再不会忘记了.</p>
+<span id="more"></span>
+<h2 id="幂运算">幂运算</h2>
+<h3 id="整数指数">整数指数</h3>
+<p>先来回顾一下初等代数里关于幂运算的内容.</p>
+<ol type="1">
+<li>最最开始, 我们见到的<span class="math inline">\(x^n\)</span>运算里,
+<span class="math inline">\(x \in \mathbb{R}, \quad n \in
+\mathbb{Z}^+\)</span>. 在这个限制下, 幂运算的定义为<span class="math inline">\(n\)</span>个<span class="math inline">\(x\)</span>自乘.</li>
+<li>规定<span class="math inline">\(x^0=1\)</span></li>
+<li>若<span class="math inline">\(x \neq 0\)</span>, 定义<span class="math inline">\(\displaystyle x^{-n}=\frac{1}{x^n}\)</span></li>
+</ol>
+<p>这三个合在一起将运算<span class="math inline">\(x^n\)</span>里的<span class="math inline">\(n\)</span>延拓到整数域.
+根据这几个定义可以轻松证明下列幂运算的运算性质.</p>
+<ol type="a">
+<li><p>同底数相乘除,指数相加减: <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+x^a \times x^b = x^{a+b} \\
+\frac{x^a}{x^b} = x^{a-b}
+\end{aligned}
+\end{equation} \label{eq:sameBaseTimesDivide}
+\]</span></p></li>
+<li><p>幂的幂,指数相乘: <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+(x^a)^b = x^{(a \times b)}
+\end{aligned}
+\end{equation} \label{eq:powerPower}
+\]</span></p></li>
+<li><p>指数分配: <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+(x \times y)^z=x^z \times y^z \\
+\left({\frac{x}{y}}\right)^z=\frac{x^z}{y^z}
+\end{aligned}
+\end{equation} \label{eq:powerDistributiveLaw}
+\]</span></p></li>
+</ol>
+<p>我们也可以轻松证明, 把运算里的底数<span class="math inline">\(x\)</span>延拓到整个非零复数域,
+这些运算性质依然成立.</p>
+<h3 id="正实数底的实数指数次幂">正实数底的实数指数次幂</h3>
+<p>如果我们在运算<span class="math inline">\(a^x\)</span>中把底数<span class="math inline">\(a\)</span>的定义域限定到正实数. 对于<span class="math inline">\(\forall a \in \mathbb{R}^+\)</span>, <span class="math inline">\(a^x\)</span>变为关于<span class="math inline">\(x\)</span>的指数函数.
+进一步延拓指数的定义范围.</p>
+<ol start="4" type="1">
+<li>若<span class="math inline">\(\displaystyle x=\frac{1}{n}, \quad n
+\in \mathbb{Z}^+\)</span>, 定义<span class="math inline">\(a^x\)</span>为<span class="math inline">\(\sqrt[n]{a}\)</span>的正实数根.</li>
+<li>若<span class="math inline">\(\displaystyle x=\frac{m}{n}, \quad n
+\in \mathbb{Z}^+, \quad m \in \mathbb{Z}\)</span>, 定义<span class="math inline">\(a^x = \sqrt[n]{a^m}\)</span></li>
+</ol>
+<p>由于已知有理数是跟分数一一对应的可数集合.
+所以上面的定义5就把指数延拓到整个有理数集合了.</p>
+<h4 id="无理数指数">无理数指数</h4>
+<p>我们肯定希望我们定义的无理数指数可以使指数函数<span class="math inline">\(a^x\)</span>是个连续函数.
+所以可以用极限来定义无理数指数. 已知无理数为无限不循环小数,
+所以可以做出两个有理数数列来趋近这个无理数. 设<span class="math inline">\(x=\alpha\)</span>是无理数, 我们取其前n位有效数字,
+舍去剩下的小数得到的值为<span class="math inline">\(r_n\)</span>.
+取其前<span class="math inline">\(n-1\)</span>个有效数字加上第n个有效数字进位得到的值为<span class="math inline">\(s_n\)</span>. 称<span class="math inline">\(\{r_n\}\)</span>为不足近似值数列, <span class="math inline">\(\{s_n\}\)</span>为过剩近似值数列. 举个例子,
+对于<span class="math inline">\(\pi\)</span>来讲:</p>
+<p><span class="math display">\[
+\begin{align*}
+\{r_n\} &amp;= \{3,\: 3.1,\: 3.14,\: 3.141,\: 3.1415\} \\
+\{s_n\} &amp;= \{4,\: 3.2,\: 3.15,\: 3.142,\: 3.1416\}
+\end{align*}
+\]</span></p>
+<p>由这两个数列的定义可知<span class="math inline">\(\{r_n\}\)</span>单调递增, <span class="math inline">\(\{s_n\}\)</span>单调递减. 且<span class="math inline">\(\alpha = sup\{r_n\}=inf\{s_n\}\)</span> (<span class="math inline">\(sup\)</span>是上确界, <span class="math inline">\(inf\)</span>是下确界). 易知<span class="math inline">\(\displaystyle\lim_{n \to +\infty}{r_n} = \lim_{n
+\to +\infty}{s_n} = \alpha\)</span>, 则 <span class="math display">\[\begin{equation}\lim_{n \to +\infty}{s_n - r_n} =
+0 \end{equation}\]</span></p>
+<p>下面只需要证明这两个极限<span class="math inline">\(\displaystyle\lim_{n \to +\infty}
+{a^{r_n}}\)</span>和<span class="math inline">\(\displaystyle\lim_{n \to
++\infty} {a^{s_n}}\)</span>都存在且相等,
+就可以用这个极限来定义一个实数的无理数指数了.</p>
+<p>先假设<span class="math inline">\(a&gt;1\)</span>,
+由于我们要定义无理数指数使指数函数<span class="math inline">\(a^x\)</span>在实数域上是个连续函数,
+而已知这个指数函数当<span class="math inline">\(a&gt;1\)</span>时是个单调递增函数.
+所以我们定义的无理数指数一定是使不等式<span class="math inline">\(a^{r_n} &lt; a^\alpha &lt; a^{s_n}\)</span>成立.
+由于单调有界数列必有极限. 所以这两个极限<span class="math inline">\(\displaystyle\lim_{n \to
++\infty}{a^{r_n}}\)</span>和<span class="math inline">\(\displaystyle\lim_{n \to
++\infty}{a^{s_n}}\)</span>都存在. 由下式可知</p>
+<p><span class="math display">\[
+\begin{equation}
+\displaystyle\frac{\lim_{n \to +\infty}{a^{s_n}}}{\lim_{n \to
++\infty}{a^{r_n}}} = \lim_{n \to +\infty}{\frac{a^{s_n}}{a^{r_n}}} =
+\lim_{n \to +\infty}{a^{s_n-r_n}}=1
+\end{equation}
+\]</span></p>
+<p>对于<span class="math inline">\(0&lt;a&lt;1\)</span>的情况,
+可以用相同的办法讨论, 只有单调方向不同. <span class="math inline">\(a=1\)</span>的清况是平凡的.</p>
+<p>6-1. 若<span class="math inline">\(x=\alpha\)</span>为无理数,
+定义指数函数<span class="math inline">\(\displaystyle a^\alpha = \lim_{n
+\to +\infty}{a^{r_n}} = \lim_{n \to +\infty}{a^{s_n}}\)</span></p>
+<p>到此为止, 幂运算, 底数为正实数, 指数为全体实数,
+值为正实数的各种情况已经被很好的定义了.
+而且这些定义都可以让前面提到的几条指数运算性质成立. 但后面我们会看到,
+一旦我们把指数运算延拓到复数, 有些运算性质就不再成立了.</p>
+<p>我们可以看到这里的定义虽然直观, 理解起来容易. 但总感觉不够美观,
+跟之前的定义不够统一. 其实这里还有其他的定义方法,
+我们先列出这个定义方法.</p>
+<p>6-2. 对于任意实数<span class="math inline">\(a\)</span>, <span class="math inline">\(a&gt;0\)</span>, 以及任意实数<span class="math inline">\(x\)</span>, 定义<span class="math inline">\(a^x =
+\mathrm{e}^{x \cdot \ln{a}}\)</span></p>
+<p>这个定义看起来好像是个循环定义, <span class="math inline">\(\mathrm{e}\)</span>的无理数次幂不也还没定义呢么.
+所以如果想这个定义成立, 还得先用别的办法定义<span class="math inline">\(\mathrm{e}\)</span>的实数次幂.</p>
+<h4 id="mathrme的实数次幂"><span class="math inline">\(\mathrm{e}\)</span>的实数次幂</h4>
+<p>这里有两种办法可以定义<span class="math inline">\(\mathrm{e}\)</span>的实数次幂</p>
+<p>方法1, 直接利用极限.</p>
+<p>首先我们已知<span class="math inline">\(&quot;\mathrm{e}\)</span>可以通过极限<span class="math inline">\(\displaystyle\lim_{n \to +\infty}{\left(1 +
+\frac{1}{n}\right)^n}\)</span>来定义.</p>
+<p>那么对于任意实数<span class="math inline">\(x\)</span>, 可以定义<span class="math inline">\(\displaystyle\mathrm{e}^x=\lim_{n \to
++\infty}{\left(1+\frac{x}{n}\right)^n}\)</span></p>
+<p>可以简单证明在<span class="math inline">\(x\)</span>为正整数的时候,
+上述定义跟之前的自乘的定义可以互相推导.</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathrm{e}^k &amp;= \left[\lim_{n \to \infty
+}{\left(1+\frac{1}{n}\right)^n}\right]^k \\
+&amp;=\lim_{n \to \infty }{\left[\left(1+\frac{1}{n}\right)^n\right]^k}
+\\
+&amp;=\lim_{n\cdot k \to \infty }{\left(1+\frac{k}{n \cdot
+k}\right)^{n\cdot k}} \\
+&amp;=\lim_{m \to \infty}{\left(1+\frac{k}{m}\right)^m}
+\end{align*}
+\]</span></p>
+<p>方法2, 使用泰勒级数定义</p>
+<p><span class="math display">\[
+\mathrm{e}^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!} + \cdots =
+\sum_{n=0}^{+\infty}{\frac{x^n}{n!}}
+\]</span></p>
+<p>有了这个<span class="math inline">\(\mathrm{e}^x\)</span>的定义,
+任何正实数的实数次幂都可以统一定义成6-2的形式.
+甚至复数也可以统一成这个定义.</p>
+<h3 id="正实数底的复数次幂">正实数底的复数次幂</h3>
+<p>跟前面实数一样, 想要把任何正实数的复数次幂也定义成6-2的式子,
+必须先定义<span class="math inline">\(\mathrm{e}\)</span>的复数次幂.
+这就终于要轮到欧拉公式出场了.</p>
+<h4 id="欧拉公式">欧拉公式</h4>
+<p>对于任意实数<span class="math inline">\(x\)</span>, 任意复数<span class="math inline">\(z=a+bi\)</span>, 可以证明: <span class="math display">\[
+\begin{align*}
+\mathrm{e}^{ix} &amp;= \cos x+i\cdot\sin x \\
+\mathrm{e}^z &amp;= \mathrm{e}^a(\cos b+i\cdot\sin b)
+\end{align*}
+\]</span> 证明有多种方法, 比如用泰勒级数也可以证明. 首先把<span class="math inline">\(\mathrm{e}^x\)</span>, <span class="math inline">\(\cos x\)</span>, 和<span class="math inline">\(\sin x\)</span>的泰勒级数展开写出来作为已知条件:
+<span class="math display">\[
+\begin{align*}
+&amp;\mathrm{e}^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!} + \cdots \\
+&amp;\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} +
+\cdots \\
+&amp;\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} +
+\cdots
+\end{align*}
+\]</span> 将<span class="math inline">\(x=iy\)</span>带入<span class="math inline">\(\mathrm{e}^x\)</span>可简单的证明欧拉公式得.</p>
+<h4 id="定义">定义</h4>
+<p>有了欧拉公式, 再定义正实数的复数次幂就容易了. 形式重复6-2.</p>
+<ol start="7" type="1">
+<li>若<span class="math inline">\(a\)</span>是一个正实数, <span class="math inline">\(z\)</span>是任何复数, <span class="math inline">\(a^z\)</span>可以定义成<span class="math inline">\(\mathrm{e}^{z\cdot\ln(a)}\)</span>.</li>
+</ol>
+<h3 id="非零复数的复数次幂">非零复数的复数次幂</h3>
+<p>定义7已经将指数延拓到整个复数, 现在开始考察底数的进一步延拓.
+之前之所以一直限定底数为正实数, 是因为初等数学里定义7里出现的<span class="math inline">\(\ln a\)</span>的自变量是正实数.
+但我们现在有了欧拉公式, 可以把对数运算延拓到复数范围.</p>
+<h4 id="复平面上的对数运算">复平面上的对数运算</h4>
+<p>对数函数在正实数定义域上的定义是指数函数的反函数, 或者说<span class="math inline">\(x=\ln a\)</span>里<span class="math inline">\(x\)</span>是方程<span class="math inline">\(\mathrm{e}^x=a\)</span>的唯一解. 在复数范围内,
+也可以将<span class="math inline">\(z=ln(a+bi)\)</span>定义成方程<span class="math inline">\(\mathrm{e}^z=a+bi\)</span>的解, 但这个解并不唯一.
+换句话说复指数函数的反函数是个多值函数.</p>
+<p>考虑复数<span class="math inline">\(w=a+bi\)</span>的几何意义,
+把复平面从a,b为轴的笛卡尔坐标系转换成极坐标, 定义<span class="math inline">\(\sqrt{a^2+b^2}\)</span>为复数<span class="math inline">\(w\)</span>的模. 表示为<span class="math inline">\(|w|\)</span>.
+定义从正实数轴到复数在复平面上的对应的向量所成的角叫做辐角, 记为Arg(w).
+由几何意义易知一个复数点对应的辐角是相差<span class="math inline">\(2k\pi\)</span>的无穷多个角度值, 其中在<span class="math inline">\((-\pi,\pi]\)</span>的那个值叫做辐角主值, 记为<span class="math inline">\(\theta\)</span>.
+根据欧拉公式上这些定义可以算出对数以<span class="math inline">\(\mathrm{e}\)</span>为底的对数<span class="math inline">\(\mathrm{Ln}w = \ln |w|+i(\theta+2k\pi)\)</span>,
+其中<span class="math inline">\(k\)</span>为整数.
+注意这里用的是大写L开头, 代表多值函数, 如果我们限定辐角必须是辐角主值,
+就又变成单值函数了, 用<span class="math inline">\(\ln
+w\)</span>表示.</p>
+<h4 id="定义-1">定义</h4>
+<p>结合对数运算和定义7,
+可以得到最终复数域中一般幂函数(或指数函数)的定义如下:</p>
+<ol start="8" type="1">
+<li><span class="math inline">\(w^z=e^{w\cdot \mathrm{Ln}z}, \quad w,z
+\in \mathbb{C}, w \neq 0\)</span></li>
+</ol>
+<h4 id="运算性质">运算性质</h4>
+<p>由于我们得到这个最终的定义变为一个多值函数,
+这就导致前面提到运算性质<span class="math inline">\(\eqref{eq:powerPower}\)</span>和<span class="math inline">\(\eqref{eq:powerDistributiveLaw}\)</span>不再成立了.</p>
+<h2 id="前置知识">前置知识</h2>
+<p>数列, 极限, 级数, 泰勒级数</p>
+<h2 id="参考网页">参考网页</h2>
+<p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/blog-826653-900633.html">1</a> <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20679434">2</a> <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%AA#cite_note-Denlinger-3">3</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Euler-Formula/" rel="tag"># Euler Formula</a>
+              <a href="/tags/power-function/" rel="tag"># power function</a>
+              <a href="/tags/exponential-function/" rel="tag"># exponential function</a>
+              <a href="/tags/logarithm-function/" rel="tag"># logarithm function</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/9cbcca7a/" rel="prev" title="通过hexo + NexT + github pages + 搭建个人博客(一)">
+                  <i class="fa fa-chevron-left"></i> 通过hexo + NexT + github pages + 搭建个人博客(一)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/c90ca996/" rel="next" title="c++ compilers on Windows -- msvc vs gcc vs clang">
+                  c++ compilers on Windows -- msvc vs gcc vs clang <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a068ef77e5b7256aa2e91ac4f364e312"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

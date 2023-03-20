@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过hexo + NexT + github pages + 搭建个人博客(一)">
+<meta property="og:url" content="https://retzzz.github.io/9cbcca7a/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看, 所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时, 很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记, 另一个是大部分google起来也很容易, 查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快. 但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽. 即便没有别">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://retzzz.github.io/.io//tags_and_cats.jpg">
+<meta property="article:published_time" content="2018-09-02T15:12:00.000Z">
+<meta property="article:modified_time" content="2021-11-10T04:40:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="NexT">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://retzzz.github.io/.io//tags_and_cats.jpg">
+
+
+<link rel="canonical" href="https://retzzz.github.io/9cbcca7a/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/9cbcca7a/","path":"/9cbcca7a/","title":"通过hexo + NexT + github pages + 搭建个人博客(一)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>通过hexo + NexT + github pages + 搭建个人博客(一) | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD"><span class="nav-number">3.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo"><span class="nav-number">3.1.</span> <span class="nav-text">hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E6%8F%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装hexo </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99"><span class="nav-number">3.1.3.</span> <span class="nav-text">初始化博客网站 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-number">3.1.4.</span> <span class="nav-text">新建博客文章 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#post"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#draft"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">draft</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#page"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85next"><span class="nav-number">3.2.</span> <span class="nav-text">安装NexT </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">支持数学公式 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%B4%B4%E5%9B%BE"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地贴图 </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github-pages"><span class="nav-number">3.3.</span> <span class="nav-text">部署到github pages </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number">4.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E7%BD%91%E9%A1%B5"><span class="nav-number">6.</span> <span class="nav-text">参考网页:</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/9cbcca7a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="通过hexo + NexT + github pages + 搭建个人博客(一) | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过hexo + NexT + github pages + 搭建个人博客(一)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-09-02 23:12:00" itemprop="dateCreated datePublished" datetime="2018-09-02T23:12:00+08:00">2018-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-10 12:40:00" itemprop="dateModified" datetime="2021-11-10T12:40:00+08:00">2021-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>之前一直用各种笔记记录应用记录自己的学习过程. 由于只给自己看,
+所以都是比较潦草的想到哪记录到哪. 但一旦碰到过已经记录的问题时,
+很少去翻自己的笔记, 原因一是公司屏蔽内网屏蔽了好多这种笔记,
+另一个是大部分google起来也很容易,
+查看自己写的潦草的笔记还不如google一个优秀的技术博客来得快.</p>
+<p>但最近我想给自己点压力, 把学过的内容整理成完整的文章. 尽量详尽.
+即便没有别人读, 将来也可以留给我儿子看:).
+争取把前因后果和自己的思考过程交代清楚, 而不是只有技术要点的bullet.
+因为我发现网上能帮助到我的别人的博客, 往往都是这种写的很罗嗦的文章.</p>
+<p>这篇作为第一篇, 就讲讲这个博客是怎么搭建起来的.</p>
+<h2 id="需求">需求</h2>
+<p>我自己给要搭建的博客定了如下一些需求:</p>
+<ol type="1">
+<li>能够使用markdown语法编辑博客内容.</li>
+<li>能够快速发布到网站.</li>
+<li>支持文章中的代码片段语法高亮.</li>
+<li>支持数学公式.</li>
+<li>支持分级标签.</li>
+<li>支持搜索.</li>
+<li>尽量少的网站管理工作.</li>
+</ol>
+<h2 id="方案">方案</h2>
+<span id="more"></span>
+<p>根据这个需求我开始在google一顿狂搜. 最后决定的方案就是如同标题.
+下面分别解释一下这几个都是什么.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://zh.wikipedia.com/wiki/Markdown">Markdown</a>:
+一种轻量级标签语言, 其目标是纯文本的源文件是人类可读的,
+但是有一定程度的结构化, 可以很容易转换成机器可读的html或者LeTeX.
+人类可读可以让非技术人员也可以轻松使用, 结构化可以让电脑可以很容易解析.
+能结合这两点的方案基本只有这一个, 没有别可替换的方案.
+当然也可以直接写LeTeX和html, 但都无法让源文件是人类可读的,
+对于写博客来说太重了.</li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io">hexo</a>: 一个博客框架(framework),
+可以把markdown写作的源文件渲染(render)成静态的html页面.
+写博客的人其实只想书写博客的内容,
+但是却很贪心的想要让这些内容更加优美的显示出来. 字体选择, 排版, 打标签,
+分类, 搜索等等这些一个博客必要的因素都可由hexo框架帮助完成.
+这种类型的框架有很多选择. 比如hugo和jekyll, 点击<a target="_blank" rel="noopener" href="https://www.techiediaries.com/jekyll-hugo-hexo/">这里</a>可以看到它们比较.
+根据这篇文章, hexo的优点一个是快, 一个是基本没有什么缺点,
+唯一的缺点是很多文档是中文的:). hexo这个框架作者好像是个台湾大学生,
+使用node.js开发的.</li>
+<li><a target="_blank" rel="noopener" href="https://theme-next.js.org">NexT</a>:
+这是hexo的一个主题(theme), 也是github上点赞最多的一个. 页面精美简洁,
+非常喜欢. hexo的一个特点就是可扩展性强, 很多插件(plugin)和主题可选.</li>
+<li><a href="pages.github.com">github pages</a>:
+这个是github提供的一个静态页面托管服务. 免费稳定,
+不管是国家还是公司都应该不会墙掉它.
+只要把hexo渲染出来的静态页面上传到这里托管, 公网上就可以直接访问.</li>
+<li><a target="_blank" rel="noopener" href="https://www.mathjax.org/">mathjax</a>:
+这是一个开源的javascript库,
+可以把TeX格式的数学公式在网页上渲染成人类可读的数学公式.
+这个其实不需要安装, NexT可以直接支持. 但有一些坑, 我稍后会讲.</li>
+</ul>
+<h2 id="实施">实施</h2>
+<h3 id="hexo">hexo</h3>
+<h4 id="前提">前提</h4>
+<p>安装hexo, 有两个前提一个是<a target="_blank" rel="noopener" href="https://git-scm.com/">git</a>,
+一个是<a target="_blank" rel="noopener" href="https://nodejs.org/en/">note.js</a>.
+这两个的安装基本就是下载安装文件, 双击打开, 不停点next就好了.
+截止于写这篇文章的时候, 我机器上安装的版本分别是 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">v10.9.0</span><br><span class="line">$ npm -v</span><br><span class="line">6.2.0</span><br><span class="line">$ git --version</span><br><span class="line">git version 2.17.1.windows.2</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装hexo">安装hexo <span id="installation"></span></h4>
+<p>之后只要按照hexo<a target="_blank" rel="noopener" href="https://hexo.io">官网首页</a>上的提示运行下面命令就可以安装hexo
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure> 安装完可以通过下面的命令查询一下安装的版本
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Windows_NT 10.0.15063 win32 x64</span><br><span class="line">http_parser: 2.8.0</span><br><span class="line">node: 10.9.0</span><br><span class="line">v8: 6.8.275.24-node.14</span><br><span class="line">uv: 1.22.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.14.0</span><br><span class="line">modules: 64</span><br><span class="line">nghttp2: 1.32.0</span><br><span class="line">napi: 3</span><br><span class="line">openssl: 1.1.0i</span><br><span class="line">icu: 62.1</span><br><span class="line">unicode: 11.0</span><br><span class="line">cldr: 33.1</span><br><span class="line">tz: 2018e</span><br></pre></td></tr></table></figure></p>
+<h4 id="初始化博客网站">初始化博客网站 <span id="init"></span></h4>
+<p>继续按照官网文档执行下面这些命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>其中folder是你博客网站的根目录. 如果当前目录就是根目录, 可以省略.
+注意最后一条命令不能省略.</p>
+<p>这时候系统默认有一片hello world的博客, 你可以通过 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+在本地启动一个端口为4000的web server,
+直接访问http://localhost:4000查看这个hello world页面.</p>
+<p>之后要做的就是修改配置, 然后就可以通过一些hexo命令创建新的博客了,
+这里可以参考官方文档的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">配置</a>和<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands">命令</a>两个章节.</p>
+<p>修改配置文件的时候, 注意设置语言和时区的时候注意大小写敏感,
+我的设置如下: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br></pre></td></tr></table></figure></p>
+<h4 id="新建博客文章">新建博客文章 <span id="newpost"></span></h4>
+<p>根据官网帮助, 使用<code>new</code>命令可以新建一个博客,
+但官网关于命令中的<code>layout</code>说得不是很明白.
+<code>layout</code>默认可以有3种可能: <code>post, page and draft</code>.
+命令里省略<code>layout</code>就使用默认值<code>post</code>.
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="post">post</h5>
+<p>一个<code>post</code>就是一篇普通的博客文章,
+运行完这条命令你就可以在<code>source\_post</code>下找到这个后缀为md的文章,
+使用<code>markdown</code>语法编辑你的文章就成为了源文件.</p>
+<p>注意这个源文件最开头有个由三横杠<code>---</code>分割出来的头部,
+里面包含一些关于这篇文章的属性信息, 你可以在<a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">官方文档</a>里找到所有可以设置的元素.</p>
+<p>这里有两个要特别说明一下, tags和categories.
+这两个都可以理解对文章的关键属性打标签. 不同点是, tags是纯粹的标签,
+跟文章是多对多的关系.
+categories是一个具有树状结构标签(所以也可以理解成分类),
+每篇文章只能是这棵树的一个叶子节点. 例如我这篇文章的头部如下:
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">通过hexo</span> <span class="string">+</span> <span class="string">NexT</span> <span class="string">+</span> <span class="string">github</span> <span class="string">pages</span> <span class="string">+</span> <span class="string">搭建个人博客</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">NexT</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">github</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">技术</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">杂项</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Mingjian</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-02 23:12:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure> 其中对文章的分类是 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">技术</span><br><span class="line"> \_杂项</span><br><span class="line">    \_搭建个人博客</span><br></pre></td></tr></table></figure></p>
+<p>这个是我个人认为最好的一种组合, 既有灵活的tags,
+又有结构化的categories, 可以更好的组织整理自己的知识.</p>
+<h5 id="draft">draft</h5>
+<p>顾名思义, 这是草稿,
+你可以用<code>hexo new draft &lt;blogname&gt;</code>命令生成一个新的草稿.
+之后就可以在<code>source/_draft</code>下找到这个<code>markdown</code>文件了.
+既然是草稿, 就说明还没完成. 作为博客框架应该提供预览功能,
+和一键发布的能力. hexo当然没有让我们失望.</p>
+<ul>
+<li>不论你用<code>hexo g</code>进行html渲染还是用<code>hexo d</code>部署,
+或者用<code>hexo s</code>在本地运行server你都无法看到这个草稿的静态网页形式,
+它只以<code>markdown</code>形式的源文件保存在本地.</li>
+<li>一旦你完成了草稿, 可以用<code>hexo publish</code>来发布文章.</li>
+<li>发布之前,
+如果你想预览可以通过<code>dexo g --draft</code>和<code>hexo s --draft</code>在本地预览.</li>
+</ul>
+<h5 id="page">page</h5>
+<p>如果使用<code>hexo new page &lt;pagename&gt;</code>可以生成单独的页面,
+通过<code>http://localhost:4000/pagename</code>来访问.
+这个官网没有说得很明白这个是用来干嘛的, 我的理解是,
+可以用来生成一些帮助组织博客站点的单独页面.
+比如下面两个页面是NexT必须要生成的.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>运行之后可以看到下面两个文件夹被生成,
+并且添加一个只有头部的<code>index.md</code>文件.
+然后在<code>source\categories\index.md</code>的头部里添加元素<code>type: categories</code>,
+添加完之后文件变成这样.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-03 01:59:55</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>同理,
+在<code>source\tags\index.md</code>里添加<code>type: tags</code>
+效果就是下面两个高亮的可以点击了. <img src="/.io//tags_and_cats.jpg" alt="tags and cats"></p>
+<h3 id="安装next">安装NexT <span id="install-next"></span></h3>
+<p>可以按照<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/installation.html">官方安装帮助</a></p>
+<p>可以使用git或者npm安装, 用npm最方便.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br></pre></td></tr></table></figure>
+<p>注意Next有4种不同的页面搭配(scheme), 你可以去<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings">官方readme</a>了解.
+我选择了<code>Pisces</code>.
+去配置文件<code>_config.next.yml</code>里修改一下即可 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
+<h4 id="支持数学公式">支持数学公式 <span id="math"></span></h4>
+<p>NexT是内置了支持数学公式的, 但这里几个坑.
+hexo默认的markdown渲染器是<code>hexo-renderer-marked</code>,
+但根据<code>NexT</code>的关于数学公式的<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html">文档</a>.
+里面提到如果在配置文件里激活对数学公式渲染的支持,
+必需把这个默认的渲染器换掉. 如果你把公式渲染配置成<code>Mathjax</code>,
+就必须用<code>hexo-renderer-pandoc</code>来作为markdown渲染器.
+如果你用<code>Katex</code>,
+就必须用<code>hexo-renderer-markdown-it</code>或者<code>hexo-renderer-markdown-it-plus</code>.</p>
+<p>我的选择就是使用<code>Mathjax + hexo-renderer-pandoc</code>.
+这里面还有个坑就是, 这个渲染器依赖pandoc这个软件, 必须先去<a target="_blank" rel="noopener" href="https://github.com/jgm/pandoc/releases/tag/2.2.3.2">pandoc官网</a>下载安装一个pandoc.
+下面是我安装的版本. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc --version</span><br><span class="line">pandoc 2.2.3.2</span><br><span class="line">Compiled with pandoc-types 1.17.5.1, texmath 0.11.0.1, skylighting 0.7.2</span><br><span class="line">Default user data directory: C:\Users\e323819\AppData\Roaming\pandoc</span><br><span class="line">Copyright (C) 2006-2018 John MacFarlane</span><br><span class="line">Web:  http://pandoc.org</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions.</span><br><span class="line">There is no warranty, not even <span class="keyword">for</span> merchantability or fitness</span><br><span class="line"><span class="keyword">for</span> a particular purpose.</span><br></pre></td></tr></table></figure></p>
+<p>之后就可以通过下面的命令替换掉渲染器. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
+<p>然后到<code>_config.next.yml</code>里修改打开对数学公式的支持.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></span><br></pre></td></tr></table></figure>
+<p><code>per_page</code>这个变量如果是false,
+渲染时每篇都会把<code>mathjax</code>加载到页面里, 如果是true,
+那么只有页面头部包括了元素<code>mathjax: true</code>才会加载.</p>
+<p>这样配置以后试试在你的博客里加入数学公式, 比如如下公式:
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;i=0&#125;^n i^2 = \frac&#123;(n^2+n)(2n+1)&#125;&#123;6&#125;\tag&#123;displayed&#125;$$</span><br></pre></td></tr></table></figure> 会生成 <span class="math display">\[\sum_{i=0}^n i^2 =
+\frac{(n^2+n)(2n+1)}{6}\tag{displayed}\]</span></p>
+<h4 id="本地贴图">本地贴图 <span id="image"></span></h4>
+<p>如果使用网络里的图床, 只需要用相应的markdown语法链接一下就行了.
+但如果想要使用本地图片, 有这么几个解决方案.</p>
+<ol type="1">
+<li>把图片放在<code>source/img</code>下,
+然后在用<code>markdown</code>语法<code>![img](/source/img/xxx.png)</code>的形式.
+缺点是所有博客的图片会混在一起, 不好管理.</li>
+<li>配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>,
+这时一代你通过<code>new</code>命令建立一个新博客文章,
+就会自动生成一个同名文件夹用来放置资源文件.
+然后使用hexo专用的语法<code>&#123;% asset_img slug [title] %&#125;</code>.
+这么做的缺点是你的markdown文件将不能在别的地方被解析.</li>
+<li>跟2一样配置<code>_config.yml</code>中的变量<code>post_asset_folder: true</code>.
+然后用命令 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure> 安装一个插件.
+然后使用一般的markdown语法即可以显示. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](postname/img.jpg)</span><br></pre></td></tr></table></figure>
+缺点就是要依赖于一个额外的插件. 我个人觉得一般来说写的博客不太可能迁移,
+所以用hexo默认的方案2即可. 如果确实有迁移的需求就用3.</li>
+</ol>
+<h3 id="部署到github-pages">部署到github pages <span id="deploy"></span></h3>
+<p>到现在为止, 我们可以在本地生成非常漂亮的静态页面. 可以使用markdown,
+可以渲染数学公式, 可以使用图片.
+我们需要在公网上找一个地方放置我们的这些静态页面. 这个选择非常多.
+我选择了<a href="pages.github.com">github page</a>. 原因是使用简单,
+几乎不需花时间维护, 国内公司都没有被墙掉, 可信程度高.</p>
+<p>这里我们假设你已经有<code>github</code>的账户了.
+如果没有需要创建一个, 具体创建过程在这里省略.
+假设账户名是<code>xyz</code>.
+那么你只需要创建一个名字叫做<code>xyz.github.io</code>的新项目,
+就完成了github上的操作.</p>
+<p>之后需要在<code>_config.yml</code>里的deploy下面加下面的配置,
+注意type前面那个<code>-</code>最好加上,
+因为如果deploy西面有多个deployer的话, 没有这个横岗会报错.
+repo的值如果报错可以尝试把用户名和密码加上,
+就像这样<code>https://xyz:pword@github.com/xyz/xyz.github.io.git</code>.
+我在一台机器上碰到这个问题这么解决了,
+但在别的机器上就不加也可以提示直接输入.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/retzzz/retzzz.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>然后在你blog的主目录下安装一个git deployer插件.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>这之后只要使用下面任何一个命令, 都可以完成部署. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo d</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<h2 id="进阶">进阶</h2>
+<p>到这里一个初步的博客就搭建完成了, 我最开始提到的基础需求都得到满足.
+但其实还有好多细节可以继续丰富,
+我列出一些以后再有时间可以再写一篇进阶篇:</p>
+<ol type="1">
+<li>添加评论功能, 让用户可以对某一个文章进行评论.</li>
+<li>文章访问计数.</li>
+<li>各种社交网站的超链接.</li>
+<li>为页面添加固定页眉页脚.</li>
+<li>替换默认图标.</li>
+<li>直接所见即所得的对markdown文档进行编辑.</li>
+<li>博客内部文章的互相跳转.</li>
+</ol>
+<h2 id="总结">总结</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-next@latest</span><br><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">npm install hexo-abbrlink --save</span><br><span class="line">npm install hexo-generator-searchdb save</span><br><span class="line">npm install hexo-include-markdown --save</span><br></pre></td></tr></table></figure>
+<p>请访问<a href="/338d5118/" title="通过hexo + NexT + github pages + 搭建个人博客(二) -- plugin-tags">通过hexo + NexT + github pages + 搭建个人博客(二) -- plugin-tags</a></p>
+<h2 id="参考网页">参考网页:</h2>
+<p><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/markdown-simple-world/hexo-tutor-1.html">1</a>
+<a target="_blank" rel="noopener" href="https://www.techiediaries.com/jekyll-hugo-hexo">2</a> <a target="_blank" rel="noopener" href="http://oakland.github.io/2016/05/02/hexo-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E4%B8%80%E7%AF%87%E6%96%B0%E7%9A%84post">3</a>
+<a target="_blank" rel="noopener" href="https://linlif.github.io/2017/05/27/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE">4</a>
+<a target="_blank" rel="noopener" href="https://www.tuicool.com/articles/umEBVfI">5</a> <a target="_blank" rel="noopener" href="https://linghucong.js.org/2016/04/15/2016-04-15-hexo-github-pages-blog">6</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/NexT/" rel="tag"># NexT</a>
+              <a href="/tags/github/" rel="tag"># github</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/c9b396ad/" rel="next" title="无理数指数, 复数指数, 欧拉公式, 复对数">
+                  无理数指数, 复数指数, 欧拉公式, 复对数 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c2c342ab839e340de39b0b3f370a6c27"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

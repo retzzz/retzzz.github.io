@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这篇主要是翻译了一些官方文档The Python Language Reference第四章的干货, 加入一些自己理解的形象化描述以及一些例子代码. 写这篇的原因是工作原因做了一个从把VBScript转换成Python的工具, 需要复习一遍python的一些基础知识.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python name binding and resolution">
+<meta property="og:url" content="https://retzzz.github.io/b3fc01a3/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="这篇主要是翻译了一些官方文档The Python Language Reference第四章的干货, 加入一些自己理解的形象化描述以及一些例子代码. 写这篇的原因是工作原因做了一个从把VBScript转换成Python的工具, 需要复习一遍python的一些基础知识.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-21T14:17:09.000Z">
+<meta property="article:modified_time" content="2020-07-21T14:17:09.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="name-resolution">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/b3fc01a3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/b3fc01a3/","path":"/b3fc01a3/","title":"python name binding and resolution"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python name binding and resolution | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B2%E8%B4%A7"><span class="nav-text">干货</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B-execution-model"><span class="nav-text">4. 执行模型 (Execution model)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">4.1. 程序的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8D%E5%AD%97%E5%92%8C%E5%90%8D%E5%AD%97%E7%9A%84%E7%BB%91%E5%AE%9Anaming-and-binding"><span class="nav-text">4.2. 名字和名字的绑定(Naming
+and binding)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E5%AD%97%E7%9A%84%E7%BB%91%E5%AE%9Abinding-or-names"><span class="nav-text">4.2.1 名字的绑定(Binding or
+names)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E5%AD%97%E7%9A%84%E8%A7%A3%E6%9E%90-resolution-of-names"><span class="nav-text">4.2.2. 名字的解析 resolution of
+names</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%BB%BA%E5%90%8D%E5%AD%97%E5%92%8C%E5%8F%97%E9%99%90%E6%89%A7%E8%A1%8C"><span class="nav-text">4.2.3. 内建名字和受限执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="nav-text">4.2.4. 与动态特性的交互</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8exceptions"><span class="nav-text">4.3. 异常(Exceptions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E7%BF%BB%E8%AF%91"><span class="nav-text">专有名词翻译</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/b3fc01a3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python name binding and resolution | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python name binding and resolution
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-21 22:17:09" itemprop="dateCreated datePublished" datetime="2020-07-21T22:17:09+08:00">2020-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这篇主要是翻译了一些官方文档<a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/executionmodel.html">The
+Python Language Reference第四章</a>的干货,
+加入一些自己理解的形象化描述以及一些例子代码.
+写这篇的原因是工作原因做了一个从把VBScript转换成Python的工具,
+需要复习一遍python的一些基础知识.</p>
+<span id="more"></span>
+<h1 id="干货">干货</h1>
+<ol type="1">
+<li>七种代码块</li>
+<li>七种绑定方法</li>
+<li>一旦在代码块中给名字绑定对象,
+那么该代码块中出现的这个名字(即便在绑定之前)都被视为是本地变量.
+除非用<code>global</code>或者<code>nonlocal</code>解除这种限制.</li>
+<li>如果名字出现的代码块里没有绑定该名字,
+则逐层到外层代码块中寻找绑定.</li>
+<li>有一个例外, 就是类, 在类方法中使用的没有绑定的变量,
+将直接到全局名字空间中查找,
+而不是到最接近的外层代码块(类定义本身的名字空间)查找.
+类定义的名字空间将变为类的属性字典</li>
+</ol>
+<h1 id="执行模型-execution-model">4. 执行模型 (Execution model)</h1>
+<h2 id="程序的结构">4.1. 程序的结构</h2>
+<p>概念: <strong>代码块</strong> (Code Block)</p>
+<p><strong>代码块</strong>是指能够作为执行单元的python的程序片段.
+Python程序是由<strong>代码块</strong>构建的. 具体的讲,
+只有下面列出的这七种代码块:</p>
+<ol type="1">
+<li>模块 module (也叫顶级代码块,top level code block),
+包括通过解释器参数<code>-m</code>执行作为顶级脚本的模块(即<code>__main__</code>模块)</li>
+<li>函数体</li>
+<li>类定义</li>
+<li>在交互模式下输入的每一个命令</li>
+<li>输入给解释器的脚本文件(script file)</li>
+<li>通过解释器参数<code>-c</code>输入给解释器的脚本命令(script
+command)</li>
+<li>输入给<code>eval()</code>和<code>exec()</code>的字符串参数里的代码.</li>
+</ol>
+<h2 id="名字和名字的绑定naming-and-binding">4.2. 名字和名字的绑定(Naming
+and binding)</h2>
+<h3 id="名字的绑定binding-or-names">4.2.1 名字的绑定(Binding or
+names)</h3>
+<p>概念: <strong>名字</strong>, <strong>绑定</strong></p>
+<p>python的一个基本抽象是对象(object),
+python里除了名字以外的所有的东西都是一种对象.
+<strong>名字</strong>就是对象的引用.
+代码里的每个名字是通过一个叫<strong>名字绑定</strong>操作的代码行为导入的.</p>
+<p>{% blockquote %} 可以把名字理解为给python里的对象贴上的标签.
+贴标签这个动作就叫做名字的<strong>绑定</strong>. {% endblockquote %}</p>
+<p>python里所有的名字绑定操作也只有下面这七种:</p>
+<ol type="1">
+<li>函数形参</li>
+<li><code>import</code>语句</li>
+<li>类和函数的定义(绑定类或者函数名字到定义的代码块对象)</li>
+<li>赋值语句, 当赋值目标如果是一个标识符(identifier)</li>
+<li><code>for</code>语句里的目标(包括推导式(comprehension))</li>
+<li><code>with</code>语句或者<code>except</code>语句里的<code>as</code>.</li>
+<li><code>from ... import *</code>语句将绑定除了以下划线开头的所有导入模块的名字.
+(仅能在顶级代码块中使用)</li>
+</ol>
+<p>反向操作是<code>del</code>语句.</p>
+<p>{% quote %} <code>del</code>语句相当于把标签从对象上撕下来. {%
+endquote %}</p>
+<p>概念: <strong>变量</strong>(variable), <strong>本地变量</strong>,
+<strong>全局变量</strong>, <strong>自由变量</strong></p>
+<p>名字也叫做<strong>变量</strong>,
+绑定也可以叫做对变量的<strong>定义</strong>(define).
+如果一个名字在一个代码块中被绑定,
+除非被声明为<code>nonlocal</code>或者<code>global</code>,
+这个名字将成为代码块的<strong>本地变量</strong>(local variable).
+那么发生在一个代码块中的名字绑定也叫做一个变量在该代码块中被定义.
+模块(module)代码块中绑定的变量既是顶级代码块的本地变量也可以叫做<strong>全局变量</strong>(global
+variable). 如果一个变量在代码块中被用到但是没有在该代码块中被定义,
+这个变量被叫做<strong>自由变量</strong>(free variable).</p>
+<p>一段程序脚本中出现的每一个名字将使用下面的解析规则来确定该名字的绑定对象.</p>
+<h3 id="名字的解析-resolution-of-names">4.2.2. 名字的解析 resolution of
+names</h3>
+<p>{% quote %}
+名字的<strong>解析</strong>的意思就是通过一个标准的过程分析出在程序代码中出现的任何一个名字所引用的对象.
+{% endquote %}</p>
+<p>概念: 变量的<strong>可见范围</strong>(scope).</p>
+<p>可见范围定义了在一个代码块里一个名字的可见性.</p>
+<p>{% quote %} 我理解,
+所有使用一个名字能够正确被解析的语句可以被理解为看见这个名字,
+即这个名字对于该语句是可见的. 所以可见范围可以理解为,
+所有可以看见这个名字的代码. {% endquote %}</p>
+<p>如果一个代码块内定义了一个本地变量,
+那么这个变量的可见范围就是这个代码块. 如果定义发生在一个函数代码块中,
+可见范围会包括被包含在该函数代码块中的其他代码块,
+除非里面的代码块重新绑定这个名字到不同的对象.
+比如函数的本地变量对函数内部定义的其他函数和类是可见的,
+除非内部的函数又给这个变量赋值. (注意相对于函数代码块,
+类代码块使用不同的规则, 后面会介绍)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  x = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>  <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line"><span class="meta">... </span>    x = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;inner=&#x27;</span>+<span class="built_in">str</span>(x))</span><br><span class="line"><span class="meta">... </span>  inner()</span><br><span class="line"><span class="meta">... </span>  <span class="built_in">print</span>(<span class="string">&#x27;outer=&#x27;</span>+<span class="built_in">str</span>(x))</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test()</span><br><span class="line">inner=<span class="number">2</span></span><br><span class="line">outer=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>{% quote %} 可见范围前面的定语只能是名字,
+一个名字可以有多个嵌套的可见范围.
+每个可见范围里该名字可以绑定到不同的对象. {% endquote %}</p>
+<p>有了以上这些概念, 就很容易定义<strong>解析</strong>的程序了.
+当一个代码块中某条语句使用了一个名字,
+这个名字将被解析为最包括这个语句的这个名字的最小可视范围里的绑定.</p>
+<p>概念: 代码块的<strong>环境</strong>(environment)</p>
+<p>对一个代码块来说,
+所有对其可见的可见范围(包含该代码块的含有名字绑定的其他代码块)的集合叫做该代码块的环境.</p>
+<p>{% quote %} 代码块的环境就是代码块所有可用的名字. 注意, 由于像if语句,
+for语句内部的语句不构成代码块.
+在其内部绑定的名字的可视范围是包含该if语句或者for语句的代码块. {%
+endquote %}</p>
+<p>当一个名字在所有可见范围内都找不到绑定, 那么对其解析失败.
+一个<code>NameError</code>异常将被引发. 如果在函数中含有一个名字的绑定,
+使该名字成为一个本地变量. 但是用该变量的语句在绑定之前,
+那么<code>NameError</code>异常的一个子类<code>UnboundLocalError</code>异常将被引发.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;a&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  <span class="built_in">print</span>(a)</span><br><span class="line"><span class="meta">... </span>  a = <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> test</span><br><span class="line">UnboundLocalError: local variable <span class="string">&#x27;a&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+<p>如果一个名字的绑定操作发生在一个代码块的任何位置,
+在该代码块中所有对这个名字的使用都将被视作对当前块的引用
+(这句话我理解就是名字被视作当前块的局部变量).
+因此在绑定名称之前在块中使用名称时, 这可能导致错误. 这个规则很微妙.
+Python缺少声明, 并且允许名称绑定操作发生在代码块内的任何位置.
+可以通过扫描代码块的整个文本寻找名称绑定操作来确定代码块的局部变量。</p>
+<p>概念: 名字空间(namespace).</p>
+<p>在一个代码块内绑定的所有名字的集合叫代码块的名字空间.</p>
+<p>全局名字空间(global namespace)是在一个包含当前代码块的模块的名字空间.
+内建名字空间(builtins namespace),
+是指模块<code>builtins</code>的全局名字空间. 顶级名字空间(top-level
+namespace)是指全局名字空间和内建名字空间的合集,
+全局名字空间具有更高优先级.</p>
+<p>在一个代码块里使用<code>global</code>语句声明的名字,
+将被视为全局变量, 在顶级名字空间中寻找绑定.
+<code>global</code>语句跟同一个代码块中的绑定操作具有相同的可见范围,
+所以如果自由变量的最小可视范围内有<code>global</code>语句,
+自由变量将没视作全局变量.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  <span class="built_in">print</span>(a)</span><br><span class="line"><span class="meta">... </span>  a = <span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> test</span><br><span class="line">UnboundLocalError: local variable <span class="string">&#x27;a&#x27;</span> referenced before assignment</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  <span class="keyword">global</span> a</span><br><span class="line"><span class="meta">... </span>  <span class="built_in">print</span>(a)</span><br><span class="line"><span class="meta">... </span>  a = <span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  <span class="function"><span class="keyword">def</span> <span class="title">test2</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(a)</span><br><span class="line"><span class="meta">... </span>  <span class="keyword">global</span> a</span><br><span class="line"><span class="meta">... </span>  test2()</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test()</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>另一个跟可见范围相关的语句是<code>nonlocal</code>语句,
+用其声明的变量将不使用最近函数可见范围内的绑定, 而是用之前的一次绑定.
+如果给定的名字没有在任何函数可见范围绑定,
+异常<code>SyntaxError</code>将被引发, 即使名字在全局名字空间中绑定.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line"><span class="meta">... </span>  <span class="keyword">nonlocal</span> a</span><br><span class="line">...</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">2</span></span><br><span class="line">SyntaxError: no binding <span class="keyword">for</span> <span class="keyword">nonlocal</span> <span class="string">&#x27;a&#x27;</span> found</span><br></pre></td></tr></table></figure>
+<p>模块的名字空间在模块第一次被导入(import)的时候自动创建.
+一个脚本的主模块总是被叫做<code>__main__</code>.</p>
+<p>名字解析规则的两个特例类定义代码块和作为<code>exec()</code>或者<code>eval()</code>字符串参数的代码块.</p>
+<p>先说类定义代码块.
+一个例外的规则就是在类定义中使用的没有绑定的本地变量,
+将直接到全局名字空间中查找,
+而不是像前面描述的规则到最接近的外层可见范围(类定义本身的名字空间)查找.
+类定义的名字空间将变为类的属性字典. 因此下面的例子里直接在方法里面使用a,
+将会引发<code>NameError</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"><span class="meta">... </span>  a = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>  <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(a)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = A()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.x()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">4</span>, <span class="keyword">in</span> x</span><br><span class="line">NameError: name <span class="string">&#x27;a&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.a</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>还有一点类定义代码块下的名字的可见范围被限制在类定义代码块本身,
+而无法像函数代码块那样向下延伸到类方法的代码块.
+这也包含推导式(comprehensions)或者生成器(generator),
+因为他们本质上就是用函数可见范围来实现的. 例如下面的代码将执行成功:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"><span class="meta">... </span>  a = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>  b = a</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"><span class="meta">... </span>  a = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>  b = [A.a + i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br></pre></td></tr></table></figure></p>
+<p>但下面的代码将执行失败: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"><span class="meta">... </span>    a = <span class="number">42</span></span><br><span class="line"><span class="meta">... </span>    b = <span class="built_in">list</span>(a + i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line">...</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> A</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;genexpr&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;a&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure></p>
+<h3 id="内建名字和受限执行">4.2.3. 内建名字和受限执行</h3>
+<p><strong>CPython的执行细节</strong>:
+Python用户不应该碰<code>__builtins__</code>对象. 这是一个实现细节.
+如果确实想要覆盖内建名字空间中的值,
+用户应该导入buitins模块并适当修改其attribute.</p>
+<p>事实上, 一个代码块关联的内建名字空间,
+是通过在该代码块的全局名字空间里查找名字<code>__builtins__</code>来实现的.
+这个名字空间应该或者是一个字典, 或者是一个模块(后一种情况,
+使用模块的字典). 默认情况下, 在<code>__main__</code>模块里,
+<code>__builtins__</code>是内建模块<code>builtins</code>; 在其他模块里,
+<code>__builtins__</code>是`builtins模块本身的字典的别名.</p>
+<p>file1: main.py <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> othermodule</span><br><span class="line"><span class="keyword">import</span> builtins</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(__name__, __builtins__ <span class="keyword">is</span> builtins))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(__name__, __builtins__ <span class="keyword">is</span> builtins.__dict__))</span><br></pre></td></tr></table></figure></p>
+<p>file2: othermodule.py <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> builtins</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(__name__, __builtins__ <span class="keyword">is</span> builtins))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(__name__, __builtins__ <span class="keyword">is</span> builtins.__dict__))</span><br></pre></td></tr></table></figure></p>
+<p>执行main.py可以得到:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">othermodule:False</span><br><span class="line">othermodule:True</span><br><span class="line">__main__:True</span><br><span class="line">__main__:False</span><br></pre></td></tr></table></figure>
+<h3 id="与动态特性的交互">4.2.4. 与动态特性的交互</h3>
+<p>自由变量的名字解析在运行时发生, 而不是编译时.</p>
+<p>导致<code>eval()</code>和<code>exec()</code>函数无权访问用于解析名子的完整环境.
+名字仅可能在调用者的局部名字空间或者全局名字空间里解析.
+自由变量并不是在最小可视范围内解析, 而是在全局变量里解析.
+这两个函数都可以通过可选的参数来覆盖全局和局部名字空间.
+如果只设置一个名字空间, 全局和局部都使用该名字空间.</p>
+<h2 id="异常exceptions">4.3. 异常(Exceptions)</h2>
+<p>异常是一个打破代码块正常控制流的方法, 以便处理错误或其他特殊情况.
+在检测到错误的地方引发了异常; 它可以由周围的代码块来处理,
+也可以由直接或间接调用发生错误的代码块的代码块来处理。</p>
+<p>Python解释器在检测到运行时错误（例如除以零）时会引发异常.
+Python程序还可以使用<code>raise</code>语句显式引发异常.
+异常处理程序通过<code>try...except</code>语句指定.
+语句的<code>finally</code>子语句可用于指定清理代码.
+该子语句不会处理异常, 无论先前代码中是否发生异常,
+该清理代码都会执行.</p>
+<p>Python使用错误处理的模型是"终结"(termination)模型:
+即异常处理程序可以找出发生了什么并继续在外部执行,
+但是它无法修复错误并重试失败的操作(除非重新输入有问题的代码的顶部).</p>
+<p>当根本没有处理异常时, 解释器终止程序的执行, 或返回其交互式主循环.
+在这两种情况下, 除非异常为SystemExit, 否则它将打印堆栈回溯.</p>
+<p>异常由类实例标识. 根据实例的类来选择except子语句:
+except子语句必须引用实例的类或其基类. 该实例可以被异常处理程序接收,
+并且可以携带有关异常条件的其他信息。</p>
+<p>注意: 异常消息(Exception messages)不是Python API的一部分.
+当Python版本更新, 它们的内容可能会在没有警告的情况下改变.
+将在多个版本的解释器下运行的代码不应该依赖于异常消息.</p>
+<h2 id="专有名词翻译">专有名词翻译</h2>
+<table>
+<thead>
+<tr class="header">
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>attributes</td>
+<td>属性(翻译与property无法区分, 直接使用英文)</td>
+</tr>
+<tr class="even">
+<td>builtin</td>
+<td>内建</td>
+</tr>
+<tr class="odd">
+<td>clause</td>
+<td>子语句</td>
+</tr>
+<tr class="even">
+<td>code block/block</td>
+<td>代码块</td>
+</tr>
+<tr class="odd">
+<td>comprehension</td>
+<td>推导式</td>
+</tr>
+<tr class="even">
+<td>generator</td>
+<td>生成器</td>
+</tr>
+<tr class="odd">
+<td>identifier</td>
+<td>标识符</td>
+</tr>
+<tr class="even">
+<td>import</td>
+<td>导入</td>
+</tr>
+<tr class="odd">
+<td>namespace</td>
+<td>名字空间</td>
+</tr>
+<tr class="even">
+<td>module</td>
+<td>模块</td>
+</tr>
+<tr class="odd">
+<td>model</td>
+<td>模型</td>
+</tr>
+<tr class="even">
+<td>object</td>
+<td>对象</td>
+</tr>
+<tr class="odd">
+<td>scope</td>
+<td>可见范围</td>
+</tr>
+<tr class="even">
+<td>top-level</td>
+<td>顶级</td>
+</tr>
+<tr class="odd">
+<td>variable</td>
+<td>变量</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/name-resolution/" rel="tag"># name-resolution</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/717710aa/" rel="prev" title="Python ast module">
+                  <i class="fa fa-chevron-left"></i> Python ast module
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/b55edfb5/" rel="next" title="python iterable(可迭代对象) vs iterator(迭代器) vs sequence(序列) vs generator(生成器)">
+                  python iterable(可迭代对象) vs iterator(迭代器) vs sequence(序列) vs generator(生成器) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6179de7fe9b0b569fdf15f2a852c440b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

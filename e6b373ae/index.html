@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="装一台新电脑, 想把Gvim或者Neovim的所有相关软件都安装得跟以前一样还真是有很多坑. 记录一下以方便按图索骥. 目标是同一套配置可以使用在两个编辑器上. 现在Neovim的开发明显更活跃, 长期看将来是要转到Neovim上. 但现在Neovim还是有bug. 所以两个换着用直到Neovim明显超出Gvim的那一天.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gvim和Neovim共享配置安装 - Windows篇">
+<meta property="og:url" content="https://retzzz.github.io/e6b373ae/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="装一台新电脑, 想把Gvim或者Neovim的所有相关软件都安装得跟以前一样还真是有很多坑. 记录一下以方便按图索骥. 目标是同一套配置可以使用在两个编辑器上. 现在Neovim的开发明显更活跃, 长期看将来是要转到Neovim上. 但现在Neovim还是有bug. 所以两个换着用直到Neovim明显超出Gvim的那一天.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-30T09:18:10.000Z">
+<meta property="article:modified_time" content="2021-11-20T10:00:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="neovim">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/e6b373ae/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/e6b373ae/","path":"/e6b373ae/","title":"Gvim和Neovim共享配置安装 - Windows篇"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Gvim和Neovim共享配置安装 - Windows篇 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows%E4%B8%8B%E5%AE%89%E8%A3%85."><span class="nav-number">1.</span> <span class="nav-text">Windows下安装.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6."><span class="nav-number">1.1.</span> <span class="nav-text">下载软件.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AD%97%E4%BD%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载字体</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.2.</span> <span class="nav-text">插件安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vim%E6%8F%92%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">Vim插件修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.4.</span> <span class="nav-text">Python插件安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E4%BE%9D%E8%B5%96"><span class="nav-number">1.2.5.</span> <span class="nav-text">其他依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Linux下安装</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/e6b373ae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Gvim和Neovim共享配置安装 - Windows篇 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gvim和Neovim共享配置安装 - Windows篇
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-30 17:18:10" itemprop="dateCreated datePublished" datetime="2021-10-30T17:18:10+08:00">2021-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-20 18:00:00" itemprop="dateModified" datetime="2021-11-20T18:00:00+08:00">2021-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>装一台新电脑,
+想把Gvim或者Neovim的所有相关软件都安装得跟以前一样还真是有很多坑.
+记录一下以方便按图索骥. 目标是同一套配置可以使用在两个编辑器上.
+现在Neovim的开发明显更活跃, 长期看将来是要转到Neovim上.
+但现在Neovim还是有bug. 所以两个换着用直到Neovim明显超出Gvim的那一天.</p>
+<span id="more"></span>
+<h2 id="windows下安装.">Windows下安装.</h2>
+<h3 id="下载软件.">下载软件.</h3>
+<p>先安装git, python3, python3的具体版本需要跟Gvim的匹配.</p>
+<p>需要下载下列软件,
+解压到<code>C:\Users\%USERNAME%\AppData\Local\Programs</code>,
+确保所有可执行文件所在目录都被设置在系统变量Path里.</p>
+<ol type="1">
+<li><strong>gvim</strong>, 下载地址:<a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">https://github.com/vim/vim-win32-installer/releases</a>.
+下载最新版的zip包. 注意看gvim依赖的python版本. (这里没有直接使用安装包,
+如果用安装包, 下面的右键菜单操作需要删除gvim的部分.)</li>
+<li><strong>Neovim</strong>, 下载地址:<a target="_blank" rel="noopener" href="https://github.com/neovim/neovim/releases/">https://github.com/neovim/neovim/releases/</a>,
+下载最新nightly版zip包.</li>
+<li><strong>ripgrep</strong>, 下载地址:<a target="_blank" rel="noopener" href="https://github.com/BurntSushi/ripgrep/releases">https://github.com/BurntSushi/ripgrep/releases</a>.
+也可以通过<a target="_blank" rel="noopener" href="https://chocolatey.org/">chocolatey</a>来安装.</li>
+<li><strong>Universal Ctags</strong>, 下载地址:<a target="_blank" rel="noopener" href="https://github.com/universal-ctags/ctags-win32/releases">https://github.com/universal-ctags/ctags-win32/releases</a>.</li>
+<li><strong>gtags</strong>, 下载地址: <a target="_blank" rel="noopener" href="https://www.gnu.org/software/global/download.html">https://www.gnu.org/software/global/download.html</a>.</li>
+</ol>
+<p>使用下面这个registry文件, 把Gvim和Neovim都加到右键菜单里:
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\gvim]</span><br><span class="line">@=&quot;Edit with Gvim&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\gvim\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot; \&quot;%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\gvim]</span><br><span class="line">@=&quot;Open Gvim Here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\gvim\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot; \&quot;%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\gvim]</span><br><span class="line">@=&quot;Open Gvim here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\gvim\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\vim\\vim82\\gvim.exe\&quot; \&quot;%v\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\nvim-qt]</span><br><span class="line">@=&quot;Edit with Neovim&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\nvim-qt\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot; \&quot;%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt]</span><br><span class="line">@=&quot;Open Neovim Here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot; \&quot;%1\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\nvim-qt]</span><br><span class="line">@=&quot;Open Neovim here&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot;&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\nvim-qt\command]</span><br><span class="line">@=&quot;\&quot;C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Neovim\\bin\\nvim-qt.exe\&quot; \&quot;%v\&quot;&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="下载字体">下载字体</h4>
+<p>我一直使用<a target="_blank" rel="noopener" href="https://github.com/FuDesign2008/randomTheme.vim">randomTheme.vim</a>,
+使每个打开的窗口的配色和字体不一样. 一个是带来新鲜感避免视觉疲劳,
+一个是方便区分各个窗口打开的是什么.
+randomTheme.vim本身提供一些适合编程的字体:</p>
+<ol type="1">
+<li>Cascadia.ttf</li>
+<li>Consolas.ttf</li>
+<li>dejavu-fonts-ttf-2.37</li>
+<li>FiraCode_2</li>
+<li>Inconsolata</li>
+<li>JetBrainsMono-1.0.3</li>
+<li>SourceCodePro</li>
+<li>Ubuntu_Mono</li>
+</ol>
+<p>我还要下载两个:</p>
+<ol start="9" type="1">
+<li><a target="_blank" rel="noopener" href="http://www.fonts101.com/fonts/view/Uncategorized/51239/Monaco.aspx">Monaco</a></li>
+<li><a target="_blank" rel="noopener" href="https://dejavu-fonts.github.io/Download.html">DejaVu</a></li>
+</ol>
+<p>右键菜单选择安装即可.</p>
+<h3 id="配置">配置</h3>
+<h4 id="配置目录">配置目录</h4>
+<p>为了使Gvim和Neovim共享一套配置.
+配置文件一概使用Neovim的配置目录<code>C:\Users\%USERNAME%\AppData\Local\nvim</code>,
+其中的配置文件有<code>init.vim</code>和<code>ginit.vim</code>.
+然后通过下列命令为Gvim创建配置文件的符号链接.</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mklink C:\Users\<span class="variable">%USERNAME%</span>\_vimrc C:\Users\<span class="variable">%USERNAME%</span>\AppData\Local\nvim\init.vim</span><br><span class="line">mklink /D C:\Users\<span class="variable">%USERNAME%</span>\vimfiles C:\Users\<span class="variable">%USERNAME%</span>\AppData\Local\nvim</span><br></pre></td></tr></table></figure>
+<p>其中<code>init.vim</code>, 我自己一直维护在github私库里.</p>
+<p>这里重点说一下Neovim和Gvim配置上有区别的几个地方, 以及如何统一:</p>
+<ol type="1">
+<li>标准路径: Neovim提供了一种方式访问标准路径,
+参考<code>help stdpath</code>. 所以配置<code>init.vim</code>,
+使Gvim也使用这些路径. 下面列出跟此相关的一些配置:</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;nvim&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:cachedir</span> = <span class="built_in">expand</span>(stdpath(<span class="string">&#x27;cache&#x27;</span>))</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:configdir</span> = <span class="built_in">expand</span>(stdpath(<span class="string">&#x27;config&#x27;</span>))</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:datadir</span> = <span class="built_in">expand</span>(stdpath(<span class="string">&#x27;data&#x27;</span>))</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">&quot;vim will share same folder with nvim</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;win32&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:cachedir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/Temp/nvim&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:configdir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/nvim&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:datadir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/nvim-data&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:cachedir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/.cache/nvim&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:configdir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/.config/nvim&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">s:datadir</span> = <span class="built_in">expand</span>(<span class="string">&#x27;~/.local/share/nvim&#x27;</span>)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> plug#begin(<span class="variable">s:configdir</span>. <span class="string">&#x27;/plugged&#x27;</span>)</span><br><span class="line">Plug <span class="string">&#x27;some plugins&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">call</span> plug#end()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> !has(<span class="string">&#x27;nvim&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:vimswap</span> = <span class="built_in">expand</span>(<span class="variable">s:datadir</span> . <span class="string">&#x27;/swap&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> !isdirectory(<span class="variable">s:vimswap</span>)</span><br><span class="line">        <span class="keyword">call</span> <span class="built_in">mkdir</span>(<span class="variable">s:vimswap</span>, <span class="string">&quot;p&quot;</span>, <span class="number">0700</span>)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">let</span> &amp;dir=<span class="variable">s:vimswap</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&quot;persistent_undo&quot;</span>)</span><br><span class="line">   <span class="keyword">let</span> <span class="variable">s:undo_path</span> = <span class="built_in">expand</span>(<span class="variable">s:configdir</span> . <span class="string">&#x27;/undo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">&quot; create the directory and any parent directories</span></span><br><span class="line">    <span class="comment">&quot; if the location does not exist.</span></span><br><span class="line">    <span class="keyword">if</span> !isdirectory(<span class="variable">s:undo_path</span>)</span><br><span class="line">        <span class="keyword">call</span> <span class="built_in">mkdir</span>(<span class="variable">s:undo_path</span>, <span class="string">&quot;p&quot;</span>, <span class="number">0700</span>)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> !has(<span class="string">&#x27;nvim&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> &amp;undodir=<span class="variable">s:undo_path</span></span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line">    <span class="comment">&quot;Create file which contains undo information so you can undo previous actions even</span></span><br><span class="line">    <span class="comment">&quot;after you close and reopen a file.</span></span><br><span class="line">    <span class="keyword">set</span> <span class="built_in">undofile</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Lf_CacheDirectory</span> = <span class="variable">s:cachedir</span></span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><p>Python相关, 我使用的几个插件要用python,
+Gvim和Neovim在Python支持上完全不同. 这里只说Python3.</p>
+<ul>
+<li>Gvim首先要求编译时有+Python3/dyn特性,
+即至此动态链接(静态我在linux式了一下不成功, windows安装包也不提供静态).
+然后需要设置pythonthreehome和pythonthreedll两个option.
+最后linux上vim内Python的sys.path跟外面还不一样,
+所以需要设置PYTHONHOME和PYTHONPATH环境变量.
+配置完了需要自己用<code>:py3 print("hello world")</code>试试.</li>
+<li>Neovim, 设置g:python3_host_prog全局变量,
+用<code>:checkhealth</code>命令检查.</li>
+</ul></li>
+</ol>
+<p>以下是我的配置: <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;nvim&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;win32&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">g:python3_host_prog</span>=<span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/Programs/Python/Python39/python.exe&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">let</span> $PYTHONHOME=<span class="string">&#x27;/usr/local/bin&#x27;</span></span><br><span class="line">        <span class="keyword">let</span> $PYTHONPATH=<span class="string">&#x27;/usr/local/lib/python39.zip:/usr/local/lib/python3.9:/usr/local/lib/python3.9/lib-dynload:/home/honeywell/.local/lib/python3.9/site-packages:/usr/local/lib/python3.9/site-packages&#x27;</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">g:python3_host_prog</span>=<span class="string">&#x27;/bin/python3&#x27;</span></span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;win32&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> &amp;pythonthreehome=<span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/Programs/Python/Python39&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> &amp;pythonthreedll=<span class="built_in">expand</span>(<span class="string">&#x27;~/AppData/Local/Programs/Python/Python39/python39.dll&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">let</span> $PYTHONHOME=<span class="string">&#x27;/usr/local/bin&#x27;</span></span><br><span class="line">        <span class="keyword">let</span> $PYTHONPATH=<span class="string">&#x27;/usr/local/lib/python39.zip:/usr/local/lib/python3.9:/usr/local/lib/python3.9/lib-dynload:/home/honeywell/.local/lib/python3.9/site-packages:/usr/local/lib/python3.9/site-packages&#x27;</span></span><br><span class="line">        <span class="keyword">let</span> &amp;pythonthreehome=<span class="built_in">expand</span>(<span class="string">&#x27;/bin&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> &amp;pythonthreedll=<span class="built_in">expand</span>(<span class="string">&#x27;/usr/local/lib/libpython3.9.so&#x27;</span>)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure></p>
+<ol start="3" type="1">
+<li>有很多选项Neovim无需配置, Gvim需要配置, 我列出一些:</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot;only for vim</span></span><br><span class="line"><span class="keyword">if</span> !has(<span class="string">&#x27;nvim&#x27;</span>)</span><br><span class="line">    <span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></span><br><span class="line">    <span class="keyword">syntax</span> <span class="keyword">on</span></span><br><span class="line">    <span class="keyword">set</span> encoding=utf-<span class="number">8</span></span><br><span class="line">    <span class="keyword">set</span> backspace=<span class="built_in">indent</span>,eol,start</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s:vimswap</span> = <span class="built_in">expand</span>(<span class="variable">s:datadir</span> . <span class="string">&#x27;/swap&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> !isdirectory(<span class="variable">s:vimswap</span>)</span><br><span class="line">        <span class="keyword">call</span> <span class="built_in">mkdir</span>(<span class="variable">s:vimswap</span>, <span class="string">&quot;p&quot;</span>, <span class="number">0700</span>)</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">let</span> &amp;dir=<span class="variable">s:vimswap</span></span><br><span class="line">    <span class="comment">&quot;Completion mode setting</span></span><br><span class="line">    <span class="keyword">set</span> wildmenu</span><br><span class="line">    <span class="keyword">set</span> wildmode=full</span><br><span class="line"></span><br><span class="line">    <span class="keyword">set</span> incsearch</span><br><span class="line">    <span class="keyword">set</span> hlsearch</span><br><span class="line"></span><br><span class="line">    <span class="comment">&quot; Toggle Menu and Toolbar</span></span><br><span class="line">    <span class="comment">&quot; @see http://liyanrui.is-programmer.com/articles/1791/gvim-menu-and-toolbar-toggle.html</span></span><br><span class="line">    <span class="keyword">set</span> guioptions+=<span class="keyword">b</span></span><br><span class="line">    <span class="keyword">set</span> guioptions-=<span class="keyword">m</span></span><br><span class="line">    <span class="keyword">set</span> guioptions-=T</span><br><span class="line">    <span class="keyword">map</span> <span class="symbol">&lt;silent&gt;</span> <span class="symbol">&lt;C-F12&gt;</span> :<span class="keyword">if</span> &amp;guioptions =~# <span class="string">&#x27;T&#x27;</span> <span class="symbol">&lt;Bar&gt;</span></span><br><span class="line">           \<span class="keyword">set</span> guioptions-=T <span class="symbol">&lt;Bar&gt;</span></span><br><span class="line">           \<span class="keyword">set</span> guioptions-=<span class="keyword">m</span> <span class="symbol">&lt;bar&gt;</span></span><br><span class="line">       \<span class="keyword">else</span> <span class="symbol">&lt;Bar&gt;</span></span><br><span class="line">           \<span class="keyword">set</span> guioptions+=T <span class="symbol">&lt;Bar&gt;</span></span><br><span class="line">           \<span class="keyword">set</span> guioptions+=<span class="keyword">m</span> <span class="symbol">&lt;Bar&gt;</span></span><br><span class="line">       \<span class="keyword">endif</span><span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+<h4 id="插件安装">插件安装</h4>
+<p>安装其他插件之前需要先下载插件管理器, 我选了下面这款:</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim</a></p>
+<p>放在<code>C:\Users\%USERNAME%\AppData\Local\nvim\autoload</code>下面</p>
+<p>打开Neovim或者Gvim, 运行<code>:PlugInstall</code>.
+以下是我现在在用的兼容Neovim和Gvim的插件. (只有一个不兼容, 下节介绍)
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> plug#begin(<span class="variable">s:configdir</span>. <span class="string">&#x27;/plugged&#x27;</span>)</span><br><span class="line">Plug <span class="string">&#x27;scrooloose/nerdTree&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;FuDesign2008/randomTheme.vim&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;flazz/vim-colorschemes&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;tpope/vim-surround&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;easymotion/vim-easymotion&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;Yggdroot/LeaderF&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;Yggdroot/LeaderF&#x27;</span>, &#123; <span class="string">&#x27;do&#x27;</span>: <span class="string">&#x27;.\install.bat&#x27;</span> &#125;</span><br><span class="line">Plug <span class="string">&#x27;ludovicchabant/vim-gutentags&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;skywind3000/gutentags_plus&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;octol/vim-cpp-enhanced-highlight&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;junegunn/fzf&#x27;</span>, &#123; <span class="string">&#x27;do&#x27;</span>: &#123; -&gt; fzf#install() &#125; &#125;</span><br><span class="line">Plug <span class="string">&#x27;junegunn/fzf.vim&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;preservim/nerdcommenter&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;junegunn/vim-easy-align&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;dimasg/vim-mark&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;andymass/vim-matchup&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;kshenoy/vim-signature&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;terryma/vim-expand-region&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;jeetsukumaran/vim-indentwise&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;will133/vim-dirdiff&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;neoclide/coc.nvim&#x27;</span>, &#123;<span class="string">&#x27;branch&#x27;</span>: <span class="string">&#x27;release&#x27;</span>&#125;</span><br><span class="line">Plug <span class="string">&#x27;skywind3000/vim-quickui&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;mbbill/undotree&#x27;</span></span><br><span class="line">Plug <span class="string">&#x27;mhinz/vim-signify&#x27;</span></span><br><span class="line"><span class="keyword">call</span> plug#end()</span><br></pre></td></tr></table></figure></p>
+<h4 id="vim插件修改">Vim插件修改</h4>
+<p><code>RandomTheme.vim</code>插件不支持Neovim的启动,
+原因是<code>Neovim</code>的GUI机制跟<code>Gvim</code>不一样,
+<code>init.vim</code>是在GUI之前加载的,
+所以提供了另一个配置文件<code>ginit.vim</code>来配置GUI.
+修改<code>plugged\randomTheme.vim\plugin\randomtheme.vim</code>里的函数<code>s:SetFont</code>成:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>! <span class="title">s</span>:<span class="title">SetGuiFont</span><span class="params">(guifont)</span></span></span><br><span class="line">    <span class="keyword">let</span> splitted = <span class="keyword">split</span>(<span class="variable">a:guifont</span>, <span class="string">&#x27;:h&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(splitted) != <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">let</span> font = splitted[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">let</span> size = splitted[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;x11&#x27;</span>)</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">g:favorite_gui_font</span> = font . <span class="string">&#x27;\ &#x27;</span> . size</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">g:favorite_gui_font</span> = font . <span class="string">&#x27;:h&#x27;</span> . size</span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;gui_running&#x27;</span>)</span><br><span class="line">        <span class="comment">&quot; for ubuntu vim-gonme</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">&#x27;x11&#x27;</span>)</span><br><span class="line">            <span class="keyword">let</span> commandStr = <span class="string">&#x27;set guifont=&#x27;</span> . font . <span class="string">&#x27;\ &#x27;</span> . size</span><br><span class="line">            <span class="keyword">execute</span> commandStr</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">let</span> commandStr = <span class="string">&#x27;set guifont=&#x27;</span> . font . <span class="string">&#x27;:h&#x27;</span> . size</span><br><span class="line">            <span class="keyword">execute</span> commandStr</span><br><span class="line">        <span class="keyword">endif</span></span><br><span class="line">    <span class="keyword">elseif</span> <span class="built_in">has</span>(<span class="string">&#x27;nvim&#x27;</span>) &amp;&amp; <span class="built_in">exists</span>(<span class="string">&#x27;g:GuiLoaded&#x27;</span>)</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">g:favorite_gui_font</span></span><br><span class="line">        <span class="keyword">execute</span> <span class="string">&#x27;:GuiFont! &#x27;</span> . <span class="variable">g:favorite_gui_font</span></span><br><span class="line">    <span class="keyword">endif</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>然后再在<code>ginit.vim</code>里加下面一句话:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">execute</span> <span class="string">&#x27;:GuiFont! &#x27;</span> . <span class="variable">g:favorite_gui_font</span></span><br></pre></td></tr></table></figure>
+<p>可以windows上完美适配NeoVim.</p>
+<p>这个问题我提交给<code>randomTheme.vim</code>作者, 在<a target="_blank" rel="noopener" href="https://github.com/FuDesign2008/randomTheme.vim/issues/7">issue#7</a>里.</p>
+<h4 id="python插件安装">Python插件安装</h4>
+<p>下面两个Python插件需要安装 1. <a target="_blank" rel="noopener" href="https://github.com/neovim/pynvim">pynvim</a>, nvim的Python支持. 2.
+<a target="_blank" rel="noopener" href="https://pygments.org/">Pygments</a>, gtags只支持6种语言,
+其他语言的tags需要这个工具.</p>
+<p>使用<code>pip</code>直接安装就可以了. <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install neovim</span><br><span class="line">pip install Pygments</span><br></pre></td></tr></table></figure></p>
+<h4 id="其他依赖">其他依赖</h4>
+<p>为满足插件COC的依赖, 需要额外安装javascript环境<a href="nodejs.org">node.js</a>, 注意也要安装neovim的插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install neovim</span><br></pre></td></tr></table></figure>
+<h2 id="linux下安装">Linux下安装</h2>
+<p>Linux下安装的复杂程度高一些, 而且不同发布版安装也不一样,
+回头再写一篇Linux的.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/neovim/" rel="tag"># neovim</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/b55edfb5/" rel="prev" title="python iterable(可迭代对象) vs iterator(迭代器) vs sequence(序列) vs generator(生成器)">
+                  <i class="fa fa-chevron-left"></i> python iterable(可迭代对象) vs iterator(迭代器) vs sequence(序列) vs generator(生成器)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2a4da3e0/" rel="next" title="在Virtual Box安装CentOS Stream 8">
+                  在Virtual Box安装CentOS Stream 8 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b97de042df309c70cf89db3fa8e7e617"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

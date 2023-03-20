@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是Section 2.4, 内容是介绍演绎计算(Deductive Calculus).">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Mathematical Introduction to Logic -- Section 2.4">
+<meta property="og:url" content="https://retzzz.github.io/e33671ac/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="本文是Section 2.4, 内容是介绍演绎计算(Deductive Calculus).">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-04T13:08:00.000Z">
+<meta property="article:modified_time" content="2021-12-04T13:08:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Logic">
+<meta property="article:tag" content="Mathematical Logic">
+<meta property="article:tag" content="Enderton">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/e33671ac/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/e33671ac/","path":"/e33671ac/","title":"A Mathematical Introduction to Logic -- Section 2.4"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Mathematical Introduction to Logic -- Section 2.4 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#formal-deductions"><span class="nav-text">Formal Deductions
+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%BB%8E%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">演绎的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E7%BA%B3%E5%8E%9F%E5%88%99"><span class="nav-text">归纳原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%85%AC%E7%90%86"><span class="nav-text">逻辑公理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#substitution-%E6%9B%BF%E6%8D%A2"><span class="nav-text">Substitution 替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tautologies-%E9%87%8D%E8%A8%80%E5%BC%8F"><span class="nav-text">Tautologies 重言式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#theorem-24b"><span class="nav-text">Theorem 24B </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deductions-and-metatheorems"><span class="nav-text">Deductions and Metatheorems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#generalization-theorem-%E6%A6%82%E5%8C%96%E5%AE%9A%E7%90%86"><span class="nav-text">Generalization Theorem 概化定理
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lemma-24c-rule-t-%E8%A7%84%E5%88%99t"><span class="nav-text">Lemma 24C (Rule T) 规则T
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deduction-theorem-%E6%BC%94%E7%BB%8E%E5%AE%9A%E7%90%86"><span class="nav-text">Deduction Theorem 演绎定理
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#corollary-24d-contraposition-%E9%80%86%E5%90%A6"><span class="nav-text">Corollary 24D
+(Contraposition) 逆否 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#corollary-24e-reductio-ad-absurdum-%E5%BD%92%E8%B0%AC%E6%B3%95-%E5%8F%8D%E8%AF%81%E6%B3%95"><span class="nav-text">Corollary 24E
+(Reductio ad Absurdum) 归谬法, 反证法
+</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strategy-%E7%AD%96%E7%95%A5"><span class="nav-text">Strategy 策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theorem-24f-generalization-on-constants-%E5%B8%B8%E9%87%8F%E6%A6%82%E5%8C%96%E5%AE%9A%E7%90%86"><span class="nav-text">Theorem
+24F (Generalization on Constants 常量概化定理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gorollary-24g"><span class="nav-text">Gorollary 24G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#corollary-24h-rule-ei"><span class="nav-text">Corollary 24H (Rule EI)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alphabetic-variants-%E5%AD%97%E6%AF%8D%E5%8F%98%E6%8D%A2%E5%BC%8F"><span class="nav-text">Alphabetic Variants 字母变换式
+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theorem-24i-existence-of-alphabetic-variants-%E5%AD%97%E6%AF%8D%E5%8F%98%E6%8D%A2%E5%BC%8F%E5%AD%98%E5%9C%A8%E5%AE%9A%E7%90%86"><span class="nav-text">Theorem
+24I (Existence of Alphabetic Variants 字母变换式存在定理)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#equality-%E7%9B%B8%E7%AD%89"><span class="nav-text">Equality 相等 </span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/e33671ac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Mathematical Introduction to Logic -- Section 2.4 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Mathematical Introduction to Logic -- Section 2.4
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-04 21:08:00" itemprop="dateCreated datePublished" datetime="2021-12-04T21:08:00+08:00">2021-12-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- md AMIL_heading1.md -->
+<p>本文是Section 2.4, 内容是介绍演绎计算(Deductive Calculus).</p>
+<span id="more"></span>
+<!-- md AMIL_heading2.md -->
+<p>Suppose that <a href="/a55d499/#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a>.</p>
+<ol type="1">
+<li>What methods of proof might be required to demonstrate that
+fact?</li>
+<li>Is there necessarily a proof at all?</li>
+</ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+这一章是用来回答整本书的前言中提出的四个最需要关注的问题中的<a href="/f4228e25/#Q2">问题2</a> </font></p>
+</div>
+<p><span class="math inline">\(\DEFi\)</span> A proof is an argument
+that you give to someone else and that completely convinces that person
+of the correctness of your assertion (in this case, that <a href="/a55d499/#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a>)</p>
+<p>Two essential feature of a proof:</p>
+<ol type="1">
+<li>A proof should be finitely long. The compactness theorem for
+first-order logic will ensure the existence of a finite <span class="math inline">\(\Sigma_0\subset\Sigma\)</span> such that <a href="/a55d499/#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a></li>
+<li>Under reasonable conditions, the validities -- the set of <a href="/a55d499/#ValidWff">valid formulas</a> -- is <a href="/78799e4f/#EffectivelyEnumerable">effectively enumerable</a>. (The
+enumerability theorem)</li>
+</ol>
+<p>The compactness theorem and the enumerability theorem are necessary
+and sufficient conditions for proofs (of some sort) to exist. <br> The
+goal of section 2.4 and section 2.5 is to produce a mathematically
+precise concept of deduction that, in the context of first-order logic,
+is adequate and correct.</p>
+<h2 id="formal-deductions">Formal Deductions
+<span id="FormalDeductions"></span></h2>
+<h3 id="演绎的定义">演绎的定义</h3>
+<p><span class="math inline">\(\DEF\)</span> A <em>deduction of <span class="math inline">\(\varphi\)</span> from <span class="math inline">\(\Gamma\)</span></em> is a <a href="/48e9c4af/#String">finite sequence</a> <span class="math inline">\(\langle\alpha_0,\ldots, \alpha_n\rangle\)</span>
+of <a href="/1eec0e97/#FirstOrderWff">formulas</a> such that <span class="math inline">\(\alpha_n\)</span> is <span class="math inline">\(\varphi\)</span> and for each <span class="math inline">\(k\leq n\)</span>, either</p>
+<ol type="a">
+<li><span class="math inline">\(\alpha_k\)</span> is in <span class="math inline">\(\Gamma\cup\Lambda\)</span>, or</li>
+<li><span class="math inline">\(\alpha_k\)</span> is obtained by modus
+ponens from two earlier formulas in the sequence; that is, for some
+<span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> less than <span class="math inline">\(k\)</span>, <span class="math inline">\(\alpha_j\)</span> is <span class="math inline">\(\alpha_i\rightarrow\alpha_k\)</span>.</li>
+</ol>
+<p>If such a deduction exists, we say that <span class="math inline">\(\varphi\)</span> is <em>deducible</em> from <span class="math inline">\(\Gamma\)</span>, or that <span class="math inline">\(\varphi\)</span> is <em>theorem</em> of <span class="math inline">\(\Gamma\)</span><span id="Deduction">, and we
+write "<span class="math inline">\(\Gamma\vdash\varphi\)</span>". If
+<span class="math inline">\(\Gamma\)</span> is <span class="math inline">\(\varnothing\)</span>, we write "<span class="math inline">\(\vdash\alpha\)</span>" in place of "<span class="math inline">\(\varnothing\vdash\alpha\)</span>". If <span class="math inline">\(\Gamma=\{\varphi\}\)</span>, we write "<span class="math inline">\(\varphi\vdash\alpha\)</span>" in place of "<span class="math inline">\(\{\varphi\}\vdash\alpha\)</span>".</span></p>
+<p>Where * <span class="math inline">\(\Lambda\)</span> is an selected
+infinite set of <a href="/1eec0e97/#FirstOrderWff">formulas</a> to be
+called logical axioms(逻辑公理)<span id="LogicalAxioms">. * <span class="math inline">\(\Gamma\)</span> is a set of <a href="/1eec0e97/#FirstOrderWff">formulas</a>. * And the <em>modus
+ponens</em>(假言推理)<span id="ModusPonens"> is a rule of inference. It
+is usually stated: From the formulas <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\alpha\rightarrow\beta\)</span> we may infer <span class="math inline">\(\beta\)</span>:</span></span></p>
+<p><span class="math display">\[
+\frac{\alpha,\alpha\rightarrow\beta}{\beta}.
+\]</span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+Deduction(演绎)被定义为一个finite sequence(有限序列). </font></p>
+</div>
+<h3 id="归纳原则">归纳原则</h3>
+<p><span class="math inline">\(\sf{I\scriptsize{NDUCTION}}\enspace\sf{P\scriptsize{RINCIPLE}}\quad\)</span>(归纳原则)
+<span id="FirstOrderInductionPrinciple"> Suppose that <span class="math inline">\(S\)</span> is a set of <a href="/1eec0e97/#FirstOrderWff">wffs</a> that includes <span class="math inline">\(\Gamma\cup\Lambda\)</span> and is closed under
+modus ponens. Then <span class="math inline">\(S\)</span> contains every
+theorem of <span class="math inline">\(\Gamma\)</span>. Where we say
+that a set <span class="math inline">\(S\)</span> of formulas is
+<em>closed</em> under modus ponens if whenever both <span class="math inline">\(\alpha\in S\)</span> and <span class="math inline">\(\alpha\rightarrow\beta\in S\)</span> then also
+<span class="math inline">\(\beta\in S\)</span></span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+这个定义是<a href="/e170cff5/#InductionPrinciple">section
+1.4里给出的归纳原则的定义</a>的特例.
+书中描述定理的归纳与命题逻辑中归纳合式公式的区别有两点, 一是这里的modus
+ponens运算是部分定义的, 一个是生成的定理集合不是<a href="/e170cff5/#FreelyGenerate">自由生成的</a>. 这里什么是部分定义存疑.
+</font></p>
+</div>
+<h3 id="逻辑公理">逻辑公理</h3>
+<p><span class="math inline">\(\DEF\)</span> Say that a <a href="/1eec0e97/#FirstOrderWff">wff</a> <span class="math inline">\(\varphi\)</span> is a
+<em>generalization</em>(泛化)<span id="Generalization"> of <span class="math inline">\(\psi\)</span> iff for some <span class="math inline">\(n\geq 0\)</span> and some variables <span class="math inline">\(x_1,\ldots,x_n\)</span>, <span class="math display">\[
+\varphi=\forall x_1\dots\forall x_n\psi.
+\]</span> In particular, <span class="math inline">\(n=0\)</span> is
+included. It means any <a href="/1eec0e97/#FirstOrderWff">wff</a> is a
+generalization of itself.</span></p>
+<p>The logical axioms are then all <a href="#Generalization">generalizations</a> of <a href="/1eec0e97/#FirstOrderWff">wffs</a> of the following forms (6
+groups)<span id="AnxiomGroups">, where <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are variables and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are wffs:</span></p>
+<ol type="1">
+<li><a href="/5a484d90/#Tautology">Tautologies</a>;</li>
+<li><span class="math inline">\(\forall
+x\alpha\rightarrow\alpha^x_t\)</span>, where t is <a href="#Substitutable">substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span></a>;</li>
+<li><span class="math inline">\(\forall
+x(\alpha\rightarrow\beta)\rightarrow(\forall x\alpha\rightarrow\forall
+x\beta)\)</span>;</li>
+<li><span class="math inline">\(\alpha\rightarrow\forall
+x\alpha\)</span>, where <span class="math inline">\(x\)</span> does not
+<a href="/1eec0e97/#OccurFree">occur free</a> in <span class="math inline">\(\alpha\)</span></li>
+</ol>
+<p>And if the language includes equality, then we addition</p>
+<ol start="5" type="1">
+<li><span class="math inline">\(x=x\)</span>;</li>
+<li><span class="math inline">\(x=y\rightarrow(\alpha\rightarrow\alpha&#39;)\)</span>,
+where <span class="math inline">\(\alpha\)</span> is <a href="/1eec0e97#AtomicFormula">atomic</a> and <span class="math inline">\(\alpha&#39;\)</span> is obtained from <span class="math inline">\(\alpha\)</span> by replacing <span class="math inline">\(x\)</span> in zero or more (but not necessarily
+all) places by <span class="math inline">\(y\)</span>.</li>
+</ol>
+<p>How our particular list of logical axioms was formed.</p>
+<ol type="a">
+<li>The tautologies were included to handle <a href="/1eec0e97/#FirstOrderConnectiveSymbols">the sentential connective
+symbols</a>.</li>
+<li>Group 2 reflects the intended meaning of <a href="/1eec0e97/#Quantifier">the quantifier symbol</a>.</li>
+<li>Group 3, group 4 and generalizations of axioms are added to prove
+the <a href="#GeneralizationTheorem">generalization theorem</a>
+below.</li>
+<li>Group 5 and group 6 will turn out to be just enough to prove the
+crucial <a href="#Equality">properties of equality</a>.</li>
+</ol>
+<p>Two objections(反对理由) to simply use the set of all <a href="/a55d499/#ValidWff">valid formulas</a> as logical axioms:</p>
+<ol type="1">
+<li>The validity was defined <em>semantically</em>, but we need a class
+<span class="math inline">\(\Lambda\)</span> with a finitary,
+<em>syntactical</em> definition. (前者"语义"是依赖于<a href="/a55d499/#Structure">structure</a>的,
+后者"语法"仅跟符号的安排有关.)</li>
+<li>We prefer a <a href="/78799e4f/#Decidable">decidable</a> set <span class="math inline">\(\Lambda\)</span>, and the set of validities fails
+to be decidable.</li>
+</ol>
+<h4 id="substitution-替换">Substitution 替换</h4>
+<p><span class="math inline">\(\DEF\)</span> Let <span class="math inline">\(x\)</span> be a variable, <span class="math inline">\(t\)</span> a <a href="/1eec0e97/#Term">term</a>.
+We define the phrase "<span class="math inline">\(t\)</span> is
+<em>substitutable</em> for <span class="math inline">\(x\)</span> in
+<span class="math inline">\(\alpha\)</span>"(对于合式公式<span class="math inline">\(\alpha\)</span>中的变量<span class="math inline">\(x\)</span>, <span class="math inline">\(t\)</span>是可替换的)<span id="Substitutable"> as
+follows:</span></p>
+<ol type="1">
+<li>For <a href="/1eec0e97#AtomicFormula">atomic</a> <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(t\)</span> is always substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\lnot(\alpha)\)</span> iff it is substitutable for
+<span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>. <span class="math inline">\(t\)</span> is substitutable for x in <span class="math inline">\((\alpha\rightarrow\beta)\)</span> iff it is
+substitutable for <span class="math inline">\(x\)</span> in both <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\forall
+y\alpha\)</span> iff either
+<ol type="a">
+<li><span class="math inline">\(x\)</span> does not <a href="/1eec0e97/#OccurFree">occur free</a> in <span class="math inline">\(\forall y\alpha\)</span>, or</li>
+<li><span class="math inline">\(y\)</span> does not occur in <span class="math inline">\(t\)</span> and <span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>.</li>
+</ol></li>
+</ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+这个递归定义的关键就是上边第三点, 确保t中没有变量能够被<span class="math inline">\(\forall y\)</span>前缀捕获(capture), 就是可替换的.
+</font></p>
+</div>
+<p><span class="math inline">\(\EXAMPLE\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\varphi^x_x=\varphi\)</span>.</li>
+<li><span class="math inline">\((Qx\rightarrow\forall{x}Px)^x_y=(Qy\rightarrow\forall{x}Px)\)</span>.</li>
+<li>If <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(\lnot\forall{y}x=y\)</span>, then <span class="math inline">\(\forall{x}\alpha\rightarrow\alpha^x_z\)</span> is
+<span class="math inline">\(\forall{x}\lnot\forall{y}x=y\rightarrow\lnot\forall{y}z=y\)</span>.</li>
+<li>For <span class="math inline">\(\alpha\)</span> as in 3, <span class="math inline">\(\forall{x}\alpha\rightarrow\alpha^x_y\)</span> is
+<span class="math inline">\(\forall{x}\lnot\forall{y}x=y\rightarrow\lnot\forall{y}y=y\)</span>.</li>
+</ol>
+<p>第4个是反例, y对于公式中的x是不可替换的.</p>
+<h4 id="tautologies-重言式">Tautologies 重言式</h4>
+<p>可以用两种方法定义逻辑公理第一组的重言式.</p>
+<p><span class="math inline">\(\DEF\)</span> Axiom group 1 consists of
+generalization of formulas to be called <em>tautologies</em>. These are
+the wffs obtainable from <a href="/5a484d90/#ListOfTautologies">tautologies of sentential
+logic</a>(having only the connectives <span class="math inline">\(\lnot\)</span> and <span class="math inline">\(\rightarrow\)</span>) by replacing each sentence
+symbol by a wff of the first-order language.</p>
+<p><span class="math inline">\(\DEF\)</span></p>
+<ol type="1">
+<li>The <em>prime</em> formulas are the <a href="/1eec0e97#AtomicFormula">atomic formulas</a> and those of the form
+<span class="math inline">\(\forall x\alpha\)</span>.</li>
+<li>The nonprime formulas are the others, i.e., those of the form <span class="math inline">\(\lnot\alpha\)</span> or <span class="math inline">\(\alpha\rightarrow\beta\)</span>.</li>
+</ol>
+<p>Any <a href="/5a484d90/#ListOfTautologies">tautology of sentential
+logic</a> (that uses only the connectives <span class="math inline">\(\lnot\)</span>, <span class="math inline">\(\rightarrow\)</span>) where the sentence symbols
+is taken to be the prime formulas of the first-order language is in
+axiom group 1.</p>
+<p>Three remarks:</p>
+<ol type="1">
+<li>这种替换将命题逻辑里的命题符号扩展到不可数.</li>
+<li>不用包括所有的重言式, 因为没有好办法证明一个公式是重言式.</li>
+<li>由于明确了一阶逻辑公式同时也是命题逻辑公式,
+命题逻辑的概念也可以被使用. 注意如果<span class="math inline">\(\Gamma\)</span> <a href="/5a484d90/#TautologicallyImply">tautologically
+implies(重言蕴含)</a> <span class="math inline">\(\varphi\)</span>,
+那么<span class="math inline">\(\Gamma\)</span> <a href="/4ea3d2b5/#LogicallyImply">logically implies(逻辑蕴含)</a> <span class="math inline">\(\varphi\)</span>, 但反过来不成立.</li>
+</ol>
+<h3 id="theorem-24b">Theorem 24B <span id="Theorem24B"></span></h3>
+<p><span class="math inline">\(\Gamma\href{
+#Deduction}{\vdash}\varphi\)</span> iff <span class="math inline">\(\Gamma\cup\Lambda\)</span> <a href="/5a484d90/#TautologicallyImply">tautologically implies</a> <span class="math inline">\(\varphi\)</span></p>
+<h2 id="deductions-and-metatheorems">Deductions and Metatheorems</h2>
+<p>定理"theorem"这个词本节有两个含义, 一个实在一阶逻辑里若<span class="math inline">\(\Gamma\vdash\alpha\)</span>, 我们说<span class="math inline">\(\alpha\)</span>是<span class="math inline">\(\Gamma\)</span>的定理.
+但我们也把一些自然语言表达的陈述叫做定理. 一般这不会造成混淆.
+但为了避免误解,
+也可以把本节如下一些自然语言描述的定理称作元定理(metatheorem)<span id="metatheorem">,
+来强调它们是关于演绎和定理的结果.</span></p>
+<h3 id="generalization-theorem-概化定理">Generalization Theorem 概化定理
+<span id="GeneralizationTheorem"></span></h3>
+<p>If <span class="math inline">\(\Gamma\href{
+#Deduction}{\vdash}\varphi\)</span> and <span class="math inline">\(x\)</span> do not <a href="/1eec0e97/#OccurFree">occur free</a> in any formula in <span class="math inline">\(\Gamma\)</span>, then <span class="math inline">\(\Gamma\vdash\forall{x}\varphi\)</span></p>
+<p>反映了一个非形式的感觉: 如果在没有对<span class="math inline">\(x\)</span>做特定假设的前提下能够证明一个包含_<span class="math inline">\(x\)</span>_的公式, 那么就可以说"因为<span class="math inline">\(x\)</span>是任意的, 我们有<span class="math inline">\(\forall x\_x\_\)</span>. 一旦给定了从<span class="math inline">\(\Gamma\)</span>到<span class="math inline">\(\varphi\)</span>的演绎, 就可以将其转化为从<span class="math inline">\(\Gamma\)</span>到<span class="math inline">\(\forall x\varphi\)</span>的演绎.</p>
+<h3 id="lemma-24c-rule-t-规则t">Lemma 24C (Rule T) 规则T
+<span id="RuleT"></span></h3>
+<p>If <span class="math inline">\(\Gamma\href{
+#Deduction}{\vdash}\alpha_1,\ldots,\Gamma\vdash\alpha_n\)</span> and
+<span class="math inline">\(\{\alpha_1,\ldots,\alpha_n\}\)</span> <a href="/5a484d90/#TautologicallyImply">tautologically implies</a> <span class="math inline">\(\beta\)</span>, then <span class="math inline">\(\Gamma\vdash\beta\)</span>.</p>
+<h3 id="deduction-theorem-演绎定理">Deduction Theorem 演绎定理
+<span id="DeductionTheorem"></span></h3>
+<p>If <span class="math inline">\(\Gamma;\gamma\href{
+#Deduction}{\vdash}\varphi\)</span>, then <span class="math inline">\(\Gamma\vdash(\gamma\rightarrow\varphi)\)</span></p>
+<p>反向也成立, 实际上反向就是假言推论.</p>
+<h3 id="corollary-24d-contraposition-逆否">Corollary 24D
+(Contraposition) 逆否 <span id="Contraposition"></span></h3>
+<p><span class="math inline">\(\Gamma;\varphi\href{
+#Deduction}{\vdash}\lnot\psi\)</span> iff <span class="math inline">\(\Gamma;\psi\vdash\lnot\varphi\)</span></p>
+<h3 id="corollary-24e-reductio-ad-absurdum-归谬法-反证法">Corollary 24E
+(Reductio ad Absurdum) 归谬法, 反证法
+<span id="ReductioAdAbsurdum"></span></h3>
+<p><span class="math inline">\(\DEF\)</span> Say that a set of formulas
+is <em>inconsistent</em><span id="Inconsistent"> iff for some <span class="math inline">\(\beta\)</span>, both <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\lnot\beta\)</span> are theorems of the set.</span></p>
+<p>Corollary 24E(Reductio ad Absurdum): If <span class="math inline">\(\Gamma;\varphi\)</span> is inconsistent, then
+<span class="math inline">\(\Gamma\href{
+#Deduction}{\vdash}\lnot\varphi\)</span>.</p>
+<p><span class="math inline">\(\EXAMPLE\)</span> 证明: <span class="math inline">\(\vdash\exists{x}\forall{y}\varphi\rightarrow\forall{y}\exists{x}\varphi\)</span>
+Working backward:</p>
+<ul>
+<li>It suffices to show that <span class="math inline">\(\exists{x}\forall{y}\varphi\vdash\forall{y}\exists{x}\varphi\)</span>,
+by the <a href="#DeductionTheorem">deduction theorem</a>.</li>
+<li>It suffices to show that <span class="math inline">\(\exists{x}\forall{y}\varphi\vdash\exists{x}\varphi\)</span>,
+by the <a href="#GeneralizationTheorem">generalization theorem</a>.</li>
+<li>It suffices to show that <span class="math inline">\(\lnot\forall{x}\lnot\forall{y}\varphi\vdash\lnot\forall{x}\lnot\varphi\)</span>,
+as this is the same as the preceding.</li>
+<li>It suffices to show that <span class="math inline">\(\forall{x}\lnot\varphi\vdash\forall{x}\lnot\forall{y}\varphi\)</span>,
+by the <a href="#Contraposition">contraposition</a> (and <a href="RuleT">rule T</a>)</li>
+<li>It suffices to show that <span class="math inline">\(\forall{x}\lnot\varphi\vdash\lnot\forall{y}\varphi\)</span>,
+by the <a href="#GeneralizationTheorem">generalization theorem</a>.</li>
+<li>It suffices to show that <span class="math inline">\(\{\forall{x}\lnot\varphi,
+\forall{y}\varphi\}\)</span> is <a href="#Inconsistent">inconsistent</a>, by the <a href="#ReductioAdAbsurdum">reductio ad absurdum</a>.</li>
+<li>It suffices to show that <span class="math inline">\(\forall{x}\lnot\varphi\vdash\lnot\varphi\)</span>
+and <span class="math inline">\(\forall{y}\varphi\vdash\varphi\)</span>
+by <a href="#AnxiomGroups">anxiom group 2</a> and <a href="#ModusPonens">modus ponens</a></li>
+</ul>
+<h2 id="strategy-策略">Strategy 策略</h2>
+<p>Assume that <span class="math inline">\(\varphi\)</span> is indeed <a href="#Deduction">deducible</a> from <span class="math inline">\(\Gamma\)</span> but that you are seeking a proof
+of this fact. There are several cases:</p>
+<ol type="1">
+<li>Suppose that <span class="math inline">\(\varphi\)</span> is <span class="math inline">\((\psi\rightarrow\theta)\)</span>. Then it will
+suffice to show that <span class="math inline">\(\Gamma;\psi\vdash\theta\)</span>.</li>
+<li>Suppose that <span class="math inline">\(\varphi\)</span> is <span class="math inline">\(\forall{x}\psi\)</span>. If <span class="math inline">\(x\)</span> does not <a href="/1eec0e97/#OccurFree">occur free</a> in <span class="math inline">\(\Gamma\)</span>, then it will suffice to show that
+<span class="math inline">\(\Gamma\vdash\psi\)</span>. (Even if <span class="math inline">\(x\)</span> should occur free in <span class="math inline">\(\Gamma\)</span>, the difficulty can be
+circumvented. These will always be a variable <span class="math inline">\(y\)</span> such that <span class="math inline">\(\Gamma\vdash\forall y\psi^x_y\)</span> and <span class="math inline">\(\forall{y}\psi^x_y\vdash\forall{x}\psi\)</span>
+re-replacement lemma)</li>
+<li>Finally, suppose that <span class="math inline">\(\varphi\)</span>
+is the negation of another formula.
+<ol type="a">
+<li>If <span class="math inline">\(\varphi\)</span> is <span class="math inline">\(\lnot(\psi\rightarrow\theta)\)</span>, then it
+will suffice to show that <span class="math inline">\(\Gamma\vdash\psi\)</span> and <span class="math inline">\(\Gamma\vdash\lnot\theta\)</span> (by <a href="#RuleT">rule T</a>.</li>
+<li>If <span class="math inline">\(\varphi\)</span> is <span class="math inline">\(\lnot\lnot\psi\)</span>, then of course it will
+suffice to show that <span class="math inline">\(\Gamma\vdash\psi\)</span>.</li>
+<li>The remaining case is where <span class="math inline">\(\varphi\)</span> is <span class="math inline">\(\lnot\forall x\psi\)</span>. It would suffice to
+show that <span class="math inline">\(\Gamma\vdash\lnot\psi^x_t\)</span>, where t is
+some <a href="/1eec0e97/#Term">term</a> <a href="#Substitutable">substitutable</a> for <span class="math inline">\(x\)</span> in <span class="math inline">\(\psi\)</span>. (Unfortunately this is not always
+possible.) Or contraposition is handy here: <span class="math inline">\(\Gamma;\alpha\vdash\lnot\forall x\psi\)</span> iff
+<span class="math inline">\(\Gamma;\forall
+x\psi\vdash\lnot\alpha\)</span>. (A variation on this is: <span class="math inline">\(\Gamma;\forall y\alpha\vdash\lnot\forall
+x\psi\)</span> if <span class="math inline">\(\Gamma;\forall
+x\psi\vdash\lnot\alpha\)</span>.) If all else fails, one can try
+reductio ad absurdum.</li>
+</ol></li>
+</ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+这里就是根据定理的语法形式给出了常用的证明策略. </font></p>
+</div>
+<p><span class="math inline">\(\EXAMPLE\)</span></p>
+<ul>
+<li>Q2A. If <span class="math inline">\(x\)</span> does not <a href="/1eec0e97/#OccurFree">occur free</a> in <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\vdash(\alpha\rightarrow\forall
+x\beta)\leftrightarrow\forall x(\alpha\rightarrow\beta)\)</span>.</li>
+<li>Q3B. If <span class="math inline">\(x\)</span> does not <a href="/1eec0e97/#OccurFree">occur free</a> in <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(\vdash(\exists
+x\beta\rightarrow\alpha)\leftrightarrow\forall
+x(\beta\rightarrow\alpha)\)</span>.</li>
+<li><span class="math inline">\(\vdash x=y\rightarrow\forall
+zPxz\rightarrow\forall zPyz\)</span></li>
+</ul>
+<h3 id="theorem-24f-generalization-on-constants-常量概化定理">Theorem
+24F (Generalization on Constants 常量概化定理)</h3>
+<p>Assume that <span class="math inline">\(\Gamma\vdash\varphi\)</span>
+and that <span class="math inline">\(c\)</span> is a <a href="/1eec0e97/#FirstOrderConstantSymbol">constant symbol</a> that does
+not occur in <span class="math inline">\(\Gamma\)</span>. Then there is
+a variable <span class="math inline">\(y\)</span> (which does not occur
+in <span class="math inline">\(\varphi\)</span>) such that <span class="math inline">\(\Gamma\vdash\forall y\varphi^c_y\)</span>.
+Furthermore, there is a deduction of <span class="math inline">\(\forall
+y\varphi^c_y\)</span> from <span class="math inline">\(\Gamma\)</span>
+in which <span class="math inline">\(c\)</span> does not occur.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体"> <span class="math inline">\(c\)</span>在<span class="math inline">\(\Gamma\)</span>里不存在, 在<span class="math inline">\(\varphi\)</span>里存在. <span class="math inline">\(y\)</span>在<span class="math inline">\(\varphi\)</span>里不存在.
+整个演绎过程里可以没有<span class="math inline">\(c\)</span>.
+</font></p>
+</div>
+<h3 id="gorollary-24g">Gorollary 24G</h3>
+<p>Assume that <span class="math inline">\(\Gamma\vdash\varphi^x_c\)</span>, where the <a href="/1eec0e97/#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span> does not occur in <span class="math inline">\(\Gamma\)</span> or in <span class="math inline">\(\varphi\)</span>. Then <span class="math inline">\(\Gamma\vdash\forall x\varphi\)</span>, and there
+is a deduction of <span class="math inline">\(\forall x\varphi\)</span>
+from <span class="math inline">\(\Gamma\)</span> in which <span class="math inline">\(c\)</span> does not occur.</p>
+<h3 id="corollary-24h-rule-ei">Corollary 24H (Rule EI)</h3>
+<p>Assume that the <a href="/1eec0e97/#FirstOrderConstantSymbol">constant symbol</a> <span class="math inline">\(c\)</span> does not occur in <span class="math inline">\(\varphi\)</span>, <span class="math inline">\(\psi\)</span>, or <span class="math inline">\(\Gamma\)</span>, and that <span class="math display">\[\Gamma;\varphi^x_c\vdash\psi\]</span> Then <span class="math display">\[\Gamma;\exists x\varphi\vdash\psi\]</span> and
+there is a deduction of <span class="math inline">\(\psi\)</span> from
+<span class="math inline">\(\Gamma;\exists x\varphi\)</span> in which
+<span class="math inline">\(c\)</span> does not occur.</p>
+<p>"EI" stands for "existential instantiation"(存在实例).</p>
+<h2 id="alphabetic-variants-字母变换式">Alphabetic Variants 字母变换式
+<span id="AlphabeticVariants"></span></h2>
+<h3 id="theorem-24i-existence-of-alphabetic-variants-字母变换式存在定理">Theorem
+24I (Existence of Alphabetic Variants 字母变换式存在定理)</h3>
+<p>Let <span class="math inline">\(\varphi\)</span> be a formula, <span class="math inline">\(t\)</span> a <a href="/1eec0e97/#Term">term</a>
+and <span class="math inline">\(x\)</span> a variable. Then we can find
+a formula <span class="math inline">\(\varphi&#39;\)</span> (which
+differs from <span class="math inline">\(\varphi\)</span> only in the
+choice of quantified variables) such that</p>
+<ol type="a">
+<li><span class="math inline">\(\varphi\vdash\varphi&#39;\)</span> and
+<span class="math inline">\(\varphi&#39;\vdash\varphi\)</span>;</li>
+<li><span class="math inline">\(t\)</span> is <a href="#Substitutable">substitutable</a> for <span class="math inline">\(x\)</span> in <span class="math inline">\(\varphi&#39;\)</span>.</li>
+</ol>
+<p>这个定理中构造的<span class="math inline">\(\varphi&#39;\)</span>,
+称为Alphabetic variants(字母变换式). 该定理的含义是: 在无法进行替换时,
+选择正确的字母变换式可以解决问题.</p>
+<h2 id="equality-相等">Equality 相等 <span id="Equality"></span></h2>
+<ul>
+<li>EQ1: <span class="math inline">\(\vdash\forall xx=x\)</span></li>
+<li>EQ2. <span class="math inline">\(\forall x\forall y(x=y\rightarrow
+y=x)\)</span></li>
+<li>EQ3: <span class="math inline">\(\vdash\forall x\forall y\forall
+z(x=y\rightarrow y=z\rightarrow x=z)\)</span></li>
+<li>EQ4: for a two-place predicate symbol <span class="math inline">\(P\)</span>: <span class="math display">\[\vdash\forall x_1\forall x_2\forall y_1\forall
+y_2(x_1=y_1\rightarrow x_2=y_2\rightarrow Px_1 x_2\rightarrow Py_1
+y_2)\]</span></li>
+<li>EQ5. Let f be a two-place function symbol. Then <span class="math display">\[\vdash\forall x_1\forall x_2\forall y_1\forall
+y_2(x_1=y_1\rightarrow x_2=y_2\rightarrow fx_1 x_2=fy_1
+y_2)\]</span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Logic/" rel="tag"># Logic</a>
+              <a href="/tags/Mathematical-Logic/" rel="tag"># Mathematical Logic</a>
+              <a href="/tags/Enderton/" rel="tag"># Enderton</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/980eef66/" rel="prev" title="用rpm和dnf管理linux下的软件安装">
+                  <i class="fa fa-chevron-left"></i> 用rpm和dnf管理linux下的软件安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/df491dd4/" rel="next" title="python decorator(装饰器)">
+                  python decorator(装饰器) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5ab4c1c1513daad0d7b78c814171b351"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

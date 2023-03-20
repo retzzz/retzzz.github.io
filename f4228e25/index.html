@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是引言(Introduction), 讲述了符号逻辑的概念, 以及提纲挈领的描述一下本书关心的关于符号逻辑的主要问题.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Mathematical Introduction to Logic -- Introduction">
+<meta property="og:url" content="https://retzzz.github.io/f4228e25/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="本文是引言(Introduction), 讲述了符号逻辑的概念, 以及提纲挈领的描述一下本书关心的关于符号逻辑的主要问题.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-04T14:15:07.000Z">
+<meta property="article:modified_time" content="2021-11-06T09:21:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Logic">
+<meta property="article:tag" content="Mathematical Logic">
+<meta property="article:tag" content="Enderton">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/f4228e25/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/f4228e25/","path":"/f4228e25/","title":"A Mathematical Introduction to Logic -- Introduction"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Mathematical Introduction to Logic -- Introduction | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/f4228e25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Mathematical Introduction to Logic -- Introduction | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Mathematical Introduction to Logic -- Introduction
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-04 22:15:07" itemprop="dateCreated datePublished" datetime="2021-11-04T22:15:07+08:00">2021-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-06 17:21:00" itemprop="dateModified" datetime="2021-11-06T17:21:00+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- md AMIL_heading1.md -->
+<p>本文是引言(Introduction), 讲述了符号逻辑的概念,
+以及提纲挈领的描述一下本书关心的关于符号逻辑的主要问题.</p>
+<span id="more"></span>
+<!-- md AMIL_heading2.md -->
+<p>本书中, 一般用Symbolic Logic即符号逻辑这个词, 跟数理逻辑(Mathematical
+Logic)的概念无区别.</p>
+<p><span class="math inline">\(\DEFi\)</span><strong>Mathematical
+Model(数学模型)<span id="MathematicalModel"></span></strong>是对真实世界上的对象的数学抽象.
+选取被研究的真实世界中的对象的某些特性, 用数学模型表达,
+而其他特性则被忽略. 使得被建立的数学模型的行为在某些方面(本质的,
+被关注的)跟远对象很像, 但其他方面(无关的)又不像.
+模型是否符合它意欲达成的目的是依赖于选取原对象那些特征来用模型表达.
+例如概率论是真实世界的不确定性的数学模型.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+这个解释及其易懂. 自然数最初是"计数"这个现实需求的数学模型,
+欧氏几何就是真实世界的对象的各种形状的数学模型,
+拓扑学最初则是忽略形状和大小而只考虑真实世界对象相对位置的一种数学模型.
+</font></p>
+</div>
+<p><span class="math inline">\(\DEFi\)</span><strong>符号逻辑<span id="SymbolicLogic"></span></strong>最初是一种演绎思维(deductive
+thought)的<a href="#MathematicalModel">数学模型</a>.
+但跟数学其他分支一样, 它已经自我生长,
+现在远远超出了它诞生之初的环境.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span></p>
+<ol type="1">
+<li><font face="楷体">演绎逻辑这个真实世界里的研究对象也是一个比较抽象的对象.
+用自然语言对这个对象进行研究就是形式逻辑.
+而通过数学建模对其研究就是符号逻辑.</font></li>
+<li><font face="楷体"> 一旦模型建立,
+数学家可以根据模型的符号系统做各种跟真实世界无关的研究,
+最后的研究成果有可能反过来让人们发现真实世界对象的新的特征和规律.
+当然也有可能对真实世界没有任何用(或暂时没发现有任何用). </font></li>
+</ol>
+</div>
+<p>通过对真实世界的自然语言表达的逻辑正确的研究, 一个原则被发现:
+演绎(deduction)的逻辑正确性取决于演绎的形式而不是演绎的内容.
+这个表述是模糊的, 正是这种模糊性激励我们找到一种<a href="#MathematicalModel">数学模型</a>.
+这种数学模型的一个主要目标就是给出这个原则的一个精确的版本.
+我们最初最关心的关于这个数学模型的问题包括:</p>
+<ol type="1">
+<li><span id="Q1"></span> What does it mean for one sentence to "follow
+logically" from certain others?
+什么叫一个命题可以从其他命题"逻辑推出"?</li>
+<li><span id="Q2"></span> If a sentence does follow logically from
+certain others, what methods of <em>proof</em> might be necessary to
+establish this fact? 如果一个命题可以从其他命题逻辑推出是一个事实(fact),
+为了建立这个事实, 什么样的证明的方法是必须的?</li>
+<li><span id="Q3"></span> Is there a gap between what we can prove in an
+axiomatic system(say for the natural numbers) and what is <em>true</em>
+about the natural numbers? 以下两种命题是否有区别? a)
+那些我们可以在一个公理系统(比如说自然数的公里系统)里证明的命题,
+b)关于自然数是"真"的命题</li>
+<li><span id="Q4"></span> What is the connection between logic and
+computability? 逻辑和可计算性有什么联系.</li>
+</ol>
+<p>本书事实上给出了两个模型, 命题逻辑(sentential
+logic)和一阶逻辑(first-order logic).
+前者对真实世界的演绎的那部分简略的(crude)特征的抽象,
+因而不足以回答上述所有我们感兴趣的有关演绎的问题.
+后者则极好的符合在数学中碰到的所有演绎.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span></p>
+<ol type="1">
+<li><font face="楷体">看了大半的书, 再回过头来看这个序言,
+才感觉自己真正能读懂了.</font></li>
+<li><font face="楷体">关于术语的选择对于阅读体验非常重要,
+关键性术语应该尽量选择那些跟平时用语有区别的词.
+比如英文sentence在这本书的中文版里有些地方被翻译成"命题",
+但有些地方(一阶逻辑部分)被翻译成"句子".
+明显"命题"是更好的翻译(我怀疑这两个章节不是一个人翻译的).
+读到"句子"的时候往往很困惑. 英文其实用sentence不如用proposition,
+估计母语是英语的人最初读到sentence的时候也会困惑.
+这个笔记里把deduction翻译成"演绎"而不是"推论"或"推理"也是因为这个原因.
+</font></li>
+<li><font face="楷体">命题逻辑虽然不足以表现数学上有关演绎思想的所有问题,
+但实际上是计算机科学的数学基础.</font></li>
+</ol>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Logic/" rel="tag"># Logic</a>
+              <a href="/tags/Mathematical-Logic/" rel="tag"># Mathematical Logic</a>
+              <a href="/tags/Enderton/" rel="tag"># Enderton</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2a4da3e0/" rel="prev" title="在Virtual Box安装CentOS Stream 8">
+                  <i class="fa fa-chevron-left"></i> 在Virtual Box安装CentOS Stream 8
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/e170cff5/" rel="next" title="A Mathematical Introduction to Logic -- Section 1.4">
+                  A Mathematical Introduction to Logic -- Section 1.4 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1b28baa2873077e1fe2e98ad7a3e5e56"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

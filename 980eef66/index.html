@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="linux下的软件安装对用户不太友好. 每次需要用的时候, 记不住命令, 都是现去搜索. 最近对Fedora-CentOS-RedHat系的软件包管理系统进行了稍微深入的学习了解. 这篇是自己的学习笔记. 目的是以后再需要使用的时候, 只需要读这一篇即可.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用rpm和dnf管理linux下的软件安装">
+<meta property="og:url" content="https://retzzz.github.io/980eef66/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="linux下的软件安装对用户不太友好. 每次需要用的时候, 记不住命令, 都是现去搜索. 最近对Fedora-CentOS-RedHat系的软件包管理系统进行了稍微深入的学习了解. 这篇是自己的学习笔记. 目的是以后再需要使用的时候, 只需要读这一篇即可.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-14T14:29:00.000Z">
+<meta property="article:modified_time" content="2021-11-20T14:30:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="rpm">
+<meta property="article:tag" content="dnf">
+<meta property="article:tag" content="package management">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/980eef66/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/980eef66/","path":"/980eef66/","title":"用rpm和dnf管理linux下的软件安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用rpm和dnf管理linux下的软件安装 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rpm%E4%B8%8Ednf%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">rpm与dnf的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rpm%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">4.</span> <span class="nav-text">rpm文件命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">关于软件包的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dnf%E5%85%B3%E4%BA%8E%E8%B5%84%E6%BA%90%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">dnf关于资源库的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8Brpm%E5%8C%85"><span class="nav-number">7.</span> <span class="nav-text">如何建立RPM包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E5%BA%93"><span class="nav-number">8.</span> <span class="nav-text">如何建立本地资源库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/980eef66/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用rpm和dnf管理linux下的软件安装 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用rpm和dnf管理linux下的软件安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-14 22:29:00" itemprop="dateCreated datePublished" datetime="2021-11-14T22:29:00+08:00">2021-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-20 22:30:00" itemprop="dateModified" datetime="2021-11-20T22:30:00+08:00">2021-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>linux下的软件安装对用户不太友好. 每次需要用的时候, 记不住命令,
+都是现去搜索.
+最近对Fedora-CentOS-RedHat系的软件包管理系统进行了稍微深入的学习了解.
+这篇是自己的学习笔记. 目的是以后再需要使用的时候,
+只需要读这一篇即可.</p>
+<span id="more"></span>
+<p>先明确一些概念:</p>
+<ul>
+<li>File: 文件. 操作系统对存储数据的一个抽象.</li>
+<li>Package: 软件包或简称包, 一些文件组成的集合.</li>
+<li>Group: 包组, 一些包组成的集合.</li>
+<li>Repository: 资源库, 存放大量互相兼容的包的空间.
+跟library的翻译要区分开.
+也要跟git等配置管理软件里的repository区分开.</li>
+</ul>
+<h2 id="起因">起因</h2>
+<p>大部分Windows上的软件在安装的时候一般只会在<code>C:\Program Files</code>或用户指定的目录创建一个自己的目录.
+互相不会影响. 每个软件通常也自己负责安装自己的所有依赖的第三方软件.
+有时候两个软件都依赖于同一个库,
+却各自安装自己的一个拷贝(不是所有软件都这么做).
+而且被安装的软件自身就会提供一个反安装程序,
+能够清除自己安装上的所有文件. (这里得排除恶意流氓软件和系统软件.)
+这跟windows生来就是面向桌面用户有关, 打开程序通过点击图标即可.
+大部分windows用户并不关心软件到底跟那些文件有关.</p>
+<p>Linux上的软件通常把跟自己相关的文件分散的安装到系统的不同路径,
+而且不会把依赖的第三方软件打包在自己的安装包里. 之所以这么安排,
+有一定的历史原因. Linux的用户大部分是专业人士, 对这种不方便也不敏感.</p>
+<p>当然Linux也提供了对软件安装进行管理的办法, 那就是包管理软件(package
+manager). 现在这种软件形成了两个流派, 一个是<a target="_blank" rel="noopener" href="https://www.debian.org/">Debian</a>-<a target="_blank" rel="noopener" href="https://ubuntu.com/">Ubuntu</a>派使用的<a target="_blank" rel="noopener" href="https://wiki.debian.org/Teams/Dpkg">dpkg</a>+<a target="_blank" rel="noopener" href="https://manpages.debian.org/bullseye/apt/apt.8.en.html">apt</a>,
+一个是<a target="_blank" rel="noopener" href="https://getfedora.org/">Fedora</a>-<a target="_blank" rel="noopener" href="https://www.centos.org/">CentOS</a>-<a target="_blank" rel="noopener" href="https://www.redhat.com/en">RedHat</a>派使用的<a target="_blank" rel="noopener" href="https://rpm.org/">rpm</a>+<a target="_blank" rel="noopener" href="http://yum.baseurl.org/">yum</a>或<a target="_blank" rel="noopener" href="https://rpm.org/">rpm</a>+<a target="_blank" rel="noopener" href="https://rpm-software-management.github.io/">dnf</a></p>
+<p>这篇文章主要记录的是rpm+dnf这种流派的各个方面.</p>
+<h2 id="要解决的问题">要解决的问题</h2>
+<p>包管理软件应该提供的一些功能包括如下几条.</p>
+<p>如果已经拥有了软件包, 用户需要</p>
+<ol type="1">
+<li>安装/升级/反安装 <a href="#基本操作">-&gt;</a></li>
+<li>查询一个包都有哪些文件, 安装后都放在哪. <a href="#列文件">-&gt;</a></li>
+<li>安装了之后, 如果有一个文件, 也应该能查询到这个文件属于哪个包. <a href="#文件找包">-&gt;</a></li>
+<li>查看这个包依赖的其他包有那些, 是否被安装. <a href="#依赖">-&gt;</a></li>
+<li>查看依赖于已经安装的这个包被哪些包依赖. <a href="#被依赖">-&gt;</a></li>
+</ol>
+<p>如果没有软件包, 用户需要:</p>
+<ol type="1">
+<li>如果知道软件名称, 或有个关键字, 可以在指定的资源库中查询是否有该包.
+<a href="#关键字找包">-&gt;</a></li>
+<li>如果知道某一个文件名, 可以在指定的资源库中查询是否有包包含该文件. <a href="#文件找包">-&gt;</a></li>
+<li>可以自动下载安装某个包以及其依赖的其他包. <a href="#一键安装">-&gt;</a></li>
+<li>可以单独下载该包, 不下载它依赖的其他包. <a href="#下载">-&gt;</a></li>
+</ol>
+<p>如果用户自己能够从源代码构建可执行文件, 用户需要:</p>
+<ol type="1">
+<li>做一个自己的软件包. <a href="#做包">-&gt;</a></li>
+<li>建立一个自己的资源库. <a href="#做库">-&gt;</a></li>
+<li>使自己的包满足别的软件的依赖. <a href="#建立依赖">-&gt;</a></li>
+</ol>
+<h2 id="rpm与dnf的关系">rpm与dnf的关系</h2>
+<p>rpm原来是RedHat Package Manager的缩写, 后来模仿GNU改成递归式的名字RPM
+Package Manager.</p>
+<p>rpm可以对一个独立的软件包进行安装, 反安装, 查询, 和验证.
+rpm软件包里包括当前软件的所有文件和一些叫做元数据(metadata)的信息.
+元数据包括helper script, file attributes, 以及其他信息.
+rpm能够告诉用户当前包依赖哪些其他的软件包.
+但不能帮助用户解决这些依赖关系.</p>
+<p>rpm会维护一个已安装包的数据库. 以便于用户快速查询,
+这个数据库存储在<code>/var/lib/rpm</code>下,
+文件以<code>__db</code>开头.</p>
+<p>dnf是基于rpm开发的更高一层的包管理软件. 除了rpm能够实现的功能外,
+它把软件包组织成资源库, 可以帮用户查询资源库中未安装的软件包信息,
+从指定资源库获取软件包. 自动处理依赖关系以安装或卸载软件包,
+以及更新系统到资源库中最新可用版本.</p>
+<h2 id="rpm文件命名规范">rpm文件命名规范</h2>
+<p>rpm文件名遵循<code>NAME-VERSION-RELEASE</code>规范命名,
+例如<code>python-2.7.5-34.el7.x86_64.rpm</code>,
+包名是<code>python</code>, 版本是<code>2.7.5</code>,
+<code>34.el7.x86_64</code>中34代表当前这个版本的发布次数,
+<code>el7</code>代表linux的发行版本(distribution),
+<code>x86_64</code>代表cpu架构(architecture).
+下面的命令可以帮助查询distribution:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --eval %&#123;?dist&#125;</span><br></pre></td></tr></table></figure>
+<p>cpu架构是由构建可执行文件的环境决定,
+如果软件是跨平台的(architecture-independent)可以是<code>noarch</code>
+查询当前电脑的cpu架构可以用如下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --eval %&#123;_arch&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关于软件包的基本操作">关于软件包的基本操作</h2>
+<p>下表列出了用户常用的rpm和dnf的基本操作<span id="基本操作"></span></p>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 42%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">用户需求</th>
+<th style="text-align: left;">rpm操作</th>
+<th style="text-align: left;">dnf操作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">安装</td>
+<td style="text-align: left;">简单安装<br><code>rpm -i package.rpm</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+<td style="text-align: left;">安装一个软件包及其所有未安装的依赖包<br><code>dnf install package</code><span id="一键安装"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">输出更多信息以及进度条<br><code>rpm -ivh package.rpm</code><br><code>-v, --verbose</code>,
+<code>-h, --hash</code></td>
+<td style="text-align: left;">同时安装多个软件包<br><code>dnf install package1 package2 ...</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">输出更多信息以及百分比<br><code>rpm -iv --percent package.rpm</code></td>
+<td style="text-align: left;">仅下载不安装<br><code>dnf download package</code><span id="下载"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">同时下载所有未安装的依赖包<br><code>dnf download --resolve package</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">更新</td>
+<td style="text-align: left;">删除旧版本之后安装新版本<br><code>rpm -Uvh new-package.rpm</code></td>
+<td style="text-align: left;">更新单个包<br><code>dnf update package</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">更新成更旧的版本<br><code>rpm -Uvh --oldpackage old-version.rpm</code></td>
+<td style="text-align: left;">检查需要更新的包<br><code>dnf check-update</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">如果没有旧版本则不安装(Freshen)<br><code>rpm -Fvh new-package.rpm</code></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">批处理更新(Freshen)<br><code>rpm -Fvh /fedora/updates/*.rpm</code></td>
+<td style="text-align: left;">更新所有包及其依赖<br><code>dnf update</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">删除</td>
+<td style="text-align: left;">简单删除<br><code>rpm -e package</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></td>
+<td style="text-align: left;">删除包及其所有依赖的包<br><code>dnf remove package ...</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">查询</td>
+<td style="text-align: left;">简单查询<br><code>rpm -q package</code></td>
+<td style="text-align: left;">搜索包<br><code>dnf search package</code><span id="关键字找包"></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">列出所有安装的包<br><code>rpm -qa</code></td>
+<td style="text-align: left;"><code>dnf list all</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询已安装包的所有信息<br><code>rpm -qi package</code><br><code>-i, --info</code></td>
+<td style="text-align: left;"><code>dnf info package</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询未安装包的所有信息<br><code>rpm -qip package.rpm</code><br><code>-p, --package</code></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询当前已安装包依赖于哪些文件或包<br><code>rpm -qR package</code><br><code>-R, --requires</code><span id="依赖"></span></td>
+<td style="text-align: left;">查询已安装或未安装包依赖于哪些文件或包<br><code>dnf repoquery --requires package</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询当前未安装包依赖于哪些文件或包<br><code>rpm -qpR package.rpm</code></td>
+<td style="text-align: left;">查询已安装或未安装包依赖于哪些包<br><code>dnf repoquery --requires --resolve package</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询哪些包依赖于当前已安装的包<br><code>rpm -q --whatrequires package</code>
+<span id="被依赖"></span></td>
+<td style="text-align: left;">查询已安装或未安装包依赖于哪些文件或包<br><code>dnf repoquery --whatrequires package</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">查询文件属于哪个包<br><code>rpm -qf file</code>
+<span id="文件找包"></span></td>
+<td style="text-align: left;"><code>dnf provides file</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">列出已安装包安装了哪些文件<br><code>rpm -ql package</code>
+<span id="列文件"></span></td>
+<td style="text-align: left;">列出已安装包安装了哪些文件<br><code>dnf repoquery -l package</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">列出未安装包需要安装哪些文件<br><code>rpm -qlp package</code></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">包组相关操作</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">列出系统已安装包组和可用包组数量<br><code>dnf groups summary</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">列出系统已安装包组和可用包组<br><code>dnf group list</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">给出指定包组的信息<br><code>dnf group info "group name"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">安装包组内所有包<br><code>dnf group install group_name</code><br><code>dnf group install groupid</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">删除包组内所有包<br><code>dnf group remove group_name</code><br><code>dnf group remove groupid</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">更新包组内所有包<br><code>dnf group update group_name</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dnf关于资源库的基本操作">dnf关于资源库的基本操作</h2>
+<p>dnf的主要配置文件是<code>/etc/dnf/dnf.conf</code>,
+该文件包含两部分:</p>
+<ul>
+<li>"main"部分保存着dnf的全局设置.</li>
+<li>"repository"部分保存着资源库的设置, 可以有一个或多个资源库.</li>
+</ul>
+<p>另外在<code>/etc/yum.repos.d</code>目录里保存着一个或多个以<code>.repo</code>为后缀的资源库相关文件，它们也可以定义不同的资源库.
+这些配置文件都为INI文件格式, 所有变量的帮助可以在<a target="_blank" rel="noopener" href="https://dnf.readthedocs.io/en/latest/conf_ref.html#">DNF
+Configuration Reference</a>中找到.</p>
+<p>通过命令对资源库的常用操作在下面列出:</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">列出所有已激活的资源库</td>
+<td style="text-align: left;"><code>dnf repolist</code>,
+添加<code>--all</code>或者<code>--disabled</code>选项可以选择列出所有的或者未激活资源库.
+再加<code>-v</code>可以显示更多信息.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">显示当前的main配置信息</td>
+<td style="text-align: left;"><code>dnf config-manager --dump</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">显示某个资源库的配置信息</td>
+<td style="text-align: left;"><code>dnf config-manager --dump repoid</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">添加资源库</td>
+<td style="text-align: left;"><code>dnf config-manager --add-repo repository_url</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">激活资源库</td>
+<td style="text-align: left;"><code>dnf config-manager --set-enable repository</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">禁用资源库</td>
+<td style="text-align: left;"><code>dnf config-manager --set-disable repository</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">查看<code>config-manager</code>手册</td>
+<td style="text-align: left;"><code>man dnf-config-manager</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="如何建立rpm包">如何建立RPM包</h2>
+<p>如果用户可以自己从源代码构建可执行文件, 那么就可以自己建立RPM包.
+有一篇<a target="_blank" rel="noopener" href="https://rpm-packaging-guide.github.io/">RPM Packaging
+Guide</a>和<a target="_blank" rel="noopener" href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/index.html">Fedora
+RPM Guide</a>里面有详细的介绍.</p>
+<h2 id="如何建立本地资源库">如何建立本地资源库</h2>
+<p>TBD</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://rpm-packaging-guide.github.io/">RPM Packaging
+Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://dnf.readthedocs.io/en/latest/api.html">DNF, the
+next-generation replacement for YUM</a></li>
+<li><a target="_blank" rel="noopener" href="https://linux-audit.com/determine-file-and-related-package/">Discover
+to which package a file belongs to</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.openeuler.org/zh/docs/20.03_LTS/docs/Administration/%E4%BD%BF%E7%94%A8DNF%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85.html">使用DNF管理软件包</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.linuxfly.org/post/130/">[原]自己制作rpm软件包</a></li>
+<li><a target="_blank" rel="noopener" href="https://linux.cn/article-12161-1.html">DNF 和 Yum
+的区别，为什么 Yum 会被 DNF 取代？</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.fedoraproject.org/en-US/epel/">Extra Packages
+for Enterprise Linux (EPEL)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tecmint.com/create-local-yum-repository-on-centos-8/">How
+to Set Up a Local Yum/DNF Repository on CentOS 8</a></li>
+<li><a target="_blank" rel="noopener" href="http://ftp.rpm.org/max-rpm/s1-rpm-file-format-rpm-file-format.html">RPM
+File Format</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/index.html">Dedora
+RPM Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://fedoranews.org/alex/tutorial/rpm/">Fedora News RPM
+Tutorial</a></li>
+</ul>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>rpm命令中,
+上面个提到的<code>package.rpm</code>都可以是网络地址,
+比如<code>ftp://user:pass@ftpserver/directory/package.rpm</code>或者<code>http://webserver/dir/remote-package.rpm</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>rpm命令中, 使用<code>--test</code>跟其他选项组合,
+可以虚拟的执行该动作, 配合<code>-vv</code>选项, 可以用来调试.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>这里package可以是仅仅上上文<a href="#rpm文件命名规范">rpm文件命名规范</a>里提到的NAME,
+也可以带上VERSIO和(或)RELEASE<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/rpm/" rel="tag"># rpm</a>
+              <a href="/tags/dnf/" rel="tag"># dnf</a>
+              <a href="/tags/package-management/" rel="tag"># package management</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/c078c8ce/" rel="prev" title="linux tips">
+                  <i class="fa fa-chevron-left"></i> linux tips
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/e33671ac/" rel="next" title="A Mathematical Introduction to Logic -- Section 2.4">
+                  A Mathematical Introduction to Logic -- Section 2.4 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2a5e7b3ebc1ba3079274e7a8f5ddea9d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

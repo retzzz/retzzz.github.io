@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Python的装饰器语法是一种语法糖. 虽然没有它也能写代码, 但这东西既有助于书写时候减少代码量, 也有助于代码阅读. 有时候甚至让我觉得Python比其他动态语言更接近于自然语言的主要原因之一是因为有装饰器的存在. 装饰器在程序语言中的作用类似于自然语言的定语和状语, 不影响句子主干, 但能使原来简单的句子富于变化, 更凝练的表达更多的信息.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python decorator(装饰器)">
+<meta property="og:url" content="https://retzzz.github.io/df491dd4/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="Python的装饰器语法是一种语法糖. 虽然没有它也能写代码, 但这东西既有助于书写时候减少代码量, 也有助于代码阅读. 有时候甚至让我觉得Python比其他动态语言更接近于自然语言的主要原因之一是因为有装饰器的存在. 装饰器在程序语言中的作用类似于自然语言的定语和状语, 不影响句子主干, 但能使原来简单的句子富于变化, 更凝练的表达更多的信息.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-07T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-23T14:51:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="decorator">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/df491dd4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/df491dd4/","path":"/df491dd4/","title":"python decorator(装饰器)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python decorator(装饰器) | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">装饰器是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">装饰器表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%90%8D%E5%81%9A%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">函数名做装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%81%9A%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用做装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%90%8D%E5%81%9A%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">3.3.</span> <span class="nav-text">类名做装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%AE%9E%E4%BE%8B%E5%81%9A%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">3.4.</span> <span class="nav-text">类实例做装饰器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95%E5%81%9A%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">类方法做装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">多个装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/df491dd4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python decorator(装饰器) | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python decorator(装饰器)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-07 16:00:00" itemprop="dateCreated datePublished" datetime="2022-01-07T16:00:00+08:00">2022-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-23 22:51:00" itemprop="dateModified" datetime="2022-03-23T22:51:00+08:00">2022-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Python的装饰器语法是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E8%AF%AD%E6%B3%95%E7%B3%96">语法糖</a>.
+虽然没有它也能写代码, 但这东西既有助于书写时候减少代码量,
+也有助于代码阅读.
+有时候甚至让我觉得Python比其他动态语言更接近于自然语言的主要原因之一是因为有装饰器的存在.
+装饰器在程序语言中的作用类似于自然语言的<strong>定语和状语</strong>,
+不影响句子主干, 但能使原来简单的句子富于变化, 更凝练的表达更多的信息.
+<span id="more"></span></p>
+<p>这篇文章目标是要把所有跟装饰器相关的知识一次性讲清楚,
+目标是即便是python初学者通过本文就可以完全理解装饰器.
+本文语法基于python3, 代码在python3.9上测试通过.</p>
+<h2 id="预备知识">预备知识</h2>
+<p>在学习装饰器之前也需要理解一些Python的基础知识.</p>
+<ol type="1">
+<li>要知道并且理解python里万物皆对象.
+也了解对象可以具有自己的属性(attribute).</li>
+<li>了解表达式(expression)和语句(statement)的区别.</li>
+<li>可调用对象(callable objects)就是能做调用(call)这个动作的对象. 函数,
+实例方法, 类, 具有<code>__call__</code>方法的类实例都属于可调用对象.
+调用(call)这个动作在python里意味着以某些对象作为输入(input)参数执行一段代码,
+并返回其他一个或多个对象.</li>
+<li>名字(name)在python里仅仅是识别对象的一个标签(或者叫标识符identifier),
+一个对象可以有多个标签, 一个标签在不同时间也可以被贴在不同对象上.</li>
+<li>python里的函数定义语法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure> 相当于让解释器生成一个函数对象,
+然后给他起了个<code>myfun</code>的名字. 如果再对myfun赋值: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myfun = other_object</span><br></pre></td></tr></table></figure>
+相当于让myfun这个名字(标签)指向(贴到)别的对象上.</li>
+<li>函数体内部也可以定义别的函数对象.</li>
+<li>函数对象可以作为参数传入别的<strong>可调用对象</strong>的调用,
+或者作为返回值从别的调用传出.</li>
+</ol>
+<h2 id="装饰器是如何工作的">装饰器是如何工作的</h2>
+<p>先看看decorator(装饰器)在<a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-decorator">官方文档</a>中的定义:
+<blockquote><p>A function returning another function, usually applied as a function
+transformation using the <span class="citation" data-cites="wrapper">@wrapper</span> syntax. Common examples for
+decorators are classmethod() and staticmethod().</p>
+<p>The decorator syntax is merely syntactic sugar, the following two
+function definitions are semantically equivalent:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">...</span>):</span></span><br><span class="line">    ...</span><br><span class="line">f = <span class="built_in">staticmethod</span>(f)</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">...</span>):</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>The same concept exists for classes, but is less commonly used
+there.</p>
+</blockquote></p>
+<p>这个定义有点粗糙, 不精确, 不完整, 也不好理解. 这不是一个好的定义.
+下面我自己尝试解释一下.</p>
+<p>首先装饰器的句法就是在函数定义语句之前或者类定义语句之前的相邻的行上书写<code>@expression</code>(<code>@</code>符号+表达式+换行符).</p>
+<p>为了强调<code>@</code>后是个<strong>表达式(expression)</strong>,
+我将其称作<strong>装饰器表达式</strong>,
+对这个表达式的要求有如下几条规则,
+在本文中我称其为装饰器协议<span id="decoratorProtocol">(非官方名称,
+我自己取的名字):</span></p>
+<ol type="1">
+<li>该表达式的解析(evaluation)必须是一个可调用对象(callable
+object).</li>
+<li>这个可调用对象能够接受被修饰的对象(紧挨着装饰器后面的函数,类,方法)作为唯一的输入参数.</li>
+<li>这个可调用对象应用调用运算后应该返回一个跟被修饰对象相同类型的对象.(非必须,
+但是如果不这样, 装饰器行为难以理解和阅读.)</li>
+</ol>
+<p>在本文中, 根据被修饰的对象,
+我把装饰器分为函数装饰器(用来装饰函数和方法)和类装饰器(用来装饰类).
+这种说法其实有些歧义,
+很多文章把装饰器表达式是函数还是类来作装饰器分类标准.
+但实际上装饰器表达式可以是任意表达式, 只要满足上面<a href="#decoratorProtocol">装饰器协议</a>. 官方<a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-3129/">PEP-3129</a>明确给出"Class
+Decorator的说法". 但事实上, 分类不重要, 重要的是明白其如何工作.</p>
+<p>以函数装饰器为例, 看起来是这样 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@deco_exp</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>(<span class="params">...</span>)</span></span><br><span class="line"><span class="function">    ...</span></span><br></pre></td></tr></table></figure></p>
+<p>这个被翻译器解释为如下的赋值语句: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>(<span class="params">...</span>)</span></span><br><span class="line"><span class="function">    ...</span></span><br><span class="line"><span class="function"><span class="title">myfun</span> = <span class="title">deco_exp</span>(<span class="params">myfun</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>我们分析一下解释后的语句干了什么, 这其实就是</p>
+<ol type="1">
+<li>首先由<a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#function-definitions">函数定义语句</a>,
+生成了一个函数对象, 并且用名字myfun指向这个对象,</li>
+<li>然后对装饰器表达式<code>deco_exp</code>进行解析(evaluate),
+其返回值是一个可调用对象.</li>
+<li>紧接着对这个可调用对象使用<a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/expressions.html#grammar-token-python-grammar-call">调用表达式</a>,
+调用的返回值与被修饰的函数同一类型, 也是个函数.</li>
+<li>根据赋值语句,
+让原来的名字myfun指向了前面返回的函数对象(可以是新对象也可以是原来的对象).</li>
+</ol>
+<p>从这个分析可以看出前面两种等价的表达里, 装饰器方式,
+比后面的复制方式精炼得多.</p>
+<div class="note warning"><p>通过这种解释,
+我们也能知道对表达式的解析这个动作是跟函数定义同层进行的,
+所以如果在这一个时刻,
+表达式依赖得某些变量并没有定义或者没有获得正确的赋值,
+装饰器不会正常工作.</p>
+</div>
+<p>最后我们大体上能理解为什么这种语法叫装饰器,
+通常来讲装饰器不会改变被修饰对象的行为, 而是做一些辅助工作,
+最后一步使myfun还指向一个同样功能,
+但是已经添加了辅助工作的同样类型的对象. 如果你没有这么做,
+调用后返回了完全不同的对象,
+表面上看起来就是装饰器使被装饰的对象的行为完全变化,
+这不是装饰器这种语法被设计的本意.</p>
+<h2 id="装饰器表达式">装饰器表达式</h2>
+<p>常用的装饰器表达式一般有如下几种可能:</p>
+<ol type="1">
+<li>函数名</li>
+<li>函数调用</li>
+<li>类名</li>
+<li>实例名</li>
+<li>类方法</li>
+</ol>
+<p>下面我们举一些例子来分别对各种方式的装饰器进行展示.</p>
+<h3 id="函数名做装饰器">函数名做装饰器</h3>
+<p>用函数名做装饰器表达式, 是最简单也是最常见的用法. 比如这个函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_attrib</span>(<span class="params">f</span>):</span></span><br><span class="line">    f.__tmp_attrib__ = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> f</span><br></pre></td></tr></table></figure>
+<p>这个函数给对象添加了一个属性后将其返回. 如果用函数名字做装饰器. 比如:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>@add_attrib</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun</span><br><span class="line">&lt;function myfun at <span class="number">0x0000000002A551F0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(myfun)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">function</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">myfun</span>.<span class="title">__tmp_attrib__</span></span></span><br><span class="line"><span class="class"><span class="title">True</span></span></span><br><span class="line"><span class="class">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure> 我们可以看到, myfun被添加了一个属性. 这个装饰器等价于:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">myfun = add_attrib(myfun)</span><br></pre></td></tr></table></figure> 之所以说以函数名做装饰器表达式简单,
+是因为这里跳过了表达式解析(evaluation)的阶段, 直接进行了函数调用.
+理解起来更简单.</p>
+<p>前面这个例子比较特殊的地方还在于其返回的是输入对象,
+所以也可以用来做类装饰器. 比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>@add_attrib</span><br><span class="line"><span class="meta">... </span><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line"><span class="meta">... </span>  <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>MyClass</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">MyClass</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">MyClass</span>.<span class="title">__tmp_attrib__</span></span></span><br><span class="line"><span class="class"><span class="title">True</span></span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">myobj</span> = <span class="title">MyClass</span>()</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">myobj</span>.<span class="title">__tmp_attrib__</span></span></span><br><span class="line"><span class="class"><span class="title">True</span></span></span><br><span class="line"><span class="class">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个装饰器等价于: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">MyClass = add_attrib(MyClass)</span><br></pre></td></tr></table></figure></p>
+<p>因为类装饰器非常少见, 后面也为了缩短篇幅, 就不再举类装饰器的例子.</p>
+<p>我们看一个返回的不是原对象的例子: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twice</span>(<span class="params">f</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> f(*args, **kwargs) + f(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+以twice这个函数名作为装饰器表达式, 其作用是把被装饰器修饰的函数执行两遍,
+然后结果相加. 比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>@twice</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@twice</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">sum</span>(<span class="params">n</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> n*(<span class="number">1</span>+n)//<span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;abcabc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sum</span>(<span class="number">10</span>)</span><br><span class="line"><span class="number">110</span></span><br></pre></td></tr></table></figure>
+<p>仔细分析一下这个twice函数, 其返回一个函数对象inner.
+所以这个等价的赋值语句: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat = twice(concat)</span><br></pre></td></tr></table></figure>
+使得concat指向名为inner的一个函数对象.
+这个内部的函数对象将"被修饰的函数"调用了两遍并相加.
+在代码阅读上修饰器的方式明显比赋值的方式可读性更好.
+但这里也有一个不和谐的地方.
+我们被修饰的对象的属性因为这个赋值发生了一些变化. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat.__name__</span><br><span class="line"><span class="string">&#x27;inner&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sum</span>.__name__</span><br><span class="line"><span class="string">&#x27;inner&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat</span><br><span class="line">&lt;function twice.&lt;<span class="built_in">locals</span>&gt;.inner at <span class="number">0x0000000002A55670</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sum</span></span><br><span class="line">&lt;function twice.&lt;<span class="built_in">locals</span>&gt;.inner at <span class="number">0x0000000002A554C0</span>&gt;</span><br></pre></td></tr></table></figure>
+这种不和谐就好比是自然语言中我们给句子加个状语,
+结果动词也还要加个词缀一样难受.
+python给我们提供了一个解决方案来克服这个问题.
+给inner前面加一个装饰器:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twice</span>(<span class="params">f</span>):</span></span><br><span class="line"><span class="meta">    @functools.wraps(<span class="params">f</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> f(*args, **kwargs) + f(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br></pre></td></tr></table></figure>
+<p>这个时候再测试一下concat: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> &gt;&gt;&gt; @twice</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat</span><br><span class="line">&lt;function concat at <span class="number">0x00000000006C2D30</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat.__name__</span><br><span class="line"><span class="string">&#x27;concat&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;abcabc&#x27;</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+这样装饰器看起来就像是真的在"装饰"后面的函数,
+而不是修改了被装饰的函数.</p>
+<p>有两个python内置(built-in)的装饰器, <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#classmethod"><code>classmethod</code></a>和<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#staticmethod"><code>staticmethod</code></a>,
+用来帮助用户生命类方法和静态方法.</p>
+<h3 id="函数调用做装饰器">函数调用做装饰器</h3>
+<p>前面看到的<code>@functools.wraps(f)</code>装饰器实际上就是以函数调用作为装饰器.
+我们看一个例子:</p>
+<p>我们改写一下<code>add_attrib</code>这个函数,
+让其输入参数可以作为属性的值. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_attrib</span>(<span class="params">value</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">f</span>):</span></span><br><span class="line">        f.__tmp_attrib__ = value</span><br><span class="line">        <span class="keyword">return</span> f</span><br><span class="line">    <span class="keyword">return</span> inner</span><br></pre></td></tr></table></figure> 这时, 下面这个装饰器
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@add_attrib(<span class="params"><span class="literal">False</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br></pre></td></tr></table></figure> 等价于 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def concat(*arg):</span><br><span class="line">    return &#x27;&#x27;.join(arg)</span><br><span class="line">concat = add_attrib(False)(concat)</span><br></pre></td></tr></table></figure>
+这里先对<code>add_attrib(False)</code>解析, 得到一个inner的函数对象.
+再对这个函数对象实施调用操作, 类似于<code>inner(concat)</code>,
+返回一个加了<code>__tmp_attrib__</code>属性的concat函数对象.</p>
+<p>从被修饰的对象的角度看, 这就像是装饰器带了参数,
+所以很多教程也把这个叫做带参数的装饰器.</p>
+<h3 id="类名做装饰器">类名做装饰器</h3>
+<p>如果以类名做装饰器, 那么下面的等效语句中 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myfun = deco_exp(myfun)</span><br></pre></td></tr></table></figure>
+deco_exp是类名, 复制后myfun将指向类的一个类实例.
+如果被修饰的对象(myfun原来指向的对象)是函数,
+类应该实现一个<code>__call__</code>方法来使这个类实例成为可调用对象,
+这样用户在对myfun进行调用操作时, 就不会感觉到有什么不同.</p>
+<p>举个例子, 下面这个<code>Timer</code>类,
+帮助用户记录从函数声明到函数调用的时间和函数的执行时间. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Timer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, func</span>):</span></span><br><span class="line">        self.func = func</span><br><span class="line">        self.decl_start = time.time()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        call_start = time.time()</span><br><span class="line">        r = self.func(*args, **kwargs)</span><br><span class="line">        call_end= time.time()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Decl: &#123;&#125; secs&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(call_start - self.decl_start,<span class="number">2</span>)))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exec: &#123;&#125; secs&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(call_end - call_start,<span class="number">2</span>)))</span><br><span class="line">        <span class="keyword">return</span> r</span><br><span class="line"></span><br><span class="line"><span class="meta">@Timer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>(<span class="params">delay</span>):</span></span><br><span class="line">    time.sleep(delay)</span><br></pre></td></tr></table></figure>
+结果看起来是这样 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun(<span class="number">2</span>)</span><br><span class="line">Decl: <span class="number">4.1</span> secs</span><br><span class="line">Exec: <span class="number">2.0</span> secs</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun(<span class="number">3</span>)</span><br><span class="line">Decl: <span class="number">9.3</span> secs</span><br><span class="line">Exec: <span class="number">3.01</span> secs</span><br></pre></td></tr></table></figure></p>
+<h3 id="类实例做装饰器">类实例做装饰器</h3>
+<p>改造一下前面的<code>Timer</code>类,
+使其可以根据不同的参数输出不同的时间.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Timer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, timer_type</span>):</span></span><br><span class="line">        self.timer_type = timer_type</span><br><span class="line">        self.decl_start = time.time()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self,  func</span>):</span></span><br><span class="line"><span class="meta">        @functools.wraps(<span class="params">func</span>)</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">            call_start = time.time()</span><br><span class="line">            r = func(*args, **kwargs)</span><br><span class="line">            call_end= time.time()</span><br><span class="line">            <span class="keyword">if</span> self.timer_type == <span class="string">&#x27;decl&#x27;</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Decl: &#123;&#125; secs&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(call_start - self.decl_start,<span class="number">2</span>)))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Exec: &#123;&#125; secs&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(call_end - call_start,<span class="number">2</span>)))</span><br><span class="line">            <span class="keyword">return</span> r</span><br><span class="line">        <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@Timer(<span class="params"><span class="string">&#x27;decl&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span>(<span class="params">delay</span>):</span></span><br><span class="line">    time.sleep(delay)</span><br><span class="line"></span><br><span class="line"><span class="meta">@Timer(<span class="params"><span class="string">&#x27;exec&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun2</span>(<span class="params">delay</span>):</span></span><br><span class="line">    time.sleep(delay)</span><br></pre></td></tr></table></figure>
+<p>效果如下: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun(<span class="number">2</span>)</span><br><span class="line">Decl: <span class="number">5.63</span> secs</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun2(<span class="number">3</span>)</span><br><span class="line">Exec: <span class="number">3.01</span> secs</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun</span><br><span class="line">&lt;function myfun at <span class="number">0x00000000006F1E50</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfun2</span><br><span class="line">&lt;function myfun2 at <span class="number">0x00000000006F1F70</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>分析一下其等效的赋值表达式. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myfun = Timer(<span class="string">&#x27;decl&#x27;</span>)(myfun)</span><br></pre></td></tr></table></figure>
+<code>Timer('decl')</code>先被解析, 返回一个类实例对象,
+然后使该实例做调用行为, <code>obj.__call__</code>被调用,
+返回一个内部的临时函数,
+这个函数由于有<code>@functools.wraps</code>装饰器加持,
+使myfun名字看起来还是原来定义的原来定义的原来定义的原来定义的原来定义的原来定义的原来定义的原来定义的myfun函数.
+但实际上新的myfun函数对象会根据类实例的<code>timer_type</code>属性打印不通的时间.</p>
+<h2 id="类方法做装饰器">类方法做装饰器</h2>
+<p>类方法也可以做装饰器, 时函数名做装饰器的一个特例.
+通常装饰的对象也是类方法(不绝对). 例如 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> :</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bang</span>(<span class="params">func</span>) :</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">self, *args, **kwargs</span>) :</span></span><br><span class="line">            <span class="keyword">return</span> func(self, *args, **kwargs) + <span class="string">&#x27;!&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">    @bang</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span>(<span class="params">self, word</span>) :</span></span><br><span class="line">        <span class="keyword">return</span> word</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>() :</span></span><br><span class="line"><span class="meta">    @A.bang</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self, word</span>) :</span></span><br><span class="line">        <span class="keyword">return</span> word + word</span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line">b = B()</span><br><span class="line"><span class="built_in">print</span>(a.bar(<span class="string">&#x27;Python&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(b.foo(<span class="string">&#x27;Python&#x27;</span>))</span><br></pre></td></tr></table></figure> 会打印出结果
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python!</span><br><span class="line">PythonPython!</span><br></pre></td></tr></table></figure></p>
+<div class="note warning"><p>当被装饰对象是类方法时, 最后方法依然会被bind到类上,
+所以装饰器表达式被调用之后的返回值(也就是<a href="#decoratorProtocol">装饰器协议</a>里第三步)是一个可调用对象,
+并且第一个参数期望得到类实例(self).</p>
+<p>这个装饰器在类定义语法以外使用的话会很有可能有不一样的结果.
+需要特别注意.</p>
+</div>
+<h2 id="多个装饰器">多个装饰器</h2>
+<p>python允许给函数或者类前面添加多个装饰器,
+原理就是嵌套使用等价赋值表达式. 比如我们把两个装饰器连起来用.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@add_attrib</span></span><br><span class="line"><span class="meta">@twice</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br></pre></td></tr></table></figure>
+<p>这个等价于如下赋值语句, <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat = add_attrib(twice(concat))</span><br></pre></td></tr></table></figure> 其结果如下 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat</span><br><span class="line">&lt;function concat at <span class="number">0x0000000002A55670</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat.__tmp_attrib__</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;abcabc&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<p>再举例一个有变量的 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Timer(<span class="params"><span class="string">&#x27;exec&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@add_attrib(<span class="params"><span class="literal">False</span></span>)</span></span><br><span class="line"><span class="meta">@twice</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br></pre></td></tr></table></figure> 等价于 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*arg</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(arg)</span><br><span class="line">concat = Timer(<span class="string">&#x27;exec&#x27;</span>)(add_attrib(<span class="literal">False</span>)(twice(concat)))</span><br></pre></td></tr></table></figure></p>
+<p>等价于下面的解析顺序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">timer_obj = Timer(<span class="string">&#x27;exec&#x27;</span>)</span><br><span class="line">add_attrib_inner = add_attrib(<span class="literal">False</span>)</span><br><span class="line">twice_inner = twice(concat)</span><br><span class="line">twice_inner = add_attrib_inner(twice_inner)</span><br><span class="line">timer_inner = timer_obj(twice_inner)</span><br><span class="line">concat = timer_inner</span><br></pre></td></tr></table></figure>
+<p>这里就更能一目了然的看出来装饰器在可读性上给python提供了多大的帮助.</p>
+<h2 id="总结">总结</h2>
+<p>有关装饰器的知识知道这么多就基本足够了.
+虽然装饰器<code>@</code>后面的表达式还可以是任意复杂的表达式.
+但过于复杂了也就不符合装饰器语法产生的初衷了.</p>
+<p>如果想知道的更多, 可以参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0318/">PEP-318
+Decorators for Functions and Methods</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-3129/">PEP-3129 Class
+Decorators</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0614/">PEP-614 Relaxing
+Grammar Restrictions On Decorators</a></li>
+</ul>
+<p>有一个很好的练习就是看看functools.wraps这个装饰器为什么可以使被装饰的对象看起来跟原来一样.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/decorator/" rel="tag"># decorator</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/e33671ac/" rel="prev" title="A Mathematical Introduction to Logic -- Section 2.4">
+                  <i class="fa fa-chevron-left"></i> A Mathematical Introduction to Logic -- Section 2.4
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/7112fecc/" rel="next" title="《流利的Python》第二版(Fluent Python edition 2)读书笔记">
+                  《流利的Python》第二版(Fluent Python edition 2)读书笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3afd21114e1c3c9e1e5e8ac78a8f8b40"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

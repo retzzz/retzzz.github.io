@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="由于一个工作需要把大量的vbscript脚本转换成python脚本, 需要学习一下python的ast模块, 本文是一些干货的笔记. 由于当前最新的python 3.8的官方文档过于简略, 主要参考和翻译绿树蛇的文档和python3.10pre的文档. AST是Abstract Syntax Trees的缩写, 中文是抽象语法树. AST和code的转换 python代码有三个分身,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python ast module">
+<meta property="og:url" content="https://retzzz.github.io/717710aa/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="由于一个工作需要把大量的vbscript脚本转换成python脚本, 需要学习一下python的ast模块, 本文是一些干货的笔记. 由于当前最新的python 3.8的官方文档过于简略, 主要参考和翻译绿树蛇的文档和python3.10pre的文档. AST是Abstract Syntax Trees的缩写, 中文是抽象语法树. AST和code的转换 python代码有三个分身,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-19T07:23:48.000Z">
+<meta property="article:modified_time" content="2020-06-19T07:23:48.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="ast">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/717710aa/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/717710aa/","path":"/717710aa/","title":"Python ast module"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python ast module | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ast%E5%92%8Ccode%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">AST和code的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#modes"><span class="nav-number">1.1.</span> <span class="nav-text">Modes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3%E8%A1%8C%E5%88%97%E5%8F%B7"><span class="nav-number">1.2.</span> <span class="nav-text">修正行列号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E8%BD%AC%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">反向转化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ast%E8%8A%82%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">AST节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#literals-%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">Literals (字面量)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#before-python-3.8"><span class="nav-number">2.1.1.</span> <span class="nav-text">Before Python 3.8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.constantvalue-kind"><span class="nav-number">2.1.2.</span> <span class="nav-text">class ast.Constant(value,
+kind)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-string"><span class="nav-number">2.1.3.</span> <span class="nav-text">f-string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E7%B1%BB"><span class="nav-number">2.1.4.</span> <span class="nav-text">容器类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expressions-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">Expressions 表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.exprvalue"><span class="nav-number">2.3.1.</span> <span class="nav-text">class ast.Expr(value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.2.</span> <span class="nav-text">一元运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.3.</span> <span class="nav-text">二元运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.4.</span> <span class="nav-text">布尔运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-number">2.3.5.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-number">2.3.6.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.ifexptest-body-orelse"><span class="nav-number">2.3.7.</span> <span class="nav-text">class ast.IfExp(test, body,
+orelse)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.attributevalue-attr-ctx"><span class="nav-number">2.3.8.</span> <span class="nav-text">class ast.Attribute(value,
+attr, ctx)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.namedexprtarget-value"><span class="nav-number">2.3.9.</span> <span class="nav-text">class ast.NamedExpr(target,
+value)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subscripting-%E4%B8%8B%E6%A0%87%E8%AE%BF%E9%97%AE"><span class="nav-number">2.4.</span> <span class="nav-text">Subscripting (下标访问)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#comprehensions%E4%B8%8D%E7%9F%A5%E9%81%93%E6%A0%87%E5%87%86%E7%BF%BB%E8%AF%91%E6%98%AF%E5%95%A5-%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="nav-number">2.5.</span> <span class="nav-text">Comprehensions(不知道标准翻译是啥,
+推导式?)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-ast.comprehensiontarget-iter-ifs-is_async"><span class="nav-number">2.5.1.</span> <span class="nav-text">class
+ast.comprehension(target, iter, ifs, is_async)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#statements-%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.6.</span> <span class="nav-text">Statements 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assgin-%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.6.1.</span> <span class="nav-text">Assgin 赋值语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#other"><span class="nav-number">2.6.2.</span> <span class="nav-text">Other</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#imports"><span class="nav-number">2.6.3.</span> <span class="nav-text">Imports</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#control-flow"><span class="nav-number">2.6.4.</span> <span class="nav-text">Control flow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function-and-class-definitions"><span class="nav-number">2.6.5.</span> <span class="nav-text">Function and class
+definitions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#async-and-await"><span class="nav-number">2.6.6.</span> <span class="nav-text">Async and await</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#top-level-nodes"><span class="nav-number">2.7.</span> <span class="nav-text">Top level nodes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9Cast"><span class="nav-number">3.</span> <span class="nav-text">操作AST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-ast.nodevisitor"><span class="nav-number">3.1.</span> <span class="nav-text">class ast.NodeVisitor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">其他遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E6%B5%8B%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">监测节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9ast"><span class="nav-number">3.4.</span> <span class="nav-text">修改AST</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/717710aa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python ast module | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python ast module
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-19 15:23:48" itemprop="dateCreated datePublished" datetime="2020-06-19T15:23:48+08:00">2020-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>由于一个工作需要把大量的vbscript脚本转换成python脚本,
+需要学习一下python的ast模块, 本文是一些干货的笔记. 由于当前最新的<a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/ast.html">python
+3.8的官方文档</a>过于简略, 主要参考和翻译<a target="_blank" rel="noopener" href="https://greentreesnakes.readthedocs.io/en/latest/index.html#">绿树蛇</a>的文档和<a target="_blank" rel="noopener" href="https://docs.python.org/3.10/library/ast.html">python3.10pre的文档</a>.</p>
+<p>AST是Abstract Syntax Trees的缩写, 中文是抽象语法树.</p>
+<h2 id="ast和code的转换">AST和code的转换</h2>
+<p>python代码有三个分身,</p>
+<ol type="1">
+<li>以unicode字符串存在的源代码. 人类可读写, python解释器不可读.</li>
+<li>以AST对象存在的抽象语法树. 人类可读写, 但很难读懂原来的语义,
+用来显示python语义元素之间的关系.
+是从源代码翻译成目标代码的中间产品.</li>
+<li>以code object存在的可执行的目标代码. python解释器可读,
+人类不可读.</li>
+</ol>
+<span id="more"></span>
+<p>source =&gt; AST: 使用<code>ast.parse()</code>. AST =&gt; object:
+使用<code>compile()</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> ast</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tree = ast.parse(<span class="string">&quot;print(&#x27;hello world&#x27;)&quot;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tree</span><br><span class="line">&lt;_ast.Module <span class="built_in">object</span> at <span class="number">0x00000000029D0820</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">exec</span>(<span class="built_in">compile</span>(tree, filename=<span class="string">&quot;&lt;ast&gt;&quot;</span>, mode=<span class="string">&quot;exec&quot;</span>))</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<h3 id="modes">Modes</h3>
+<p>源代码到AST的编译过程可以以三种不同模式进行.
+AST的根节点依赖于传递给<code>ast.parse()</code>的mode参数,
+并且在从AST到目标代码的编译过程中传递给<code>compile()</code>传递相同的mode参数.</p>
+<ul>
+<li>exec - 默认值是<code>mode='exec'</code>.
+AST的根节点是<code>ast.Module</code>,
+根节点的属性<code>body</code>是一个子节点的list.</li>
+<li>eval -
+单独的<strong>表达式</strong>可以被编译为<code>mode='eval'</code>的AST对象,
+AST的根是一个<code>ast.Expression</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,
+他的属性<code>body</code>是一个单节点,
+例如<code>ast.Call</code>或者<code>ast.BinOp</code>.
+把这个AST对象传递给<code>eval()</code>将会返回表达式的值.</li>
+<li>single -
+单独的<strong>语句</strong>或者<strong>表达式</strong>可以被编译为<code>mode='single'</code>的AST对象,
+AST的根是<code>ast.Interactive</code>,
+它的属性<code>body</code>是一个子节点的list. 如果这是一个表达式,
+<code>sys.displayhook()</code>将会被调用并传入表达式的结果,
+就如同python的交互式shell被调用了一样.</li>
+</ul>
+<h3 id="修正行列号">修正行列号</h3>
+<p>编译出的AST对象,
+每一个节点都必须有行列号属性<code>lineno</code>并且<code>col_offset</code>.
+从普通源代码编译而来的AST对象已经具有了行列号.
+但是在程序中动态创建的节点没有行列好,
+有几个<code>helper functions</code>可以做修正行列号.</p>
+<ul>
+<li><code>ast.fix_missing_locations()</code>
+通过父节点的行列号递归的修正所有缺失行列号的节点.</li>
+<li><code>ast.copy_location()</code>用于从另一个节点拷贝行列号.
+特别是当做节点替换的时候有用.</li>
+<li><code>ast.increment_lineno()</code>增加一个节点和其子节点的行号,
+一般用于把代码块移动到其他位置.</li>
+</ul>
+<h3 id="反向转化">反向转化</h3>
+<p>Python标准库不提供一种从目标码到AST, 或者从AST到源码转化的办法.
+但一些第三方工具可以实现这些:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://astor.readthedocs.io/en/latest/"><code>astor</code></a>
+可以把AST转化为可读的Python code.</li>
+<li><a target="_blank" rel="noopener" href="http://pypi.python.org/pypi/meta"><code>Meta</code></a>
+also tries to decompile Python bytecode to an AST, but it appears to be
+unmaintained.</li>
+<li><a target="_blank" rel="noopener" href="https://pypi.python.org/pypi/uncompyle6"><code>uncompyle6</code></a>
+is an actively maintained Python decompiler at the time of writing. Its
+documented interface is a command line program producing Python source
+code.</li>
+</ul>
+<h2 id="ast节点">AST节点</h2>
+<p>AST节点把代码里的每一个元素表达为一个对象.
+这些对象都是不同的AST子类的实例. 后面将会对每一种node对象逐一描述.</p>
+<h3 id="literals-字面量">Literals (字面量)</h3>
+<h4 id="before-python-3.8">Before Python 3.8</h4>
+<p>在python 3.8以前的一部字面量的类, 在python3.8的时候已经不建议使用了,
+下面列出这几个类</p>
+<ul>
+<li>class ast.Num(n), 用来表示整数, 浮点数, 复数</li>
+<li>class ast.Str(n), 用来表示字符串</li>
+<li>class ast.Bytes(s), 用来表示bytes类型</li>
+<li>class ast.Ellipsis, 用来表示内置常量<code>...</code> Ellipsis</li>
+<li>class ast.NameConstant(value), 用来表示内置常量<code>True</code>,
+<code>False</code>, 或者<code>None</code>.</li>
+</ul>
+<p>上面这几个在Python3.8的时候被<code>ast.Constant</code>代替,
+而且在未来的python版本中有可能被删除.</p>
+<h4 id="class-ast.constantvalue-kind">class ast.Constant(value,
+kind)</h4>
+<ul>
+<li><em>New in version 3.6.</em></li>
+<li><em>Changed in version 3.8: The kind field was added.</em></li>
+</ul>
+<p>常量. <code>value</code>可以是上面提到几种常量,
+也可以是immutable容器tuples和frozensets, 但要求容器中的元素都是常量.</p>
+<h4 id="f-string">f-string</h4>
+<p>Python3.6引入跟f-string对应的AST节点由下面两个组成</p>
+<ul>
+<li>class ast.FormattedValue(value, conversion, format_spec)</li>
+<li>class ast.JoinedStr(values)</li>
+</ul>
+<p>看下面的例子可知, JoinedStr可以被看成一个list,
+元素是字符串和FormattedValue组合而成.
+FormattedValue的format_spec的值是一个JoinedStr.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;f&quot;sin(&#123;a&#125;) is &#123;sin(a):.3&#125;.&quot;&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=JoinedStr(values=[</span><br><span class="line">        Constant(value=<span class="string">&#x27;sin(&#x27;</span>, kind=<span class="literal">None</span>),</span><br><span class="line">        FormattedValue(value=Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load()), conversion=-<span class="number">1</span>, format_spec=<span class="literal">None</span>),</span><br><span class="line">        Constant(value=<span class="string">&#x27;) is &#x27;</span>, kind=<span class="literal">None</span>),</span><br><span class="line">        FormattedValue(value=Call(func=Name(<span class="built_in">id</span>=<span class="string">&#x27;sin&#x27;</span>, ctx=Load()), args=[</span><br><span class="line">            Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load()),</span><br><span class="line">          ], keywords=[]), conversion=-<span class="number">1</span>, format_spec=JoinedStr(values=[</span><br><span class="line">            Constant(value=<span class="string">&#x27;.3&#x27;</span>, kind=<span class="literal">None</span>),</span><br><span class="line">          ])),</span><br><span class="line">        Constant(value=<span class="string">&#x27;.&#x27;</span>, kind=<span class="literal">None</span>),</span><br><span class="line">      ])),</span><br><span class="line">  ], type_ignores=[])</span><br></pre></td></tr></table></figure>
+<p>注意上面使用的astpp类可以在绿树蛇的<a target="_blank" rel="noopener" href="https://bitbucket.org/takluyver/greentreesnakes/src/master">git
+repo</a>里找到, 将来在python3.9以后可以用ast.dump直接显示类似的结果.</p>
+<h4 id="容器类">容器类</h4>
+<ul>
+<li>class ast.List(elts, ctx)</li>
+<li>class ast.Tuple(elts, ctx)</li>
+<li>class ast.Set(elts)</li>
+</ul>
+<p>这里elts代表每个元素节点的一个list,
+ctx可以取两个值ast.Load和ast.Store之一.
+当容器为赋值语句的目标的时候是ast.Store, 其他的时候就是ast.Load.</p>
+<ul>
+<li>class ast.Dict(keys, values)</li>
+</ul>
+<p>这里keys和values, 分别是字典的键值的元素AST节点的list,
+要按照顺序对应.</p>
+<h3 id="变量">变量</h3>
+<ul>
+<li><p>class ast.Name(id, ctx): 变量名,
+id是一个字符串代表变量名</p></li>
+<li><p>class ast.Starred(value, ctx): 代表*var, value是var的AST节点</p>
+<p>ctx 可以是下面三个值之一</p></li>
+<li><p>class ast.Load</p></li>
+<li><p>class ast.Store</p></li>
+<li><p>class ast.Del</p></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load())),</span><br><span class="line">  ], type_ignores=[])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;a=1&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Assign(targets=[</span><br><span class="line">        Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Store()),</span><br><span class="line">      ], value=Constant(value=<span class="number">1</span>, kind=<span class="literal">None</span>), type_comment=<span class="literal">None</span>),</span><br><span class="line">  ], type_ignores=[])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;del a&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Delete(targets=[</span><br><span class="line">        Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Del()),</span><br><span class="line">      ]),</span><br><span class="line">  ], type_ignores=[])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;a,*b=it&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Assign(targets=[</span><br><span class="line">        <span class="type">Tuple</span>(elts=[</span><br><span class="line">            Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Store()),</span><br><span class="line">            Starred(value=Name(<span class="built_in">id</span>=<span class="string">&#x27;b&#x27;</span>, ctx=Store()), ctx=Store()),</span><br><span class="line">          ], ctx=Store()),</span><br><span class="line">      ], value=Name(<span class="built_in">id</span>=<span class="string">&#x27;it&#x27;</span>, ctx=Load()), type_comment=<span class="literal">None</span>),</span><br><span class="line">  ], type_ignores=[])</span><br></pre></td></tr></table></figure>
+<h3 id="expressions-表达式">Expressions 表达式</h3>
+<h4 id="class-ast.exprvalue">class ast.Expr(value)</h4>
+<p>如果一个表达式本身作为语句出现,
+并且表达式的返回值没有被使用或者被存贮,
+表达式将会被放到这个类的节点中.</p>
+<p>value将为其他表达式节点, 常量节点, Name节点, Lambda节点, Yield节点,
+YieldFrom节点之一.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;-a&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=UnaryOp(op=USub(), operand=Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load()))),</span><br><span class="line">  ], type_ignores=[])</span><br></pre></td></tr></table></figure>
+<h4 id="一元运算">一元运算</h4>
+<p>class ast.UnaryOp(op, operand)</p>
+<p>运算符op是如下几个类节点之一, operand是任何表达式</p>
+<ul>
+<li>class ast.UAdd</li>
+<li>class ast.USub</li>
+<li>class ast.Not</li>
+<li>class ast.Invert</li>
+</ul>
+<h4 id="二元运算">二元运算</h4>
+<p>class ast.BinOp(left, op, right)</p>
+<p>运算符op是如下几个类节点之一, left和right是任何表达式</p>
+<ul>
+<li>class ast.Add</li>
+<li>class ast.Sub</li>
+<li>class ast.Mult</li>
+<li>class ast.Div</li>
+<li>class ast.FloorDiv</li>
+<li>class ast.Mod</li>
+<li>class ast.Pow</li>
+<li>class ast.LShift¶</li>
+<li>class ast.RShift</li>
+<li>class ast.BitOr</li>
+<li>class ast.BitXor</li>
+<li>class ast.BitAnd</li>
+<li>class ast.MatMult</li>
+</ul>
+<h4 id="布尔运算">布尔运算</h4>
+<p>class ast.BoolOp(op, values)</p>
+<p>op是下面的Or或者And. values是参与运算的节点的list,
+注意这个list里可以多余两个元素, 表示连续的and或or.</p>
+<ul>
+<li>class ast.And</li>
+<li>class ast.Or</li>
+</ul>
+<h4 id="比较">比较</h4>
+<p>class ast.Compare(left, ops, comparators)</p>
+<p>可以用来表达两个或者多个值的比较. left是第一个比较的元素,
+ops是一个比较运算符的list,
+comparators是出了第一个元素以外的元素的列表.</p>
+<p>可用的比较操作符有:</p>
+<ul>
+<li>class ast.Eq</li>
+<li>class ast.NotEq</li>
+<li>class ast.Lt</li>
+<li>class ast.LtE</li>
+<li>class ast.Gt</li>
+<li>class ast.GtE</li>
+<li>class ast.Is</li>
+<li>class ast.IsNot</li>
+<li>class ast.In</li>
+<li>class ast.NotIn</li>
+</ul>
+<p>例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;a &lt;= b &lt; c&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=Compare(left=Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load()), ops=[</span><br><span class="line">        LtE(),</span><br><span class="line">        Lt(),</span><br><span class="line">      ], comparators=[</span><br><span class="line">        Name(<span class="built_in">id</span>=<span class="string">&#x27;b&#x27;</span>, ctx=Load()),</span><br><span class="line">        Name(<span class="built_in">id</span>=<span class="string">&#x27;c&#x27;</span>, ctx=Load()),</span><br><span class="line">      ])),</span><br><span class="line">  ], type_ignores=[])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;a == b &#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=Compare(left=Name(<span class="built_in">id</span>=<span class="string">&#x27;a&#x27;</span>, ctx=Load()), ops=[</span><br><span class="line">        Eq(),</span><br><span class="line">      ], comparators=[</span><br><span class="line">        Name(<span class="built_in">id</span>=<span class="string">&#x27;b&#x27;</span>, ctx=Load()),</span><br><span class="line">      ])),</span><br><span class="line">  ], type_ignores=[])</span><br></pre></td></tr></table></figure>
+<h4 id="函数调用">函数调用</h4>
+<p>class ast.Call(func, args, keywords, starargs, kwargs)</p>
+<p>func代表函数, 通常是一个Name或者Attribute对象. args是pass by
+postion的参数的列表, keywords是一个keyword对象的列表表示pass by
+keyword的参数.</p>
+<p>class ast.keyword(arg, value)</p>
+<p>arg表示形参的名字, value是传入的实参.</p>
+<h4 id="class-ast.ifexptest-body-orelse">class ast.IfExp(test, body,
+orelse)</h4>
+<p>if表达式是如同<code>a if b else c</code>的表达式, test, body,
+orelse都是一个单独的node.</p>
+<h4 id="class-ast.attributevalue-attr-ctx">class ast.Attribute(value,
+attr, ctx)</h4>
+<p><code>d.keys</code>形式的表达式. value是一个节点, 典型的是一个Name.
+attr是一个字符串表示给定attribute的名字, ctx是Load,
+Store或者Del之一.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&#x27;obj.attr&#x27;</span>)</span><br><span class="line">Module(body=[</span><br><span class="line">    Expr(value=Attribute(value=Name(<span class="built_in">id</span>=<span class="string">&#x27;obj&#x27;</span>, ctx=Load()), attr=<span class="string">&#x27;attr&#x27;</span>, ctx=Load())),</span><br><span class="line">  ], type_ignores=[])</span><br></pre></td></tr></table></figure>
+<h4 id="class-ast.namedexprtarget-value">class ast.NamedExpr(target,
+value)</h4>
+<p>python 3.8引入的赋值表达式<code>:=</code></p>
+<h3 id="subscripting-下标访问">Subscripting (下标访问)</h3>
+<p>class ast.Subscript(value, slice, ctx)</p>
+<p>形如<code>a[1]</code>, <code>a['x']</code>的运算.
+value是被下标访问的对象, 通常是一个sequence或者mapping. slice是Index,
+Slice或者ExtSlice之一.</p>
+<p><em>在未来的python3.9之后Index和ExtSlice都被移除了,
+将合并到Slice里.</em></p>
+<ul>
+<li>class ast.Index(value) : 单值索引</li>
+<li>class ast.Slice(lower, upper, step) : 切片</li>
+<li>class ast.ExtSlice(dims) : 切片的扩展,
+dims是一个Slice和Index的list.</li>
+</ul>
+<p>切片的扩展, dims是一个Slice和Index的list.</p>
+<h3 id="comprehensions不知道标准翻译是啥-推导式">Comprehensions(不知道标准翻译是啥,
+推导式?)</h3>
+<ul>
+<li>class ast.ListComp(elt, generators)</li>
+<li>class ast.SetComp(elt, generators)</li>
+<li>class ast.GeneratorExp(elt, generators)</li>
+<li>class ast.DictComp(key, value, generators)</li>
+</ul>
+<p>分别代表list comprehensions, set comprehensions, generator
+expressions, 和dictionary comprehensions.</p>
+<p>elt(或key-value)是单节点, 表示将被推导的变量.
+generators是一个comprehension节点的list.</p>
+<h4 id="class-ast.comprehensiontarget-iter-ifs-is_async">class
+ast.comprehension(target, iter, ifs, is_async)</h4>
+<p>一个用于推导的for语句. target用于表示每个元素,
+通常是Name或者Tuple节点, iter是可迭代的对象. ifs是一个test
+expressions的列表, 每个for语句可以能有多个ifs.</p>
+<p><em>New in version 3.6: is_async indicates a comprehension is
+asynchronous (using an async for instead of for). The value is an
+integer (0 or 1).</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&quot;[ord(c) for line in file for c in line]&quot;</span>, mode=<span class="string">&#x27;eval&#x27;</span>) <span class="comment"># Multiple comprehensions in one.</span></span><br><span class="line">Expression(body=ListComp(elt=Call(func=Name(<span class="built_in">id</span>=<span class="string">&#x27;ord&#x27;</span>, ctx=Load()), args=[</span><br><span class="line">    Name(<span class="built_in">id</span>=<span class="string">&#x27;c&#x27;</span>, ctx=Load()),</span><br><span class="line">  ], keywords=[]), generators=[</span><br><span class="line">    comprehension(target=Name(<span class="built_in">id</span>=<span class="string">&#x27;line&#x27;</span>, ctx=Store()), <span class="built_in">iter</span>=Name(<span class="built_in">id</span>=<span class="string">&#x27;file&#x27;</span>, ctx=Load()), ifs=[], is_async=<span class="number">0</span>),</span><br><span class="line">    comprehension(target=Name(<span class="built_in">id</span>=<span class="string">&#x27;c&#x27;</span>, ctx=Store()), <span class="built_in">iter</span>=Name(<span class="built_in">id</span>=<span class="string">&#x27;line&#x27;</span>, ctx=Load()), ifs=[], is_async=<span class="number">0</span>),</span><br><span class="line">  ]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>astpp.parseprint(<span class="string">&quot;(n**2 for n in it if n&gt;5 if n&lt;10)&quot;</span>, mode=<span class="string">&#x27;eval&#x27;</span>)       <span class="comment"># Multiple if clauses</span></span><br><span class="line">Expression(body=GeneratorExp(elt=BinOp(left=Name(<span class="built_in">id</span>=<span class="string">&#x27;n&#x27;</span>, ctx=Load()), op=Pow(), right=Constant(value=<span class="number">2</span>, kind=<span class="literal">None</span>)), generators=[</span><br><span class="line">    comprehension(target=Name(<span class="built_in">id</span>=<span class="string">&#x27;n&#x27;</span>, ctx=Store()), <span class="built_in">iter</span>=Name(<span class="built_in">id</span>=<span class="string">&#x27;it&#x27;</span>, ctx=Load()), ifs=[</span><br><span class="line">        Compare(left=Name(<span class="built_in">id</span>=<span class="string">&#x27;n&#x27;</span>, ctx=Load()), ops=[</span><br><span class="line">            Gt(),</span><br><span class="line">          ], comparators=[</span><br><span class="line">            Constant(value=<span class="number">5</span>, kind=<span class="literal">None</span>),</span><br><span class="line">          ]),</span><br><span class="line">        Compare(left=Name(<span class="built_in">id</span>=<span class="string">&#x27;n&#x27;</span>, ctx=Load()), ops=[</span><br><span class="line">            Lt(),</span><br><span class="line">          ], comparators=[</span><br><span class="line">            Constant(value=<span class="number">10</span>, kind=<span class="literal">None</span>),</span><br><span class="line">          ]),</span><br><span class="line">      ], is_async=<span class="number">0</span>),</span><br><span class="line">  ]))</span><br></pre></td></tr></table></figure>
+<h3 id="statements-语句">Statements 语句</h3>
+<p>下面罗列一下所有的语句节点的类, 具体内容以后用到了再填写.</p>
+<h4 id="assgin-赋值语句">Assgin 赋值语句</h4>
+<ul>
+<li>class ast.Assign(targets, value, type_comment)</li>
+<li>class ast.AnnAssign(target, annotation, value, simple)</li>
+<li>class ast.AugAssign(target, op, value)</li>
+</ul>
+<h4 id="other">Other</h4>
+<ul>
+<li>class ast.Raise(exc, cause)</li>
+<li>class ast.Assert(test, msg)</li>
+<li>class ast.Delete(targets)</li>
+<li>class ast.Pass</li>
+</ul>
+<h4 id="imports">Imports</h4>
+<ul>
+<li>class ast.Import(names)</li>
+<li>class ast.ImportFrom(module, names, level)</li>
+<li>class ast.alias(name, asname)</li>
+</ul>
+<h4 id="control-flow">Control flow</h4>
+<ul>
+<li>class ast.If(test, body, orelse)</li>
+<li>class ast.For(target, iter, body, orelse, type_comment)</li>
+<li>class ast.While(test, body, orelse)</li>
+<li>class ast.Break</li>
+<li>class ast.Continue</li>
+<li>class ast.Try(body, handlers, orelse, finalbody)</li>
+<li>class ast.ExceptHandler(type, name, body)</li>
+<li>class ast.With(items, body, type_comment)</li>
+<li>class ast.withitem(context_expr, optional_vars)</li>
+</ul>
+<h4 id="function-and-class-definitions">Function and class
+definitions</h4>
+<ul>
+<li>class ast.FunctionDef(name, args, body, decorator_list, returns,
+type_comment)</li>
+<li>class ast.Lambda(args, body)</li>
+<li>class ast.arguments(posonlyargs, args, vararg, kwonlyargs,
+kw_defaults, kwarg, defaults)</li>
+<li>class ast.arg(arg, annotation, type_comment)</li>
+<li>class ast.Return(value)</li>
+<li>class ast.Yield(value)</li>
+<li>class ast.YieldFrom(value)</li>
+<li>class ast.Global(names)</li>
+<li>class ast.Nonlocal(names)</li>
+<li>class ast.ClassDef(name, bases, keywords, starargs, kwargs, body,
+decorator_list)</li>
+</ul>
+<h4 id="async-and-await">Async and await</h4>
+<ul>
+<li>class ast.AsyncFunctionDef(name, args, body, decorator_list,
+returns, type_comment)</li>
+<li>class ast.Await(value)</li>
+<li>class ast.AsyncFor(target, iter, body, orelse, type_comment)</li>
+<li>class ast.AsyncWith(items, body, type_comment)</li>
+</ul>
+<h3 id="top-level-nodes">Top level nodes</h3>
+<ul>
+<li>class Module(stmt* body, type_ignore *type_ignores)</li>
+<li>class Interactive(stmt* body)</li>
+<li>class Expression(expr body)</li>
+</ul>
+<h2 id="操作ast">操作AST</h2>
+<p>对于已存在的AST,
+ast模块为我们提供了多种helper函数帮助我们在一个庞大的树中找到我们想要找到的枝叶.</p>
+<h3 id="class-ast.nodevisitor">class ast.NodeVisitor</h3>
+<p>这是一个节点访问的基类, 可以帮助我们遍历树的节点,
+并且为每一个不同种类的节点调用不同的处理函数.
+使用方法是首先以此类为基类创建一个访客子类, 为访客子类编写访客函数.
+访客函数就是是override基类的一些方法, 形如<code>visit_classname</code>,
+这里<code>classname</code>就是前一章里提到的所有节点类.</p>
+<p>这个类有两个不需要被override的方法</p>
+<ul>
+<li>visit(node)</li>
+<li>generic_visit(node)</li>
+</ul>
+<p><br> visit(node)是访问某个节点的主函数, 其默认执行逻辑逻辑如下:</p>
+<p>{% mermaid graph TB %} id0((start)) --&gt;
+id1["visit(node)方法检查输入的节点类"] id1 --&gt;
+id2{"访客类是否实现了该节点<br>的visit_classname()方法?"} id2 --Y--&gt;
+id3["调用visit_classname(node)方法"] id2 --N--&gt;
+id4["调用generic_visit(node)方法"] id4 --&gt; id5["遍历每一个子节点"]
+id3 --&gt; id6{"定制化visit方法是否<br>调用generic_visit(node)方法?"}
+id6 --Y--&gt; id4 id6 --N--&gt; id7((stop)) id5 --&gt;
+id8{"是否还有没访问的子节点"} id8 --Y--&gt;
+id9["选择下一个子节点,<br>以其为参数调用visit(node)"] id9 --&gt; id1
+id8 --N--&gt; id7 {% endmermaid %}</p>
+<p>注意, 1. 如果想要修改某些节点, 请不要用NodeVisitor这个类,
+而要用NodeTransformer这个类. 2. Deprecated since version 3.8: Methods
+visit_Num(), visit_Str(), visit_Bytes(), visit_NameConstant() and
+visit_Ellipsis() are deprecated now and will not be called in future
+Python versions. Add the visit_Constant() method to handle all constant
+nodes.</p>
+<h3 id="其他遍历方法">其他遍历方法</h3>
+<p>一些其他的helper函数可以帮我们访问到我们想要的节点.</p>
+<ul>
+<li>ast.walk(node): 递归的产生一个列表,
+包括以node为根节点整棵树的所有节点, 但顺序无法保证.
+这个一般用于想要访问或者修改某些节点, 但不关心这些节点的上下文.</li>
+<li>ast.iter_child_nodes(node): 产生一个节点的所有子节点的列表,
+这里包括该节点类的单节点属性和节点列表属性的所有元素.</li>
+<li>当然你永远都可以直接通过一个节点的属性来访问其他节点. 这时,
+所有的python关于迭代和索引的工具都是有效的. 特别是,
+isinstance()对于检查到底是什么节点非常有用.</li>
+</ul>
+<h3 id="监测节点">监测节点</h3>
+<p>ast module提供几个helper函数帮忙检测节点.</p>
+<ul>
+<li>ast.iter_fields(node):
+为节点的node._fields里的每个属性,产生一个一个tuple, (fieldname,
+value).</li>
+<li>ast.get_docstring(node, clean=True):
+返回一个节点(类型必须为FunctionDef, AsyncFunctionDef, ClassDef,
+或者Module)的docstring. 如果没有docstring, 则返回None.</li>
+<li>ast.dump(node, annotate_fields=True, include_attributes=False, *,
+indent=None): <em>Changed in version 3.9</em>: Added the indent
+option.</li>
+</ul>
+<h3 id="修改ast">修改AST</h3>
+<p>修改AST的关键工具是基类class ast.NodeTransformer.
+这个类的工作方式跟NodeVisitor非常像.
+唯一的不同是visit_classname()方法的返回值如果是一个节点对象,
+原节点将被返回的节点替代. 如果返回值是None, 原节点将被删除.
+如果返回原节点, 那么原节点的替代将不会发生.</p>
+<p>如果想要操作输入节点的子节点, 你必须或者手动修改子节点,
+或者在返回前先调用generic_visit()方法.</p>
+<p>需要小心的是, 如果你的修改和删除产生了无效的AST, python不会报错.
+只有当你尝试编译AST成目标代码时(调用compile()), 会有异常抛出.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>注意<code>ast.Expression</code>跟<code>ast.Expr</code>不同.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/ast/" rel="tag"># ast</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2afc7010/" rel="prev" title="A Mathematical Introduction to Logic -- Section 2.2 -- Problem 1 Solution">
+                  <i class="fa fa-chevron-left"></i> A Mathematical Introduction to Logic -- Section 2.2 -- Problem 1 Solution
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/b3fc01a3/" rel="next" title="python name binding and resolution">
+                  python name binding and resolution <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0fbd13044db81a226d266029e70e231c"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是Chapter 1, Section 1.7, 介绍能行性, 可判定性和可计算性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Mathematical Introduction to Logic -- Section 1.7">
+<meta property="og:url" content="https://retzzz.github.io/78799e4f/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="本文是Chapter 1, Section 1.7, 介绍能行性, 可判定性和可计算性">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-13T16:19:05.000Z">
+<meta property="article:modified_time" content="2021-11-28T10:00:00.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Logic">
+<meta property="article:tag" content="Mathematical Logic">
+<meta property="article:tag" content="Enderton">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/78799e4f/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/78799e4f/","path":"/78799e4f/","title":"A Mathematical Introduction to Logic -- Section 1.7"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Mathematical Introduction to Logic -- Section 1.7 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-one.-sentential-logic-%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-text">Chapter One. Sentential
+Logic 命题逻辑 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compactness-and-effectiveness-%E7%B4%A7%E8%87%B4%E6%80%A7%E5%92%8C%E8%83%BD%E8%A1%8C%E6%80%A7"><span class="nav-text">1.7 Compactness
+and Effectiveness 紧致性和能行性 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#comactness-%E7%B4%A7%E8%87%B4%E6%80%A7"><span class="nav-text">Comactness 紧致性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#compactness-theorem-%E7%B4%A7%E8%87%B4%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-text">Compactness Theorem
+紧致性定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-finitely-satisfiable-%E6%9C%89%E9%99%90%E5%8F%AF%E6%BB%A1%E8%B6%B3"><span class="nav-text">\(\DEF\) Finitely Satisfiable 有限可满足
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#corollary-17a"><span class="nav-text">Corollary 17A </span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#effectiveness-and-computability-%E8%83%BD%E8%A1%8C%E6%80%A7%E5%92%8C%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%80%A7"><span class="nav-text">Effectiveness
+and Computability 能行性和可计算性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#defi-effective-procedure-%E8%83%BD%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-text">\(\DEFi\) effective procedure 能行的程序
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#theorem-17b"><span class="nav-text">Theorem 17B\(^*\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defi-decidable-%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84"><span class="nav-text">\(\DEFi\) Decidable 可判定的
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#theorem-17c"><span class="nav-text">Theorem 17C\(^*\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#corollary-17d"><span class="nav-text">Corollary 17D\(^*\) </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defi-effectively-enumerable-%E8%83%BD%E8%A1%8C%E5%8F%AF%E6%9E%9A%E4%B8%BE"><span class="nav-text">\(\DEFi\) Effectively Enumerable 能行可枚举
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defi-semidecidable-%E5%8D%8A%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84"><span class="nav-text">\(\DEFi\) Semidecidable 半可判定的
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#theorem-17e"><span class="nav-text">Theorem 17E\(^*\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#theorem-17f"><span class="nav-text">Theorem 17F\(^*\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#theorem-17g"><span class="nav-text">Theorem 17G\(^*\)
+</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defi-effectively-computable-%E8%83%BD%E8%A1%8C%E5%8F%AF%E8%AE%A1%E7%AE%97%E7%9A%84"><span class="nav-text">\(\DEFi\) Effectively Computable 能行可计算的
+</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exercises-1.7"><span class="nav-text">Exercises 1.7 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-1"><span class="nav-text">Problem 1 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#problem-2"><span class="nav-text">Problem 2 </span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/78799e4f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Mathematical Introduction to Logic -- Section 1.7 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Mathematical Introduction to Logic -- Section 1.7
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-14 00:19:05" itemprop="dateCreated datePublished" datetime="2020-06-14T00:19:05+08:00">2020-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-11-28 18:00:00" itemprop="dateModified" datetime="2021-11-28T18:00:00+08:00">2021-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- md AMIL_heading1.md -->
+<p>本文是Chapter 1, Section 1.7, 介绍能行性, 可判定性和可计算性</p>
+<span id="more"></span>
+<!-- md AMIL_heading2.md -->
+<h2 id="chapter-one.-sentential-logic-命题逻辑">Chapter One. Sentential
+Logic 命题逻辑 <span id="Chapter1"></span></h2>
+<h3 id="compactness-and-effectiveness-紧致性和能行性">1.7 Compactness
+and Effectiveness 紧致性和能行性 <span id="Section1.7"></span></h3>
+<h4 id="comactness-紧致性">Comactness 紧致性</h4>
+<h5 id="compactness-theorem-紧致性定理">Compactness Theorem
+紧致性定理</h5>
+<p>A set of <a href="/5a484d90#wff">wffs</a> is <a href="/5a484d90#Satisfy">satisfiable</a> iff every <a href="/48e9c4af#FiniteSet">finite</a> <a href="/48e9c4af#Subset">subset</a> is satisfiable.</p>
+<h5 id="def-finitely-satisfiable-有限可满足"><span class="math inline">\(\DEF\)</span> Finitely Satisfiable 有限可满足
+<span id="FinitelySatisfiable"></span></h5>
+<p>We say that <span class="math inline">\(\Sigma\)</span> is
+<em>finitely satisfiable</em> iff every <a href="/48e9c4af#FiniteSet">finite</a> <a href="/48e9c4af#Subset">subset</a> of <span class="math inline">\(\sigma\)</span> is satisfiable.</p>
+<h5 id="corollary-17a">Corollary 17A <span id="Corollary17A"></span></h5>
+<p>If <span class="math inline">\(\Sigma\vDash\tau\)</span>, then there
+is a finite <span class="math inline">\(\Sigma_0\subseteq\Sigma\)</span>
+such that <span class="math inline">\(\Sigma_0\vDash\tau\)</span>.</p>
+<h4 id="effectiveness-and-computability-能行性和可计算性">Effectiveness
+and Computability 能行性和可计算性</h4>
+<h5 id="defi-effective-procedure-能行的程序"><span class="math inline">\(\DEFi\)</span> effective procedure 能行的程序
+<span id="Effective"></span></h5>
+<ol type="1">
+<li>There must be exact <strong>finite instructions</strong>(i.e. a
+program) explaining how the execute the procedure.</li>
+<li>The instructions must be <strong>mechanically implemented</strong>.
+They must not demand any brilliance or originality. The procedure must
+avoid random devices or any such device that can, in practice, only be
+approximated.</li>
+<li>The procedure must be an algorithm for <strong>determining the
+answer</strong>. The procedure produces a "yes" or "no" answer.</li>
+</ol>
+<h5 id="theorem-17b">Theorem 17B<span class="math inline">\(^*\)</span>
+<span id="Theorem17B"></span></h5>
+<p>There is an <a href="#Effective">effective</a> procedure that, give
+any <a href="/5a484d90#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, will decide whether or not
+it is a <a href="/5a484d90#wff">wff</a>.</p>
+<h5 id="defi-decidable-可判定的"><span class="math inline">\(\DEFi\)</span> Decidable 可判定的
+<span id="Decidable"></span></h5>
+<p>A set <span class="math inline">\(\Sigma\)</span> of <a href="/5a484d90#Expression">expression</a> is <em>decidable</em> iff
+there exists an <a href="#Effective">effective</a> procedure that, given
+an expression <span class="math inline">\(\alpha\)</span>, will decide
+whether or not <span class="math inline">\(\alpha \in
+\Sigma\)</span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+可判定主语是集合, 即一个集合是可判定的,
+当且仅当有一个能行的程序决定某一个元素是否属于该集合. </font></p>
+</div>
+<h5 id="theorem-17c">Theorem 17C<span class="math inline">\(^*\)</span>
+<span id="Theorem17C"></span></h5>
+<p>There is an effective procedure that, given a finite set <a href="/48e9c4af#Adjoin"><span class="math inline">\(\Sigma;\tau\)</span></a> of <a href="/5a484d90#wff">wffs</a>, will decide whether or not <span class="math inline">\(\Sigma\vDash\tau\)</span></p>
+<h5 id="corollary-17d">Corollary 17D<span class="math inline">\(^*\)</span> <span id="Corollary17D"></span></h5>
+<p>For a finite set <span class="math inline">\(\Sigma\)</span>, the set
+of <a href="/5a484d90#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a>. In particular, the set of tautologies
+is decidable.</p>
+<h5 id="defi-effectively-enumerable-能行可枚举"><span class="math inline">\(\DEFi\)</span> Effectively Enumerable 能行可枚举
+<span id="EffectivelyEnumerable"></span></h5>
+<p>Say that a set <span class="math inline">\(A\)</span> of <a href="/5a484d90#Expression">expressions</a> is <em>effectively
+enumerable</em> iff there exists an <a href="#Effective">effective
+procedure</a> that lists, in some order, the members of <span class="math inline">\(A\)</span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+能行可枚举的主语是集合, 即一个集合是能行可枚举的,
+当且仅当有一个能行的程序能狗列出(枚举出)该集合所有的元素. </font></p>
+</div>
+<h5 id="defi-semidecidable-半可判定的"><span class="math inline">\(\DEFi\)</span> Semidecidable 半可判定的
+<span id="Semidecidable"></span></h5>
+<p>A set A of expressions is <em>Semidecidable</em> iff there exists an
+<a href="#Effective">effective procedure</a> that, given any <a href="/5a484d90#Expression">expression</a> <span class="math inline">\(\varepsilon\)</span>, procedures the answer yes
+iff <span class="math inline">\(\varepsilon\in A\)</span>.</p>
+<p>If <span class="math inline">\(\varepsilon\notin A\)</span>,
+procedure might produce the answer "no"; more likely it will go on
+forever without producing any answer, but it must not lie to use and
+produce the answer "yes".</p>
+<h5 id="theorem-17e">Theorem 17E<span class="math inline">\(^*\)</span>
+<span id="Theorem17E"></span></h5>
+<p>A set is effectively enumerable iff it is <a href="#Semidecidable">semidecidable</a>.</p>
+<h5 id="theorem-17f">Theorem 17F<span class="math inline">\(^*\)</span>
+<span id="Theorem17F"></span></h5>
+<p>A set of expressions is <a href="#Decidable">decidable</a> iff both
+it and its complement (relative to the set of all expressions) are <a href="EffectivelyEnumerable">effectively enumerable</a>. This sometimes
+called "Kleene's theorem."</p>
+<h5 id="theorem-17g">Theorem 17G<span class="math inline">\(^*\)</span>
+<span id="Theorem17G"></span></h5>
+<p>If <span class="math inline">\(\Sigma\)</span> is <a href="#Decidable">decidable</a> set of wffs, then the set of <a href="/5a484d90#Tautology">tautological</a> consequences of <span class="math inline">\(\Sigma\)</span> is <a href="#EffectivelyEnumerable">effectively enumerable</a>.</p>
+<h5 id="defi-effectively-computable-能行可计算的"><span class="math inline">\(\DEFi\)</span> Effectively Computable 能行可计算的
+<span id="Computable"></span></h5>
+<p>We will say that a <a href="/48e9c4af#Function">function</a> <span class="math inline">\(f\)</span> is <em>effectively computable</em> (or
+simply <em>computable</em>) iff there exists an <a href="#Effective">effective procedure</a> that given an input <span class="math inline">\(x\)</span>, will eventually produce the correct
+output <span class="math inline">\(f(x)\)</span>.</p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+能行可计算主语是函数. </font></p>
+</div>
+<h4 id="exercises-1.7">Exercises 1.7 <span id="Exercises1.7"></span></h4>
+<h5 id="problem-1">Problem 1 <span id="Problem1.7-1"></span></h5>
+<ol type="1">
+<li>Assume that every finite subset of <span class="math inline">\(\Sigma\)</span> is satisfiable. Show that the same
+is true of at least one of the sets <span class="math inline">\(\Sigma;\alpha\)</span> and <span class="math inline">\(\Sigma;\lnot\alpha\)</span>. (This is part of the
+proof of the compactness theorem.)</li>
+</ol>
+<p>证明:</p>
+<p>假设有两个有限子集<span class="math inline">\(\Sigma_1\subseteq\Sigma\)</span>和<span class="math inline">\(\Sigma_2\subseteq\Sigma\)</span>, 再假设<span class="math inline">\(\Sigma_1;\alpha\)</span>和<span class="math inline">\(\Sigma_2;\lnot\alpha\)</span>都是不可满足的.</p>
+<p>那么考虑<span class="math inline">\(\Sigma&#39;=\Sigma_1\cup\Sigma_2\subseteq\Sigma\)</span>,
+<span class="math inline">\(\Sigma&#39;\)</span>也是<span class="math inline">\(\Sigma\)</span>的有限子集.
+则必然存在一个真值分配<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma&#39;\)</span>, 那么</p>
+<p>或者<span class="math inline">\(\overline{v}(\alpha)=T\)</span>,
+从而<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma;\alpha\)</span></p>
+<p>或者<span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>,
+从而<span class="math inline">\(v\)</span>能够满足<span class="math inline">\(\Sigma;\lnot\alpha\)</span></p>
+<p>这就产生了矛盾. 所以 <span class="math inline">\(\blacksquare\)</span></p>
+<h5 id="problem-2">Problem 2 <span id="Problem1.7-2"></span></h5>
+<ol start="2" type="1">
+<li>Let <span class="math inline">\(\Delta\)</span> be a sets of wffs
+such that (i) every finite subset of <span class="math inline">\(\Delta\)</span> is satisfiable, and (ii) for every
+wff <span class="math inline">\(\alpha\)</span>, either <span class="math inline">\(\alpha\in\Delta\)</span> or <span class="math inline">\((\lnot\alpha)\in\Delta\)</span>. Define the truth
+assignment <span class="math inline">\(v\)</span>: <span class="math display">\[
+v(A)=\left\{
+\begin{array}{l}
+T\qquad\text{iff}\quad A\in\Delta\\
+F\qquad\text{iff}\quad A\notin\Delta
+\end{array}
+\right.
+\]</span> for each sentence symbol <span class="math inline">\(A\)</span>. Show that for every wff <span class="math inline">\(\phi\)</span>, <span class="math inline">\(\overline{v}(\phi)=T\)</span> iff <span class="math inline">\(\phi\in\Delta\)</span>.</li>
+</ol>
+<p>证明:</p>
+<p>若一个合式公式<span class="math inline">\(\phi\)</span>, 满足<span class="math inline">\(\overline{v}(\phi)=T\)</span>当且仅当<span class="math inline">\(\phi\in\Delta\)</span>,
+我们称这个合式公式是成立的.</p>
+<p>应用数学归纳法.</p>
+<p>对于任取的<a href="#SentenceSymbol">命题符号(sentence
+symbols)</a><span class="math inline">\(\forall A\)</span>, 根据<a href="/5a484d90#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>,<span class="math inline">\(\overline{v}(A)=v(A)\)</span>, 显然满足<span class="math inline">\(\overline{v}(A)=T\)</span> 当且仅当 <span class="math inline">\(A\in\Delta\)</span>,
+所以所有的命题符号都是成立的.</p>
+<p>只需要证明若对于两个成立的合式公式 <span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>,
+那么下面5个由这两个合式公式构造的合式公式: <span class="math display">\[
+\matrix{
+    \varepsilon_\lnot(\alpha) = (\lnot\alpha)\cr
+    \varepsilon_\land(\alpha,\beta) = (\alpha\land\beta)\cr
+    \varepsilon_\lor(\alpha,\beta) = (\alpha\lor\beta)\cr
+    \varepsilon_\rightarrow(\alpha,\beta) = (\alpha\rightarrow\beta)\cr
+    \varepsilon_\leftrightarrow(\alpha,\beta) =
+(\alpha\leftrightarrow\beta)
+}
+\]</span> 也同样是成立的, 根据归纳原理, 所有的合式公式都是成立的.</p>
+<p>首先考察<span class="math inline">\(\lnot\alpha\)</span>.</p>
+<ol type="1">
+<li>根据<a href="/5a484d90#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>, <span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>当且仅当<span class="math inline">\(\overline{v}(\alpha)=F\)</span>.</li>
+<li>因为<span class="math inline">\(\alpha\)</span>是成立的, 所以<span class="math inline">\(\overline{v}(\alpha)=F\)</span>当且仅当<span class="math inline">\(\alpha\notin\Delta\)</span>.</li>
+<li>根据条件{ii}, <span class="math inline">\(\alpha\notin\Delta\)</span>当且仅当<span class="math inline">\((\lnot\alpha)\in\Delta\)</span></li>
+</ol>
+<p>所以<span class="math inline">\(\overline{v}(\lnot\alpha)=T\)</span>当且仅当<span class="math inline">\((\lnot\alpha)\in\Delta\)</span>, 因为<span class="math inline">\(\lnot\alpha\)</span>也是成立的.</p>
+<p>现在考察双元构造的合式公式<span class="math inline">\(\alpha\boxdot\beta\)</span>, 其中<span class="math inline">\(\boxdot\in\{\land,\lor,\rightarrow,\leftrightarrow\}\)</span>
+由于条件(ii)我们可以定义<span class="math inline">\(\lnot?\alpha\)</span>是<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\lnot\alpha\)</span>中在<span class="math inline">\(\Delta\)</span>中的那个, 同样可以定义<span class="math inline">\(\lnot?\beta\)</span>和<span class="math inline">\(\lnot?(\alpha\boxdot\beta)\)</span>.</p>
+<p>根据这个定义, 集合<span class="math inline">\(\{\lnot?\alpha,
+\lnot?\beta, \lnot?(\alpha\boxdot\beta)\}\subseteq\Delta\)</span>.
+根据条件(i), 这个集合是可满足的.</p>
+<p>根据<a href="/5a484d90#overlinev"><span class="math inline">\(\overline{v}\)</span>的定义</a>,
+对于任意的真值分配<span class="math inline">\(u\)</span>, <span class="math inline">\(\overline{u}(\lnot?(\alpha\boxdot\beta))\)</span>的真值由<span class="math inline">\(\overline{u}(\alpha)\)</span>和<span class="math inline">\(\overline{u}(\beta)\)</span>决定的. 而<span class="math inline">\(\overline{u}(\alpha)\)</span>和<span class="math inline">\(\overline{u}(\beta)\)</span>又是由<span class="math inline">\(\overline{u}(\lnot?\alpha)\)</span>和<span class="math inline">\(\overline{u}(\lnot?\beta)\)</span>决定的.
+所以我们得到一个结论:</p>
+<p><span class="math display">\[
+\begin{align}
+\overline{u}(\lnot?\alpha)和\overline{u}(\lnot?\beta)的真值,
+可以唯一决定\overline{u}(\lnot?(\alpha\boxdot\beta))的真值.\tag{$\dagger$}
+\end{align}
+\]</span></p>
+<p>由于前面说的集合是可满足的, 所以</p>
+<p><span class="math display">\[
+\begin{align}
+\exists一个真值分配能够在满足\{\lnot?\alpha, \lnot?\beta\}的同时,
+也满足\lnot?(\alpha\boxdot\beta) \tag{$\ddagger$}
+\end{align}
+\]</span></p>
+<p>那么综合<span class="math inline">\((\dagger)\)</span>和<span class="math inline">\((\ddagger)\)</span>, <span class="math inline">\(\forall\)</span>真值分配, 只要其满足<span class="math inline">\(\{\lnot?\alpha, \lnot?\beta\}\)</span>,
+就一定满足<span class="math inline">\(\overline{u}(\lnot?(\alpha\boxdot\beta))\)</span>.</p>
+<p>本题中的真值分配<span class="math inline">\(v\)</span>,
+根据前面对<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>的假设, 已知<span class="math inline">\(\overline{v}(\lnot?\alpha)=T\)</span>和<span class="math inline">\(\overline{v}(\lnot?\beta)=T\)</span>,
+所以一定有<span class="math inline">\(\overline{v}(\lnot?(\alpha\boxdot\beta))=T\)</span>.
+因而有:</p>
+<ul>
+<li>或者当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 有<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span></li>
+<li>或者当<span class="math inline">\(\lnot(\alpha\boxdot\beta)\in\Delta\)</span>,
+有<span class="math inline">\(\overline{v}(\lnot(\alpha\boxdot\beta))=T\)</span>.
+根据<span class="math inline">\(\overline{v}(\lnot\alpha)\)</span>的定义, <span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=F\)</span>.</li>
+</ul>
+<p>换句话说<span class="math inline">\(\overline{v}(\alpha\boxdot\beta)=T\)</span>当且仅当<span class="math inline">\((\alpha\boxdot\beta)\in\Delta\)</span>, 即<span class="math inline">\(\alpha\boxdot\beta\)</span>是成立的. 正毕 <span class="math inline">\(\blacksquare\)</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Logic/" rel="tag"># Logic</a>
+              <a href="/tags/Mathematical-Logic/" rel="tag"># Mathematical Logic</a>
+              <a href="/tags/Enderton/" rel="tag"># Enderton</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/5a484d90/" rel="prev" title="A Mathematical Introduction to Logic -- Section 1.1/1.2">
+                  <i class="fa fa-chevron-left"></i> A Mathematical Introduction to Logic -- Section 1.1/1.2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/1eec0e97/" rel="next" title="A Mathematical Introduction to Logic -- Section 2.1">
+                  A Mathematical Introduction to Logic -- Section 2.1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3be25fe642c995708faa5e4842f82641"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

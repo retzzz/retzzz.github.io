@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Military-Sword-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Military-Sword-icon-16x16.png">
+  <link rel="mask-icon" href="/images/sword.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\DEF{\sf{D\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Mathematical Introduction to Logic -- Chapter 0">
+<meta property="og:url" content="https://retzzz.github.io/48e9c4af/index.html">
+<meta property="og:site_name" content="Mingjian&#39;s Blog">
+<meta property="og:description" content="\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\DEF{\sf{D\">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-13T15:37:11.000Z">
+<meta property="article:modified_time" content="2020-06-13T15:37:11.000Z">
+<meta property="article:author" content="Mingjian">
+<meta property="article:tag" content="Logic">
+<meta property="article:tag" content="Mathematical Logic">
+<meta property="article:tag" content="Enderton">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://retzzz.github.io/48e9c4af/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://retzzz.github.io/48e9c4af/","path":"/48e9c4af/","title":"A Mathematical Introduction to Logic -- Chapter 0"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Mathematical Introduction to Logic -- Chapter 0 | Mingjian's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160618774-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-160618774-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?0dc9d8661d73be13d3e605feca017f0c"></script>
+
+  <script async src="//assets.growingio.com/2.1/gio.js"></script>
+  <script class="next-config" data-name="growingio_analytics" type="application/json">"abf47f3a6db226d1"</script>
+  <script src="/js/third-party/analytics/growingio.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mingjian's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂笔头, 何况烂记性.<br/>人生如不能回档的游戏, 保持升级直到角色死亡.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter0"><span class="nav-text">Chapter Zero: Useful Facts about Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-text">\(\DEFi\) Set 集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SetEquality"><span class="nav-text">\(\DEF\) Set
+Equality, \(A&#x3D;B\), 集合相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjoin"><span class="nav-text">\(\DEF\) Adjoining one
+extra object to a set, \(A;t\)
+添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EmptySet"><span class="nav-text">\(\DEF\) Empty \(\varnothing\) and Nonempty Set
+空集和非空集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-text">\(\DEF\) Singleton
+Set 单元素集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subset"><span class="nav-text">\(\DEF\) Subset
+子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerSet"><span class="nav-text">\(\DEF\) Power set
+幂集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Union"><span class="nav-text">\(\DEF\) Union 并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection"><span class="nav-text">\(\DEF\)
+Inter-section 交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disjoint"><span class="nav-text">\(\DEF\) Disjoint
+不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PairwiseDisjoint"><span class="nav-text">\(\DEF\)
+Pairwise Disjoint 两两不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pair"><span class="nav-text">\(\DEF\) Ordered Pair
+有序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Triple"><span class="nav-text">\(\DEF\) Ordered Triple
+有序三元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NTuples"><span class="nav-text">\(\DEF\) N-tuples
+有序n元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-text">\(\DEF\) finite
+sequence (or string) 有限序列(或者串)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segment"><span class="nav-text">\(\DEF\) Segment
+段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitialSegment"><span class="nav-text">\(\DEF\)
+initial segment 初始段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proper"><span class="nav-text">\(\DEF\) proper
+真子段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEMMA0A"><span class="nav-text">LEMMA 0A 引理0A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianProduct"><span class="nav-text">\(\DEF\)
+Cartesian product 笛卡尔积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CartesianExponent"><span class="nav-text">\(\DEF\)
+Cartesian exponent 笛卡尔幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relation"><span class="nav-text">\(\DEF\) Relation
+关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain"><span class="nav-text">\(\DEF\) Domain
+定义域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Range"><span class="nav-text">\(\DEF\) Range 值域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field"><span class="nav-text">\(\DEF\) Field 域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NaryRelation"><span class="nav-text">\(\DEF\) N-ary
+relation n元关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restriction"><span class="nav-text">\(\DEF\)
+Restriction of \(R\) to \(B\) 关系\(R\)对集合\(B\)的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-text">\(\DEF\) Function
+函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompositionOfFunctions"><span class="nav-text">\(\DEF\) Composition of functions
+复合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapInto"><span class="nav-text">\(\DEF\) \(F\) Map \(A\) into \(B\) \(F\)把\(A\)映射到\(B\)中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapOnto"><span class="nav-text">\(\DEF\) \(F\) Map \(A\) onto \(B\) \(F\)把\(A\)映射到\(B\)上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToOne"><span class="nav-text">\(\DEF\) One-to-one
+一对一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multivariate"><span class="nav-text">\(\DEF\)
+Multivariate Function 多变量函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operation"><span class="nav-text">\(\DEF\) n-ary
+operation on \(A\) 集合\(A\)上的n元运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Closed"><span class="nav-text">\(\DEF\) \(A\) is Closed under \(f\) 集合\(A\)在函数\(f\)作用下是封闭的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestrictionOfOperation"><span class="nav-text">\(\DEF\) Restriction of operation
+运算对集合的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IdentityFunction"><span class="nav-text">\(\DEF\)
+Identity function 恒等函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AttributesOfRelation"><span class="nav-text">\(\DEFn\)
+Attributes of Relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EquivalenceRelation"><span class="nav-text">\(\DEF\)
+Equivalence Relation 等价关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OrderingRelation"><span class="nav-text">\(\DEFn\)
+Ordering Relation 序关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FiniteSet"><span class="nav-text">\(\DEF\) Finite Set
+有限集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CountableSet"><span class="nav-text">\(\DEF\)
+countable Set 可数集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theorem0B"><span class="nav-text">Theorem 0B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chain"><span class="nav-text">\(\DEF\) Chain 链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZornLemma"><span class="nav-text">Zorn&#39;s Lemma\(_*\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equinumerous"><span class="nav-text">\(\DEF\)
+Equinumerous 等势的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CardinalNumber"><span class="nav-text">Cardinal Number 基数</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mingjian</p>
+  <div class="site-description" itemprop="description">计算机技术, 航电, 数学, 读书笔记.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://retzzz.github.io/48e9c4af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mingjian">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingjian's Blog">
+      <meta itemprop="description" content="计算机技术, 航电, 数学, 读书笔记.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Mathematical Introduction to Logic -- Chapter 0 | Mingjian's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Mathematical Introduction to Logic -- Chapter 0
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-13 23:37:11" itemprop="dateCreated datePublished" datetime="2020-06-13T23:37:11+08:00">2020-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display:
+inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block;
+transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span>
+<span class="math inline">\(\def\DEFi{\sf{D\scriptsize
+EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span>
+<span class="math inline">\(\def\DEFin{\sf{D\scriptsize
+EF}^*_*.\quad}\)</span> <span class="math inline">\(\def\MYNOTE{\sf{M\scriptsize{Y}}\sf{N\scriptsize{OTE}}.\quad}\)</span></p>
+<p>这是一个关于数理逻辑的读书笔记或者学习总结, 书名是A Mathematical
+Introduction to Logic, 作者<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Herbert_Enderton">Herbert B.
+Enderton</a>, University of California</p>
+<p>本文是Chapter 0, 点击<a href="/edd6b774">这里进入目录</a></p>
+<p>第0章介绍一些集合论的基础概念, 这些概念是后面所有章节的基石.
+我基本是把干货抄录在这里以便跳转</p>
+<span id="more"></span>
+<p>由于中文版错误太多, 大部分章节读的是英文第二版,
+所以笔记也是中英文夹杂着写的. 英文一般是关键原文. 中文有的是原文的翻译,
+有的是我自己的理解, 还有的是 为了做练习写的证明和计算过程.</p>
+<p>前缀关键字的含义:</p>
+<ul>
+<li><span class="math inline">\(\DEF\)</span> : 表明后面是概念定义.</li>
+<li><span class="math inline">\(^*\)</span> :
+表明后面内容并不是数学上的精确表达.</li>
+<li><span class="math inline">\(_*\)</span> :
+表明后面的内容并不来自于这本书.</li>
+<li><span class="math inline">\(\MYNOTE\)</span> :
+后面的内容是我用自己的话做的总结,或心得体会</li>
+</ul>
+<h2 id="Chapter0">Chapter Zero: Useful Facts about Sets</h2>
+<h3 id="Set"><span class="math inline">\(\DEFi\)</span> Set 集合</h3>
+<p>A <strong>set</strong> is a collection of things.</p>
+<h3 id="SetEquality"><span class="math inline">\(\DEF\)</span> Set
+Equality, <span class="math inline">\(A=B\)</span>, 集合相等</h3>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are sets such that for every object
+t,</p>
+<p><span class="math display">\[
+t \in A \quad \text{iff} \quad t \in B
+\]</span></p>
+<p>then <span class="math inline">\(A=B\)</span></p>
+<h3 id="Adjoin"><span class="math inline">\(\DEF\)</span> Adjoining one
+extra object to a set, <span class="math inline">\(A;t\)</span>
+添加元素</h3>
+<p>Let <span class="math inline">\(A;t\)</span> be the set whose members
+are (i) the members of A, plus (ii) the (possibly new) member t. We have
+<span class="math display">\[A;t = A \cup {t}\]</span> using notation
+defined later. and <span class="math display">\[
+t \in A \quad\text{iff}\quad A;t=A
+\]</span></p>
+<h3 id="EmptySet"><span class="math inline">\(\DEF\)</span> Empty <span class="math inline">\(\varnothing\)</span> and Nonempty Set
+空集和非空集</h3>
+<p><em>Empty set</em> <span class="math inline">\(\varnothing\)</span>
+is the set which has no members at all. Any other set is said to be
+<em>nonempty</em>.</p>
+<h3 id="Singleton"><span class="math inline">\(\DEF\)</span> Singleton
+Set 单元素集</h3>
+<p>For any object <span class="math inline">\(x\)</span>, there is the
+<em>Singleton Set</em> <span class="math inline">\({x}\)</span> whose
+only member is <span class="math inline">\(x\)</span>.</p>
+<h3 id="Subset"><span class="math inline">\(\DEF\)</span> Subset
+子集</h3>
+<p>If <span class="math inline">\(A\)</span> is a set all of whose
+members are also members of B, then A is a subset of B, abbreviated
+<span class="math inline">\(A \subseteq B\)</span>.</p>
+<h3 id="PowerSet"><span class="math inline">\(\DEF\)</span> Power set
+幂集</h3>
+<p>The <em>power set</em> <span class="math inline">\({\cal P}
+A\)</span> of <span class="math inline">\(A\)</span> is a set whose
+members are the <a href="#Subset">subsets</a> of A. Thus</p>
+<p><span class="math display">\[ {\cal P} A = \{x|x \subseteq
+A\}\]</span></p>
+<h3 id="Union"><span class="math inline">\(\DEF\)</span> Union 并集</h3>
+<p>The union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cup
+B\)</span>, is the set of all things that are members of A or B (or
+both).</p>
+<p>If <span class="math inline">\(A\)</span> is a set whose members are
+themselves sets. <span class="math display">\[
+\bigcup A=\{x|\text{x belongs to some member of} A\}
+\]</span></p>
+<h3 id="Intersection"><span class="math inline">\(\DEF\)</span>
+Inter-section 交集</h3>
+<p>Intersection of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cap
+B\)</span>, is the set of all things that are members of both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+<p>If <span class="math inline">\(A\)</span> is a set whose members are
+themselves sets. <span class="math display">\[
+\bigcap A=\{x|\text{x belongs to all members of} A\}
+\]</span></p>
+<h3 id="Disjoint"><span class="math inline">\(\DEF\)</span> Disjoint
+不相交</h3>
+<p>Sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint iff their <a href="#Intersection">intersection</a> is empty.</p>
+<h3 id="PairwiseDisjoint"><span class="math inline">\(\DEF\)</span>
+Pairwise Disjoint 两两不相交</h3>
+<p>A collection of sets is pairwise disjoint iff any two members of the
+collection are <a href="#disjoint">disjoint</a>.</p>
+<h3 id="Pair"><span class="math inline">\(\DEF\)</span> Ordered Pair
+有序对</h3>
+<p>The ordered pair <span class="math inline">\(\langle x,y
+\rangle\)</span> of objects <span class="math inline">\(x\)</span> and
+<span class="math inline">\(y\)</span> is a <a href="#Set">set</a>:
+<span class="math display">\[
+\langle x,y \rangle = \{\{x\},\{x,y\}\}.
+\]</span></p>
+<h3 id="Triple"><span class="math inline">\(\DEF\)</span> Ordered Triple
+有序三元组</h3>
+<p>The ordered triples is a <a href="#Pair">pair</a>: <span class="math display">\[
+\langle x,y,z \rangle = \langle\langle x,y\rangle,z \rangle.
+\]</span></p>
+<h3 id="NTuples"><span class="math inline">\(\DEF\)</span> N-tuples
+有序n元组</h3>
+<p>The n-tuples is defined recursively as a <a href="#Pair">pair</a>:
+<span class="math display">\[
+\langle x_1,\ldots,x_{n+1} \rangle = \langle\langle
+x_1,\ldots,x_n\rangle,x_{n+1} \rangle.
+\]</span></p>
+<h3 id="String"><span class="math inline">\(\DEF\)</span> finite
+sequence (or string) 有限序列(或者串)</h3>
+<p><span class="math inline">\(S\)</span> is a <em>finite sequence</em>
+(or <em>string</em>) of members of A iff some positive integer n, we
+have <a href="#NTuples">n-tuples</a> <span class="math inline">\(S=\langle x_1,\ldots,x_{n+1} \rangle\)</span>,
+where each <span class="math inline">\(x_i \in A\)</span>.</p>
+<h3 id="Segment"><span class="math inline">\(\DEF\)</span> Segment
+段</h3>
+<p>A <em>segment</em> of the finite sequence <span class="math inline">\(S=\langle x_1,\ldots,x_{n+1} \rangle\)</span> is a
+<a href="#String">finite sequence</a> <span class="math display">\[
+S=\langle x_k, x_{k+1},\ldots,x_{m-1}, x_m
+\rangle,\qquad\text{where}\quad 1 \le k \le m \le n.
+\]</span></p>
+<h3 id="InitialSegment"><span class="math inline">\(\DEF\)</span>
+initial segment 初始段</h3>
+<p>A segment is an <em>initial segment</em> iff <span class="math inline">\(k=1\)</span>.</p>
+<h3 id="Proper"><span class="math inline">\(\DEF\)</span> proper
+真子段</h3>
+<p>A segment is proper iff it is different from <a href="#Segment"><span class="math inline">\(S\)</span></a></p>
+<h3 id="LEMMA0A">LEMMA 0A 引理0A</h3>
+<p>Assume that <span class="math inline">\(S=\langle x_1,\ldots,x_m
+\rangle = \langle y_1,\ldots,y_m,\ldots,y_{m+k} \rangle\)</span>. Then
+<span class="math inline">\(x_1 = \langle y_1,\ldots,y_{k+1}
+\rangle\)</span>.</p>
+<h3 id="CartesianProduct"><span class="math inline">\(\DEF\)</span>
+Cartesian product 笛卡尔积</h3>
+<p>The <em>Cartesian product</em> of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \times
+B\)</span>, is the set of all <a href="#Pair">pairs</a> <span class="math inline">\(\langle x,y \rangle\)</span> for which <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(y
+\in B\)</span>.</p>
+<h3 id="CartesianExponent"><span class="math inline">\(\DEF\)</span>
+Cartesian exponent 笛卡尔幂</h3>
+<p><span class="math inline">\(A^n\)</span> is the set of all <a href="#NTuples">n-tuples</a> of members of A. For example. <span class="math inline">\(A^3 = (A \times A) \times A\)</span>.</p>
+<h3 id="Relation"><span class="math inline">\(\DEF\)</span> Relation
+关系</h3>
+<p>A <em>relation</em> <span class="math inline">\(R\)</span> is a set
+of ordered pairs.</p>
+<h3 id="Domain"><span class="math inline">\(\DEF\)</span> Domain
+定义域</h3>
+<p>The <em>domain</em> of <a href="#Relation">relation</a> <span class="math inline">\(R\)</span> (written dom <span class="math inline">\(R\)</span>) is the set of all objects <span class="math inline">\(x\)</span> such that <span class="math inline">\(\langle x,y \rangle \in R\)</span> for some <span class="math inline">\(y\)</span>.</p>
+<h3 id="Range"><span class="math inline">\(\DEF\)</span> Range 值域</h3>
+<p>The <em>range</em> of <a href="#Relation">relation</a> <span class="math inline">\(R\)</span> (written ran <span class="math inline">\(R\)</span>) is the set of all objects <span class="math inline">\(y\)</span> such that <span class="math inline">\(\langle x,y \rangle \in R\)</span> for some <span class="math inline">\(x\)</span>.</p>
+<h3 id="Field"><span class="math inline">\(\DEF\)</span> Field 域</h3>
+<p>The union of <a href="#Domain">dom <span class="math inline">\(R\)</span></a> and <a href="#Range">ran <span class="math inline">\(R\)</span></a> is the field of <span class="math inline">\(R\)</span> <em>field</em> of <span class="math inline">\(R\)</span>, fld <span class="math inline">\(R\)</span>.</p>
+<h3 id="NaryRelation"><span class="math inline">\(\DEF\)</span> N-ary
+relation n元关系</h3>
+<p>An <em>n-ary relation</em> on <span class="math inline">\(A\)</span>
+is a <a href="#Subset">subset</a> of <a href="#CartesianExponent"><span class="math inline">\(A^n\)</span></a>. A <em>1-ary (unary)</em>
+relation on A is simply a subset of A.</p>
+<h3 id="Restriction"><span class="math inline">\(\DEF\)</span>
+Restriction of <span class="math inline">\(R\)</span> to <span class="math inline">\(B\)</span> 关系<span class="math inline">\(R\)</span>对集合<span class="math inline">\(B\)</span>的限制</h3>
+<p>For an n-ary relation <span class="math inline">\(R\)</span> on <span class="math inline">\(A\)</span> and subset <span class="math inline">\(B\)</span> of <span class="math inline">\(A\)</span>, the restriction of <span class="math inline">\(R\)</span> to <span class="math inline">\(B\)</span> is the <a href="#Intersection">intersection</a> <span class="math inline">\(R \cap
+B^n\)</span>.</p>
+<h3 id="Function"><span class="math inline">\(\DEF\)</span> Function
+函数</h3>
+<p>A <em>function</em> is a <a href="#Relation">relation</a> <span class="math inline">\(F\)</span>, with the property of being
+single-valued: For each <span class="math inline">\(x\)</span> in dom
+<span class="math inline">\(F\)</span> there is only one <span class="math inline">\(y\)</span> such that <span class="math inline">\(\langle x,y \rangle \in F\)</span>. This unique
+<span class="math inline">\(y\)</span> is said to be value <span class="math inline">\(F(x)\)</span> that <span class="math inline">\(F\)</span> assumes at <span class="math inline">\(x\)</span>.</p>
+<h3 id="CompositionOfFunctions"><span class="math inline">\(\DEF\)</span> Composition of functions
+复合函数</h3>
+<p><span class="math inline">\(f \circ g\)</span> is the <a href="#Function">function</a> whose value at <span class="math inline">\(x\)</span> is <span class="math inline">\(f(g(x))\)</span>.</p>
+<h3 id="MapInto"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>中</h3>
+<p>We say that <em><span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span></em> and write <span class="math display">\[F:A\rightarrow B\]</span> to mean that <span class="math inline">\(F\)</span> is a <a href="#Function">function</a>,
+<a href="#Domain">dom</a> <span class="math inline">\(F=A\)</span>, and
+<a href="#Range">ran</a> <a href="#Subset"><span class="math inline">\(F
+\subseteq B\)</span></a>.</p>
+<h3 id="MapOnto"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(F\)</span> Map <span class="math inline">\(A\)</span> onto <span class="math inline">\(B\)</span> <span class="math inline">\(F\)</span>把<span class="math inline">\(A\)</span>映射到<span class="math inline">\(B\)</span>上</h3>
+<p>If <a href="#MapInto"><span class="math inline">\(F\)</span> maps
+<span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span></a>, and ran <span class="math inline">\(F=B\)</span>, then we say <em><span class="math inline">\(F\)</span> map <span class="math inline">\(A\)</span> onto <span class="math inline">\(B\)</span></em>.</p>
+<h3 id="OneToOne"><span class="math inline">\(\DEF\)</span> One-to-one
+一对一</h3>
+<p>A <a href="#Function">function</a> <span class="math inline">\(F\)</span> is <em>one-to-one</em> iff for each
+<span class="math inline">\(y\)</span> in ran <span class="math inline">\(F\)</span> there is only one <span class="math inline">\(x\)</span> such that <span class="math inline">\(\langle x,y \rangle \in F\)</span>.</p>
+<h3 id="Multivariate"><span class="math inline">\(\DEF\)</span>
+Multivariate Function 多变量函数</h3>
+<p>If the <a href="#Pair">pair</a> <span class="math inline">\(\langle
+x,y \rangle\)</span> is in dom <span class="math inline">\(F\)</span>,
+then we let <span class="math inline">\(F(x,y) = F(\langle x,y
+\rangle)\)</span>. This notation is extended to <a href="#NTuples">n-tuples</a>; <span class="math inline">\(F(x_1,\ldots,x_n)=F(\langle x_1,\ldots,x_n
+\rangle)\)</span>.</p>
+<h3 id="Operation"><span class="math inline">\(\DEF\)</span> n-ary
+operation on <span class="math inline">\(A\)</span> 集合<span class="math inline">\(A\)</span>上的n元运算</h3>
+<p>An <em>n-ary operation on <span class="math inline">\(A\)</span></em>
+is a <a href="#Function">function</a> mapping <a href="#CartesianExponent"><span class="math inline">\(A^n\)</span></a>
+<a href="#MapInto">into</a> <span class="math inline">\(A\)</span>.</p>
+<h3 id="Closed"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(A\)</span> is Closed under <span class="math inline">\(f\)</span> 集合<span class="math inline">\(A\)</span>在函数<span class="math inline">\(f\)</span>作用下是封闭的</h3>
+<p>We say set A is <em>closed</em> under an function f, if <span class="math inline">\(f(a_1,\ldots,a_n) \in A\)</span> whenever each
+<span class="math inline">\(a_i\)</span> is in <span class="math inline">\(A\)</span>.</p>
+<h3 id="RestrictionOfOperation"><span class="math inline">\(\DEF\)</span> Restriction of operation
+运算对集合的限制</h3>
+<p>If <span class="math inline">\(f\)</span> is an <a href="#Operation">n-ary operationi on <span class="math inline">\(A\)</span></a>, then the <em>restriction</em> of
+<span class="math inline">\(f\)</span> to a subset <span class="math inline">\(B\)</span> of <span class="math inline">\(A\)</span> is the function <span class="math inline">\(g\)</span> with domain <span class="math inline">\(B^n\)</span> which agrees with <span class="math inline">\(f\)</span> at each point of <span class="math inline">\(B^n\)</span>. Thus, <span class="math display">\[g=f \cap (B^n \times A).\]</span> This g will be
+an a-ary operation on <span class="math inline">\(B\)</span> iff <span class="math inline">\(B\)</span> is <a href="#Closed">closed</a> under
+<span class="math inline">\(f\)</span>. In this case, <span class="math inline">\(g=f\cap B^{n+1}\)</span>, in agreement with our
+definition of the <a href="#Restriction">restriction</a> of a
+relation.</p>
+<h3 id="IdentityFunction"><span class="math inline">\(\DEF\)</span>
+Identity function 恒等函数</h3>
+<p>The <em>identity function</em> <span class="math inline">\(Id\)</span> on <span class="math inline">\(A\)</span>, is a unary operation on <span class="math inline">\(A\)</span>, given by the equation <span class="math display">\[
+Id(x)=x \qquad \text{for}\quad x \in A
+\]</span> Thus <span class="math inline">\(Id = \{\langle x,x \rangle|x
+\in A\}\)</span></p>
+<h3 id="AttributesOfRelation"><span class="math inline">\(\DEFn\)</span>
+Attributes of Relation</h3>
+<p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>, we define the following</p>
+<ul>
+<li><span class="math inline">\(R\)</span> is <span id="Reflexive"><em>reflexive</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(\langle
+x,x \rangle \in R\)</span> for every <span class="math inline">\(x\)</span> in <span class="math inline">\(A\)</span>.</li>
+<li><span class="math inline">\(R\)</span> is <span id="Symmetric"><em>symmetric</em></span> iff whenever <span class="math inline">\(\langle x,y \rangle \in R\)</span> then also <span class="math inline">\(\langle y,x \rangle \in R\)</span>.</li>
+<li><span class="math inline">\(R\)</span> is <span id="Transitive"><em>transitive</em></span> iff whenever both <span class="math inline">\(\langle x,y \rangle \in R\)</span> and <span class="math inline">\(\langle y,z \rangle \in R\)</span> then also <span class="math inline">\(\langle x,z \rangle \in R\)</span>.</li>
+<li><span class="math inline">\(R\)</span> satisfies <span id="Trichotomy"><em>trichotomy</em></span> on A (or is trichotomous) iff
+for every x and y in A, exactly one of the tree possibilities, <span class="math inline">\(\langle x,y \rangle \in R\)</span>, <span class="math inline">\(x=y\)</span>, or <span class="math inline">\(\langle y,x \rangle \in R\)</span>, holds.</li>
+<li><span class="math inline">\(R\)</span> is <span id="Connex"><em>connex</em></span> iff for all <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in <span class="math inline">\(A\)</span>, we have <span class="math inline">\(\langle x,y \rangle \in R\)</span> or <span class="math inline">\(\langle y,x \rangle \in R\)</span></li>
+<li><span class="math inline">\(R\)</span> is <span id="Anti-symmetric"><em>anti-symmetric</em></span> iff whenever <span class="math inline">\(\langle x,y \rangle \in R\)</span> and <span class="math inline">\(\langle y,x \rangle \in R\)</span>, then <span class="math inline">\(x=y\)</span></li>
+<li><span class="math inline">\(R\)</span> is <span id="Anti-reflexive"><em>anti-reflexive</em></span> on <span class="math inline">\(A\)</span>, iff <span class="math inline">\(\langle x,y \rangle \in R\)</span> for every x in
+A.</li>
+<li><span class="math inline">\(R\)</span> is <span id="Asymmetric"><em>asymmetric</em></span> iff when whenever <span class="math inline">\(\langle x,y \rangle \in R\)</span> then <span class="math inline">\(\langle y,x \rangle \notin R\)</span></li>
+</ul>
+<h3 id="EquivalenceRelation"><span class="math inline">\(\DEF\)</span>
+Equivalence Relation 等价关系</h3>
+<p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>, <span class="math inline">\(R\)</span>
+is an <em>equivalence relation</em> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is a binary relation on A that is <a href="#Reflexive">reflexive</a>, <a href="#Symmetric">symmetric</a> and
+<a href="#Transitive">transitive</a> on A</p>
+<h3 id="OrderingRelation"><span class="math inline">\(\DEFn\)</span>
+Ordering Relation 序关系</h3>
+<p>For a <a href="#Relation">relation</a> <span class="math inline">\(R\)</span>,</p>
+<ul>
+<li><span class="math inline">\(R\)</span> is a <span id="TotalOrdering"><em>non-strict total order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Reflexive">reflexive</a>,
+<a href="#Anti-symmetric">anti-symmetric</a>, <a href="#Transitive">transitive</a>, and <a href="#Connex">connex</a> on
+<span class="math inline">\(A\)</span>.</li>
+<li><span class="math inline">\(R\)</span> is a <span id="StrictTotalOrdering"><em>strict total order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Anti-reflexive">anti-reflexive</a>, <a href="#Asymmetric">asymmetric</a>, <a href="#Tansitive">tansitive</a>
+and <a href="#Connex">connex</a> on <span class="math inline">\(A\)</span>.</li>
+<li><span class="math inline">\(R\)</span> is a <span id="PartialOrdering"><em>non-strict partial order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Reflexive">reflexive</a>,
+<a href="#Anti-symmetric">anti-symmetric</a>, <a href="#Transitive">transitive</a> on <span class="math inline">\(A\)</span>.</li>
+<li><span class="math inline">\(R\)</span> is a <span id="StrictPartialOrdering"><em>strict partial order</em></span> on <span class="math inline">\(A\)</span> iff <span class="math inline">\(R\)</span> is <a href="#Anti-reflexive">anti-reflexive</a>, <a href="#Asymmetric">asymmetric</a>, <a href="#Transitive">transitive</a>
+on <span class="math inline">\(A\)</span></li>
+</ul>
+<h3 id="FiniteSet"><span class="math inline">\(\DEF\)</span> Finite Set
+有限集</h3>
+<p>A set <span class="math inline">\(A\)</span> is <em>finite</em> iff
+there is some <a href="#OneToOne">one-to-one</a> function <span class="math inline">\(f\)</span> mapping the set <span class="math inline">\(A\)</span> <a href="#MapOnto">onto</a> <span class="math inline">\(\{0,1,\ldots,n-1\}\)</span> for some natural
+number <span class="math inline">\(n\)</span>.</p>
+<h3 id="CountableSet"><span class="math inline">\(\DEF\)</span>
+countable Set 可数集</h3>
+<p>A set <span class="math inline">\(A\)</span> is <em>countable</em>
+iff there is some function mapping <span class="math inline">\(A\)</span> <a href="#OneToOne">one-to-one</a> into
+<span class="math inline">\(\Bbb N\)</span>.</p>
+<h3 id="Theorem0B">Theorem 0B</h3>
+<p>Let <span class="math inline">\(A\)</span> be a coutable set. Then
+the set of all finite sequences of members of <span class="math inline">\(A\)</span> is also coutable.</p>
+<h3 id="Chain"><span class="math inline">\(\DEF\)</span> Chain 链</h3>
+<p>Say that a collection <span class="math inline">\(C\)</span> of sets
+is a <em>chain</em> iff for any elements <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> of <span class="math inline">\(C\)</span>, either <span class="math inline">\(x
+\subseteq y\)</span> or <span class="math inline">\(y \subseteq
+x\)</span>.</p>
+<p>(From wikipedia) In general, a chain is a <a href="#TotalOrdering">totally ordered</a> subset of a <a href="#PartialOrdering">partially ordered</a> set.</p>
+<h3 id="ZornLemma">Zorn's Lemma<span class="math inline">\(_*\)</span></h3>
+<p>Let A be a set such that for any <a href="#Chain">chain</a> <span class="math inline">\(C \subseteq A\)</span>, the set <span class="math inline">\(\bigcap C\)</span> is in <span class="math inline">\(A\)</span>. Then there is some element <span class="math inline">\(m \in A\)</span> which is maximal in the sense
+that it is not a subset of any other element of <span class="math inline">\(A\)</span>.</p>
+<p>(From wikipedia) A partially ordered set containing upper bounds for
+every <a href="#Chain">chain</a> (that is, every totally ordered subset)
+necessarily contains at least one maximal element.</p>
+<h3 id="Equinumerous"><span class="math inline">\(\DEF\)</span>
+Equinumerous 等势的</h3>
+<p>Say that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>equinumerous</em> (written
+<span class="math inline">\(A \sim B\)</span>) iff there is a <a href="#OneToOne">one-to-one</a> function mapping <span class="math inline">\(A\)</span> <a href="#MapOnto">onto</a> <span class="math inline">\(B\)</span>.</p>
+<h3 id="CardinalNumber">Cardinal Number 基数</h3>
+<p>To each set A we can assign a certain object, the <em>cardinal
+number</em> (or <em>cardinality</em>) of <span class="math inline">\(A\)</span> (written card <span class="math inline">\(A\)</span>), in such a way that two sets are
+asigned the same cardinality iff they are <a href="#Equinumerous">equinumerous</a>: <span class="math display">\[
+\text{card}\; A = \text{card}\; B\quad\text{iff}\quad A \sim B
+\]</span></p>
+<p>点击<a href="/edd6b774">这里进入目录</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Logic/" rel="tag"># Logic</a>
+              <a href="/tags/Mathematical-Logic/" rel="tag"># Mathematical Logic</a>
+              <a href="/tags/Enderton/" rel="tag"># Enderton</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/edd6b774/" rel="prev" title="A Mathematical Introduction to Logic -- Table of Contents">
+                  <i class="fa fa-chevron-left"></i> A Mathematical Introduction to Logic -- Table of Contents
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/5a484d90/" rel="next" title="A Mathematical Introduction to Logic -- Section 1.1/1.2">
+                  A Mathematical Introduction to Logic -- Section 1.1/1.2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mingjian</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.0/mermaid.min.js","integrity":"sha256-3JloMMI/ZQx6ryuhhZTsQJQmGAkXeni6PkshX7UUO2s="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"retzzz","repo":"gitment-comments","client_id":"6a068ba17921ccef5727","client_secret":"f6a9f87e75e82d68a9988a1803eaf0ba021c2864","admin_user":"retzzz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9d0018acc9851c93c8c1fc9fb339ccb0"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
