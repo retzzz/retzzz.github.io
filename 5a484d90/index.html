@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本文是Chapter 1, Section 1.1,和 1.2, 介绍命题逻辑的基本概念.">
+    <meta name="description" content="\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\DEF{\sf{D\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Mathematical Introduction to Logic -- Section 1.1&#x2F;1.2">
 <meta property="og:url" content="https://retzzz.github.io/5a484d90/index.html">
 <meta property="og:site_name" content="Mingjian&#39;s Blog">
-<meta property="og:description" content="本文是Chapter 1, Section 1.1,和 1.2, 介绍命题逻辑的基本概念.">
+<meta property="og:description" content="\(\def\tauequ{\mathbin{\vDash\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\Dashv{\mathbin{\style{display: inline-block; transform: scaleX(-1)}{\vDash}}}\) \(\def\DEF{\sf{D\">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-13T15:46:35.000Z">
 <meta property="article:modified_time" content="2021-12-01T12:15:00.000Z">
@@ -285,10 +285,36 @@ Tautology 重言式 </span></a></li><li class="nav-item nav-level-4"><a class="n
     
     
     <div class="post-body" itemprop="articleBody">
-        <!-- md AMIL_heading1.md -->
+        <p><span class="math inline">\(\def\tauequ{\mathbin{\vDash\style{display:
+inline-block; transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\Dashv{\mathbin{\style{display: inline-block;
+transform: scaleX(-1)}{\vDash}}}\)</span> <span class="math inline">\(\def\DEF{\sf{D\scriptsize EF}.\quad}\)</span>
+<span class="math inline">\(\def\DEFi{\sf{D\scriptsize
+EF}^*.\quad}\)</span> <span class="math inline">\(\def\DEFn{\sf{D\scriptsize EF}_*.\quad}\)</span>
+<span class="math inline">\(\def\DEFin{\sf{D\scriptsize
+EF}^*_*.\quad}\)</span> <span class="math inline">\(\def\llbracket{\unicode{x27E6}}\)</span> <span class="math inline">\(\def\rrbracket{\unicode{x27E7}}\)</span> <span class="math inline">\(\def\PROOF{\sf{P\scriptsize ROOF}.\quad}\)</span>
+<span class="math inline">\(\def\MYNOTE{\sf{M\scriptsize{Y}}\sf{N\scriptsize{OTE}}.\quad}\)</span>
+<span class="math inline">\(\def\EXAMPLE{\bf\sf{E\scriptsize{XAMPLES}}\quad}\)</span>
+这是一个关于数理逻辑的读书笔记和学习总结, 书名是A Mathematical
+Introduction to Logic (以下简称AMIL), 作者<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Herbert_Enderton">Herbert B.
+Enderton</a>, University of California</p>
+<p>点击<strong><a href="/edd6b774">这里进入AMIL的目录</a></strong></p>
 <p>本文是Chapter 1, Section 1.1,和 1.2, 介绍命题逻辑的基本概念.</p>
 <span id="more"></span>
-<!-- md AMIL_heading2.md -->
+<div class="note info"><p>由于中文版错误太多, 大部分章节读的是英文第二版,
+所以笔记也是中英文夹杂着写的. 英文一般是关键原文. 中文有的是原文的翻译,
+有的是我自己的理解, 还有的是 为了做练习写的证明和计算过程.</p>
+</div>
+<div class="note info"><p>前缀关键字的含义:</p>
+<ul>
+<li><span class="math inline">\(\DEF\)</span> : 表明后面是概念定义.</li>
+<li><span class="math inline">\(^*\)</span> :
+表明后面内容并不是数学上的精确表达.</li>
+<li><span class="math inline">\(_*\)</span> :
+表明后面的内容并不来自于这本书.</li>
+<li><span class="math inline">\(\MYNOTE\)</span> :
+后面的内容是我用自己的话做的总结,或心得体会</li>
+</ul>
+</div>
 <h2 id="chapter-one.-sentential-logic-命题逻辑">Chapter One. Sentential
 Logic 命题逻辑 <span id="Chapter1"></span></h2>
 <h3 id="section-1.1-the-language-of-sentential-logic-命题逻辑的语言">Section
