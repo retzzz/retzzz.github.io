@@ -30,8 +30,10 @@
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Figure1_2.png">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table1_1.png">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table1_2.png">
+<meta property="og:image" content="https://retzzz.github.io/7112fecc//Table2_1.png">
+<meta property="og:image" content="https://retzzz.github.io/7112fecc//Table2_3.png">
 <meta property="article:published_time" content="2023-03-17T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-20T04:54:40.765Z">
+<meta property="article:modified_time" content="2023-03-27T03:34:20.610Z">
 <meta property="article:author" content="Mingjian">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="reading note">
@@ -157,7 +159,18 @@
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#preface"><span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-the-book-is-organized"><span class="nav-text">How the Book Is Organized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#part-i-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">Part I, 数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part-ii-%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="nav-text">Part II, 函数对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part-iii-%E7%B1%BB%E4%B8%8E%E5%8D%8F%E8%AE%AE"><span class="nav-text">Part III 类与协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part-iv-%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-text">Part IV 控制流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part-v-%E5%85%83%E7%BC%96%E7%A8%8Bmetaprogramming"><span class="nav-text">Part V
 元编程(Metaprogramming)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part-i-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84data-structures"><span class="nav-text">1. PART I 数据结构(Data
 Structures)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-1-the-python-data-model"><span class="nav-text">1.1. Chapter 1 The Python Data
-Model</span></a></li></ol></li></ol></div>
+Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-2-an-array-of-sequences"><span class="nav-text">1.2. Chapter 2 An Array of
+Sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#overview-of-built-in-sequences"><span class="nav-text">1.2.1. Overview of Built-in
+Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-comprehensions-and-generator-expressions"><span class="nav-text">1.2.2. List
+Comprehensions and Generator Expressions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tuples-are-not-just-immutable-lists"><span class="nav-text">1.2.3. Tuples Are Not Just
+Immutable Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unpacking-sequences-and-iterables"><span class="nav-text">1.2.4. Unpacking Sequences
+and Iterables</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#using-to-grab-excess-items"><span class="nav-text">1.2.4.1. Using * to Grab Excess
+Items</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unpacking-with-in-function-calls-and-sequence-literals"><span class="nav-text">1.2.4.2.
+Unpacking with * in Function Calls and Sequence Literals</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nested-unpacking"><span class="nav-text">1.2.4.3. Nested Unpacking</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pattern-matching-with-sequences"><span class="nav-text">1.2.5. Pattern Matching with
+Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slicing"><span class="nav-text">1.2.6. Slicing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#using-and-with-sequences"><span class="nav-text">1.2.7. Using + and * with
+Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list.sort-versus-the-sorted-built-in"><span class="nav-text">1.2.8. list.sort Versus
+the sorted Built-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when-a-list-is-not-the-answer"><span class="nav-text">1.2.9. When a List is Not the
+Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#arrays"><span class="nav-text">1.2.9.1. Arrays</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#section"><span class="nav-text">1.2.9.2.</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -244,7 +257,7 @@ Model</span></a></li></ol></li></ol></div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-03-20 12:54:40" itemprop="dateModified" datetime="2023-03-20T12:54:40+08:00">2023-03-20</time>
+      <time title="修改时间：2023-03-27 11:34:20" itemprop="dateModified" datetime="2023-03-27T11:34:20+08:00">2023-03-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -347,6 +360,198 @@ method.</p>
 </div>
 <p>下面几个图总结得很有条理, 这里记录一下. <img src="/7112fecc//Figure1_2.png" class title="Figure 1-2 Collections UML"> <img src="/7112fecc//Table1_1.png" class title="Table 1-1 Special Method Names (operators excluded)">
 <img src="/7112fecc//Table1_2.png" class title="Table 1-2 Special Method Names for operators"></p>
+<h3 id="chapter-2-an-array-of-sequences">1.2. Chapter 2 An Array of
+Sequences</h3>
+<p>这一章主要讲各种序列(sequence)对象, 主题包括</p>
+<ul>
+<li>list推导式(comprehension)和生成器表达式(generator expressions)</li>
+<li>tuple用作记录(record) vs tuple用作不可变list</li>
+<li>序列解包(unpacking)和序列模式(pattern)</li>
+<li>切片对象的读和写</li>
+<li>特殊的序列类型, 比如array和queue</li>
+</ul>
+<h4 id="overview-of-built-in-sequences">1.2.1. Overview of Built-in
+Sequences</h4>
+<p>两种分类方法:</p>
+<ul>
+<li>容器序列(list, tuple, collections.deque) vs 平铺序列(str, bytes,
+array.array)</li>
+<li>可变序列(list, bytearray, array.array) vs 不可变序列(tuple, str,
+bytes)</li>
+</ul>
+<h4 id="list-comprehensions-and-generator-expressions">1.2.2. List
+Comprehensions and Generator Expressions</h4>
+<p>这两个概念对应的语法几乎是一样的,
+唯一的区别就是前者用<code>[]</code>后者用<code>()</code>. 实际上,
+前者生成一个list, 后这生成一个generator对象.</p>
+<h4 id="tuples-are-not-just-immutable-lists">1.2.3. Tuples Are Not Just
+Immutable Lists</h4>
+<p>Tuples as Records也就是类似于c语言的struct, 只不过没有field名字,
+只靠位置来访问. 可以方便的通过一个赋值语句来解包.</p>
+<p>Tuples as Immutable Lists给出了几条用tuple替代list的优势,
+主要就是长度已知和速度更快.</p>
+<p>下面这张比较list, tuple两种对象方法和属性的表值得收藏.</p>
+<img src="/7112fecc//Table2_1.png" class title="Table 2-1 Methods and attributes found in list or tuple">
+<h4 id="unpacking-sequences-and-iterables">1.2.4. Unpacking Sequences
+and Iterables</h4>
+<p>序列解包, 可以避免使用索引(index)运算.
+解包操作可以被使用到所有iterable对象上, 不光sequence对象.</p>
+<p>最基本的解包操作就是并行赋值(parallel assignment).</p>
+<p>另一个解包操作就是在函数调用时, 给一个参数加前缀<code>*</code>.
+例子如下: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">divmod</span>(<span class="number">20</span>, <span class="number">8</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">20</span>, <span class="number">8</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">divmod</span>(*t)</span><br><span class="line">(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>quotient, remainder = <span class="built_in">divmod</span>(*t)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>quotient, remainder</span><br><span class="line">(<span class="number">2</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure></p>
+<p>加*前缀拆包还有以下几个用途</p>
+<h5 id="using-to-grab-excess-items">1.2.4.1. Using * to Grab Excess
+Items</h5>
+<p>主要用于并行赋值(parallel assignment), 抓取额外的元素.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *rest = <span class="built_in">range</span>(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, rest</span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *rest = <span class="built_in">range</span>(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, rest</span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, [<span class="number">2</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, *rest = <span class="built_in">range</span>(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b, rest</span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, [])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, *body, c, d = <span class="built_in">range</span>(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, body, c, d</span><br><span class="line">(<span class="number">0</span>, [<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>*head, b, c, d = <span class="built_in">range</span>(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>head, b, c, d</span><br><span class="line">([<span class="number">0</span>, <span class="number">1</span>], <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="unpacking-with-in-function-calls-and-sequence-literals">1.2.4.2.
+Unpacking with * in Function Calls and Sequence Literals</h5>
+<p>在函数调用时, 解包之后的可迭代对象可以被用作相应位置的输入参数.
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">fun</span>(<span class="params">a, b, c, d, *rest</span>):</span><br><span class="line"><span class="meta">... </span><span class="keyword">return</span> a, b, c, d, rest</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fun(*[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, *<span class="built_in">range</span>(<span class="number">4</span>, <span class="number">7</span>))</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, (<span class="number">5</span>, <span class="number">6</span>))</span><br></pre></td></tr></table></figure></p>
+<p>也可以用在定义list, tuple, set的文本(Literal)里, 比如:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>*<span class="built_in">range</span>(<span class="number">4</span>), <span class="number">4</span></span><br><span class="line">(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[*<span class="built_in">range</span>(<span class="number">4</span>), <span class="number">4</span>]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;*<span class="built_in">range</span>(<span class="number">4</span>), <span class="number">4</span>, *(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>)&#125;</span><br><span class="line">&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="nested-unpacking">1.2.4.3. Nested Unpacking</h5>
+<p>嵌套的tuple可以直接嵌套式解包, 比如: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">metro_areas = [</span><br><span class="line">    (<span class="string">&#x27;Tokyo&#x27;</span>, <span class="string">&#x27;JP&#x27;</span>, <span class="number">36.933</span>, (<span class="number">35.689722</span>, <span class="number">139.691667</span>)),</span><br><span class="line">    (<span class="string">&#x27;Delhi NCR&#x27;</span>, <span class="string">&#x27;IN&#x27;</span>, <span class="number">21.935</span>, (<span class="number">28.613889</span>, <span class="number">77.208889</span>)),</span><br><span class="line">    (<span class="string">&#x27;Mexico City&#x27;</span>, <span class="string">&#x27;MX&#x27;</span>, <span class="number">20.142</span>, (<span class="number">19.433333</span>, -<span class="number">99.133333</span>)),</span><br><span class="line">    (<span class="string">&#x27;New York-Newark&#x27;</span>, <span class="string">&#x27;US&#x27;</span>, <span class="number">20.104</span>, (<span class="number">40.808611</span>, -<span class="number">74.020386</span>)),</span><br><span class="line">    (<span class="string">&#x27;São Paulo&#x27;</span>, <span class="string">&#x27;BR&#x27;</span>, <span class="number">19.649</span>, (-<span class="number">23.547778</span>, -<span class="number">46.635833</span>)),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;<span class="string">&quot;&quot;</span>:<span class="number">15</span>&#125;</span> | <span class="subst">&#123;<span class="string">&quot;latitude&quot;</span>:&gt;<span class="number">9</span>&#125;</span> | <span class="subst">&#123;<span class="string">&quot;longitude&quot;</span>:&gt;<span class="number">9</span>&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> name, _, _, (lat, lon) <span class="keyword">in</span> metro_areas:</span><br><span class="line">        <span class="keyword">if</span> lon &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name:<span class="number">15</span>&#125;</span> | <span class="subst">&#123;lat:<span class="number">9.4</span>f&#125;</span> | <span class="subst">&#123;lon:<span class="number">9.4</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h4 id="pattern-matching-with-sequences">1.2.5. Pattern Matching with
+Sequences</h4>
+<p>python 3.10加入的新语法match/case 语句 在这本书里根据pattern的类型,
+被拆分到各个章节. 这节只介绍sequence的pattern.</p>
+<p>看下面这个例子: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">handle_command</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="keyword">match</span> message:</span><br><span class="line">        <span class="keyword">case</span> [<span class="string">&#x27;BEEPER&#x27;</span>, frequency, times]:</span><br><span class="line">            self.beep(times, frequency)</span><br><span class="line">        <span class="keyword">case</span> [<span class="string">&#x27;NECK&#x27;</span>, angle]:</span><br><span class="line">            self.rotate_neck(angle)</span><br><span class="line">        <span class="keyword">case</span> [<span class="string">&#x27;LED&#x27;</span>, ident, intensity]:</span><br><span class="line">            self.leds[ident].set_brightness(ident, intensity)</span><br><span class="line">        <span class="keyword">case</span> [<span class="string">&#x27;LED&#x27;</span>, ident, red, green, blue]:</span><br><span class="line">            self.leds[ident].set_color(ident, red, green, blue)</span><br><span class="line">        <span class="keyword">case</span> _:</span><br><span class="line">            <span class="keyword">raise</span> InvalidCommand(message)</span><br></pre></td></tr></table></figure></p>
+<ol type="1">
+<li>关键字<code>match</code>后面的表达式是主语(subject),
+Python将要尝试把主语匹配到每个<code>case</code>分句中的pattern上.</li>
+<li>第一个pattern会跟任何包含三个元素的sequence进行匹配,
+第一个元素必须是字符串'BEEPER'. 第二个和第三个可以是任何值,
+他们会被按顺序绑定到变量<code>frequency</code>和<code>times</code>.</li>
+<li>第二个pattern匹配任何具有两个元素且第一个是字符串'NECK'的主语.</li>
+<li>第三个pattern将匹配任何具有三个元素且第一个元素是字符串'LED'的主语.
+如果元素个数不匹配, Python会继续尝试匹配下一个<code>case</code>.</li>
+<li>第四个pattern将匹配首元素是'LED'的5元素主语.</li>
+<li>最后一句是默认<code>case</code>.
+任何在前面pattern中找不到匹配的主语将匹配这一条,
+<code>_</code>是个特殊变量, 后面会讲到.</li>
+</ol>
+<p>这里比较了match/case跟C语言里的switch/case的区别, 作者认为:</p>
+<ol type="1">
+<li>原来python中的<code>if/elif/elif/.../else</code>语句块是switch/case的一个很好的替代品,
+而且避免了c语言中常碰到的fallthrough和dangling else问题.
+前者是忘记写break时产生的,
+后者是if-else不写大括号导致嵌套if语句的是else匹配跟预想的不一致.</li>
+<li>match/case比switch/case强大, 一个重要的改进就是解构(destructuring),
+也就是可以在匹配时直接对主语进行拆包(unpacking)</li>
+</ol>
+<p>通常来讲, 当下列条件都满足, 一个sequence
+pattern匹配到主语(subject):</p>
+<ol type="1">
+<li>主语是一个sequence;</li>
+<li>主语跟pattern有相同数量的元素;</li>
+<li>每一个对应的元素匹配, 包括嵌套的元素.</li>
+</ol>
+<p>例如pattern
+<code>[name, _, _, (lat, lon)]</code>匹配一个具有4个元素的sequence,
+并且其最后一个元素是具有两个元素的sequence.</p>
+<p>几点额外的用法和说明:</p>
+<ol type="1">
+<li>sequence pattern可以是list, tuple, 或嵌套的tuples和lists的组合.
+在pattern里方括号和园括号没有区别.</li>
+<li>一个sequence
+pattern可以匹配大多数collection.abc.Sequence的子类的实例, 但str, bytes,
+bytearray除外. 这三个类型如果做match语句主语,
+会像整数一样被当作单一值处理.</li>
+<li>标准库里下面这些类型与sequence patterns兼容:
+<code>list, tuple, memoryview, range, array.array, collections.deque</code>.</li>
+<li>与前面讲的拆包不同的地方是,
+不能对非sequence得可迭代对象解构(destructuring).</li>
+<li>符号<code>_</code>在这里是特殊的, 它将匹配在该位置的任何元素,
+但是不绑定名字.
+<code>_</code>也是唯一可以多次出现在pattern里的元素.</li>
+<li>可以用<code>as</code>关键字绑定pattern的一部分到一个变量,
+比如<code>case [name, _, _, (lat, lon) as coord]:</code></li>
+<li>可以在pattern里添加类型信息,
+例如<code>case [str(name), _, _, (float(lat), float(lon))]:</code>,
+这里语法跟构造器调用的语法一样, 但是含义不一样.</li>
+<li><code>*_</code>可以用来表示任意数量的元素,
+例如<code>case [str(name), *_, (float(lat), float(lon))]:</code>可以匹配任何以字符串开头,
+以两个浮点类型元素的嵌套sequence结尾的主语.
+也可以用<code>*extra</code>来替换<code>*_</code>,
+这么做<code>extra</code>会绑定到一个0到多个元素的<code>list</code>对象.
+在一个sequence pattern里, <code>*</code>只能出现一次.
+但嵌套的sequence可以分别使用,
+例如<code>case ['lambda', [*parms], *body] if body:</code></li>
+<li>一个可选的以<code>if</code>开头的守卫从句可以用来添加匹配条件.
+但if语句只有当匹配了pattern才会被执行.
+case之后的语句块只有匹配pattern且守卫表达式为真时才会被执行, 例如:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">match</span> record:</span><br><span class="line">    <span class="keyword">case</span> [name, _, _, (lat, lon)] <span class="keyword">if</span> lon &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name:<span class="number">15</span>&#125;</span> | <span class="subst">&#123;lat:<span class="number">9.4</span>f&#125;</span> | <span class="subst">&#123;lon:<span class="number">9.4</span>f&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="slicing">1.2.6. Slicing</h4>
+<p>这里作者讲了一个有趣的知识点,
+执行<code>seq[start:stop:step]</code>在python内部调用了<code>seq.__getitem__(slice(start,stop,step)]</code>.
+所以可以给一个slice对象命名, 比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>invoice = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"><span class="meta">... </span>0.....6.................................40........52...55........</span></span><br><span class="line"><span class="string"><span class="meta">... </span>1909 Pimoroni PiBrella $17.50 3 $52.50</span></span><br><span class="line"><span class="string"><span class="meta">... </span>1489 6mm Tactile Switch x20 $4.95 2 $9.90</span></span><br><span class="line"><span class="string"><span class="meta">... </span>1510 Panavise Jr. - PV-201 $28.00 1 $28.00</span></span><br><span class="line"><span class="string"><span class="meta">... </span>1601 PiTFT Mini Kit 320x240 $34.95 1 $34.95</span></span><br><span class="line"><span class="string"><span class="meta">... </span>&quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>SKU = <span class="built_in">slice</span>(<span class="number">0</span>, <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>DESCRIPTION = <span class="built_in">slice</span>(<span class="number">6</span>, <span class="number">40</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>UNIT_PRICE = <span class="built_in">slice</span>(<span class="number">40</span>, <span class="number">52</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>QUANTITY = <span class="built_in">slice</span>(<span class="number">52</span>, <span class="number">55</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ITEM_TOTAL = <span class="built_in">slice</span>(<span class="number">55</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>line_items = invoice.split(<span class="string">&#x27;\n&#x27;</span>)[<span class="number">2</span>:]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> item <span class="keyword">in</span> line_items:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(item[UNIT_PRICE], item[DESCRIPTION])</span><br><span class="line">...</span><br><span class="line">    $<span class="number">17.50</span> Pimoroni PiBrella</span><br><span class="line">     $<span class="number">4.95</span> 6mm Tactile Switch x20</span><br><span class="line">    $<span class="number">28.00</span> Panavise Jr. - PV-<span class="number">201</span></span><br><span class="line">    $<span class="number">34.95</span> PiTFT Mini Kit 320x240</span><br></pre></td></tr></table></figure>
+<p>另外还有一个给切片对象赋值, 如果赋值左边时一个切片对象,
+右边必须是一个可迭代对象. 例如 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">2</span>:<span class="number">5</span>] = [<span class="number">20</span>, <span class="number">30</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> l[<span class="number">5</span>:<span class="number">7</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>::<span class="number">2</span>] = [<span class="number">11</span>, <span class="number">22</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">20</span>, <span class="number">11</span>, <span class="number">5</span>, <span class="number">22</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">2</span>:<span class="number">5</span>] = <span class="number">100</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: can only assign an iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">2</span>:<span class="number">5</span>] = [<span class="number">100</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">100</span>, <span class="number">22</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure></p>
+<h4 id="using-and-with-sequences">1.2.7. Using + and * with
+Sequences</h4>
+<p>几个知识点:</p>
+<ol type="1">
+<li>对sequence进行<code>+</code>和<code>*</code>, 会创建新的对象,
+而不会修改操作数.</li>
+<li>构造多维数组时, 有个陷阱, 这个我过去也碰到过, 正确做法:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>board = [[<span class="string">&#x27;_&#x27;</span>] * <span class="number">3</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">&#x27;X&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;X&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+<p>错误做法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board = [[<span class="string">&#x27;_&#x27;</span>] * <span class="number">3</span>] * <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">&#x27;O&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;O&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;O&#x27;</span>], [<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;O&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+<p>下面是关于对sequence类型应用<code>+=</code>,
+<code>*=</code>这种增量赋值(Augmented Assignment)的几个知识点</p>
+<ol type="1">
+<li>对于<code>a += b</code>, 如果实现了<code>__iadd__</code>,
+那么这个dunder函数将被调用. 如果用于可变序列(mutable sequences),
+那么该对象将被修改(类似于<code>a.extend(b)</code>).
+<code>a</code>讲指向原来的对象.</li>
+<li>如果没有实现<code>__iadd__</code>, 但是实现了<code>__add__</code>,
+那么<code>a += b</code>跟<code>a = a + b</code>效果相同.
+所以<code>a += b</code>运行之后<code>a</code>指向的<code>a + b</code>产生的新对象.
+对于不可变序列对象(immutable sequences), 这个是必然结果.</li>
+<li><code>+=</code>在底层相当于两步操作, 所以有可能完成一半之后报错,
+比如下面这个例子:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="number">1</span>,<span class="number">2</span>,[<span class="number">30</span>,<span class="number">69</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>] += [<span class="number">50</span>, <span class="number">40</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, [<span class="number">30</span>, <span class="number">69</span>, <span class="number">50</span>, <span class="number">40</span>])</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>避免在tuple里使用可变类型元素.</li>
+<li>网站<code>pythontutor.com</code>可以帮助分析内存分配.
+直接分析字节码也不是很难.</li>
+</ol>
+<h4 id="list.sort-versus-the-sorted-built-in">1.2.8. list.sort Versus
+the sorted Built-in</h4>
+<p>list.sort不创建新对象, 内置函数sorted创建新的对象.
+两个参数reverse是逆序不用说,
+key是以可迭代对象的每个元素为唯一参数的一个函数,
+这个函数返回排序时用来比较的对象. 举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits = [<span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sorted</span>(fruits)</span><br><span class="line">[<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits</span><br><span class="line">[<span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sorted</span>(fruits, reverse=<span class="literal">True</span>)</span><br><span class="line">[<span class="string">&#x27;raspberry&#x27;</span>, <span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sorted</span>(fruits, key=<span class="built_in">len</span>)</span><br><span class="line">[<span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sorted</span>(fruits, key=<span class="built_in">len</span>, reverse=<span class="literal">True</span>)</span><br><span class="line">[<span class="string">&#x27;raspberry&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits</span><br><span class="line">[<span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits.sort()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits</span><br><span class="line">[<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;grape&#x27;</span>, <span class="string">&#x27;raspberry&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>一个额外的知识点,
+利用bisect内置库模块可以在维持排序的情况下做插入和快速搜索.</p>
+</div>
+<h4 id="when-a-list-is-not-the-answer">1.2.9. When a List is Not the
+Answer</h4>
+<p>list类型非常易用, 但针对一些特定的需求, 有时候有更好的选择.
+这一小章节就是介绍其他选项的, 我也经常过度使用list,
+所以这章认真读一下.</p>
+<h5 id="arrays">1.2.9.1. Arrays</h5>
+<p>如果list只包含数字, 那么<code>array.array</code>是很有效的替代品.</p>
+<ol type="1">
+<li>Arrays支持所有可变序列的操作, 比如<code>.pop</code>,
+<code>.insert</code>, `.extend.</li>
+<li>有课外的快速读写(saving, loading)的操作,
+比如<code>.frombytes</code>, <code>.tofile</code></li>
+<li>跟C array一样节省.</li>
+<li>无法像list一样自排序, 需要使用built-in
+<code>sorted</code>函数来做排序.
+例如<code>a = array.array(a.typecode, sorted(a))</code>.
+使用<code>bisect.insort</code>可以在保持排序的情况下添加元素.</li>
+</ol>
+<p>下表是跟list的方法对比. 这本书这种对比特别直观, 点赞收藏.</p>
+<img src="/7112fecc//Table2_3.png" class title="Table 2-3 Methods and attributes found in list or array">
+<h5 id="section">1.2.9.2.</h5>
 <p>未完待续</p>
 
     </div>

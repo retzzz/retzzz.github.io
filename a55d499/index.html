@@ -357,6 +357,12 @@ addition, and multiplication.</li>
 </ul>
 <p>表示为:<span class="math display">\[{\frak N} = ({\Bbb
 N};0,S,+,\cdot).\]</span></p>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+如果说一阶逻辑语言是把人的天然的演绎思维抽象成符号的话,
+结构(structure)就是通过把一阶逻辑语言里的parameters映射成论域中的元素,
+<a href="/48e9c4af#NaryRelation">关系(relation)</a>, 和<a href="/1eec0e97#FirstOrderFunctionSymbol">函数(function)</a>.
+把一阶逻辑语言具象化成某一个研究对象. </font></p>
+</div>
 <h4 id="def-frak-a-satisfies-varphi-with-s-结构frak-a以-变量的取值函数s满足合式公式varphi"><span class="math inline">\(\DEF\)</span> <span class="math inline">\(\frak
 A\)</span> satisfies <span class="math inline">\(\varphi\)</span> with
 <span class="math inline">\(s\)</span> 结构<span class="math inline">\(\frak A\)</span>以 变量的取值函数<span class="math inline">\(s\)</span>满足合式公式<span class="math inline">\(\varphi\)</span>
@@ -465,6 +471,12 @@ any) <a href="/48e9c4af#Function">function</a> <span class="math inline">\(s:V\r
 A|\)</span>, or</li>
 <li><span class="math inline">\(\frak A\)</span> does not satisfy <span class="math inline">\(\sigma\)</span> with any such <a href="/48e9c4af#Function">function</a>.</li>
 </ol>
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+命题是没有自由变量的合式公式. 而<span class="math inline">\(s\)</span>中只有自由变量有用. 所以对于命题,
+函数<span class="math inline">\(s\)</span>就没用了.
+换句话说一个命题是否能被结构满足跟给<span class="math inline">\(V\)</span>中变量取论域中的哪些值无关.
+进一步一旦一个结构确定了, 那么一个命题的真假就确定了. </font></p>
+</div>
 <h4 id="def-truth-and-models-模型"><span class="math inline">\(\DEF\)</span> Truth and Models 模型
 <span id="Model"></span></h4>
 <p>If alternative (a) of <a href="#Corollary22B">Corollary 22B</a>
@@ -485,7 +497,11 @@ every member of <span class="math inline">\(\Sigma\)</span>.</p>
 A\)</span> for the language and every <a href="/48e9c4af#Function">function</a> <span class="math inline">\(s:V\rightarrow|\frak A|\)</span> such that <span class="math inline">\(\frak A\)</span> <a href="#FirstOrderSatisfy">satisfies</a> every member of <span class="math inline">\(\Gamma\)</span> with <span class="math inline">\(s\)</span>, <span class="math inline">\(\frak
 A\)</span> also satisfies <span class="math inline">\(\varphi\)</span>
 with <span class="math inline">\(s\)</span>.</p>
-<p>As before we will write "<span class="math inline">\(\gamma\vDash\varphi\)</span>" in place of "<span class="math inline">\(\{\gamma\}\vDash\varphi\)</span>".</p>
+<p>As before we will write "<span class="math inline">\(\gamma\vDash\varphi\)</span>" in place of "<span class="math inline">\(\{\gamma\}\vDash\varphi\)</span>".
+<div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
+逻辑蕴涵, 就是不需要对合式公式里符号进行具象化, 仅仅根据合式公式的形式,
+就能确定的一个推导关系. <span class="math inline">\(\Gamma\)</span>能推导出<span class="math inline">\(\varphi\)</span>. </font></p>
+</div></p>
 <h5 id="def-logically-equivalent-逻辑等价"><span class="math inline">\(\DEF\)</span> Logically Equivalent 逻辑等价
 <span id="LogicallyEquivalent"></span></h5>
 <p>Say that <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are <em>logically equivalent</em>

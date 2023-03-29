@@ -311,23 +311,11 @@ fact?</li>
 <li>Is there necessarily a proof at all?</li>
 </ol>
 <div class="note success"><p><span class="math inline">\(\MYNOTE\)</span> <font face="楷体">
-这一章是用来回答整本书的前言中提出的四个最需要关注的问题中的<a href="/f4228e25/#Q2">问题2</a> </font></p>
+这一章是用来回答整本书的前言中提出的四个最需要关注的问题中的<a href="/f4228e25/#Q2">问题2</a> 为了避免自然语言中关于证明概念的混乱,
+正式的证明(proof)在这本书里被叫做演绎(deduction). 这一章的目标就是,
+给"演绎"提供一个精确的数学概念, 使其在一阶逻辑的语境下是充分的和正确的.
+</font></p>
 </div>
-<p><span class="math inline">\(\DEFi\)</span> A proof is an argument
-that you give to someone else and that completely convinces that person
-of the correctness of your assertion (in this case, that <a href="/a55d499/#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a>)</p>
-<p>Two essential feature of a proof:</p>
-<ol type="1">
-<li>A proof should be finitely long. The compactness theorem for
-first-order logic will ensure the existence of a finite <span class="math inline">\(\Sigma_0\subset\Sigma\)</span> such that <a href="/a55d499/#LogicallyImply"><span class="math inline">\(\Sigma\vDash\tau\)</span></a></li>
-<li>Under reasonable conditions, the validities -- the set of <a href="/a55d499/#ValidWff">valid formulas</a> -- is <a href="/78799e4f/#EffectivelyEnumerable">effectively enumerable</a>. (The
-enumerability theorem)</li>
-</ol>
-<p>The compactness theorem and the enumerability theorem are necessary
-and sufficient conditions for proofs (of some sort) to exist. <br> The
-goal of section 2.4 and section 2.5 is to produce a mathematically
-precise concept of deduction that, in the context of first-order logic,
-is adequate and correct.</p>
 <h2 id="formal-deductions">Formal Deductions
 <span id="FormalDeductions"></span></h2>
 <h3 id="演绎的定义">演绎的定义</h3>
@@ -342,11 +330,15 @@ ponens from two earlier formulas in the sequence; that is, for some
 <p>If such a deduction exists, we say that <span class="math inline">\(\varphi\)</span> is <em>deducible</em> from <span class="math inline">\(\Gamma\)</span>, or that <span class="math inline">\(\varphi\)</span> is <em>theorem</em> of <span class="math inline">\(\Gamma\)</span><span id="Deduction">, and we
 write "<span class="math inline">\(\Gamma\vdash\varphi\)</span>". If
 <span class="math inline">\(\Gamma\)</span> is <span class="math inline">\(\varnothing\)</span>, we write "<span class="math inline">\(\vdash\alpha\)</span>" in place of "<span class="math inline">\(\varnothing\vdash\alpha\)</span>". If <span class="math inline">\(\Gamma=\{\varphi\}\)</span>, we write "<span class="math inline">\(\varphi\vdash\alpha\)</span>" in place of "<span class="math inline">\(\{\varphi\}\vdash\alpha\)</span>".</span></p>
-<p>Where * <span class="math inline">\(\Lambda\)</span> is an selected
-infinite set of <a href="/1eec0e97/#FirstOrderWff">formulas</a> to be
-called logical axioms(逻辑公理)<span id="LogicalAxioms">. * <span class="math inline">\(\Gamma\)</span> is a set of <a href="/1eec0e97/#FirstOrderWff">formulas</a>. * And the <em>modus
-ponens</em>(假言推理)<span id="ModusPonens"> is a rule of inference. It
-is usually stated: From the formulas <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\alpha\rightarrow\beta\)</span> we may infer <span class="math inline">\(\beta\)</span>:</span></span></p>
+<p>Where</p>
+<ul>
+<li><span class="math inline">\(\Lambda\)</span> is an selected infinite
+set of <a href="/1eec0e97/#FirstOrderWff">formulas</a> to be called
+logical axioms(逻辑公理)<span id="LogicalAxioms">.</span></li>
+<li><span class="math inline">\(\Gamma\)</span> is a set of <a href="/1eec0e97/#FirstOrderWff">formulas</a>.</li>
+<li>And the <em>modus ponens</em>(假言推理)<span id="ModusPonens"> is a
+rule of inference. It is usually stated: From the formulas <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\alpha\rightarrow\beta\)</span> we may infer <span class="math inline">\(\beta\)</span>:</span></li>
+</ul>
 <p><span class="math display">\[
 \frac{\alpha,\alpha\rightarrow\beta}{\beta}.
 \]</span></p>
@@ -370,7 +362,7 @@ ponens运算是部分定义的, 一个是生成的定理集合不是<a href="/e1
 </div>
 <h3 id="逻辑公理">逻辑公理</h3>
 <p><span class="math inline">\(\DEF\)</span> Say that a <a href="/1eec0e97/#FirstOrderWff">wff</a> <span class="math inline">\(\varphi\)</span> is a
-<em>generalization</em>(泛化)<span id="Generalization"> of <span class="math inline">\(\psi\)</span> iff for some <span class="math inline">\(n\geq 0\)</span> and some variables <span class="math inline">\(x_1,\ldots,x_n\)</span>, <span class="math display">\[
+<em>generalization</em>(概化)<span id="Generalization"> of <span class="math inline">\(\psi\)</span> iff for some <span class="math inline">\(n\geq 0\)</span> and some variables <span class="math inline">\(x_1,\ldots,x_n\)</span>, <span class="math display">\[
 \varphi=\forall x_1\dots\forall x_n\psi.
 \]</span> In particular, <span class="math inline">\(n=0\)</span> is
 included. It means any <a href="/1eec0e97/#FirstOrderWff">wff</a> is a
