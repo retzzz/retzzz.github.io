@@ -5320,7 +5320,8 @@ Grammar Restrictions On Decorators</a></li>
     <url>//7112fecc/</url>
     <content><![CDATA[<div class="note info"><p>之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程,
 可以通过这本书作为线索, 学习一下最新的python语言特性.
-这读书笔记会专注于记录那些我不熟悉的新特性, 或者能够给我启发的内容.</p>
+这读书笔记会专注于记录那些我不熟悉的新特性(或者老特性),
+或者能够给我启发的内容.</p>
 </div>
 <span id="more"></span>
 <p>《流利的Python》第二版是基于python3.10版本的, 是一本对Python
@@ -5386,8 +5387,8 @@ Model</h3>
 after"的缩写. 所以说下面三个是同义词special method, magic method, dunder
 method.</p>
 </div>
-<p>下面几个图总结得很有条理, 这里记录一下. <img src="/7112fecc//Figure1_2.png" class title="Figure 1-2 Collections UML"> <img src="/7112fecc//Table1_1.png" class title="Table 1-1 Special Method Names (operators excluded)">
-<img src="/7112fecc//Table1_2.png" class title="Table 1-2 Special Method Names for operators"></p>
+<p>下面几个图总结得很有条理, 这里记录一下. <img src="/7112fecc//Figure1_2.png" class width="800" title="Figure 1-2 Collections UML"> <img src="/7112fecc//Table1_1.png" class width="800" title="Table 1-1 Special Method Names (operators excluded)">
+<img src="/7112fecc//Table1_2.png" class width="800" title="Table 1-2 Special Method Names for operators"></p>
 <h3 id="chapter-2-an-array-of-sequences">1.2. Chapter 2 An Array of
 Sequences</h3>
 <p>这一章主要讲各种序列(sequence)对象, 主题包括</p>
@@ -5419,7 +5420,7 @@ Immutable Lists</h4>
 <p>Tuples as Immutable Lists给出了几条用tuple替代list的优势,
 主要就是长度已知和速度更快.</p>
 <p>下面这张比较list, tuple两种对象方法和属性的表值得收藏.</p>
-<img src="/7112fecc//Table2_1.png" class title="Table 2-1 Methods and attributes found in list or tuple">
+<img src="/7112fecc//Table2_1.png" class width="800" title="Table 2-1 Methods and attributes found in list or tuple">
 <h4 id="unpacking-sequences-and-iterables">1.2.4. Unpacking Sequences
 and Iterables</h4>
 <p>序列解包, 可以避免使用索引(index)运算.
@@ -5578,8 +5579,55 @@ Answer</h4>
 使用<code>bisect.insort</code>可以在保持排序的情况下添加元素.</li>
 </ol>
 <p>下表是跟list的方法对比. 这本书这种对比特别直观, 点赞收藏.</p>
-<img src="/7112fecc//Table2_3.png" class title="Table 2-3 Methods and attributes found in list or array">
-<h5 id="section">1.2.9.2.</h5>
+<img src="/7112fecc//Table2_3.png" class width="800" title="Table 2-3 Methods and attributes found in list or array">
+<h5 id="memory-views">1.2.9.2. Memory Views</h5>
+<p><code>memoryview</code>居然是个built-in的类,
+可以让不同的sequence类型共享内存.
+<code>memoryview.cast</code>方法可以通过指定内存空间内每个元素的大小,
+和对元素进行重新分组来修改读写元素的方式.
+这个方法返回另一个<code>memoryview</code>对象,
+但跟源对象共享同一块内存.</p>
+<h5 id="numpy">1.2.9.3. NumPy</h5>
+<p>NumPy提供高级的数组和矩阵运算,
+它是Python能够成为主流的科学计算程序语言的原因.
+SciPy是基于NumPy的一个库, 提供大量科学计算算法, 包括线性代数, 微积分,
+统计等.</p>
+<p>NumPy和SciPyye也是一些其他工具的基础, 比如</p>
+<ol type="1">
+<li>Pandas提供了有效的非数字类型的数组操作, 提供了导入/导出到其它格式,
+像.csv, .xls, SQL, HDF5等等.</li>
+<li>scikit-learn是当前最广泛使用的机器学习工具集.</li>
+<li>Dask项目, 提供了在一组机器上并行计算Numpy, Pandas,
+scikit-learn过程的能力.</li>
+</ol>
+<h5 id="deques-and-other-queues">1.2.9.3. Deques and Other Queues</h5>
+<p><code>collections.deque</code>类是一个线程安全(thread-safe)的双向序列.
+可以从两端快速插入和删除. <code>deque</code>可以被固定最大长度,
+叫做绑定的<code>deque</code>(bounded deque). 如果绑定的deque满了,
+那么从一端加入新元素, 将导致另一端的第一个元素被删除.</p>
+<p>下表是list和deque方法对比:</p>
+<img src="/7112fecc//Table2_4.png" class width="800" title="Table 2-4 Methods implemented in list and deque">
+<p>除了<code>deque</code>,
+其他的python标准库里如下一些模块还包括了其他的一些队列类:</p>
+<ol type="1">
+<li>queue: 这个模块提供了thread-safe的同步类,
+包括<code>SimpleQueue</code>, <code>Queue</code>,
+<code>LifoQueue</code>, <code>PriorityQueue</code>.
+除了<code>SimpleQueue</code>, 其他几个类可以在构建时提供一个最大长度.
+但跟<code>deque</code>不同的是, 队列满了之后不会删除元素,
+而是会阻塞线程, 直到有其他线程给队列腾出空间.
+这对于线程间同步非常有用.</li>
+<li>multiprocessing: 这个模块实现了它自己的SimpleQueue和绑定的Queue,
+跟模块queue里的很像, 但是是为了进程间交互设计的.
+为了任务管理提供了一个特别的<code>multiprocessing.JoinableQueue</code>类.</li>
+<li>asyncio: 提供了<code>Queue</code>, <code>LifoQueue</code>,
+<code>PriorityQueue</code>, 和<code>JoinableQueue</code>.
+跟模块<code>queue</code>里的很像, 但是为了异步编程的任务管理设计.</li>
+<li>heapq: 跟前三个模块不同, <code>heapq</code>没有实现队列类,
+但是提供了一些像<code>heappush</code>, <code>heappop</code>的函数,
+让用户可以像使用heap queue或者priority queue一样使用一个可变队列(mutable
+sequence).</li>
+</ol>
 <p>未完待续</p>
 ]]></content>
       <categories>
