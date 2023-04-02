@@ -33,6 +33,8 @@
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table2_1.png">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table2_3.png">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table2_4.png">
+<meta property="og:image" content="https://retzzz.github.io/7112fecc//Figure3_1.png">
+<meta property="og:image" content="https://retzzz.github.io/7112fecc//Table3_1.png">
 <meta property="article:published_time" content="2023-03-17T10:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-30T10:00:00.000Z">
 <meta property="article:author" content="Mingjian">
@@ -171,7 +173,12 @@ Unpacking with * in Function Calls and Sequence Literals</span></a></li><li clas
 Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slicing"><span class="nav-text">1.2.6. Slicing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#using-and-with-sequences"><span class="nav-text">1.2.7. Using + and * with
 Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list.sort-versus-the-sorted-built-in"><span class="nav-text">1.2.8. list.sort Versus
 the sorted Built-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when-a-list-is-not-the-answer"><span class="nav-text">1.2.9. When a List is Not the
-Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#arrays"><span class="nav-text">1.2.9.1. Arrays</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#memory-views"><span class="nav-text">1.2.9.2. Memory Views</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numpy"><span class="nav-text">1.2.9.3. NumPy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#deques-and-other-queues"><span class="nav-text">1.2.9.3. Deques and Other Queues</span></a></li></ol></li></ol></li></ol></li></ol></div>
+Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#arrays"><span class="nav-text">1.2.9.1. Arrays</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#memory-views"><span class="nav-text">1.2.9.2. Memory Views</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numpy"><span class="nav-text">1.2.9.3. NumPy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#deques-and-other-queues"><span class="nav-text">1.2.9.4. Deques and Other Queues</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter-3-dictionaries-and-sets"><span class="nav-text">1.3. Chapter 3 Dictionaries and
+Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#modern-dict-syntax"><span class="nav-text">1.3.1. Modern dict Syntax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dict-comprehensions"><span class="nav-text">1.3.1.1. dict Comprehensions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unpacking-mappings"><span class="nav-text">1.3.1.2. Unpacking Mappings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merging-mappings-with"><span class="nav-text">1.3.1.3. Merging Mappings with
+|</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pattern-matching-with-mappings"><span class="nav-text">1.3.1.4. Pattern Matching with
+Mappings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#standard-api-of-mapping-types"><span class="nav-text">1.3.1.5. Standard API of Mapping
+Types</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#what-is-hashable"><span class="nav-text">1.3.1.5.1. What is Hashable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#overview-of-common-mapping-methods"><span class="nav-text">1.3.1.5.2. Overview of
+Common Mapping Methods</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -573,7 +580,7 @@ SciPy是基于NumPy的一个库, 提供大量科学计算算法, 包括线性代
 <li>Dask项目, 提供了在一组机器上并行计算Numpy, Pandas,
 scikit-learn过程的能力.</li>
 </ol>
-<h5 id="deques-and-other-queues">1.2.9.3. Deques and Other Queues</h5>
+<h5 id="deques-and-other-queues">1.2.9.4. Deques and Other Queues</h5>
 <p><code>collections.deque</code>类是一个线程安全(thread-safe)的双向序列.
 可以从两端快速插入和删除. <code>deque</code>可以被固定最大长度,
 叫做绑定的<code>deque</code>(bounded deque). 如果绑定的deque满了,
@@ -601,6 +608,96 @@ scikit-learn过程的能力.</li>
 让用户可以像使用heap queue或者priority queue一样使用一个可变队列(mutable
 sequence).</li>
 </ol>
+<h3 id="chapter-3-dictionaries-and-sets">1.3. Chapter 3 Dictionaries and
+Sets</h3>
+<p>Python的一些核心基础结构是由内存中的字典结构构成的, 比如:</p>
+<ol type="1">
+<li>类和实例的属性.</li>
+<li>模块名字空间.</li>
+<li>函数的keyword参数.</li>
+<li><code>__builtins__.__dict__</code>存储所有的内置类型, 对象,
+和函数.</li>
+</ol>
+<p>哈希表(Hash tables)是Python高性能<code>dict</code>的基础引擎.
+<code>set</code>, <code>frozenset</code>也是基于哈希表.</p>
+<h4 id="modern-dict-syntax">1.3.1. Modern dict Syntax</h4>
+<h4 id="dict-comprehensions">1.3.1.1. dict Comprehensions</h4>
+<p>例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dial_codes = [</span><br><span class="line"><span class="meta">... </span>    (<span class="number">880</span>, <span class="string">&#x27;Bangladesh&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">55</span>, <span class="string">&#x27;Brazil&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">86</span>, <span class="string">&#x27;China&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">91</span>, <span class="string">&#x27;India&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">62</span>, <span class="string">&#x27;Indonesia&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">81</span>, <span class="string">&#x27;Japan&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">234</span>, <span class="string">&#x27;Nigeria&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">92</span>, <span class="string">&#x27;Pakistan&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">7</span>, <span class="string">&#x27;Russia&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="number">1</span>, <span class="string">&#x27;United States&#x27;</span>),</span><br><span class="line"><span class="meta">... </span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>country_dial = &#123;country: code <span class="keyword">for</span> code, country <span class="keyword">in</span> dial_codes&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>country_dial</span><br><span class="line">&#123;<span class="string">&#x27;Bangladesh&#x27;</span>: <span class="number">880</span>, <span class="string">&#x27;Brazil&#x27;</span>: <span class="number">55</span>, <span class="string">&#x27;China&#x27;</span>: <span class="number">86</span>, <span class="string">&#x27;India&#x27;</span>: <span class="number">91</span>, <span class="string">&#x27;Indonesia&#x27;</span>: <span class="number">62</span>,</span><br><span class="line"><span class="string">&#x27;Japan&#x27;</span>: <span class="number">81</span>, <span class="string">&#x27;Nigeria&#x27;</span>: <span class="number">234</span>, <span class="string">&#x27;Pakistan&#x27;</span>: <span class="number">92</span>, <span class="string">&#x27;Russia&#x27;</span>: <span class="number">7</span>, <span class="string">&#x27;United States&#x27;</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;code: country.upper()</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> country, code <span class="keyword">in</span> <span class="built_in">sorted</span>(country_dial.items())</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> code &lt; <span class="number">70</span>&#125;</span><br><span class="line">&#123;<span class="number">55</span>: <span class="string">&#x27;BRAZIL&#x27;</span>, <span class="number">62</span>: <span class="string">&#x27;INDONESIA&#x27;</span>, <span class="number">7</span>: <span class="string">&#x27;RUSSIA&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;UNITED STATES&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="unpacking-mappings">1.3.1.2. Unpacking Mappings</h4>
+<p>从Python3.5版本开始映射类型的解包(mapping
+unpacking)可以用有两种方式的应用:</p>
+<ol type="1">
+<li>在函数调用的时候, 可以应用<code>**</code>到多个参数上.</li>
+<li><code>**</code>可以被用于<code>dict</code>的文本里.</li>
+</ol>
+<p>例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">dump</span>(<span class="params">**kwargs</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> kwargs</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dump(**&#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>&#125;, y=<span class="number">2</span>, **&#123;<span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>&#125;)</span><br><span class="line">&#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">0</span>, **&#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>&#125;, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, **&#123;<span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">4</span>&#125;&#125;</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="merging-mappings-with">1.3.1.3. Merging Mappings with
+<code>|</code></h4>
+<p>Python
+3.9版本支持使用<code>|</code>和<code>|=</code>来合并mapping类型.
+前者创建一个新的mapping对象, 新对象的类型默认跟左边的操作数相同,
+后者更新现存的mapping.</p>
+<h4 id="pattern-matching-with-mappings">1.3.1.4. Pattern Matching with
+Mappings</h4>
+<p><code>match/case</code>语句的主语(subject)可以是mapping对象.
+Pattern看起来跟mapping文本很像,
+可以匹配任何<code>collections.abc.Mapping</code>的子类的实例.</p>
+<p>pattern
+matching是用来处理嵌套的mappings和sequences的结构化记录非常强大的工具.
+比如处理JSON, 半结构化数据库比如MongoDB, EdgeDB, PostgreSQL.</p>
+<p>下面是个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">get_creators</span>(<span class="params">record: <span class="built_in">dict</span></span>) -&gt; <span class="built_in">list</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">match</span> record:</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">case</span> &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;book&#x27;</span>, <span class="string">&#x27;api&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;authors&#x27;</span>: [*names]&#125;:  <span class="comment"># &lt;1&gt;</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> names</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">case</span> &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;book&#x27;</span>, <span class="string">&#x27;api&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;author&#x27;</span>: name&#125;:  <span class="comment"># &lt;2&gt;</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> [name]</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">case</span> &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;book&#x27;</span>&#125;:  <span class="comment"># &lt;3&gt;</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">raise</span> ValueError(<span class="string">f&quot;Invalid &#x27;book&#x27; record: <span class="subst">&#123;record!r&#125;</span>&quot;</span>)</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">case</span> &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;movie&#x27;</span>, <span class="string">&#x27;director&#x27;</span>: name&#125;:  <span class="comment"># &lt;4&gt;</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">return</span> [name]</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">case</span> _:  <span class="comment"># &lt;5&gt;</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">raise</span> ValueError(<span class="string">f&#x27;Invalid record: <span class="subst">&#123;record!r&#125;</span>&#x27;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b1 = <span class="built_in">dict</span>(api=<span class="number">1</span>, author=<span class="string">&#x27;Douglas Hofstadter&#x27;</span>,</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">type</span>=<span class="string">&#x27;book&#x27;</span>, title=<span class="string">&#x27;Gödel, Escher, Bach&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>get_creators(b1)</span><br><span class="line">[<span class="string">&#x27;Douglas Hofstadter&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b2 = OrderedDict(api=<span class="number">2</span>, <span class="built_in">type</span>=<span class="string">&#x27;book&#x27;</span>,</span><br><span class="line"><span class="meta">... </span>        title=<span class="string">&#x27;Python in a Nutshell&#x27;</span>,</span><br><span class="line"><span class="meta">... </span>        authors=<span class="string">&#x27;Martelli Ravenscroft Holden&#x27;</span>.split())</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>get_creators(b2)</span><br><span class="line">[<span class="string">&#x27;Martelli&#x27;</span>, <span class="string">&#x27;Ravenscroft&#x27;</span>, <span class="string">&#x27;Holden&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>get_creators(&#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;book&#x27;</span>, <span class="string">&#x27;pages&#x27;</span>: <span class="number">770</span>&#125;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">8</span>, <span class="keyword">in</span> get_creators</span><br><span class="line">ValueError: Invalid <span class="string">&#x27;book&#x27;</span> record: &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;book&#x27;</span>, <span class="string">&#x27;pages&#x27;</span>: <span class="number">770</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>get_creators(<span class="string">&#x27;Spam, spam, spam&#x27;</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">12</span>, <span class="keyword">in</span> get_creators</span><br><span class="line">ValueError: Invalid record: <span class="string">&#x27;Spam, spam, spam&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的几点是</p>
+<ol type="1">
+<li>pattern里面key的顺序不会影响匹配,
+即便主语是<code>OrderedDict</code>.</li>
+<li>跟sequence pattern对比, mapping pattern允许部分匹配.</li>
+<li>因为允许部分匹配,
+所以不需要用<code>**extra</code>匹配额外的key-value对.
+但如果你想要捕获额外的key-value对, 作为一个dict,
+最后一个变量可以用双星号变量, 而且不能是<code>**_</code>.</li>
+</ol>
+<h4 id="standard-api-of-mapping-types">1.3.1.5. Standard API of Mapping
+Types</h4>
+<p><code>dict</code>的接口是由<code>collections.abc</code>模块提供的<code>Mapping</code>和<code>MutableMapping</code>描述的,
+见下图:</p>
+<img src="/7112fecc//Figure3_1.png" class width="800" title="Figure 3-1 UML class diagram for the MutableMapping">
+<p>想要自定义mapping类型, 可以扩展<code>collections.UserDict</code>,
+或者通过composition包裹一个<code>dict</code>, 而不是这些ABCs的子类.
+<code>collections.UserDict</code>类和标准库中的所有具体mapping类在其实现中都封装了基本dict.
+而dict又构建在哈希表上. 因此. 它们都有一个限制.
+即键必须是可散列(hashable)的(value不需要是可散列的，只需要key).</p>
+<h5 id="what-is-hashable">1.3.1.5.1. What is Hashable</h5>
+<p>定义: 如果一个对象具有一个哈希值,
+并且这个值在对象的整个生命周期内不变(这需要一个<code>__hash__()</code>方法).
+并且可以跟其他对象进行比较(这需要一个<code>__eq__()</code>方法),
+那么这个对象就是可散列的(hashable).
+两个相等的可散列对象必须具有相同的哈希值.</p>
+<ul>
+<li>可散列对象包括: 数值类型, flat immutable类型(str, bytes),
+所有元素都是可散列的的immutable容器(frozenset, tuple if all its items
+are hashable).</li>
+<li>不可散列对象包括: mutable容器类(list, dict)</li>
+</ul>
+<p>其他几个知识点:</p>
+<ol type="1">
+<li>同一个对象的哈希值只有同一个python进程里能确保相等. 在不同的机器,
+不同python版本, 不同python的实现, 不同的python进程里都不能确保相同.</li>
+<li>用户定义类型默认是hashable,
+因为默认他们的哈希值就是他们的<code>id()</code>,
+而<code>__eq__()</code>方法继承了根类<code>object</code>,
+简单比较对象ID. 如果对象实现了<code>__eq__()</code>方法,
+那么它只有实现了<code>__hash__()</code>方法, 并且其每次能返回相同值,
+它才是hashable. 所以实践中,
+这两个dunder方法仅使用那些在对象生命周期内保持不变的属性.</li>
+</ol>
+<h5 id="overview-of-common-mapping-methods">1.3.1.5.2. Overview of
+Common Mapping Methods</h5>
+<p>下面这个表给出了<code>dict</code>和它的两个流行的变体<code>defaultdict</code>和<code>OrderedDict</code>.
+这两个变体定义在<code>collections</code>模块.</p>
+<img src="/7112fecc//Table3_1.png" class width="800" title="Table 3-1. Methods of the mapping types">
 <p>未完待续</p>
 
     </div>
