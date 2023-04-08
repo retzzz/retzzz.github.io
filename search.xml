@@ -5318,13 +5318,7 @@ Grammar Restrictions On Decorators</a></li>
   <entry>
     <title>《流利的Python》第二版(Fluent Python edition 2)读书笔记</title>
     <url>//7112fecc/</url>
-    <content><![CDATA[<div class="note info"><p>之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程,
-可以通过这本书作为线索, 学习一下最新的python语言特性.
-这读书笔记会专注于记录那些我不熟悉的新特性(或者老特性),
-或者能够给我启发的内容.</p>
-</div>
-<span id="more"></span>
-<p>《流利的Python》第二版是基于python3.10版本的, 是一本对Python
+    <content><![CDATA[<p>《流利的Python》第二版是基于python3.10版本的, 是一本对Python
 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读,
 更pythonic的代码. 主要包括下面五个部分:</p>
 <ul>
@@ -5334,6 +5328,15 @@ Grammar Restrictions On Decorators</a></li>
 <li>控制流</li>
 <li>元编程</li>
 </ul>
+<div class="note info"><p>之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程,
+可以通过这本书作为线索, 学习一下最新的python语言特性.
+这读书笔记会专注于记录那些我不熟悉的新特性(或者老特性),
+或者能够给我启发的内容.</p>
+</div>
+<span id="more"></span>
+<div class="note warning"><p>没有翻译成中文的包括: 章节标题, 大部分专有名词,
+python的关键字相关的词.</p>
+</div>
 <h2 id="preface">Preface</h2>
 <h3 id="how-the-book-is-organized">How the Book Is Organized</h3>
 <h4 id="part-i-数据结构">Part I, 数据结构</h4>
@@ -5659,8 +5662,8 @@ unpacking)可以用有两种方式的应用:</p>
 3.9版本支持使用<code>|</code>和<code>|=</code>来合并mapping类型.
 前者创建一个新的mapping对象, 新对象的类型默认跟左边的操作数相同,
 后者更新现存的mapping.</p>
-<h4 id="pattern-matching-with-mappings">1.3.1.4. Pattern Matching with
-Mappings</h4>
+<h3 id="pattern-matching-with-mappings">1.3.2. Pattern Matching with
+Mappings</h3>
 <p><code>match/case</code>语句的主语(subject)可以是mapping对象.
 Pattern看起来跟mapping文本很像,
 可以匹配任何<code>collections.abc.Mapping</code>的子类的实例.</p>
@@ -5679,8 +5682,8 @@ matching是用来处理嵌套的mappings和sequences的结构化记录非常强�
 但如果你想要捕获额外的key-value对, 作为一个dict,
 最后一个变量可以用双星号变量, 而且不能是<code>**_</code>.</li>
 </ol>
-<h4 id="standard-api-of-mapping-types">1.3.1.5. Standard API of Mapping
-Types</h4>
+<h3 id="standard-api-of-mapping-types">1.3.3. Standard API of Mapping
+Types</h3>
 <p><code>dict</code>的接口是由<code>collections.abc</code>模块提供的<code>Mapping</code>和<code>MutableMapping</code>描述的,
 见下图:</p>
 <img src="/7112fecc//Figure3_1.png" class width="800" title="Figure 3-1 UML class diagram for the MutableMapping">
@@ -5689,7 +5692,7 @@ Types</h4>
 <code>collections.UserDict</code>类和标准库中的所有具体mapping类在其实现中都封装了基本dict.
 而dict又构建在哈希表上. 因此. 它们都有一个限制.
 即键必须是可散列(hashable)的(value不需要是可散列的，只需要key).</p>
-<h5 id="what-is-hashable">1.3.1.5.1. What is Hashable</h5>
+<h4 id="what-is-hashable">1.3.3.1. What is Hashable</h4>
 <p>定义: 如果一个对象具有一个哈希值,
 并且这个值在对象的整个生命周期内不变(这需要一个<code>__hash__()</code>方法).
 并且可以跟其他对象进行比较(这需要一个<code>__eq__()</code>方法),
@@ -5713,11 +5716,95 @@ are hashable).</li>
 它才是hashable. 所以实践中,
 这两个dunder方法仅使用那些在对象生命周期内保持不变的属性.</li>
 </ol>
-<h5 id="overview-of-common-mapping-methods">1.3.1.5.2. Overview of
-Common Mapping Methods</h5>
+<h4 id="overview-of-common-mapping-methods">1.3.3.2. Overview of Common
+Mapping Methods</h4>
 <p>下面这个表给出了<code>dict</code>和它的两个流行的变体<code>defaultdict</code>和<code>OrderedDict</code>.
 这两个变体定义在<code>collections</code>模块.</p>
 <img src="/7112fecc//Table3_1.png" class width="800" title="Table 3-1. Methods of the mapping types">
+<h4 id="inserting-or-updating-mutable-values">1.3.3.3. Inserting or
+Updating Mutable Values</h4>
+<p>若<code>dict</code>访问操作<code>d[k]</code>里的k不是一个存在的键,
+会报错.
+<code>d.get(k, default)</code>比处理<code>KeyError</code>更方便的返回默认值.
+如果想要同时取值和更新, 可以使用<code>d.setdefault(key,default)</code>,
+这个方法虽然叫set somthing, 但是意思是, 如果key存在就返回d[key],
+否则先d[key]=default, 然后再返回d[key]. 这样可以减少一次搜索.</p>
+<h4 id="automatic-handling-of-missing-keys">1.3.4. Automatic Handling of
+Missing Keys</h4>
+<p>在一个mapping对象搜索一个不存在的key, 对象的行为是可以定制化的.
+通常通过两种可能的途径,
+一个是用<code>defaultdict</code>代替默认的<code>dict</code>,
+另一个是继承dict, 添加<code>__missing__</code>方法来定制行为模式.</p>
+<h5 id="defaultdict-another-take-on-missing-keys">1.3.4.1. defaultdict:
+Another Take on Missing Keys</h5>
+<p>知识点:</p>
+<ol type="1">
+<li><code>collections.defaultdict</code>实例初始化的时候,
+你需要提供一个可调用对象.</li>
+<li>当一个不存在的key被传给<code>__getitem__</code>方法时,
+这个可调用对象被调用来产生一个默认值.</li>
+<li>这个可调用对象也作为实例的一个叫做<code>default_factory</code>的属性.</li>
+<li>d.get(k)将不会触发<code>default_factory</code>被调用.</li>
+</ol>
+<h5 id="the-__missing__-method">1.3.4.2. The <code>__missing__</code>
+Method</h5>
+<p>想要更精确的定制处理不存在key的行为,
+需要使用<code>__missing__</code>方法,
+<code>dict</code>类没有定义这个方法, 但是如果任何子类提供了这个方法,
+当不存在key被访问的时候,
+<code>dict.__getitem__</code>会调用这个方法.</p>
+<p>知识点:</p>
+<ol type="1">
+<li>避免出现无限迭代的情况.</li>
+<li>为了行为一致性, <code>__contains__</code>方法也需要在子类重写.
+因为表达式<code>k in d</code>会调用这个方法,
+但继承自<code>dict</code>的<code>__contains__</code>并不会回调<code>__missing__</code>.</li>
+</ol>
+<p>例子:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StrKeyDict</span>(collections.UserDict):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__missing__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">str</span>):</span><br><span class="line">            <span class="keyword">raise</span> KeyError(key)</span><br><span class="line">        <span class="keyword">return</span> self[<span class="built_in">str</span>(key)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__contains__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">str</span>(key) <span class="keyword">in</span> self.data</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setitem__</span>(<span class="params">self, key, item</span>):</span><br><span class="line">        self.data[<span class="built_in">str</span>(key)] = item</span><br></pre></td></tr></table></figure>
+<h5 id="inconsistent-usage-of-__missing__-in-the-standard-library">1.3.4.3.
+Inconsistent Usage of <code>__missing__</code> in the Standard
+Library</h5>
+<p>几个场景</p>
+<table>
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>dict</code>的子类
+只实现了<code>__missing__</code></td>
+<td style="text-align: left;">那么只有<code>d[k]</code>通过继承自<code>dict</code>的<code>__getitem__</code>
+有可能调用<code>__missing__</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>collection.UserDict</code>的子类
+只实现了<code>__missing__</code></td>
+<td style="text-align: left;">由于继承自<code>UserDict</code>的<code>get</code>方法也调用<code>__getitem__</code>
+所以<code>d[k]</code>和<code>d.get(k)</code>都有可能调用<code>__missing__</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>abc.Mapping</code>的子类
+实现最简单的<code>__getitem__</code></td>
+<td style="text-align: left;"><code>__missing__</code>永远不会被调用,
+因为<code>__getitem__</code> 没调用它.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>abc.Mapping</code>的子类
+<code>__getitem__</code>调用<code>__missing__</code></td>
+<td style="text-align: left;"><code>d[k]</code>, <code>d.get(k)</code>,
+<code>k in d</code>都会触发<code>__missing__</code></td>
+</tr>
+</tbody>
+</table>
+<p>这四个场景只描绘了最小化的实现,
+如果你的子类实现了<code>__getitem__</code>, <code>get</code>,
+<code>__contains__</code>,
+那么你可以基于你的需求决定这些方法是否使用<code>__missing_</code>.
+关键点是标准库中的mappings的默认行为是不一样的, 所以一定要小心使用.</p>
+<p>别忘了<code>setdefault</code>和<code>update</code>也受搜索key的影响,
+所以你有可能需要实现具有特殊逻辑的<code>__getitem__</code>来避免对象行为的不一致性.</p>
 <p>未完待续</p>
 ]]></content>
       <categories>
