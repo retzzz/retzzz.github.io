@@ -5805,6 +5805,58 @@ Library</h5>
 关键点是标准库中的mappings的默认行为是不一样的, 所以一定要小心使用.</p>
 <p>别忘了<code>setdefault</code>和<code>update</code>也受搜索key的影响,
 所以你有可能需要实现具有特殊逻辑的<code>__getitem__</code>来避免对象行为的不一致性.</p>
+<h4 id="variations-of-dict">1.3.5. Variations of <code>dict</code></h4>
+<p>这一节介绍标准库里除了<code>defaultdict</code>以外的mapping类型.</p>
+<h4 id="collections.ordereddict">1.3.5.1.
+<code>collections.OrderedDict</code></h4>
+<p>Python 3.6开始, 内建的<code>dict</code>也会保留keys的顺序.
+Python文档里列出的<code>dict</code>和<code>OrderedDict</code>的区别如下.</p>
+<ol type="1">
+<li><code>OrderedDict</code>在判定等号时会检查顺序是否相同.</li>
+<li><code>OrderedDict</code>的<code>popitem()</code>方法会接受一个可选参数来指定时LIFO还是FIFO.</li>
+<li><code>OrderedDict</code>有一个<code>move_to_end()</code>方法可以有效的把元素挪到队尾.</li>
+<li>运算效率上, <code>dict</code>优先mapping操作,
+而追踪插入元素的顺序次之.</li>
+<li>运算效率上, <code>OrderedDict</code>优先重排序操作, 空间效率,
+迭代速度和更新操作次之.</li>
+<li>算法上,
+<code>OrderedDict</code>比<code>dict</code>更善于处理频繁排序的操作.
+因此很适合用于追踪最近访问的操作(比如LRU缓存).</li>
+</ol>
+<h4 id="collection.chainmap">1.3.5.2.
+<code>collection.ChainMap</code></h4>
+<ol type="1">
+<li><code>ChainMap</code>实例可以把多个mapping类型对象当作一个列表来检索.
+检索操作是按照构建时提供的mapping类型对象的顺序来执行的,
+只要找到任何一个存在的key, 就检索成功.</li>
+<li>更新和插入操作只影响第一个mapping对象</li>
+<li>不拷贝对象, 只保存mapping对象的引用.</li>
+<li>特别适合用于语言的嵌套名字哦那空间.</li>
+</ol>
+<p>例子: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1 = <span class="built_in">dict</span>(a=<span class="number">1</span>, b=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2 = <span class="built_in">dict</span>(a=<span class="number">2</span>, b=<span class="number">4</span>, c=<span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain = ChainMap(d1, d2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain[<span class="string">&#x27;a&#x27;</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain[<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain[<span class="string">&#x27;c&#x27;</span>] = -<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;c&#x27;</span>: -<span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2</span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">6</span>&#125;</span><br><span class="line"><span class="keyword">import</span> builtins</span><br><span class="line">pylookup = ChainMap(<span class="built_in">locals</span>(), <span class="built_in">globals</span>(), <span class="built_in">vars</span>(builtins))</span><br></pre></td></tr></table></figure></p>
+<h4 id="collection.counter">1.3.5.3.
+<code>collection.Counter</code></h4>
+<ol type="1">
+<li>这个对象可以保存每个key的整数计数.</li>
+<li>更新对象实际上是在现存计数上加新计数.</li>
+<li><code>+</code>和<code>-</code>运算用于合并计数.</li>
+<li><code>most_common([n])</code>返回一个有序的list, 元素是tuple,
+表示计数最多的前n个元素.</li>
+</ol>
+<p>例子: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ct = collections.Counter(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ct</span><br><span class="line">Counter(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;r&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ct.update(<span class="string">&#x27;aaaaazzz&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ct</span><br><span class="line">Counter(&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;z&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;r&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ct.most_common(<span class="number">3</span>)</span><br><span class="line">[(<span class="string">&#x27;a&#x27;</span>, <span class="number">10</span>), (<span class="string">&#x27;z&#x27;</span>, <span class="number">3</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)]</span><br></pre></td></tr></table></figure></p>
+<h4 id="shelve.shelf">1.3.5.4. <code>shelve.Shelf</code></h4>
+<p>标准库中的<code>shelve</code>模块为从字符串key到用<code>pickle</code>二进制格式序列化的Python对象的mapping提供了一个永久存储的方法.
+名字叫<code>shelve</code>, 来自于咸菜(pickle)坛子放在架子(shelve)上.</p>
+<p><code>shelve.open</code>函数返回一个<code>shelve.Shelf</code>实例,
+这是一个简单的key-value DBM数据库.</p>
+<h4 id="subclassing-userdict-instead-of-dict">1.3.5.5. Subclassing
+UserDict Instead of dict</h4>
+<p>这段建议大家如果想创建自己的mapping类型,
+继承<code>UserDict</code>而不是<code>dict</code>.
+主要原因是<code>dict</code>的实现里有一些shortcuts.
+这导致一些本来可以直接继承<code>UserDict</code>的方法,
+在继承<code>dict</code>时需要重写.</p>
+<h3 id="immutable-mappings">1.3.6. Immutable Mappings</h3>
 <p>未完待续</p>
 ]]></content>
       <categories>
