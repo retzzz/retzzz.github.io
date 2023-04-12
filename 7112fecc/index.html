@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"retzzz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":"ture","motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="《流利的Python》第二版是基于python3.10版本的, 是一本对Python 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读, 更pythonic的代码. 主要包括下面五个部分:  数据结构 函数对象 面向对象 控制流 元编程  之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程, 可以通过这本书作为线索, 学习一下最新的p">
+    <meta name="description" content="《流利的Python》第二版是基于python3.10版本的, 是一本对Python 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读, 更pythonic的代码. 主要包括下面五个部分: * 数据结构 * 函数对象 * 面向对象 * 控制流 * 元编程 之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程, 可以通过这本书作为线索, 学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《流利的Python》第二版(Fluent Python edition 2)读书笔记">
 <meta property="og:url" content="https://retzzz.github.io/7112fecc/index.html">
 <meta property="og:site_name" content="Mingjian&#39;s Blog">
-<meta property="og:description" content="《流利的Python》第二版是基于python3.10版本的, 是一本对Python 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读, 更pythonic的代码. 主要包括下面五个部分:  数据结构 函数对象 面向对象 控制流 元编程  之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程, 可以通过这本书作为线索, 学习一下最新的p">
+<meta property="og:description" content="《流利的Python》第二版是基于python3.10版本的, 是一本对Python 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读, 更pythonic的代码. 主要包括下面五个部分: * 数据结构 * 函数对象 * 面向对象 * 控制流 * 元编程 之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程, 可以通过这本书作为线索, 学习">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Figure1_2.png">
 <meta property="og:image" content="https://retzzz.github.io/7112fecc//Table1_1.png">
@@ -188,7 +188,8 @@ Library</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-
 collections.OrderedDict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collection.chainmap"><span class="nav-text">1.3.5.2.
 collection.ChainMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collection.counter"><span class="nav-text">1.3.5.3.
 collection.Counter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shelve.shelf"><span class="nav-text">1.3.5.4. shelve.Shelf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subclassing-userdict-instead-of-dict"><span class="nav-text">1.3.5.5. Subclassing
-UserDict Instead of dict</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable-mappings"><span class="nav-text">1.3.6. Immutable Mappings</span></a></li></ol></li></ol></div>
+UserDict Instead of dict</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable-mappings"><span class="nav-text">1.3.6. Immutable Mappings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dictionary-views"><span class="nav-text">1.3.7. Dictionary Views</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#practical-consequences-of-how-dict-works"><span class="nav-text">1.3.8. Practical
+Consequences of How dict Works</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-theory"><span class="nav-text">1.3.9. Set Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-literals"><span class="nav-text">1.3.10 Set Literals</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -311,13 +312,11 @@ UserDict Instead of dict</span></a></li></ol></li><li class="nav-item nav-level-
         <p>《流利的Python》第二版是基于python3.10版本的, 是一本对Python
 3各个方面的特性的细节的介绍让你能够写出更精炼, 更快速, 更可读,
 更pythonic的代码. 主要包括下面五个部分:</p>
-<ul>
-<li>数据结构</li>
-<li>函数对象</li>
-<li>面向对象</li>
-<li>控制流</li>
-<li>元编程</li>
-</ul>
+<pre><code>* 数据结构
+* 函数对象
+* 面向对象
+* 控制流
+* 元编程</code></pre>
 <div class="note info"><p>之所以读这本书, 是因为python的进化很快, 之前一直在使用3.4编程,
 可以通过这本书作为线索, 学习一下最新的python语言特性.
 这读书笔记会专注于记录那些我不熟悉的新特性(或者老特性),
@@ -847,6 +846,50 @@ UserDict Instead of dict</h4>
 这导致一些本来可以直接继承<code>UserDict</code>的方法,
 在继承<code>dict</code>时需要重写.</p>
 <h3 id="immutable-mappings">1.3.6. Immutable Mappings</h3>
+<p><code>types.MappingProxyType</code>
+可以作为mapping类型的一个只读代理来使用.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="number">1</span>: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy = MappingProxyType(d)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy</span><br><span class="line">mappingproxy(&#123;<span class="number">1</span>: <span class="string">&#x27;A&#x27;</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy[<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy[<span class="number">2</span>] = <span class="string">&#x27;x&#x27;</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">&#x27;mappingproxy&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="number">2</span>] = <span class="string">&#x27;B&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy</span><br><span class="line">mappingproxy(&#123;<span class="number">1</span>: <span class="string">&#x27;A&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;B&#x27;</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d_proxy[<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;B&#x27;</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="dictionary-views">1.3.7. Dictionary Views</h3>
+<p><code>dict</code>实例的几个方法<code>.keys()</code>,
+<code>.values()</code>, <code>.items()</code>返回下面几个类的实例:
+<code>dict_keys</code>, <code>dict_values</code>,
+<code>dict_items</code>. 这几个是dict实际数据结构的一个只读的投影,
+避免了像python2一样的内存占用. 这几个类是<code>dict</code>专用的,
+不能用<code>[]</code>进行元素访问, 也不能使用类直接实例化.
+只实现了<code>__len__</code>, <code>__iter__</code>,
+<code>__reversed__</code>几个特殊方法.</p>
+<h3 id="practical-consequences-of-how-dict-works">1.3.8. Practical
+Consequences of How dict Works</h3>
+<ol type="1">
+<li>Keys必须是hashable的对象.</li>
+<li>通过key来访问dict的元素非常的快. 一个dict可能含有上百万个keys,
+但python可以直接通过key的哈希值直接定位.</li>
+<li>python3.6里key的顺序是更紧凑的内存布局的副作用,
+在3.7中称为一个正式的特性.</li>
+<li>尽快采用了新的紧缩内存, 依然有额外的内存开销.
+而不是像Tuple采用的最紧缩布局 -- 容器是指向对象的引用的数组.
+哈希表需要额外的空行来保持效率.</li>
+<li>避免在<code>__init__</code>方法以外添加实例属性, 可以节省内存.
+原因是python3.3开始, 内部设计是一个类的所有实例可以共享一个公共的哈希表,
+通过每个新实例的<code>__dict__</code>.
+但如果在<code>__init__</code>之后动态添加一个属性会强迫python为该实例创建一个新的哈希表.
+见PEP412.</li>
+</ol>
+<h3 id="set-theory">1.3.9. Set Theory</h3>
+<p><code>set</code>和<code>frozenset</code>最早作为module出现在python2.3,
+后来在python2.6加入built-in类型. 虽然出现得早, 但还是没被充分利用.</p>
+<ol type="1">
+<li>一个set是unique对象的集合. 一个基本的用法是去除重复对象.
+但不能保证顺序. 若想去掉重复还保证顺序, 有一个技巧, 如下.
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.fromkeys(l).keys()</span><br><span class="line">dict_keys([<span class="string">&#x27;spam&#x27;</span>, <span class="string">&#x27;eggs&#x27;</span>, <span class="string">&#x27;bacon&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">dict</span>.fromkeys(l).keys())</span><br><span class="line">[<span class="string">&#x27;spam&#x27;</span>, <span class="string">&#x27;eggs&#x27;</span>, <span class="string">&#x27;bacon&#x27;</span>]</span><br></pre></td></tr></table></figure></li>
+<li>set的元素必须是hashable的, 但set本身不是hashable的.
+frozenset是hashable的, 可以嵌套进其它set.</li>
+<li>set的几个中缀集合运算, 包括 <code>a | b</code>返回合集,
+<code>a &amp; b</code>返回交集, <code>a - b</code>返回差集,
+<code>a ^ b</code>返回对称差集(symmetric difference, 即(a-b)|(b-a)).
+合理使用将使代码即快又有可读性.</li>
+</ol>
+<h3 id="set-literals">1.3.10 Set Literals</h3>
 <p>未完待续</p>
 
     </div>
